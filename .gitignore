@@ -1,0 +1,14 @@
+# LaTeX
+*.aux
+*.log
+*.dvi
+*.toc
+*.out
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# mac
+.DS_Store
