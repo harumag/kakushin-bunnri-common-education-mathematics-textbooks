@@ -52,8 +52,40 @@
 \begin{itembox}
     [l]{\enpitu 等差数列・等比数列の一般項}
     上の（例）からすぐに一般項はわかります.一般項とは,$数を代入するとある規則が常に成り立つような式のことです.第n項ともいいます.$\\
-    ・等差数列$\cdots$
-
+    ・等差数列$\cdots \ans{a_n=a_1+(n-1)d}$\\
+    ・等比数列$\cdots\ans{a_n=a_1\times r^{n-1}}$
 \end{itembox}
-
+等差数列の2つの和の公式は全く覚える必要はありません.その場で作れば良いのです.
+\begin{itembox}
+    [l]{\enpitu 等差数列の和公式}
+$ある数列\B{a_n}に対して,第p項から第q項までの和Sは次の式で与えられる.$
+\begin{center}
+    $\ans{S=\dfrac{1}{2}\p{p-q+1}\p{a_p+a_q}}$
+\end{center}
+\end{itembox}
+等比数列の和公式も作れます.ですが,その前に数列で一番重要な\ans{和分と差分の関係}について習得しなければなりません.
+\begin{itembox}
+    [l]{\enpitu 差分の定義}
+    $ある数列f(n)に対して,\Delta f(n)を\ans{差分列}と呼び,次のように定義する.$
+    \begin{center}
+        $\Delta f(n)=f(n+1)-f(n)$
+    \end{center}
+\end{itembox}
+微分と積分が逆操作であるように,差分にも逆操作がありあます.それは,和をとることすなわち$\wa{}{}　計算です.$
+\newpage
+\begin{itembox}
+    [l]{\enpitu 和分の定義}
+    $ある数列f(k)のn=1からn=kまでの和Sを求めるとき,f(k)の原始差分列(差分してf(k)になるような数列)がF(k)と分かっているとき,次の関係がある.$
+    \begin{center}
+        $S=\wa{k=1}{n}f(k)=\wa{k=1}{n}\Delta F(k)=\tint{F(k)}{1}{n+1}=F(n+1)-F(1)$
+    \end{center}
+\end{itembox}
+では,問題を解いてみましょう.\\
+\ba{1}.$以下の数列の差分列\Delta f(k)を求めよ.$\\
+\kakkoichi $f(k)=k$\\
+\kakkoni $f(k)=k^2\\
+\kakkosan f(k)=k^3\\
+\kakkoshi f(k)=k^2+k\\
+\kakkogo f(k)=2\\
+\kakkoroku f(k)=0$
 \end{document}
