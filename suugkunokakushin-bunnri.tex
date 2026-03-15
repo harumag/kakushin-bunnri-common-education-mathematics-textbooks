@@ -102,7 +102,7 @@
     \large{\ans{1章の問題演習}}
 \end{center}
 \newpage
-\section{差分の活用}
+\section{差分の応用}
 前回学習した差分を使って,高校数学\suB を整理し直します.ここで,皆さん覚えろと指示された等差数列・等比数列の公式覚えるまでもない一瞬で導ける,当たり前な概念へと昇華させます.\\
 お楽しみに.\\\\
 まずは,差分と和分の復習です.
@@ -196,4 +196,51 @@ $\Delta f(k)=r^{k+1}-r^k=\ans{(r-1)\cdot r^k}$\\\\
 \kakkoichi\hspace{2mm}$第p項がA,第q項がBであるような等差数列\B{a_n}の一般項をp,q,A,B,nで表せ.また,この数列の第p項から第q項までの和Sをp,q,A,Bで表せ.$\\
 \kakkoni\hspace{2mm}$第p項がC,第q項がD\hspace{2mm}(ただし,C>0,D>0,C\neq D)であるような公比が正の等比数列\B{b_n}について,x=\dfrac{1}{q-p}とおくとき,
 \B{b_n}の第p項から第q項までの和TをC,D,xで表せ.$
+\newpage
+\noindent\kangaekata\\
+\kakkoichi 等差数列のグラフを描いて,直線の方程式を求めれば一般項はでます.和は,$qからpまでの面積を求めれば良いです$.\\
+\kakkoni 「よくわからない数列の和は書き下す.」という原則に従いましょう.\\
+\kai\\
+\kakkoichib 等差数列のグラフは下図のようになっている.
+\begin{center}
+    \begin{tikzpicture}
+        \draw[->,>=Latex](-1,0)--(5,0)node[right]{$n(項番号)$};
+        \draw[->,>=Latex](0,-1)--(0,5)node[above]{$y(項の値)$};
+        \begin{scope}
+            \clip(-0.5,-0.5)rectangle(5,5);
+            \draw[thin] plot(\x,{\x+1});
+            \draw[dashed](1,0)--(1,2)--(0,2)node[left]{$A$};
+            \node[below]at(1,0){$p$};
+            \draw[dashed](3,0)--(3,4)--(0,4)node[left]{$B$};
+            \node[below]at(3,0){$q$};
+            \fill[black!20](1,0)--(1,2)--(3,4)--(3,0)--(1,0);
+            \draw[very thick](1,0)--(1,2)--(3,4)--(3,0)--(1,0);
+            \node[below left]at(0,0){O};
+        \end{scope}
+    \end{tikzpicture}
+\end{center}
+上図より,等差数列の一般項は直線の方程式なので,傾き$\dfrac{a_q-a_p}{q-p}より,$
+\begin{align*}
+    \ans{a_n=\dfrac{B-A}{q-p}\p{n-p}+A}
+\end{align*}
+また,$qからp$までの面積は,上図の網目部に対応するので,台形の面積の公式より,
+\begin{align*}
+    \ans{S=\dfrac{1}{2}\p{q-p+1}\p{B-A}}
+\end{align*}
+\kakkonib
+与えられた等比数列の構造は,下表のようになっている.
+ \begin{center}
+    \begin{tabular}{c||ccccccccc}
+        $n$ & 1& 2 & 3 & $\cdots$ & $p$ & $\cdots$ & $q$ & $\cdots$ & $n$\\
+        \hline
+        $a_n$ & $a_1$ & $a_2$ & $a_3$ & $\cdots$ & $C$ & $\cdots$ & $D$ & $\cdots$ & $a_n$
+    \end{tabular}
+\end{center}
+表より,公比は$\dfrac{D}{C}であり,Tは第p項から第q項までに公比をq-p回かければ良いので,求める和Tは$
+\begin{align*}
+    T&=C+C\cdot\dfrac{D}{C}+\cdots+C\cdot\p{\dfrac{D}{C}}^{q-p}\\
+    &=C\cdot\wa{k=p}{q}\p{\dfrac{D}{C}}^{q-p}=C\cdot\wa{k=p}{q}r^{q-p}　\p{r=\dfrac{D}{C}とおいた.}\\
+    &=C\cdot\dfrac{1-r^{q-p+1}}{1-r}=\ans{C\cdot\dfrac{1-\p{\frac{D}{C}}^{\frac{1}{x}+1}}{1-\frac{D}{C}}}
+\end{align*}
+
 \end{document}
