@@ -101,6 +101,10 @@
 \begin{center}
     \large{\ans{1章の問題演習}}
 \end{center}
+\reibanichi $nを自然数とする.次の和を求めよ.\\
+\kakkoichi A_n=\wa{k=2}{n}\dfrac{1}{k(k-1)}\hspace{3cm}\kakkoni B_n=\wa{k=1}{n}\dfrac{1}{k(k+1)(k+2)}\\
+\kakkosan C_n=\wa{k=1}{n}k(k+1)\hspace{3cm}\kakkoshi D_n=\wa{k=-3}{n}(k+2)(k+3)(k+4)\\
+\kakkogo E_n=\wa{k=0}{n}(n-k)(n-k+1)(n-k+2)$
 \newpage
 \section{差分の応用}
 前回学習した差分を使って,高校数学\suB を整理し直します.ここで,皆さん覚えろと指示された等差数列・等比数列の公式覚えるまでもない一瞬で導ける,当たり前な概念へと昇華させます.\\
@@ -196,7 +200,6 @@ $\Delta f(k)=r^{k+1}-r^k=\ans{(r-1)\cdot r^k}$\\\\
 \kakkoichi\hspace{2mm}$第p項がA,第q項がBであるような等差数列\B{a_n}の一般項をp,q,A,B,nで表せ.また,この数列の第p項から第q項までの和Sをp,q,A,Bで表せ.$\\
 \kakkoni\hspace{2mm}$第p項がC,第q項がD\hspace{2mm}(ただし,C>0,D>0,C\neq D)であるような公比が正の等比数列\B{b_n}について,x=\dfrac{1}{q-p}とおくとき,
 \B{b_n}の第p項から第q項までの和TをC,D,xで表せ.$
-\newpage
 \noindent\kangaekata\\
 \kakkoichi 等差数列のグラフを描いて,直線の方程式を求めれば一般項はでます.和は,$qからpまでの面積を求めれば良いです$.\\
 \kakkoni 「よくわからない数列の和は書き下す.」という原則に従いましょう.\\
@@ -219,7 +222,7 @@ $\Delta f(k)=r^{k+1}-r^k=\ans{(r-1)\cdot r^k}$\\\\
         \end{scope}
     \end{tikzpicture}
 \end{center}
-上図より,等差数列の一般項は直線の方程式なので,傾き$\dfrac{a_q-a_p}{q-p}より,$
+上図より,等差数列の一般項は直線の方程式なので,傾き$\dfrac{B-A}{q-p}より,$
 \begin{align*}
     \ans{a_n=\dfrac{B-A}{q-p}\p{n-p}+A}
 \end{align*}
@@ -239,8 +242,32 @@ $\Delta f(k)=r^{k+1}-r^k=\ans{(r-1)\cdot r^k}$\\\\
 表より,公比は$\dfrac{D}{C}であり,Tは第p項から第q項までに公比をq-p回かければ良いので,求める和Tは$
 \begin{align*}
     T&=C+C\cdot\dfrac{D}{C}+\cdots+C\cdot\p{\dfrac{D}{C}}^{q-p}\\
-    &=C\cdot\wa{k=p}{q}\p{\dfrac{D}{C}}^{q-p}=C\cdot\wa{k=p}{q}r^{q-p}　\p{r=\dfrac{D}{C}とおいた.}\\
+    &=C\cdot\wa{k=p}{q}\p{\dfrac{D}{C}}^{k}=C\cdot\wa{k=p}{q}r^{k}　\p{r=\dfrac{D}{C}とおいた.}\\
     &=C\cdot\dfrac{1-r^{q-p+1}}{1-r}=\ans{C\cdot\dfrac{1-\p{\frac{D}{C}}^{\frac{1}{x}+1}}{1-\frac{D}{C}}}
-\end{align*}
+\end{align*}\\
+関数の増加と減少を微分と増減表により調べるように,数列の増減も差分列により判断することができます.
+\begin{itembox}
+    [l]{\enpitu 数列の増加・減少の差分による判断}
+    $ある数列f(k)を考える.\\
+    \bullet\hspace{2mm} \Delta f(k)=f(k+1)-f(k)>0\doti f(k)は増加数列.\\
+    \bullet\hspace{2mm}\Delta f(k)=f(k+1)-f(k)=0\doti f(k)は定数数列.\\
+    \bullet\hspace{2mm}\Delta f(k)=f(k+1)-f(k)<0\doti f(k)は減少数列.$
+\end{itembox}
+\newpage
+\noindent\ba{2$\bullet$1}次の和を求めよ.\\
+\kakkoichi $A_n=\wa{k=-n}{n}3^k$\\
+\kakkoni $B_n=\wa{k=1}{n}\dfrac{k}{2^k}$\\
+\kakkosan $C_n=\wa{k=1}{n}k^2\cdot3^k$\\\\
+\ba{2$\bullet$2}\\
+次の$f(n)を最大にする自然数nを求めよ.$
+\begin{align*}
+    f(n)=n\p{\dfrac{20}{21}}^n
+\end{align*}\\
+\ba{2$\bullet$3}\\
+$4以上のすべての自然数nに対して,2^n\geq n^2が成り立つことを証明せよ.$
+\newpage
+\begin{center}
+    \ans{2章の問題演習}
+\end{center}
 
 \end{document}
