@@ -628,4 +628,90 @@ $\Y 求める一般項は,\ans{\begin{cases}
     a_{n+1}=2a_n-b_n　(n\geq1)\\
     b_{n+1}=a_n+4b_n　(n\geq1)
 \end{cases}$
+\newpage
+\begin{center}
+    \ans{3章の問題演習}は問題多くなりすぎると思うので,なしで！！
+\end{center}
+\newpage
+\section{二項定理}
+割と皆さんが苦手な二項定理です.ですが,二項定理が苦手な理由は,教科書や参考書に騙されているからである可能性が高いです.ですので,
+全ての二項定理の公式は\ans{あたりまえ}にしてしまいましょう.\\
+\begin{itembox}
+[l]{\enpitu 定理}
+次のような展開を二項展開とよび,数学的帰納法で証明することができる.
+\begin{center}
+    $\ans{(x+y)^n=\wa{k=0}{n}\comb{n}{k}x^ky^{n-k}=\wa{k=0}{n}\comb{n}{k}x^{n-k}y^k}$
+\end{center}
+\end{itembox}\\
+\begin{itembox}
+    [l]{\enpitu\hspace{2mm}$\comb{n}{k}の性質$}
+    \doichi. $\comb{n}{k}=\comb{n}{n-k}　(0\leq k\leq n)\\
+    \doni.\comb{n}{k}=\comb{n-1}{k-1}+\comb{n-1}{k}　(1\leq k\leq n-1)\\
+    \dosan. k\cdot\comb{n}{k}=n\cdot\comb{n-1}{k-1}　(1\leq k\leq n)$
+\end{itembox}
+\newpage
+\noindent\ba{4$\bullet$1}.次のそれぞれの計算を実行せよ.\\
+\kakkoichi$(x+y)^7を展開したときのx^3y^4の係数を求めよ.\\
+\kakkoni (x+y+z)^8を展開したときのx^2yz^5の係数を求めよ.$\\\\
+\ba{4$\bullet$2}.次の和を求めよ.ただし,$nは自然数である.$\\
+\kakkoichi $A_n=\wa{k=0}{n}3^k\cdot\comb{n}{k}\\
+\kakkoni B_n=\wa{k=0}{n}\comb{n}{k}\\
+\kakkosan C_n=\wa{k=1}{n}\comb{2n}{2k-1}$\\\\
+\newpage
+\begin{center}
+    \ans{4章の問題演習}
+\end{center}
+\noindent\reibanichi 次の多項式を展開したときの指定された文字の係数を求めよ.\\
+\kakkoichi $(2x-1)^6のx^4の係数.\\
+\kakkoni (x+2y+3z)^7のx^2y^3z^2の係数.$\\
+\reibanni 次の等式を証明せよ.
+\begin{align*}
+    \wa{k=0}{n}\p{\comb{n}{k}}^2=\comb{2n}{n}
+\end{align*}
+\reibansan 次の和を求めよ.\\
+$\kakkoichi \wa{k=0}{n}\dfrac{\comb{n}{k}}{k+1}\\
+\kakkoni \wa{k=0}{n}\dfrac{\comb{2n}{2k}}{2k+1}$\\\\
+\reibansan$\hspace{1mm}3^{100}の下二桁を求めよ.\hspace{1cm}(お茶の水女子大)$\\\\
+\reibanshi 次の各問いに求めよ.\\
+$\kakkoichi nを正の整数とする.(1+a)^nを二項定理を用いて展開せよ.\\
+\kakkoni 21^{10}を400で割った余りを求めよ.\\
+\kakkosan 19^n+21^nが400で割り切れるような正の整数nは存在するか.存在するならばその例を示し,存在しない場合はそれを証明せよ.\hspace{1cm}(中央大)$
+\newpage
+\section{場合の数の一番大切なこと}
+\begin{itembox}
+    [l]{\enpitu 種々の数え上げ公式}
+    以下$n,kを自然数とする.$(整数でも計算はできる.)\\
+    $\bullet\hspace{2mm} n!=n\times(n-1)\times(n-2)\times\cdots1$\\
+    $\bullet\hspace{2mm} \perm{n}{k}=n\times(n-1)\cdots\times(n-r+1)=\dfrac{r!}{(n-r)!}$\\
+    $\bullet\hspace{2mm}\comb{n}{k}=\dfrac{n!}{k!(n-k)!}$
+\end{itembox}
+基本的に,$\comb{}{}の計算しか使う事はないです.\perm{}{}を使って計算する問題は,\comb{}{}に階乗を掛け算すれば良いだけです.$\\
+\begin{itembox}
+    [l]{\enpitu 数え上げのルール}
+    数え上げの問題は,以下のルールを守りさえすれば,どんな数え方をしてもよい.\\
+    $\bullet \ans{同じものを2つ数えてはいけない.}$\\
+    $\bullet \ans{数え漏れがあってはいけない.}$
+\end{itembox}\\
+\begin{itembox}
+    [l]{\enpitu 同じものを含む順列}
+    $x個のa,y個のb,z個のc,合計a+b+c個の文字を一列に並べてできる順列の総数をNとすると,$
+    \begin{align*}
+        N=\dfrac{(a+b+c)!}{a!b!c!}
+    \end{align*}
+\end{itembox}\\
+\begin{itembox}
+    [l]{\enpitu 要素の和の法則}
+    $A,Bをあるサイズの元を含む集合とするとき,以下の式が成立する.ただし,A,B空集合でない.$
+    \begin{align*}
+        &\bullet n(A\cap B)=n(A)+n(B)-n(A\cap B)\\
+        &\bullet n(A\cup B)=n(A)+n(B)
+    \end{align*}
+\end{itembox}
+\newpage
+\noindent\ba{5$\bullet$1}\\
+次の数え上げを公式を一切用いずに求めよ.\\
+\kakkoichi\\
+\kakkoni\\
+\kakkosan\\
+\kakkoshi
 \end{document}
