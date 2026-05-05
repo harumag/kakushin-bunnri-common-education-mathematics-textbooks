@@ -29,23 +29,237 @@
 \maketitle
 \newpage
 \tableofcontents
+
+\section{講義問題-解答}
+\subsection{差分の基礎}
+\noindent\ba{1$\bullet$1}\\
+\hokukai\\
+\kakkoichib $\Delta f(k)=k+1-k=\ans{1}$\\
+\kakkonib $\Delta f(k)=\p{k+1}^2-k^2=\ans{2k+1}$\\
+\kakkosanb $\Delta f(k)=\p{k+1}^3-k^3=\ans{3k^2+3k+1}$\\
+\kakkoshib $\Delta f(k)=(k+4)(k+3)(k+2)(k+1)-k(k+1)(k+2)(k+3)=\ans{4(k+1)(k+2)(k+3)}$\\
+\kakkogob $\Delta f(k)=2^{k+1}-2^k=\ans{2^k}$\\
+\kakkorokub $\Delta f(k)=3^{k+1}\cdot(k+1)^2-3^k\cdot k^2=\ans{3^k\p{2k^2+6k+3}}$\\
+\kakkoshichib $\Delta f(k)=\dfrac{1}{(k+1)!}-\dfrac{1}{k!}=\ans{-\dfrac{k}{(k+1)!}}$\\
+\kakkohachib $\Delta f(k)=\ans{0}$\\
+\kakkokyub $\Delta f(k)=\ans{0}$\\\\
+\ba{1$\bullet$2}\\
+\hokukai\\
+\kakkoichib $A_n=\wa{k=1}{n}1=\tint{k}{1}{n+1}=\ans{n}$\\
+\kakkonib $B_n=\wa{k=1}{n}k=\wa{k=1}{n}\Delta\p{\dfrac{k(k-1)}{2}}=\tint{\dfrac{k(k-1)}{2}}{1}{n+1}=\ans{\dfrac{n(n+1)}{2}}$\\
+\kakkosanb $C_n=\wa{k=1}{n}k^2$を求める.\\
+  $k^2=k(k-1)+kと変形できるので,$
+\begin{align*}
+  C_n&=\wa{k=1}{n}\B{k(k-1)+k}\\
+  &=\tint{\dfrac{(k-2)(k-1)k}{3}+\dfrac{k(k-1)}{2}}{1}{n+1}\\
+  &=\dfrac{1}{3}(n-1)n(n+1)+\dfrac{1}{2}n(n+1)\\
+  &=\dfrac{1}{6}n(n+1)\p{2n-2+3}\\
+  &=\ans{\dfrac{1}{6}n(n+1)(2n+1)}
+\end{align*}
+\noindent\kakkoshib $D_n=\wa{k=1}{n}k^3を求める.$\\
+$k^3=k(k-1)(k+1)+kと変形できるので,$
+\begin{align*}
+  D_n&=\wa{k=1}{n}\B{k(k-1)(k+1)+k}\\
+  &=\tint{\dfrac{(k-2)(k-1)k(k+1)}{4}+\dfrac{(k-1)k}{2}}{1}{n+1}\\
+  &=\dfrac{(n-1)n(n+1)(n+2)}{4}+\dfrac{n(n+1)}{2}\\
+  &=\dfrac{1}{4}\B{(n-1)n(n+1)(n+2)+2n(n+1)}\\
+  &=\dfrac{1}{4}\B{n(n+1)(n^2+n-2+2)}\\
+  &=\dfrac{1}{4}n(n+1)n(n+1)\\
+  &=\ans{\dfrac{1}{4}n^2(n+1)^2}
+\end{align*}
+\kakkogob 
+\begin{align*}
+E_n&=\wa{k=0}{n^2+1}k(k+1)(k+2)(k+3)\\
+&=\tint{\dfrac{1}{5}(k-1)k(k+1)(k+2)(k+3)}{0}{n^2+1}\\
+&=\ans{\dfrac{1}{5}\p{n^2+1}\p{n^2+2}\p{n^2+3}\p{n^2+4}\p{n^2+5}}
+\end{align*}
+\kakkorokub $F_n=\wa{k=-3}{n-1}(k+2)(k+3)(k+4)(k+4)$を求める.\\
+まず,$k$の式を連続整数積の形に変形する.
+\begin{align*}
+  (k+2)(k+3)(k+4)(k+4)&=(k+2)(k+3)(k+4)(k+1+3)\\
+  &=(k+1)(k+2)(k+3)(k+4)+3(k+2)(k+3)(k+4)
+\end{align*}
+このことより,
+\begin{align*}
+  F_n&=\tint{\dfrac{1}{5}k(k+1)(k+2)(k+3)(k+4)+3\cdot\dfrac{1}{4}(k+1)(k+2)(k+3)(k+4)}{-3}{n-1}\\
+  &=\dfrac{1}{5}(n-1)n(n+1)(n+2)(n+3)+\dfrac{3}{4}n(n+1)(n+2)(n+3)\\
+  &=つづき
+\end{align*}
 \newpage
-\section{差分の基礎}
-ほげ\\
-\hokukai
+\noindent\kakkoshichib 
+\begin{align*}
+  G_n&=\wa{k=1}{n}2^k\\
+  &=\tint{\dfrac{2^k}{2-1}}{1}{n+1}\\
+  &=2^{n+1}-2\\
+  &=\ans{2\cdot\p{2^n-1}}
+\end{align*}
+\kakkohachib $H_n=\wa{k=1}{n}(k+2)\cdot3^k$を求める.\\
+今,$f(k)=(k+2)\cdot3^k,F(k)=(pk^2+qk+r)\cdot3^k　(p,r,qは定数)とおいて,\Delta F(k)=f(k)を満たすように
+定数p,q,rを定める.$
+\begin{align*}
+  \Delta F(k)&=\B{p(k^2+2k+1)+q(k+1)+r}\cdot3^{k+1}-\p{pk^2+qk+r}\cdot3^k\\
+&=3^k\cdot\B{2pk^2+2(3p+q)k+3p+2q+2r}
+\end{align*}
+$f(k)とそれぞれ係数比較して,$
+\begin{align*}
+  \begin{cases}
+    2p=0\\
+    6p+2q=1\\
+    3p+2q+2r=2
+  \end{cases}\doti\begin{cases}
+    p=0\\
+    q=\frac{1}{2}\\
+    r=\frac{1}{2}
+  \end{cases}
+\end{align*}
+$\Y F(k)=\dfrac{3^k}{2}(k+1)$\\
+よって,
+\begin{align*}
+  H_n&=\wa{k=1}{n}F(k)\\
+  &=\tint{\dfrac{3^k}{2}(k+1)}{1}{n+1}\\
+  &=\ans{\p{\dfrac{n}{2}+1}\cdot3^{n+1}-3}
+\end{align*}
 \newpage
-\section{差分の応用}
+\noindent\kakkokyub $I_n=\wa{k=1}{n}k^4$を求める.\\
+まず,$k^4$を連続整数積の形に変形する.
+\newpage
+\noindent\ba{1$\bullet$3}\\
+\hokukai\\
+\kakkoichib
+\begin{align*}
+  \wa{k=1}{n}\B{\p{k+1}^7-k^7}&=\wa{k=1}{n}\Delta\p{k^7}\\
+  &=\tint{k^7}{1}{n+1}\\
+  &=\ans{k^7-1}
+\end{align*}
+\kakkonib 
+\begin{align*}
+  \wa{k=1}{n}\dfrac{\sqrt{k+1}+\sqrt{k}}{1}&=\wa{k=1}{n}\p{\sqrt{k+1}-\sqrt{k}}\\
+&=\tint{\sqrt{k}}{1}{n+1}\\
+&=\ans{\sqrt{n+1}-1}
+\end{align*}
+\kakkosanb
+\begin{align*}
+  \wa{k=1}{n}\dfrac{1}{k(k+1)}&=\wa{k=1}{n}\p{\dfrac{1}{k}-\dfrac{1}{k+1}}　(\temarkua 部分分数分解)\\
+  &=\tint{\dfrac{1}{k}}{1}{n+1}\\
+  &=\ans{\dfrac{1}{n+1}-1}
+\end{align*}
+\newpage
+\subsection{差分の応用}
 ほげ
 \newpage
-\section{漸化式}
+\subsection{漸化式}
 ほげ
 \newpage
-\section{二項定理}
+\subsection{二項定理}
 ほげ
 \newpage
-\section{場合の数の一番大切なこと}
+\subsection{場合の数の一番大切なこと}
 ほげ
 \newpage
-\section{種々の数え上げ}
+\subsection{種々の数え上げ}
 ほげ
+
+
+
+
+
+
+\newpage
+\section{各章の問題演習-解答}
+\subsection{1章：差分の基礎}
+\noindent\reibanichi\\
+\hokukai\\
+\kakkoichib \begin{align*}
+  A_n&=\wa{k=2}{n}\dfrac{1}{k(K-1)}=\wa{k=2}{n}\p{\dfrac{1}{k-1}-\dfrac{1}{k}}\\
+  &=\tint{\dfrac{1}{k-1}}{2}{n+1}\\
+  &=\ans{\dfrac{1}{n}-1}
+\end{align*}
+\kakkonib\\
+\kakkosanb
+\begin{align*}
+  C_n=\wa{k=1}{n}k(k-1)=\tint{\dfrac{1}{3}(k-1)k(k+1)}{1}{n+1}=\ans{\dfrac{1}{3}n(n+1)(n+2)}
+\end{align*}
+\kakkoshib
+\begin{align*}
+  D_n&=\wa{k=-3}{n}(k+2)(k+3)(k+4)\\
+  &=\wa{k=-3}{n}(k+2)(k+3)(k+4)\\
+  &=\tint{\dfrac{1}{4}(k+1)(k+2)(k+3)(k+4)}{-3}{n+1}\\
+  &=\ans{\dfrac{1}{4}(n+2)(n+3)(n+4)(n+5)}
+\end{align*}
+\kakkogo 
+\begin{align*}
+  E_n&=\wa{k=0}{n}(n-k)\p{n-\p{k-1}}\p{n-\p{k-2}}\\
+  &=\wa{k=0}{n}\Delta\p{\dfrac{1}{4}\p{n-(k-3)}\p{n-\p{k-2}}\p{n-\p{k-1}}(n-k)}\\
+  &=\tint{\dfrac{1}{4}\p{n-(k-3)}\p{n-\p{k-2}}\p{n-\p{k-1}}(n-k)}{0}{n+1}\\
+  &=\dfrac{1}{4}\cdot2\cdot1\cdot0\cdot1-\B{\dfrac{1}{4}(n+3)(n+2)(n+1)n}\\
+  &=\ans{-\dfrac{1}{4}n(n+1)(n+2)(n+3)}  
+\end{align*}
+\newpage
+\noindent\reibanni\\
+\hokukai\\
+\kakkoichib
+\begin{align*}
+  A_n&=\wa{k=-n}{n}3^k=\dfrac{3^n\cdot2-3^{-n}}{3-1}　\p{\temarkua \dfrac{(最後の次)-(最初)}{(公比)-1}}\\ 
+   &=\dfrac{3^n}{2}\cdot\dfrac{8}{3}\\
+   &=\ans{4\cdot3^{n-1}}
+\end{align*}
+\kakkonib$B_n=\wa{k=1}{n}k\cdot2^{-k}$\\
+$f(k)=k\cdot2^{-k},F(k)=(pk^2+qk+r)　(p,q,rは定数)$とおいて,$\Delta F(k)=f(k)$を満たすように$p,q,r$を
+定める.
+\begin{align*}
+  \Delta F(k)&=2^{-(k+1)}\B{p(k+1)^2+q(k+1)+r}-2^{-k}\B{pk^2+qk+r}\\
+&=2^{-k}\B{-\dfrac{1}{2}pk^2+\p{p-\frac{q}{2}}k+\frac{p}{2}+\frac{q}{2}-\frac{r}{2}}
+\end{align*}
+$f(k)$とそれぞれ係数比較して,
+\begin{align*}
+  \begin{cases}
+    p=0\\
+    -\frac{q}{2}=1\\
+    -1-\frac{r}{2}=0
+  \end{cases}\doti\begin{cases}
+    p=0\\
+    q=-2\\
+    r=-2
+  \end{cases}
+\end{align*}
+$\Y F(k)=-(k+1)\cdot2^{-k+1}$
+\begin{align*}
+  B_n&=\tint{-(k+1)\cdot2^{-k+1}}{1}{n+1}\\
+  &=-\p{\dfrac{n+2}{2^n}-2}\\
+  &=\ans{2-\dfrac{n+2}{2^n}}
+\end{align*}
+\newpage
+\noindent\kakkosanb$\wa{k=1}{n}k^2\cdot3^k$を求める.\\
+$f(k)=k^2\cdot3^k,F(k)=(pk^3+qk^2+rk+s)\cdot3^k　(p,q,r,sは定数)とおいて,\Delta F(k)=f(k)$を満たすように$p,q,r,s$を
+定める.
+\begin{align*}
+  \Delta F(k)&=\p{p(k+1)^3+q(k+1)^2+r(k+1)+s}\cdot3^{k+1}-\p{pk^3+qk^2+rk+s}\cdot3^k\\
+  &=3^k\G{3\B{p(k^3+2k^2+2k+1)+q(k^2+2k+1)+r(k+1)+s}-(pk^3+qk^2+rk+s)}
+\end{align*}
+以下,$\G{}$の中だけ計算する.
+\begin{align*}
+  \G{}&=2pk^3+6pk^2+5qk^2+6pk+6qk+2rk+3p+3q+3r+2s\\
+  &=2pk^3+\p{6p+5q}k+\p{6p+6q+2r}k+3p+3q+3r+2s
+\end{align*}
+$f(k)$それぞれ係数比較して,
+\begin{align*}
+  \begin{cases}
+     p=0\\
+     q=\frac{1}{5}\\
+     \frac{6}{5}+2r=0\\
+     \frac{3}{5}+3r+2s=0
+  \end{cases}\doti\begin{cases}
+    p=0\\
+    q=\frac{1}{5}\\
+    r=-\frac{3}{5}\\
+    s=\frac{3}{5}
+  \end{cases}
+\end{align*}
+$\Y F(k)=\p{\dfrac{1}{5}k^2-\dfrac{3}{5}k+\dfrac{3}{5}}\cdot3^k$
+\begin{align*}
+  \Y C_n&=\tint{{\dfrac{1}{5}k^2-\dfrac{3}{5}k+\dfrac{3}{5}}\cdot3^k}{1}{n+1}\\
+&=\dfrac{1}{5}\B{\p{(n+1)^2-3(n+1)+3}\cdot3^{n+1}-3}\\
+&=\dfrac{1}{5}\B{\p{n^2-n+1}3^{n+1}-3}\\
+&=\ans{\dfrac{3}{5}\B{\p{n^2-n+1}\cdot3^n-1}}
+\end{align*}
 \end{document}
