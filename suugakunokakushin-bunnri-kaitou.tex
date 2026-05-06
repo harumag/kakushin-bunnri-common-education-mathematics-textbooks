@@ -83,7 +83,8 @@ E_n&=\wa{k=0}{n^2+1}k(k+1)(k+2)(k+3)\\
 \begin{align*}
   F_n&=\tint{\dfrac{1}{5}k(k+1)(k+2)(k+3)(k+4)+3\cdot\dfrac{1}{4}(k+1)(k+2)(k+3)(k+4)}{-3}{n-1}\\
   &=\dfrac{1}{5}(n-1)n(n+1)(n+2)(n+3)+\dfrac{3}{4}n(n+1)(n+2)(n+3)\\
-  &=つづき
+  &=\dfrac{1}{20}(n+1)(n+2)(n+3)(n+4)(4n+15)\\
+  &=\ans{\dfrac{1}{20}(n+1)(n+2)(n+3)(n+4)(4n+15)}
 \end{align*}
 \newpage
 \noindent\kakkoshichib 
@@ -122,6 +123,20 @@ $\Y F(k)=\dfrac{3^k}{2}(k+1)$\\
 \newpage
 \noindent\kakkokyub $I_n=\wa{k=1}{n}k^4$を求める.\\
 まず,$k^4$を連続整数積の形に変形する.
+\begin{align*}
+  k^4&=k^2(k-1)(k+1)+k^2=k(k-1)k(k+1)+k^2=(k-2+2)(k-1)k(k+1)+k^2\\
+  &=(k-2)(k-1)k(k+1)+2(k-1)k(k+1)+k^2
+\end{align*}
+よって,
+\begin{align*}
+  I_n&=\tint{\dfrac{1}{5}(k-3)(k-2)(k-1)k(k+1)+\dfrac{2}{4}(k-2)(k-1)k(k+1)}{1}{n+1}+\dfrac{1}{6}n(2n+1)(n+1)\\
+  &=\dfrac{1}{5}(n-2)(n-1)n(n+1)(n+2)+\dfrac{1}{2}(n-1)n(n+1)(n+2)+\dfrac{1}{6}n(2n+1)(n+1)\\
+  &=\dfrac{1}{30}n(n+1)\B{6(n-2)(n-1)(n+2)+15(n-1)(n+2)+5(2n+1)}\\
+  &=\dfrac{1}{30}\G{3(n-1)(n+2)\B{2(n-2)+5}+5(2n+1)}\\
+  &=\dfrac{1}{30}\B{3(n-1)(n+2)(2n+1)+5(2n+1)}\\
+  &=\dfrac{1}{30}n(n+1)\G{(2n+1)\B{3n^2+3n-6+5}}\\
+  &=\ans{\dfrac{1}{30}n(n+1)(2n+1)(3n^2+3n-1)}
+\end{align*}
 \newpage
 \noindent\ba{1$\bullet$3}\\
 \hokukai\\
@@ -133,7 +148,7 @@ $\Y F(k)=\dfrac{3^k}{2}(k+1)$\\
 \end{align*}
 \kakkonib 
 \begin{align*}
-  \wa{k=1}{n}\dfrac{\sqrt{k+1}+\sqrt{k}}{1}&=\wa{k=1}{n}\p{\sqrt{k+1}-\sqrt{k}}\\
+  \wa{k=1}{n}\dfrac{1}{\sqrt{k+1}+\sqrt{k}}&=\wa{k=1}{n}\p{\sqrt{k+1}-\sqrt{k}}\\
 &=\tint{\sqrt{k}}{1}{n+1}\\
 &=\ans{\sqrt{n+1}-1}
 \end{align*}
@@ -145,58 +160,8 @@ $\Y F(k)=\dfrac{3^k}{2}(k+1)$\\
 \end{align*}
 \newpage
 \subsection{差分の応用}
-ほげ
-\newpage
-\subsection{漸化式}
-ほげ
-\newpage
-\subsection{二項定理}
-ほげ
-\newpage
-\subsection{場合の数の一番大切なこと}
-ほげ
-\newpage
-\subsection{種々の数え上げ}
-ほげ
-
-
-
-
-
-
-\newpage
-\section{各章の問題演習-解答}
-\subsection{1章：差分の基礎}
-\noindent\reibanichi\\
-\hokukai\\
-\kakkoichib \begin{align*}
-  A_n&=\wa{k=2}{n}\dfrac{1}{k(K-1)}=\wa{k=2}{n}\p{\dfrac{1}{k-1}-\dfrac{1}{k}}\\
-  &=\tint{\dfrac{1}{k-1}}{2}{n+1}\\
-  &=\ans{\dfrac{1}{n}-1}
-\end{align*}
-\kakkonib\\
-\kakkosanb
-\begin{align*}
-  C_n=\wa{k=1}{n}k(k-1)=\tint{\dfrac{1}{3}(k-1)k(k+1)}{1}{n+1}=\ans{\dfrac{1}{3}n(n+1)(n+2)}
-\end{align*}
-\kakkoshib
-\begin{align*}
-  D_n&=\wa{k=-3}{n}(k+2)(k+3)(k+4)\\
-  &=\wa{k=-3}{n}(k+2)(k+3)(k+4)\\
-  &=\tint{\dfrac{1}{4}(k+1)(k+2)(k+3)(k+4)}{-3}{n+1}\\
-  &=\ans{\dfrac{1}{4}(n+2)(n+3)(n+4)(n+5)}
-\end{align*}
-\kakkogo 
-\begin{align*}
-  E_n&=\wa{k=0}{n}(n-k)\p{n-\p{k-1}}\p{n-\p{k-2}}\\
-  &=\wa{k=0}{n}\Delta\p{\dfrac{1}{4}\p{n-(k-3)}\p{n-\p{k-2}}\p{n-\p{k-1}}(n-k)}\\
-  &=\tint{\dfrac{1}{4}\p{n-(k-3)}\p{n-\p{k-2}}\p{n-\p{k-1}}(n-k)}{0}{n+1}\\
-  &=\dfrac{1}{4}\cdot2\cdot1\cdot0\cdot1-\B{\dfrac{1}{4}(n+3)(n+2)(n+1)n}\\
-  &=\ans{-\dfrac{1}{4}n(n+1)(n+2)(n+3)}  
-\end{align*}
-\newpage
-\noindent\reibanni\\
-\hokukai\\
+\noindent\ba{2$\bullet$1}\\
+\hokukai
 \kakkoichib
 \begin{align*}
   A_n&=\wa{k=-n}{n}3^k=\dfrac{3^n\cdot2-3^{-n}}{3-1}　\p{\temarkua \dfrac{(最後の次)-(最初)}{(公比)-1}}\\ 
@@ -262,4 +227,122 @@ $\Y F(k)=\p{\dfrac{1}{5}k^2-\dfrac{3}{5}k+\dfrac{3}{5}}\cdot3^k$
 &=\dfrac{1}{5}\B{\p{n^2-n+1}3^{n+1}-3}\\
 &=\ans{\dfrac{3}{5}\B{\p{n^2-n+1}\cdot3^n-1}}
 \end{align*}
+\newpage
+\noindent\ba{2$\bullet$2}\\
+\kangaekata\\
+見た目で単調減少な数列であるので,$n=1$で最大になることは予想できます.あとはそれを示すだけです.数列の単調性を示す方法は次の2通りです.
+数学\suIII でも頻出なので勉強しておきましょう.
+\begin{itembox}
+[l]{\enpitu 数列の単調性の証明}
+$a_n$をある数列とする.$n\in\mathbb{N}$\\
+$\bullet\hspace{2mm} a_{n+1}-a_n<0\doti  a_{n+1}<a_n\doti a_n$は単調減少数列.\\
+$\bullet\hspace{2mm} a_{n+1}-a_n>0\doti a_{n+1}>a_n\doti a_n$は単調増加数列.\\\\
+$\bullet\hspace{2mm} \dfrac{a_{n+1}}{a_n}<1\doti a_{n+1}<a_n\doti a_n$は単調減少数列.\\
+$\bullet\hspace{2mm} \dfrac{a_{n+1}}{a_n}>1\doti a_{n+1}>a_n\doti a_n$は単調増加数列.
+\end{itembox}
+\hokukai$f(n)=n\p{\dfrac{20}{21}}^n$を最大にする自然数$n$を求める.
+\begin{align*}
+  \Delta f(n)&=(n+1)\p{\dfrac{20}{21}}^{n+1}-n\p{\dfrac{20}{21}}^n\\
+  &=\dfrac{20}{21}\B{\p{\dfrac{20}{21}}^n(n+1)-n}<0
+\end{align*}
+$\Y f(n)$は全ての自然数$n$に対して,単調減少な数列なので,$f(n)$を最大にする$n$は$\ans{n=1}.$
+\newpage
+\noindent\ba{2$\bullet$3}\\
+\kangaekata　\ba{2$\bullet$2}と方針は全く同じです.$2^n-n^2$が単調増加なことを示します.\\
+\hokukai 全ての4以上の自然数$n$に対し,$2^n\geq n^2$を示す.　$f(n)=2^n-n^2$とおく.
+\begin{align*}
+  \Delta f(n)&=2^{n+1}-(n+1)^2-\p{2^n-n^2}=2^n-2n-1>0\cdots\maruichi　\p{\chud を参照せよ.}\\
+  &\doti 2^n>2n+1
+\end{align*}
+よって,$f(n)$は単調増加な数列である.\\
+実際に,\begin{align*}
+  f(4)&=0\\
+  f(5)&=7\\
+  f(6)&=28\\
+  &\vdots\\
+  すなわち,&f(4)<f(5)<f(6)<\cdots
+\end{align*}
+よって,$f(n)\geq0\doti 2^n\geq n^2　\blacksquare$\\
+\chud $\maruichi$式で$>0$と判断して良い理由.$\to$発散スピードと収束スピードが根拠.
+\begin{itembox}
+[l]{\enpitu 収束スピードと発散スピード}
+一般に,関数もしくは数列に関して,次のことが言える.
+\begin{center}
+  $\cdots<<\log x<<\cdots<<\sqrt{x}<<x<<x^2<<\cdots<<2^x<<e^x<<3^x<<\cdots<<x^x<<\cdots$
+\end{center}
+\end{itembox}
+従って,$\maruichi$の式は$(指数関数)-(一次関数)$という形なので十分大きい$n$に対して,\ans{指数関数の方が圧倒的に影響が大きい!}ので,$>0$と言って良いのです.\\
+\bekkaia(数学\suIII 利用)\\
+命題は,実数$x$に対して,$2^x\geq x^2$を示すことと同値である.$f(x)=2^x-x^2$とおくと,
+\begin{align*}
+  f^\prime(x)&=\B{e^{\log2^x}-x^2}^\prime=\B{e^{x\log2}-x^2}=\log2\cdot2^x-2x\\
+  f^\prime(\log2)&=2\log2-2log2=0
+\end{align*}
+よって,次の増減表を得る.
+\begin{center}
+  \begin{tabular}{|c||c|c|c|c|c|c|c|}
+    \hline
+    $x$ & $0$ & $\cdots$ & $\log2$ & $\cdots$ & $4$ & {} &  $\infty$\\
+    \hline
+    $f^\prime(x)$ & {} & {} & $0$  & $+$ & $+$ & $+$ & {}\\
+    \hline
+    $f(x)$ & {} & {} & $-2$ & $\yaa$ & $0$ & $\yaa$ & $\infty$\\
+    \hline
+  \end{tabular}
+\end{center}
+よって,上表から$4$以上のすべての自然数に対して,$f(x)\geq0$なので,$2^n\geq n^2　\blacksquare$
+\newpage
+
+\subsection{漸化式}
+ほげ
+\newpage
+\subsection{二項定理}
+ほげ
+\newpage
+\subsection{場合の数の一番大切なこと}
+ほげ
+\newpage
+\subsection{種々の数え上げ}
+ほげ
+
+
+
+
+
+
+\newpage
+\section{各章の問題演習-解答}
+\subsection{1章：差分の基礎}
+\noindent\reibanichi\\
+\hokukai
+\kakkoichib \begin{align*}
+  A_n&=\wa{k=2}{n}\dfrac{1}{k(k-1)}=\wa{k=2}{n}\p{\dfrac{1}{k-1}-\dfrac{1}{k}}=\tint{\dfrac{1}{k-1}}{2}{n+1}\\
+  &=\ans{\dfrac{1}{n}-1}
+\end{align*}
+\kakkonib $B_n=\wa{k=1}{n}\dfrac{1}{k(k+1)(k+2)}$を求める.
+\begin{align*}
+  \dfrac{1}{k(k+1)(k+2)}=\dfrac{1}{2}\B{\dfrac{1}{k(k+1)}-\dfrac{1}{(k+1)(k+2)}}と変形できるので,
+\end{align*}
+$\Y B_n=-\dfrac{1}{2}\wa{k=1}{n}{\B{\dfrac{1}{k(k+1)}-\dfrac{1}{(k+1)(k+2)}}}=\tint{\dfrac{1}{k(k+1)}}{1}{n+1}=\ans{\dfrac{n^2+3n+1}{4(n+2)(n+1)}}$\\
+\kakkosanb
+\begin{align*}
+  C_n=\wa{k=1}{n}k(k-1)=\tint{\dfrac{1}{3}(k-1)k(k+1)}{1}{n+1}=\ans{\dfrac{1}{3}n(n+1)(n+2)}
+\end{align*}
+\kakkoshib
+\begin{align*}
+  D_n&=\wa{k=-3}{n}(k+2)(k+3)(k+4)\\
+  &=\wa{k=-3}{n}(k+2)(k+3)(k+4)\\
+  &=\tint{\dfrac{1}{4}(k+1)(k+2)(k+3)(k+4)}{-3}{n+1}\\
+  &=\ans{\dfrac{1}{4}(n+2)(n+3)(n+4)(n+5)}
+\end{align*}
+\kakkogo 
+\begin{align*}
+  E_n&=\wa{k=0}{n}(n-k)\p{n-\p{k-1}}\p{n-\p{k-2}}\\
+  &=\wa{k=0}{n}\Delta\p{\dfrac{1}{4}\p{n-(k-3)}\p{n-\p{k-2}}\p{n-\p{k-1}}(n-k)}\\
+  &=\tint{\dfrac{1}{4}\p{n-(k-3)}\p{n-\p{k-2}}\p{n-\p{k-1}}(n-k)}{0}{n+1}\\
+  &=\dfrac{1}{4}\cdot2\cdot1\cdot0\cdot1-\B{\dfrac{1}{4}(n+3)(n+2)(n+1)n}\\
+  &=\ans{-\dfrac{1}{4}n(n+1)(n+2)(n+3)}  
+\end{align*}
+\newpage
+\subsection{2章：差分の応用}
 \end{document}
