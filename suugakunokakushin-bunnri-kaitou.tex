@@ -410,9 +410,16 @@ $\Y \wa{i=1}{k+1}\dfrac{1}{i^2}<2-\dfrac{1}{k+1}.$よって,$n=k+1$のときも$
 以上より,$すべての2以上の自然数に対して,\asta$は成立する.　$\blacksquare$
 \newpage
 \noindent\reibansan$5^n<2^n\cdot n(n+2)$を示す.\\
-\kangaekata\\
-こういう問題はまず実験しましょう.
-\hokukai $5^n<2^n\cdot n(n+2)\doti 1<\p{\dfrac{2}{5}^n\cdot n(n+2)}\cdots\cdots\asta $を示す.\\
+\kangaekata
+こういう問題はまず実験しましょう.実験してみると,次のような規則がわかります.
+\begin{align*}
+  &n=1のとき,5<2\cdot1\cdot3=6\\
+  &n=2のとき,25<4\cdot2\cdot4=32\\
+  &n=3のとき,125<8\cdot3\cdot5=120\\
+  &\vdots
+\end{align*}
+よって,$\ans{n=1,2}$が答えとわかります.あとは,それを正当化しにくための証明を考えれば良いのです.
+\hokukai $5^n<2^n\cdot n(n+2)\doti 1<\p{\dfrac{2}{5}}^n\cdot n(n+2)\cdots\cdots\asta $を示す.\\
 $\asta $の右辺を$f(n)　(n\geq1)$とおいて,$f(n>1)$を満たす$n$を求める.
 \begin{align*}
   \Delta f(n)&=\p{\dfrac{2}{5}}^{n+1}\cdot\p{n+1}\p{n+3}-\p{\dfrac{2}{5}}^n\cdot n(n+2)\\
