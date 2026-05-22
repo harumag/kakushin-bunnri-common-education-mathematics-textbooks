@@ -802,7 +802,33 @@ $\Y 包除原理より,上図の$Benn図を参考にして,求める順列の総
   &=\ans{84通り}
 \end{align*}
 \newpage
-\noindent\kakkoshib まず,8人を$a\sim h$と区別し,更に3グループを$A,B,C$と名前をつけて$a\sim h$を分ける.
+\noindent\kakkoshib まず,8人を$a\sim h$と区別し,更に3グループを$A,B,C$と名前をつけて$a\sim h$を分ける.\\
+まず,区別をつけたままの分け方は,次の通りである.
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $A$ & $B$ & $C$\\
+    \fbox{(3人部屋)} & \fbox{(3人部屋)}  & \fbox{(2人部屋)}\\
+    $8\times7\times6通り$ & $5\times4\times3通り$ & $2\times1通り$\\
+    \hline
+  \end{tabular}
+\end{center}
+ここで,$a\sim h$の入れる順序をなくす(\temarkua これは,人の区別をなくす操作も入っている)と,次表の通り.
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    $A$ & $B$ & $C$\\
+    \fbox{(3人部屋)} & \fbox{(3人部屋)}  & \fbox{(2人部屋)}\\
+    $\dfrac{8\times7\times6}{3!}通り$ & $\dfrac{5\times4\times3}{3!}通り$ & $\dfrac{2\times1}{2!}通り$\\
+    \hline
+  \end{tabular}
+\end{center}
+よって,それぞれ計算して,$A：\dfrac{8\times7\times6}{3!}=56通り.　B：\dfrac{5\times4\times3}{3!}=10通り.　C：\dfrac{2\times1}{2!}=1通り.$
+なので,$56\times10\times1=560$通りが部屋のみ区別してときの順列の総数.\\
+最後に,2つの3人部屋の区別をなくして,求める順列の総数は,
+\begin{align*}
+  560\div2!=\ans{280通り.}
+\end{align*}
 \newpage
 
 \subsection{種々の数え上げ}
@@ -1048,5 +1074,100 @@ $\Y 21^{10}を400で割った余りは,\comb{10}{0}+\comb{10}{1}20=\ans{201}$\\\
 \tokeini\underline{$nが奇数のとき,$}\\
 　$(-1)^n=-1なので,f(n)=(-1)(1-20n)+1+20n=40n$\\
 今,$nが奇数なので,n\negodo 0\kmod{10}であるからf(n)\negodo0\kmod{400}である.$\\\\
-$\Y 以上\tokeiichi,\tokeini より,f(n)を400で割り切るようなnは存在しない.\ans{(証明終わり)}$
+$\Y 以上\tokeiichi,\tokeini より,f(n)を400で割り切るようなnは存在しない.　\blacksquare$
+\newpage
+\subsection{5章：場合の数の一番大切なこと}
+\noindent\reibanichi\\
+\hokukai\\\kakkoichib5桁の整数は,$\begin{cases}
+  \tokeiichi 万の位は0以外の4通り.\\
+  \tokeini 千の位は\tokeiichi 以外の4通り.\\
+  \tokeisan 百の位は\tokeiichi,\tokeini 以外の3通り.\\
+  \tokeishi 十の位は\tokeiichi,\tokeini,\tokeisan 以外の2通り.\\
+  \tokeigo 一の位は残りの1通り.
+\end{cases}$と考えることができるので,\\\\$4\times4\times3\times2\times1=\ans{96通り.}$\\\\
+\kakkonib5桁の奇数は,$\begin{cases}
+  \tokeiichi 一の位は7,9の4通り.\\
+  \tokeini 万の位は\tokeiichi と0以外の3通り.\\
+  \tokeisan 千の位は\tokeiichi,\tokeini 以外の3通り.\\
+  \tokeishi 百の位は\tokeiichi,\tokeini,\tokeisan 以外の2通り.\\
+  \tokeigo 十の位は残りの1通り.
+\end{cases}$と考えることができるので,\\\\
+5桁の奇数は,$2\times3\times3\times2\times1=36通りある.$\\
+よって,\kakkoichi より,5桁の偶数は,$96-36=\ans{60通り}$\\\\
+\reibanni\\
+6個の数字$0,1,2,3,4,5$を使って重複を許して,4桁の整数を作る.\\
+\hokukai\kakkoichib そのような整数は,$\begin{cases}
+  \tokeiichi 千の位は0以外の5通り.\\
+  \tokeini 百,十,一の位はfreeで,それぞれ6通り.
+\end{cases}$と考えられるので,$5\times6^3=\ans{1080個}$\\
+\kakkonib そのような奇数は,$\begin{cases}
+  \tokeiichi 千の位は0以外の5通り.\\
+  \tokeini 百,十の位はfreeで,それぞれ6通り\\
+  \tokeisan 一の位は1,3,5の3通り
+\end{cases}$と考えられるので,\\
+$5\times6^2\times3=\ans{540通り.}$
+\newpage
+\noindent\reibansan\\
+\hokukai\kakkoichib$a,b,c,A,B,C$の6文字を一列に並べた順列は全部で$6!$通りある.その内,小文字が連続しないのは,次のステップで配置すればよい.
+\begin{center}
+  $\begin{cases}
+    \tokeiichi 大文字のA,B,Cを並べる.\to3!通り.\\
+    \tokeini 下図(図1)のように4箇所の大文字の間から\vee を3箇所選んで小文字を並べる\to \comb{4}{3}\times3!通り
+  \end{cases}$
+\end{center}
+\begin{center}
+$\bigvee\fbox{大文字}\bigvee\fbox{大文字}\bigvee\fbox{大文字}\bigvee$　(図1)
+\end{center}
+以上より,小文字が連続しないのは,$3!\times\comb{4}{3}\times3!通りある.$\\
+$\Y $小文字が連続した部分があるものの順列の総数は,$6!-3!\times\comb{4}{3}\times3!=\ans{576通り.}$\\
+\kakkonib$a,a,a,a,b,b,b$を一列に並べたとき,$b$同士が隣りあわないように並べるには,
+\begin{center}
+  $\begin{cases}
+    \tokeiichi 4つのaを並べる.\to 1通り.\\
+    \tokeini 下図(図2)を参考にして,5箇所の\vee から3箇所を選んでbを配置する.\to\comb{5}{3}通り.
+  \end{cases}$
+  \begin{center}
+    $\bigvee\fbox{a}\bigvee\fbox{a}\bigvee\fbox{a}\bigvee\fbox{a}\bigvee$　(図2)
+  \end{center}
+\end{center}
+以上より,求める順列の総数は,$1\times\comb{5}{3}=\ans{10通り}$\\\\
+{\LARGE \kakkosanb は次ページ}
+\newpage
+\noindent\kakkosanb3桁の自然数全体の集合を$U$とすると,$100\sim999$までの計900個あるので,$n\p{U}=900\cdots\maruichi$\\
+このうち,1を含んでいるものの全体を$A$,2を含んでいるものの全体を$B$とおくと,$\overline{A}$は,
+\begin{center}
+  $\begin{cases}
+    \tokeiichi 百の位は2,3,4,5,6,7,8,9の8通り.\\
+    \tokeini 十,一の位はそれぞれ0,1,2,3,4,5,6,7,8,9の9通り.
+  \end{cases}$
+\end{center}
+と考えられるので,$n\p{\overline{A}}=8\times9\times9=648通り\cdots\maruni$\\
+$\overline{B}も同様で,n\p{\overline{B}}=648通り\cdots\marusan$\\
+1も2も含んでいないもの$\p{n\p{\overline{A}\cap\overline{B}}}は,$
+\begin{center}
+  $\begin{cases}
+    \tokeiichi 百の位は3,4,5,6,7,8,9の7通り\\
+    \tokeini 十,一の位はそれぞれ0,3,4,5,6,7,8,9の8通り
+  \end{cases}$
+\end{center}
+と考えられるので,$n\p{\overline{A}\cap\overline{B}}=448\cdots\marushi$\\
+これより,次表(カルノー表という)を得る.\\
+\begin{center}
+\begin{tabular}{|c||c|c|c|}
+  \hline
+  $U$ & $A$ & $\overline{A}$ & {}\\
+  \hline
+  \hline
+  $B$  & $\marugo-\maruroku$ & $\maruni-\marushi=300\cdots\maruroku$ & $\maruichi-\marusan=252$\\
+  \hline
+  $\overline{B}$ &{} & $448\cdots\marushi$ & $648\cdots\marusan$\\
+  \hline
+  \hline
+  {} & {}& $648\cdots\maruni$ &$900\cdots\maruichi$\\
+  \hline
+\end{tabular}
+\end{center}
+$\Y 表より,n\p{A\cap B}=\ans{52}$\\
+\kakkoshib YOKOHAMA の8文字を一列に並べるとき,偶数番目は4箇所あるので2つのOと2つのAを偶数番目に置く方法は,$\comb{4}{2}通りある.$この1通りに対して,
+Y,K,H,Mを奇数番目に置く方法が$4!$通りあるので,求める総数は,$\comb{4}{2}\times4!=\ans{144通り.}$
 \end{document}
