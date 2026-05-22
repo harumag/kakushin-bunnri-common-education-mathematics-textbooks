@@ -564,11 +564,247 @@ $\Y 求める一般項は,\ans{\begin{cases}
 \end{cases}(n\geq1)}$
 \newpage
 \subsection{二項定理}
-ほげ
+\noindent\ba{4$\bullet$1}.\\
+\hokukai\kakkoichib $xを3個,yを4個選べばよいので,求める係数は,\comb{7}{3}=\dfrac{7\cdot6\cdot5}{3\cdot2\cdot1}=\ans{35}\\
+\kakkonib xを2個,yを1個,zを5個選べば良いので,\comb{8}{2}x^2\cdot\comb{6}{1}y\cdot\comb{5}{5}z^5=\dfrac{8\cdot7}{2\cdot1}\times\dfrac{6}{1}\times1x^2yz^5=\ans{168}$\\
+\kakkoni\bekkai\\
+$xを2個,yを1個,zを5個並べるときの順列の総数に等しいので,\dfrac{8!}{2!5!}=\dfrac{8\cdot7\cdot6}{2\cdot1}=\ans{168}$\\\\
+\ba{4$\bullet$2}.\theme{$\wa{}{}$の定義への帰着}\\
+\kangaekata\kakkoichi \kakkoni どうにかして,二項定理の定義の形に帰着させることを考えましょう.\\
+\kakkosan よくわからない数列は,\ans{書き下す}が基本です.\\
+\hokukai\kakkoichib $A_n=\wa{k=0}{n}3^k\cdot\comb{n}{k}=\wa{k=0}{n}\comb{n}{k}\cdot3^k\cdot1^{n-k}=(3+1)^n=\ans{4^n}\\
+\kakkonib B_n=\wa{k=0}{n}\comb{n}{k}=\wa{k=1}{n}\comb{n}{k}1^{k}\cdot1^{n-k}=(1+1)^n=\ans{2^n}$\\
+\kakkosanb $C_n=\wa{k=1}{n}\comb{2n}{2k-1}=\comb{2n}{1}+\comb{2n}{3}+\comb{2n}{5}+\cdots+\comb{2n}{2n-1}\\
+これは,(1+1)^{2n}を展開したときの,奇数番目のみ抜き出したものである.\\
+このことより,$
+\begin{align*}
+    (1+1)^{2n}&=\comb{2n}{0}+\comb{2n}{1}+\comb{2n}{2}+\comb{2n}{3}+\cdots+\comb{2n}{2n}\cdots\cdots\cdots\maruichi\\
+    (-1+1)^{2n}&=\comb{2n}{0}-\comb{2n}{1}+\comb{2n}{2}-\comb{2n}{3}+\cdots+\comb{2n}{2n}\cdots\cdots\cdots\maruni
+\end{align*}
+$よって,\dfrac{\maruichi-\maruni}{2}より,$
+\begin{align*}
+    \dfrac{\maruichi-\maruni}{2}=\dfrac{2^{2n}-0}{2}=\comb{2n}{1}+\comb{2n}{3}+\comb{2n}{5}+\cdots+\comb{2n}{2n-1}
+\end{align*}
+なので,求めたい和と一致し,$C_n=\ans{\dfrac{2^{2n}}{2}}=\ans{2^{2n-1}}$
+
 \newpage
 \subsection{場合の数の一番大切なこと}
-ほげ
+\noindent\ba{5$\bullet$1}\\
+\hokukai\kakkoichib まず空き部屋を3つ考える.\fbox{　}が空き部屋である.左から順に文字を入れていくと,考えうる場合の数はそれぞれ以下のようになる.
+\begin{center}
+$\underbrace{\fbox{　}}_{5通り}$　$\underbrace{\fbox{　}}_{4通り}$　$\underbrace{\fbox{　}}_{3通り}$
+\end{center}
+よって,求める順列の総数は,
+\begin{align*}
+  5\times4\times3=\ans{60通り}
+\end{align*}
+\kakkonib 求める順列の総数は,\kakkoichi で3つの部屋の並べ方を考慮しなければ良いので,3つの部屋の並べ方の総数は,$3!=6通りより,$
+求める順列の総数は,
+\begin{center}
+  $60\div6=\ans{10通り}$
+\end{center}
+\kakkosanb まず,すべての文字に次のように区別をつける.$a_1,a_2,b_1,b_2,d$このとき,樹形図は下図のようになる.\\
+\begin{tikzpicture}[
+  x=1.45cm, y=1cm,
+  every node/.style={font=\small},
+  circ/.style={draw,circle,minimum size=9mm,inner sep=0pt},
+  lab/.style={midway,fill=white,inner sep=1pt}
+]
+
+%----------------
+% root : d
+%----------------
+\coordinate (O) at (0,0);
+\node[anchor=east] at (O) {$d$};
+
+% 1st level
+\coordinate (A1) at (2.6, 1.8);
+\coordinate (A2) at (2.6, 0.6);
+\coordinate (B1) at (2.6,-0.6);
+\coordinate (B2) at (2.6,-1.8);
+
+\draw (O)--(A1) node[lab,above] {$a_1$};
+\draw (O)--(A2) node[lab,above] {$a_2$};
+\draw (O)--(B1) node[lab,below] {$b_1$};
+\draw (O)--(B2) node[lab,below] {$b_2$};
+
+%----------------
+% branch from a1
+%----------------
+
+\coordinate (A1A2) at (5.3,2.6);
+\coordinate (A1B1) at (5.3,1.8);
+\coordinate (A1B2) at (5.3,1.0);
+
+\draw (A1)--(A1A2) node[lab,above] {$a_2$};
+\draw (A1)--(A1B1) node[lab,above] {$b_1$};
+\draw (A1)--(A1B2) node[lab,below] {$b_2$};
+
+% expand only a1 -> a2
+
+\coordinate (P1) at (7.9,3.0);
+\coordinate (P2) at (7.9,2.2);
+
+\draw (A1A2)--(P1) node[lab,above] {$b_1$};
+\draw (A1A2)--(P2) node[lab,below] {$b_2$};
+
+\coordinate (Q1) at (10.1,3.0);
+\coordinate (Q2) at (10.1,2.2);
+
+\draw (P1)--(Q1) node[lab,above] {$b_2$};
+\draw (P2)--(Q2) node[lab,above] {$b_1$};
+
+% omitted similar parts
+\node at (6.9,1.3) {$\cdots$};
+
+%----------------
+% branch from a2 (omitted)
+%----------------
+\node at (4.5,0.6) {$\cdots$};
+
+%----------------
+% branch from b1
+%----------------
+
+\coordinate (B1A1) at (5.3,-0.2);
+\coordinate (B1A2) at (5.3,-0.8);
+\coordinate (B1B2) at (5.3,-1.4);
+
+\draw (B1)--(B1A1) node[lab,above] {$a_1$};
+\draw (B1)--(B1A2) node[lab,above] {$a_2$};
+\draw (B1)--(B1B2) node[lab,below] {$b_2$};
+
+\node at (6.6,-0.8) {$\cdots$};
+
+%----------------
+% branch from b2 (omitted)
+%----------------
+\node at (4.5,-1.8) {$\cdots$};
+
+\end{tikzpicture}\\
+これより,1文字目が$a_1$のときの順列の総数は,$4!=24通り$あり,これが$5$文字あるから,$24\times5=120通り.$\\
+ここで,$a_1,a_2とb_1,b_2$の枝を選ぶことは同じことなので,$2!2!$で割ることにより,求める順列の総数は,
+\begin{center}
+  $120\div\p{2!2!}=\ans{30通り}$
+\end{center}
 \newpage
+\noindent\ba{5$\bullet$2}\\
+\hokukai\kakkoichib 5個の数字が入る部屋を考えて左から順に「万の位」「千の位」$\cdots$「一の位」とする.
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    万 & 千 &百 &十& 一\\
+    \hline
+    \fbox{　} & \fbox{　} & \fbox{　} & \fbox{　} & \fbox{　}\\
+    4通り & 4通り & 3通り & 2通り & 1通り\\
+    \hline
+  \end{tabular}
+\end{center}
+よって,求める順列の総数は,
+\begin{align*}
+  4\times4\times3\times2\times1=\ans{96通り}
+\end{align*}
+\kakkonib \kakkoichi と同様に部屋を5つ考えて,左から順に,「一の位」「十の位」「百の位」「千の位」「万の位」
+とする.
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    一 & 十 &百 &千& 万\\
+    \hline
+    \fbox{　} & \fbox{　} & \fbox{　} & \fbox{　} & \fbox{　}\\
+    0 or 2 or 4 &  & & & \\
+    \hline
+  \end{tabular}
+\end{center}
+これより,「一の位が0」と「一の位が2か4」の2つの場合で場合分けする.\\
+\tokeiichi\underline{一の位が0のとき}\\
+　順列の総数は,一の位以外はfreeに埋めれば良いので,$4!=24通り.$\\
+\tokeini\underline{一の位が2か4のとき}\\
+　順列の総数は,
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+    \hline
+    一 & 十 &百 &千& 万\\
+    \hline
+    \fbox{　} & \fbox{　} & \fbox{　} & \fbox{　} & \fbox{　}\\
+    2 or 4(2通り) & 3通り & 3通り & 2通り & 1通り\\
+    \hline
+  \end{tabular}
+\end{center}
+よって,$2\times3\times3\times2=36通り.$\\
+$\Y \tokeiichi\sim\tokeini より,求める順列の総は,$
+\begin{align*}
+  24+36=\ans{60通り}
+\end{align*}
+\newpage
+\noindent\ba{5$\bullet$3}\\
+\hokukai\kakkoichib $a\sim g$の並べ方は,$7!通りあり,$その内,$a,b,c$が隣り合うのは,
+\begin{center}
+  $abc,acb,bac,bca,cba,cab$
+\end{center}
+の6通りあるが,問題の条件を満たすのは$abc$の1つのみ.\\
+$\Y 求める順列の総数は,7!\div6=\ans{840通り}$\\\\
+\kakkonib$bとc$の隣り合い方として,次の2つの場合が考えられる.
+\begin{align*}
+  「bc」 or 「cb」
+\end{align*}
+ここで,$a,a,b,b,c,d$を区別をつけて,$a_1,a_2,b_1,b_2,c,d$とする.\\
+$b_1,b_2$の選び方は2通りで,$b_1c=X$としてカタマリで考える.\\
+$a_1,a_2,X,d$の順列の総数は,
+\begin{align*}
+  5!\times\underbrace{2!}_{b_1 or b_2の選び方}
+\end{align*}
+さらに,$b_1c$の順序で2通りあるので,
+\begin{align*}
+  240\times2=480通り
+\end{align*}
+$\Y a_1,a_2,b_1,b_2$の区別をなくして,$480\div\p{2!2!}=\ans{120通り}$
+\newpage
+\noindent\kakkosanb $a,a,b,b,c,d$に区別をつけて,$a_1,a_2,b_1,b_2,c,d$として考える.\\
+これら6文字の順列の総数は,$6!=120通り.$\\
+区別をなくして,$720\div\p{2!2!}=180通り.$\\
+・このうち,$aa または bb$が隣り合う順列の総数は,
+\begin{align*}
+  5!\div\underbrace{2}_{重複}\times\underbrace{2}_{「aa」or「bb」が隣り合う場合}=5!=120通り.
+\end{align*}
+ここで,$aa$が隣り合う場合の数の集合を$A$,$bb$が隣り合う場合の数の集合を$B$とする.\\
+一方で,$aaかつbb$が隣り合う順列の総数は,$4!=24通り.$この場合の数の集合は$A\cap B$である.\\
+求める場合の数は,$n\overline{\p{A\cup B}}$である.また,集合$A,B$について,下図のBenn図を得る.
+\begin{center}
+  \begin{tikzpicture}[scale=1.1, line cap=round, line join=round]
+
+  % 全体集合 U
+  \draw[very thick] (-3.4,-2.0) rectangle (3.4,2.2);
+  \node at (-2,1.85) {$U(=180通り)$};
+
+  % 円そのものの node
+  \node[draw, circle, minimum size=2.5cm] (A) at (-0.9,0) {};
+  \node[draw, circle, minimum size=2.5cm] (B) at ( 0.9,0) {};
+
+  % A, B の文字で円周を隠す
+  \node[font=\Large\bfseries, fill=white, inner sep=1pt] at ($(A.north)+(0,0.05)$) {$A$};
+  \node[font=\Large\bfseries, fill=white, inner sep=1pt] at ($(B.north)+(0,0.05)$) {$B$};
+
+  % 左右の -
+  \node[font=\Large] at ($(A.center)+(-0.35,0)$) {$-$};
+  \node[font=\Large] at ($(B.center)+(0.35,0)$) {$-$};
+
+  % 真ん中の記号
+  \draw[thick] (-0.12,0.18) -- (0.12,0.18);
+  \draw[thick] (0,0.18) -- (0,-0.18);
+
+\end{tikzpicture}
+\end{center}
+$\Y 包除原理より,上図の$Benn図を参考にして,求める順列の総数は,$n\p{\overline{A}\cap\overline{B}}なので,$
+\begin{align*}
+  n\p{\overline{A}\cap\overline{B}}&=180-\p{n\p{A}+n\p{B}-n\p{A\cap B}}\\
+  &=180-\p{60+60-24}\\
+  &=\ans{84通り}
+\end{align*}
+\newpage
+\noindent\kakkoshib まず,8人を$a\sim h$と区別し,更に3グループを$A,B,C$と名前をつけて$a\sim h$を分ける.
+\newpage
+
 \subsection{種々の数え上げ}
 ほげ
 
@@ -721,4 +957,96 @@ $\Y 求める,nは,\ans{n=1,2}$
 \newpage
 \subsection{3章：漸化式}
 この章は,問題演習なしです.
+\newpage
+\subsection{4章：二項定理}
+\noindent\reibanichi\\
+\hokukai
+\kakkoichib $2xを4個選べば良いので,求める係数は,\comb{6}{4}(2x)^4(-1)^2=15\cdot16=\ans{240}$\\
+\kakkonib $xを2個,2yを3個,3zを2個選べば良いので,\comb{7}{2}\times\comb{5}{3}2^3\times3^2=\ans{15120}$\\\\
+\reibanni\\
+\kangaekata 帰納法は明らかにめんどくさそうです.なので,一回直接証明することができないかやってみましょう.\\
+\hokukai$\wa{k=0}{n}\p{\comb{n}{k}}^2=\comb{2n}{n}\cdots\cdots\cdots\asta　を示す.$
+\begin{align*}
+    (1+x)^{2n}=(1+x)^n\times(1+x)^n
+\end{align*}
+より,二項定理から
+\begin{align*}
+    \comb{2n}{0}+\comb{2n}{1}x+\comb{2n}{2}x^2+\cdots+\comb{2n}{n}x^n+\cdots+\comb{2n}{2n}x^{2n}&=\p{\comb{n}{0}+\comb{n}{1}x+\comb{n}{2}x^2+\cdots+\comb{n}{n}x^n}\\
+    &\times\p{\comb{n}{0}+\comb{n}{1}x+\comb{n}{2}x^2+\cdots+\comb{n}{n}x^n}\cdots\cdots\cdots\maruichi
+\end{align*}
+$\maruichi の両辺のx^nの係数を比較すると$
+\begin{align*}
+    \comb{2n}{n}&=\comb{n}{0}\times\comb{n}{n}+\comb{n}{1}\times\comb{n}{n-1}+\comb{n}{2}\times\comb{n}{n-2}+\cdots+\comb{n}{n}\times\comb{n}{0}\\
+    &=\wa{k=0}{n}=\comb{n}{k}\times\comb{n}{n-k}\\
+    &=\wa{k=0}{n}\comb{n}{k}\times\comb{n}{k}　\p{\because \comb{n}{n-k}=\comb{n}{k}}\\
+    &=\wa{k=0}{n}\p{\comb{n}{k}}^2
+\end{align*}
+よって,$ \asta$ が示された.\hspace{2mm}$\blacksquare$
+\newpage
+\noindent\reibansan\theme{積分を使って二項定理を計算する}\\
+\kangaekata
+\kakkoichi\kakkoni 分母に式が来るような計算は...と考えると\ans{積分すれば良い}と思い付きます.\\
+\hokukai\kakkoichib 二項定理より,$(1+x)^n=\wa{k=0}{n}\comb{n}{k}x^kなので,これの両辺を0から1で積分すると,$
+\begin{align*}
+    &\dint{0}{1}(1+x)^ndx=\dint{0}{1}\wa{k=0}{n}\comb{n}{k}x^kdx\\
+    &\doti \tint{\dfrac{(1+x)^{n+1}}{n+1}}{0}{1}=\tint{\wa{k=0}{n}\dfrac{\comb{n}{k}}{k+1}x^{k+1}}{0}{1}\\
+    &\doti \dfrac{2^{n+1}-1}{n+1}=\wa{k=0}{n}\dfrac{\comb{n}{k}}{k+1}
+\end{align*}
+よって,これは求める和と一致し,求める和は$\ans{\dfrac{2^{n+1}-1}{n+1}}$\\
+\kakkonib 二項定理より,$(1+x)^{2n}=\wa{k=0}{2n}\comb{2n}{k}x^k=\underbrace{\wa{k=0}{n}\comb{2n}{2k}x^{2k}}_{偶数番目}+\underbrace{\wa{k=1}{n}\comb{2n}{2k-1}x^{2k-1}}_{奇数番目}
+(\temarkua 数\suIII の無限級数でもよくやるテクニックです.)\\$
+これの両辺を$-1から1まで積分すると,$
+\begin{align*}
+    &\dint{-1}{1}(1+x)^{2n}dx=2\dint{0}{1}\wa{k=0}{n}\comb{2n}{2k}x^{2k}dx\\
+    &\doti \tint{\dfrac{(1+x)^{2n+1}}{2n+1}}{-1}{1}=2\tint{\wa{k=0}{n}\dfrac{\comb{2n}{2k}}{2k+1}}{0}{1}\\
+    &\doti \dfrac{2^{2n+1}}{2n+1}=2\wa{k=0}{n}\dfrac{\comb{2n}{2k}}{2k+1}\\
+    &\doti \wa{k=0}{n}\dfrac{\comb{2n}{2k}}{2k+1}=\dfrac{4^n}{2n+1}
+\end{align*}
+よって,求める和は,$\ans{\dfrac{4^n}{2n+1}}$\\\\
+\newpage
+\noindent\reibanshi\theme{下2桁の求め方}\\
+\kangaekata$下二桁なので\ans{100で割った余り}ですね!二項定理で展開して100で割り切れないところだけ残しましょう.$\\
+\hokukai
+二項定理より,
+\begin{align*}
+    3^{100}&=(1+2)^{100}\\
+    &=\wa{k=0}{100}\comb{100}{k}2^k\cdots\cdots\cdots\maruichi
+\end{align*}
+$\maruichi の右辺を100で割ると,\comb{100}{0}のみ残るので,求める余りは,\ans{1}$\\\\
+\reibango\theme{整数問題と二項定理の絡み}\\
+\kangaekata
+\kakkosan 二項定理で数を小さくしましょう.\\
+\hokukai
+\kakkoichib $(1+a)^n=\ans{\wa{k=0}{n}\comb{n}{k}a^k}$ \\
+\kakkonib 
+\begin{align*}
+    21^{10}&=(20+1)^{10}=\wa{k=0}{10}\comb{10}{k}20^k\\
+    &=\comb{10}{0}+\comb{10}{1}20+\wa{k=2}{10}\comb{10}{k}20^k\cdots\cdots\cdots\maruichi
+\end{align*}
+ここで,$\maruichi の左辺において,\wa{k=2}{10}\comb{10}{k}20^k は,必ず400を因数に持つので400で割り切れる.$\\
+$\Y 21^{10}を400で割った余りは,\comb{10}{0}+\comb{10}{1}20=\ans{201}$\\\\
+\kakkosanb $f(n)=19^n+21^nとおく.$
+\begin{align*}
+    f(n)が400で割り切れるような正の整数nが存在する.\doti f(n)\godo0\kmod{400}\cdots\cdots\cdots\asta
+\end{align*}
+これより,$19^nと21^nをそれぞれ二項定理で展開すると$
+\begin{align*}
+    19^n&=(20-1)^n\\
+    &=\wa{k=0}{n}\comb{n}{k}\p{20}^k\p{-1}^{n-k}\\
+    &=\comb{n}{0}(-1)^n+\comb{n}{1}20\p{-1}^{n-1}+\wa{k=2}{n}\comb{n}{k}\p{20}^k\p{-1}^{n-k}\\
+    &\godo \comb{n}{0}(-1)^n+\comb{n}{1}20\p{-1}^{n-1}\kmod{400}\\
+    &=\p{-1}^n\p{1-20n}\kmod{400}\cdots\cdots\cdots\maruni
+\end{align*}
+\begin{align*}
+    21^n&=\comb{n}{0}+\comb{n}{1}20+\wa{k=2}{n}\comb{n}{k}20^k\\
+    &\godo1+20n\kmod{400}\cdots\cdots\cdots\marusan
+\end{align*}
+よって,$\maruni,\marusan から,f(n)\godo \p{-1}^n\p{1-20n}+1+20n$\\
+\tokeiichi\underline{$nが偶数のとき,$}\\
+　$(-1)^n=1なので,f(n)=\p{1-20n}+\p{1+20n}=2\\
+これより,f(n)\negodo 0\kmod{400}.$\\
+\tokeini\underline{$nが奇数のとき,$}\\
+　$(-1)^n=-1なので,f(n)=(-1)(1-20n)+1+20n=40n$\\
+今,$nが奇数なので,n\negodo 0\kmod{10}であるからf(n)\negodo0\kmod{400}である.$\\\\
+$\Y 以上\tokeiichi,\tokeini より,f(n)を400で割り切るようなnは存在しない.\ans{(証明終わり)}$
 \end{document}
