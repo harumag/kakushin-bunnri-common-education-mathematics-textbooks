@@ -927,7 +927,28 @@ $\Y 求める順列の総数は,126\times3=\ans{378通り}$\\\\
     \begin{align*}
       N=924-(200+210-60)=\ans{574通り}
     \end{align*}
-
+    \newpage
+    \noindent\ba{7$\bullet$2}\theme{お団子作戦}\\
+    \kangaekata 合わせて10個のお団子($\bigcirc$)がある.それを3つの仕切り($\mid$)で分ける.その分け方を小問ごとに工夫すればよい.\\
+    \hokukai\kakkoichib 10個の$\bigcirc$と3つの仕切り($\mid$)で考える.\\
+    今,$a,b,c,d$は1以上の整数なので,下図の9つの$\vee$から3つ仕切りを入れる場所を選べば良い.
+    \begin{center}
+$\bigcirc\vee\bigcirc\vee\bigcirc\vee\bigcirc\vee\bigcirc\vee\bigcirc\vee\bigcirc\vee\bigcirc\vee\bigcirc\vee\bigcirc$      
+    \end{center}
+よって,$\comb{9}{3}=\ans{84通り.}$\\
+\kakkonib 今,$a,b,c,d$は0以上の整数なので$a,b,c,d$の数人が0個でもよい.よって,10個の$\bigcirc$と仕切り3つを並べれば良い.
+\begin{center}
+  $\bigcirc\bigcirc\bigcirc\bigcirc\bigcirc\bigcirc\bigcirc\bigcirc\bigcirc\bigcirc\hspace{2mm}\mid\hspace{2mm}\mid\hspace{2mm}\mid$
+\end{center}
+$\Y 求める順列の総数は,\dfrac{13!}{3!10!}=\ans{286通り.}$\\
+\kakkosanb $a\geq0,b\geq1,c\geq2,d\geq3$より,$B=b-1,C=c-2,D=d-3$とおくと,\\$B\geq0,C\geq0,D\geq0$である.\\
+また,
+\begin{align*}
+  a+b+c+d=10\cdots\cdots\maruichi&\doti a+(B+1)+(C+2)+(D+3)=10\\
+  &\doti a+B+C+D=4\cdots\cdots\maruni
+\end{align*}
+ここで,$\maruichi$を満たす$(a,b,c,d)$の組と$\maruni$を満たす$(a,B,C,D)$の組は1対1に対応するので,後者を数える.\\
+4つの$\bigcirc$と3つの仕切り($\mid$)の並べ方を考えて,求める順列の総数は,$\dfrac{7!}{4!3!}=\ans{35通り.}$
 \newpage
 \subsection{確率の一番大切なこと}
 \newpage
