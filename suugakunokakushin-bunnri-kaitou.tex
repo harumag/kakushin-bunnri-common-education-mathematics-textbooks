@@ -1169,4 +1169,38 @@ $\overline{B}も同様で,n\p{\overline{B}}=648通り\cdots\marusan$\\
 $\Y 表より,n\p{A\cap B}=\ans{52}$\\
 \kakkoshib YOKOHAMA の8文字を一列に並べるとき,偶数番目は4箇所あるので2つのOと2つのAを偶数番目に置く方法は,$\comb{4}{2}通りある.$この1通りに対して,
 Y,K,H,Mを奇数番目に置く方法が$4!$通りあるので,求める総数は,$\comb{4}{2}\times4!=\ans{144通り.}$
+\newpage
+\subsection{7章：種々の数え上げ}
+\noindent\reibanichi\\
+\hokukai\kakkoichib $0<a<b<c<11$を満たす整数の組$(a,b,c)$と1,2,3,4,5,6,7,8,9,10から3つ選んだ組とが1対1に対応するので,後者を数えて,
+$\comb{10}{3}=\ans{120通り}$\\
+\kakkonib　$0\leq a\leq b\leq c\leq11\cdots\cdots\maruichi$\\
+$b+1=B,c+2=C$とおくと,
+\begin{center}
+  $\maruichi\doti0\leq a\leq B-1\leq C-2\leq11\doti0\leq a<B<C\leq13\cdots\cdots\maruni$
+\end{center}
+$\maruichi$を満たす整数の組$(a,b,c)$と$\maruni$を満たす整数の組$(a,B,C)$は1対1に対応し, $\maruni$を満たす整数の組$(a,B,C)$
+と0,1,2,3,4,5,6,7,8,9,10,11,12,13から3つ選んだ組とが1対1に対応するので,後者を数えて,$\comb{13}{3}=\ans{364通り}$\\\\
+\reibanni\\
+\kangaekata 各2桁の数の和が9という条件をどのように表そうか悩みます.今,4桁の整数なので,それを$abcd$とおくと,ある2桁の数において$a+b=9\doti b=9-a$
+と表せることに気づきます.これで数え上げましょう.\\
+\hokukai\kakkoichib 4桁の整数を$abcd$とおくと,
+\begin{align*}
+  &aは,0以外の9通り.\\
+  &bは,aと9-a以外の8通り.（\temarkua 常にa\neq 9-aであることに注意）\\
+  &cは,a,9-a,9-b（\temarkua これらはどの2つも異なる）以外の6通り.\\
+  &dは,a,9-a,b,9-b,c,9-c（\temarkua これらはどの2つも異なる）以外の4通り.
+\end{align*}
+$\Y 4桁のSの要素は,9\times8\times6\times4=\ans{1728個}$\\
+\kakkonib \kakkoichi と同様に,3桁の$S$の要素は,$9\times8\times6=432個$\\
+2桁の$S$の要素は,$9\times8=72個$\\
+1桁の$S$の要素は,9個\\
+4桁以下の$S$の要素の合計は,2241個ある.よって,求める値は,4桁の大きい方から数えて242番目の数.
+\begin{align*}
+  &a=9となる4桁のSの要素は,8\times6\times4=192個\\
+  &a=8,b=9となるSの要素は,6\times4=24個\\
+  &a=8,b=7となる4桁のSの要素は,6\times4=24個（\temarkua ここまでで,240個）
+\end{align*}
+よって,求める数は,$a=8,b-6$である$S$の要素の大きい方から2番目の数.\\
+i.e.\ans{8695}
 \end{document}
