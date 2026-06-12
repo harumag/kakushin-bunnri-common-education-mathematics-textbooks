@@ -951,6 +951,71 @@ $\Y 求める順列の総数は,\dfrac{13!}{3!10!}=\ans{286通り.}$\\
 4つの$\bigcirc$と3つの仕切り($\mid$)の並べ方を考えて,求める順列の総数は,$\dfrac{7!}{4!3!}=\ans{35通り.}$
 \newpage
 \subsection{確率の一番大切なこと}
+\noindent\ba{8$\bullet$1}\theme{同様に確からしくない確率}\\
+\hokukai $e_k$を「$k$の目がでる」として,$e_1,e_2,e_3,e_4,e_5,e_6$を素事象にとって,標本空間
+$S=\B{e_1,e_2,e_3,e_4,e_5,e_6}$を作る.\\
+各素事象の確率は,
+\begin{align*}
+  &p(e_1)=P(e_2)=p(e_3)=\frac{1}{10}\\
+  &p(e_4)=p(e_5)=\frac{2}{10}=\frac{1}{5}\\
+  &p(e_6)=\frac{3}{10}
+\end{align*}
+よって,
+\begin{align*}
+  &P(A)=\frac{1}{10}+\frac{1}{10}+\frac{2}{10}=\ans{\frac{2}{5}}\\
+  &P(B)=\frac{2}{10}+\frac{3}{10}=\ans{\frac{1}{2}}\\
+  &P(\overline{B})=1-P(B)=\ans{\frac{1}{2}}\\
+  &P(A\cap B)=\ans{\frac{1}{5}}\\
+  &P(A\cup B)=P(A)+P(B)-P(A\cap B)=\ans{\frac{7}{10}}
+\end{align*}
+\begin{center}
+  \begin{tabular}{c||c|c|c}
+    {} & B & $\mathrm{\overline{B}}$ &{}\\
+    \hline
+    A & $\frac{1}{5}$ & $\frac{1}{5}$&$\frac{2}{5}$\\
+    \hline
+    $\mathrm{\overline{A}}$ & $\frac{3}{10}$ &$\frac{3}{10}$&$\frac{3}{5}$\\
+    \hline
+    {} & $\frac{1}{2}$&$\frac{1}{2}$& $1$
+  \end{tabular}
+\end{center}
+上のカルノー表より,$P\p{\mathrm{\overline{A}}\cup\mathrm{\overline{B}}}=\dfrac{1}{5}+\dfrac{6}{10}=\ans{\dfrac{4}{5}}$
+\newpage
+\noindent\ba{8$\bullet$2}\theme{ラプラスの確率}\\
+\hokukai\kakkoichib 当たりと外れを全て区別して考える.\\
+8つのクジを1列に並べた順列を素事象にとって,標本空間$S$を作ると,その素事象
+は同様に確からしい.\\
+従って,$n\p{S}=8!$であり,その内3人目が当たりである順列の素事象は,$3\times7!$\\
+$\Y 求める確率は,\dfrac{3\times7!}{8!}=\dfrac{3}{8}$\\
+\kakkonib $\begin{cases}
+  事象\mathrm{A}:3人目が当たる\\
+  事象\mathrm{B}:6人目が当たる
+\end{cases}$とする.このとき,$P\p{A\cup B}$を求めたい.\\
+$P(A)=\dfrac{3}{8},P(B)=\dfrac{3}{8}$\\
+$P\p{A\cap B}:3人目と6人目が共に当たる確率は,n(S)=8!であり,最初の二人が当たりを引くと考えても$
+確率は変わらないので,最初の二人の当たりくじの引き方を考えて,それは$3通り\times2通り=6通り$である.
+残りの人の引き方はfreeなので,求める順列の総数は,$3\times2\times6!$\\
+$\Y P\p{A\cup B}=\dfrac{3}{8}+\dfrac{3}{8}-\dfrac{3\times2\times6!}{8!}=\ans{\dfrac{9}{14}}$\\\\
+\ba{8$\bullet$3}\theme{円順列}\\
+\hokukai A,A,B,Bの並べ方は,$\dfrac{4!}{2!2!}=6通りである.$その内,AとBが交互に並ぶ通りは,下図の2通りである.
+\begin{center}
+  \begin{tikzpicture}
+    \draw(1,0)circle[radius=0.5];
+    \node[right]at(1.5,0){B};
+    \node[left]at(0.5,0){B};
+    \node[above]at(1,0.5){A};
+    \node[below]at(1,-0.5){A};
+
+    \draw(4,0)circle[radius=0.5];
+    \node[left]at(3.5,0){A};
+    \node[right]at(4.5,0){A};
+    \node[above]at(4,0.5){B};
+    \node[below]at(4,-0.5){B};
+  \end{tikzpicture}
+\end{center}
+$\Y 求める確率は,\dfrac{2}{6}=\ans{\dfrac{1}{3}}$
+
+
 \newpage
 \subsection{条件付き確率・反復試行の確率}
 \newpage
@@ -1323,4 +1388,57 @@ $\Y 4桁のSの要素は,9\times8\times6\times4=\ans{1728個}$\\
 \end{align*}
 よって,求める数は,$a=8,b-6$である$S$の要素の大きい方から2番目の数.\\
 よって,求める数は,\ans{8695}
+\newpage
+\subsection{8章：確率の一番大切なこと}
+\noindent\reibanichi\\
+\hokukai\kakkoichib 二つの10円玉を区別すると,その表裏の出方は,
+\begin{center}
+  (表,表),(表,裏),(裏,表),(裏,裏)
+\end{center}
+の4通りあり,どれも同様に確からしい.このうち,表と裏が1枚ずつ出るのは2通りなので,求める確率は$\ans{\dfrac{1}{2}}$\\
+\kakkonib 3人をA,B,Cとし,それぞれの出す手を$a,b,c$とする.$a,b,c$の順序は全部で$3^3$通りあって,どれも同様に確か
+らしい.このうち「あいこ」になるのは,$a=b=c$となる3通りと,$a\neq b\neq c\neq a$となる6通り,合計9通りである.\\
+$\Y 求める確率は,\dfrac{9}{3^3}=\ans{\dfrac{1}{3}}$\\
+\kakkosanb$n(\geq2)人で$じゃんけんを1回するとき,\kakkoni と同様に手の順列の総数は$3^n$通りあってどれも対等に起こる.
+このうち,「あいこ」にならないものは,手が2種類のとき.例えば,手が「グー」と「チョキ」の2種類であるものは$2^n-2$通り
+(\temarkua 全員が「グー」のときと全員が「チョキ」のときの2通りを引いた)あるので,「あいこ」になる確率は,
+\begin{center}
+  $1-\dfrac{3\p{2^n-2}}{3^n}=\ans{\dfrac{3^{n-1}-2^n+2}{3^{n-1}}}$
+\end{center}
+\kakkoshib 3個の赤玉を$\maruichi,\maruni,\marusan$,白玉を$\kuromaruichi,\kuromaruni,\kuromarusan$と区別し,\\これら
+6つを下図のように$\shikakuichi\to\shikakuni\to\shikakusan\to\shikakushi\to\shikakugo\to\shikakuroku$の順に並べていく
+ことにする.
+\begin{center}
+  \begin{tikzpicture}
+    \draw(0,0)circle[radius=1];
+    \node[above]at(0,1){$\shikakuichi$};
+    \node[left]at(-{1/sqrt(2)},{1/sqrt(2)}){$\shikakuni$};
+    \node[left]at(-{1/sqrt(2)},-{1/sqrt(2)}){$\shikakusan$};
+    \node[below]at(0,-1){$\shikakushi$};
+    \node[right]at({1/sqrt(2)},-{1/sqrt(2)}){$\shikakugo$};
+    \node[right]at({1/sqrt(2)},{1/sqrt(2)}){$\shikakuroku$};
+    \coordinate(A)at(0,1.2);
+    \coordinate(B)at(-{1/sqrt(2)-0.1},{1/sqrt(2)+0.2});
+    \coordinate(C)at(-{1/sqrt(2)-0.2},-{1/sqrt(2)+0.2});
+    \coordinate(D)at(0,-1);
+    \coordinate(E)at({1/sqrt(2)},-{1/sqrt(2)});
+    \coordinate(F)at({1/sqrt(2)},{1/sqrt(2)});
+    \draw[->,>=Latex](A)to[bend right=45](B);
+    \draw[->,>=Latex](-{1/sqrt(2)-0.2},{1/sqrt(2)-0.1})to[bend right=45](C);
+  \end{tikzpicture}
+\end{center}
+この順列は全部で$6!$通りでき,その一つ一つは等確率で起こる.\\
+このうち,$\circ と\bullet$が隣り合わないような順列は,$\G{\circ=(\maruichi,\maruni,\marusan のいずれか),\bullet=(\kuromaruichi,\kuromaruni,\kuromarusan のいずれか)}$
+\begin{align*}
+  &\circ\bullet\circ\bullet\circ\bullet のタイプが3!\times3!通り\\
+  &\bullet\circ\bullet\circ\bullet\circ のタイプが3!\times3!通り
+\end{align*}
+それぞれあるので,求める確率は,$\dfrac{2\times3!\times3!}{6!}=\ans{\dfrac{1}{10}}$
+\newpage
+\noindent\reibanni\\
+\hokukai 7本のくじを一列に並べて左から順に引いてもらうものとする.順列は全部で$\comb{7}{3}$通りあって,どれも同様に確からしい.\\
+\kakkoichib 3人目が当たる順列は全部で$\comb{6}{2}通り$あるので,$\dfrac{\comb{6}{2}}{\comb{7}{3}}=\ans{\dfrac{3}{7}}$\\\\
+\kakkonib 6人目が当たる順列も全部で$\comb{6}{2}通り$あるので,$\dfrac{\comb{6}{2}}{\comb{7}{3}}=\ans{\dfrac{3}{7}}$\\\\
+\kakkosanb 3人目と6人目がともに当たる順列は全部で$\comb{5}{1}通り$あるので,$\dfrac{\comb{5}{1}}{\comb{7}{3}}=\ans{\dfrac{1}{7}}$\\\\
+\kakkoshib 当たった人が全員奇数番目に引いた人であるような順列は全部で$\comb{4}{3}$通りあるので,$\dfrac{\comb{4}{3}}{\comb{7}{3}}=\ans{\dfrac{4}{35}}$
 \end{document}
