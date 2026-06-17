@@ -1145,7 +1145,72 @@ $\bullet$「$\lim_{n\to\infty}a_n$が収束する」は数列$\B{a_n}$の条件.
 \newpage
 \begin{itembox}
     [l]{\enpitu 真理集合}
-    条件$P$を真にするような集合の全体を,条件$P$の真理集合という.
+    条件$P$を真にするような集合の全体を,条件$P$の真理集合という.\\
+    ex)\\
+    $\bullet$\hspace{2mm}$x$の条件$P(x)$の真理集合は,$\B{x|P(x)}$である.\\
+    $\bullet$\hspace{2mm}$a,b$の条件$P(a,b)$の真理集合は,$\B{\tvec[a,b]|P(a,b)}$である.\\\\
+    一文字の条件の真理集合は数直線上に,二文字の条件の真理集合は平面上に図示して表現することがよくある.
+\end{itembox}\\
+\begin{itembox}
+    [l]{\enpitu 論理記号の定義2(量化記号)}
+    $P(x)$を$x$の条件とする.
+    \begin{align*}
+        &\kakkoichi 「すべてのxに対してP(x)が成立する.」という主張を 「\forall x,P(x)」と書く.\\
+        &\kakkoni 「少なくとも一つのxに対してP(x)が成立する.」という主張を「\exists x,P(x)」と書く.
+    \end{align*}
+\end{itembox}\\
+\chud\\
+量化記号$\forall と\exists$には様々な別表現がある.\\
+\begin{itembox}
+[l]{\enpitu 量化記号と主張}
+$x$の取とり得る値が$x_1,x_2,\cdots,x_n$のとき,
+\begin{align*}
+    &\kakkoichi \forall x,P(x)\doti P(x_1)\wedge P(x_2)\wedge P(x_3)\wedge\cdots\wedge P(x_n)\\
+    &\kakkoni \exists x,P(x)\doti P(x_1)\vee P(x_2)\vee P(x_3)\vee\cdots\vee P(x_n)
+\end{align*}    
 \end{itembox}
+\newpage
+\noindent\ba{9$\bullet$1}\\
+$P,Q$を命題とするとき,その真偽に関わらず,命題の同値関係
+\begin{center}
+    $\p{P\narabaa Q}\doti \p{\neg P\vee Q}$
+\end{center}
+が成立することを,下記の真理値表を用いて証明せよ.
+\begin{center}
+    \begin{tabular}{|c|c||c|c|c|}
+        \hline
+        $P$&$Q$&$\neg P$&$P\narabaa Q$&$\neg P\vee Q$\\
+        \hline
+        $\bigcirc$&$\bigcirc$&{}&{}&{}\\
+        \hline
+        $\bigcirc$&$\times$&{}&{}&{}\\
+        \hline
+        $\times$&$\bigcirc$&{}&{}&{}\\
+        \hline
+        $\times$&$\times$&{}&{}&{}\\
+        \hline
+        \end{tabular}
+\end{center}
+\ba{9$\bullet$2}\\
+次の各文を「A:真の命題」,「B:偽の命題」,「C:条件」,「D:いずれでもない」に分類せよ.また「C:条件」の場合はその真理集合を求めよ.ただし,文字はすべて実数の
+範囲で考えよ.\\
+\kakkoichi 「$\neg(1+1=3)$」\\
+\kakkoni 「$1+1=3\vee1+2=3$」\\
+\kakkosan 「$1+1=3\narabaa 1+2=3$」\\
+\kakkoshi 「$x^2+4x-1$」\\
+\kakkogo 「$x^2+4x-1=0$」\\
+\kakkoroku「$x^2+4x-1=0$を満たす実数$x$は二つある.」\\
+\kakkoshichi「すべての実数$x$に対して,$x^2+4x+5>0$である.」\\
+\kakkohachi「ある実数$x$に対して,$x^2+4x+5<0$である.」\\
+\kakkokyu「$\forall x,x^2>-1$」\\
+\kakkojyu「$\forall x,x^2>1$」\\
+\kakkojyuichi「$\exists x,x^2>-1$」\\
+\kakkojyuni「$\exists x,x^2<1$」\\
+\kakkojyusan「$\forall x,x^2>k$」\\
+\kakkojyushi「$\exists x,x^2<k$」
+\newpage
+\begin{center}
+    \ans{9章の問題演習}
+\end{center}
 
 \end{document}
