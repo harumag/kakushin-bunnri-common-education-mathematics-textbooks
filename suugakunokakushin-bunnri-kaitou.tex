@@ -1018,6 +1018,86 @@ $\Y 求める確率は,\dfrac{2}{6}=\ans{\dfrac{1}{3}}$
 
 \newpage
 \subsection{条件付き確率・反復試行の確率}
+\noindent\ba{8$\bullet$1}\theme{簡単な条件付き確率}\\
+\hokukai$k$人目が当たるという事象を$A_k$とする.\\
+\kakkoichib 二人目が当たる確率.\\
+$P(A_2)=\underline{\p{A_1\cap A_2}}_{\maruichi}\cup\underline{\p{\overline{A_1}\cap A_2}}_{\maruni}$である.\\
+$\maruichi と\maruni$は排反なので,
+\begin{align*}
+  P(A_2)&=P\p{A_1\cap A_2}+P\p{\overline{A_1}\cap A_2}\\
+  &=P(A_1)\times P_{A_1}(A_2)+P(\overline{A_1})\times P_{\overline{A_1}}(A_2)\\
+  &=\frac{3}{7}\times\frac{2}{6}+\frac{4}{7}\times\frac{3}{6}\\
+  &=\ans{\frac{3}{7}}
+\end{align*}
+\kakkonib くじ引きは何人目でも平等なので,
+\begin{align*}
+  P(A_2\cap A_6)&=P(A_1\cap A_2)\\
+  &=\frac{3}{7}\times\frac{2}{6}=\ans{\frac{1}{7}}
+\end{align*}
+\kakkosanb $P_{A_2}(A_6)=\dfrac{P(A_2\cap A_6)}{P(A_2)}=\dfrac{\frac{3}{7}\times\frac{2}{6}}{\frac{3}{7}}=\ans{\frac{1}{3}}$\\
+\kakkoshib$P_{A_6}(A_2)=\dfrac{P(A_6\cap A_2)}{P(A_6)}=\dfrac{\frac{1}{7}}{\frac{3}{7}}=\ans{\frac{1}{3}}$
+\newpage
+\noindent\ba{9$\bullet$2}\theme{条件付き確率の応用問題}\\
+\hokukai まず6枚のカードの表と裏を　\fbox{表}(裏)　と書くことにする.例えば,表:赤,裏:黄は　\fbox{R}(Y)　と表す.このとき,6枚のカードは下記のように表せる.
+\begin{center}
+  \fbox{$R_1$}($R_2$),\fbox{$R_3$}($R_4$),\fbox{$B_1$}($B_2$),\fbox{$Y_1$}($Y_2$),\fbox{$R_5$}($B_3$),\fbox{$B_4$}($Y_3$)
+\end{center}
+\begin{align*}
+  \begin{cases}
+    &1枚目のカードの表が赤:K\\
+    &1枚目のカードの裏が赤:L\\
+    &2枚目のカードの表が青:M
+  \end{cases}とおく.
+\end{align*}
+それぞれ,求める確率は,
+\begin{align*}
+  &\kakkoichi P(K),\kakkoni P(K\cap L),\kakkosan P_K(L)\\
+  &\kakkoshi P_K(M),\kakkogo P_{K\cap M}(L)
+\end{align*}
+である.\\
+\kakkoichib 「色を一つ引く」という事象を素事象にとると,12色の出る確率はどれも同様に確からしいので,12色のうち赤は5個ある.\\
+$\Y P(K)=\ans{\frac{5}{12}}$\\
+\kakkonib 「カードを一つ選ぶ」という事象を素事象とすると,両面が赤のカードは2枚ある.\\
+$\Y P(K\cap L)=\dfrac{2}{6}=\ans{\dfrac{1}{3}}$\\
+\kakkosanb $P_K(L)=\dfrac{P(K\cap L)}{P(K)}=\dfrac{\frac{1}{3}}{\frac{5}{12}}=\ans{\dfrac{4}{5}}$\\
+\kakkoshib $P_K(M)=\dfrac{P(K\cap M)}{P(K)}$
+\begin{align*}
+  &1枚目のカードの表になりうる色は12色\\
+  &2枚目のカードの表になりうる色は10色
+\end{align*}
+あるので,1枚目の表と2枚目の表の順列は,$12\times10=120通り$.このうち,$K\cap M$を満たすものは,
+\begin{align*}
+  \begin{cases}
+    &・R_1-B_1\hspace{2mm}or\hspace{2mm}B_2\hspace{2mm}or\hspace{2mm}B_3\hspace{2mm}or\hspace{2mm}B_4\\
+    &・R_2-B_1\hspace{2mm}or\hspace{2mm}B_2\hspace{2mm}or\hspace{2mm}B_3\hspace{2mm}or\hspace{2mm}B_4\\
+    &・R_3-B_1\hspace{2mm}or\hspace{2mm}B_2\hspace{2mm}or\hspace{2mm}B_3\hspace{2mm}or\hspace{2mm}B_4\\
+    &・R_4-B_1\hspace{2mm}or\hspace{2mm}B_2\hspace{2mm}or\hspace{2mm}B_3\hspace{2mm}or\hspace{2mm}B_4\\
+    &・R_5-B_1\hspace{2mm}or\hspace{2mm}B_2\hspace{2mm}or\hspace{2mm}B_4\hspace{2mm}
+  \end{cases}
+\end{align*}
+の合計19通りである.
+$\Y P(K\cap M)=\dfrac{19}{120}$\\
+$\Y P_K(M)=\dfrac{\frac{19}{120}}{\frac{5}{12}}=\ans{\dfrac{19}{50}}$
+\newpage
+\noindent\kakkogob $P_{K\cap M}(L)=\dfrac{P(K\cap M\cap L)}{P(K\cap M)}$\\
+$P(K\cap M\cap L)$について,$K\cap L$を満たすものは,
+\begin{center}
+  \fbox{$R_1$}($R_2$),　\fbox{$R_3$}($R_4$)
+  \end{center}の2つしかない.\\
+  その中でも$L$を満たすものは,
+  \begin{align*}
+    \begin{cases}
+    &・R_1-B_1\hspace{2mm}or\hspace{2mm}B_2\hspace{2mm}or\hspace{2mm}B_3\hspace{2mm}or\hspace{2mm}B_4\\
+    &・R_2-B_1\hspace{2mm}or\hspace{2mm}B_2\hspace{2mm}or\hspace{2mm}B_3\hspace{2mm}or\hspace{2mm}B_4\\
+    &・R_3-B_1\hspace{2mm}or\hspace{2mm}B_2\hspace{2mm}or\hspace{2mm}B_3\hspace{2mm}or\hspace{2mm}B_4\\
+    &・R_4-B_1\hspace{2mm}or\hspace{2mm}B_2\hspace{2mm}or\hspace{2mm}B_3\hspace{2mm}or\hspace{2mm}B_4
+    \end{cases}
+  \end{align*}
+の16通りである.\\
+$\Y P_{K\cap M}(L)=\dfrac{\frac{16}{120}}{\frac{19}{120}}=\ans{\dfrac{16}{19}}$
+\newpage
+\noindent\ba{9$\bullet$3}\theme{反復試行の意味}\\
+\hokukai
 \newpage
 \subsection{論理1(命題・条件・述語論理)}
 \newpage
