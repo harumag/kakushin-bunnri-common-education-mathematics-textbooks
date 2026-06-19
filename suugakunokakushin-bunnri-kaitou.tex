@@ -1018,7 +1018,7 @@ $\Y 求める確率は,\dfrac{2}{6}=\ans{\dfrac{1}{3}}$
 
 \newpage
 \subsection{条件付き確率・反復試行の確率}
-\noindent\ba{8$\bullet$1}\theme{簡単な条件付き確率}\\
+\noindent\ba{9$\bullet$1}\theme{簡単な条件付き確率}\\
 \hokukai$k$人目が当たるという事象を$A_k$とする.\\
 \kakkoichib 二人目が当たる確率.\\
 $P(A_2)=\underline{\p{A_1\cap A_2}}_{\maruichi}\cup\underline{\p{\overline{A_1}\cap A_2}}_{\maruni}$である.\\
@@ -1097,7 +1097,31 @@ $P(K\cap M\cap L)$について,$K\cap L$を満たすものは,
 $\Y P_{K\cap M}(L)=\dfrac{\frac{16}{120}}{\frac{19}{120}}=\ans{\dfrac{16}{19}}$
 \newpage
 \noindent\ba{9$\bullet$3}\theme{反復試行の意味}\\
-\hokukai
+\kangaekata 樹形図を描くと枝の順列の総数は,$\dfrac{5!}{2!3!}$通りあるとわかります.あとは枝の先の1の目が出るか否かを書けばよいので
+どの枝でも確率は同じになります.\\
+\hokukai 樹形図は省略する.\\
+枝の順列の総数は,$\dfrac{5!}{2!3!}=10$通りあるので,求める確率は,
+\begin{align*}
+  10\times\p{\dfrac{1}{6}}^3\times\p{\dfrac{5}{6}}^2=\dfrac{5^3}{6^4\times3}=\ans{\dfrac{125}{3888}}
+\end{align*}\\
+\ba{9$\bullet$4}\theme{公式じゃ解けない反復試行の確率}\\
+\kangaekata 公式では,係数は二項係数なので,解くことができません.ですが,上の問題でやった発想（枝の順列の総数で考える）で解決します.\\
+\hokukai \begin{align*}
+  \begin{cases}
+    ・Aが勝つ\\
+    ・Bが勝つ\\
+    ・引き分け
+  \end{cases}という事象をそれぞれ上から
+  \begin{cases}
+    ・A\\
+    ・B\\
+    ・C
+  \end{cases}とする.
+\end{align*}
+3勝2敗2分けとなるのは,$A,A,A,B,B,C,C$である.\\
+樹形図は省略.\\
+枝の順列の総数は,$\dfrac{7!}{3!2!2!}$通りあるので,求める確率は,
+$\dfrac{7!}{3!2!2!}\times\p{\dfrac{1}{2}}^3\p{\dfrac{1}{6}}^2\p{\dfrac{1}{3}}^2=\ans{\dfrac{35}{432}}$
 \newpage
 \subsection{論理1(命題・条件・述語論理)}
 \newpage
@@ -1521,4 +1545,75 @@ $\Y 求める確率は,\dfrac{9}{3^3}=\ans{\dfrac{1}{3}}$\\
 \kakkonib 6人目が当たる順列も全部で$\comb{6}{2}通り$あるので,$\dfrac{\comb{6}{2}}{\comb{7}{3}}=\ans{\dfrac{3}{7}}$\\\\
 \kakkosanb 3人目と6人目がともに当たる順列は全部で$\comb{5}{1}通り$あるので,$\dfrac{\comb{5}{1}}{\comb{7}{3}}=\ans{\dfrac{1}{7}}$\\\\
 \kakkoshib 当たった人が全員奇数番目に引いた人であるような順列は全部で$\comb{4}{3}$通りあるので,$\dfrac{\comb{4}{3}}{\comb{7}{3}}=\ans{\dfrac{4}{35}}$
+\newpage
+\subsection{9章：条件付き確率・反復試行の確率}
+\noindent\reibanichi\\
+\hokukai Aが白玉を取り出すという事象を$K_0$,Aが白玉1個,赤玉1個を取り出すという事象を$K_1$,Aが赤玉2個を取り出すという事象を
+$K_2$,Bが赤玉2個を取り出すという事象を$L$とおく.\\
+\kakkoichib すべての玉を区別して考えると,Aの取り出す2つの組は$\comb{10}{2}=45通り$あり,どれも対等に起こりうる.そのうち,白玉2個の
+組は$\comb{6}{2}=15通り$あるので,$P(K_0)=\dfrac{15}{45}=\dfrac{1}{3}$\\
+このとき,次にBが玉を取り出すときには袋の中は赤玉4個,白玉5個が入っているので,Bの取り出す2つの組は$\comb{9}{2}=36通り$あり,どれも対等に起こり,その
+うち赤玉2個の組は$\comb{4}{2}=6通り$あるので,$P_{K_0}(L)=\dfrac{6}{36}=\dfrac{1}{6}$\\
+$\Y 求める確率は,P(K_0\cap L)=P(K_0)\times P_{K_0}(L)=\dfrac{1}{3}\times\dfrac{1}{6}=\ans{\dfrac{1}{18}}$\\
+\kakkonib $L=(K_0\cap L)\cup(K_1\cap L)\cup(K_0\cap L)$で,$(K_0\cap L),(K_1\cap L),(K_0\cap L)$はどの2つも
+排反なので,
+\begin{align*}
+  P(L)=P(K_0\cap L)+P(K_1\cap L)+P(K_0\cap L)
+\end{align*}
+\kakkoichi より,$P(K_0\cap L)=\dfrac{1}{18}$\\
+\kakkoichi と同様に考えて,
+\begin{align*}
+&P(K_1\cap L )=P(K_1)\times P_{K_1}(L)=\dfrac{8}{15}\times\dfrac{1}{12}=\dfrac{2}{45}\\
+&P(K_2\cap L)=P(K_2)\times P_{K_2}(L)=\dfrac{2}{15}\times\dfrac{1}{12}=\dfrac{1}{90}
+\end{align*}
+$\Y P(L)=\dfrac{1}{18}+\dfrac{2}{45}+\dfrac{1}{90}=\ans{\dfrac{1}{9}}$\\
+\kakkosanb 求める確率は,$P_{L}(K_0)=\dfrac{P(L\cap K_0)}{P(L)}=\dfrac{\frac{1}{18}}{\frac{1}{9}}=\ans{\dfrac{1}{2}}$
+\newpage
+\noindent\reibanni\\
+\hokukai\kakkoichib $x-y$が1増えるという事象を$K$とおくと,$x-y$が1減るという事象は$\overline{K}$,各時刻において
+$P(K)=P(\overline{K})=\dfrac{1}{2}$である.6秒後に$x-y=0$となるということは,6秒間で$K$が3回,$\overline{K}$が3回起こるという
+ことである.\\
+$\Y 求める確率は,\comb{6}{3}\p{\dfrac{1}{2}}^3\p{\dfrac{1}{2}}^2=\ans{\dfrac{5}{16}}$\\
+\kakkonib 点Pが格子点$(m,n)$にあるとき,$(m+1,n),(m,n+1),(m-1,n),(m,n-1)$に移動するということをそれぞれ$A,B,C,D$とおくと,
+点Pが6秒後に原点Oにあるという事象は,6回の移動で,
+\begin{align*}
+  \begin{cases}
+    \tokeiichi A:3回.C:3回\\
+    \tokeini A:2回,C:2回,B:1回,D:1回\\
+    \tokeisan A:1回,C:1回,B:2回,D:2回\\
+    \tokeishi B:3回,D:3回
+  \end{cases}
+\end{align*}
+の4つに分割でき,
+\begin{align*}
+  &P(i)=P(iv)=\comb{6}{3}\p{\dfrac{1}{4}}^3\p{\dfrac{1}{4}}^3=\dfrac{5}{4^5}\\
+  &P(ii)=P(iii)=\dfrac{6!}{2!2!1!1!}\p{\dfrac{1}{4}}^2\p{\dfrac{1}{4}}^2\p{\dfrac{1}{4}}\p{\dfrac{1}{4}}=\dfrac{45}{4^5}
+\end{align*}
+\tokeiichi$\sim$\tokeishi はいずれも排反なので,求める確率は,
+\begin{align*}
+  P(i)+P(ii)+P(iii)+P(iv)=\dfrac{5}{4^5}+\dfrac{45}{4^5}+\dfrac{45}{4^5}+\dfrac{5}{4^5}=\ans{\dfrac{25}{256}}
+\end{align*}
+\newpage
+\noindent\reibansan\\
+\hokukai\kakkoichib 
+\begin{align*}
+  X=1\doti (L,M)=(1,2),(2,3),(3,4),(4,5),(5,6)
+\end{align*}
+であり,
+\begin{align*}
+  P(L,M)&=(1,2)\\
+  &=P(n回とも1と2がでる)-P(n回とも1が出る)-P(n回とも2が出る)\\
+  &=\p{\dfrac{1}{3}}^n-2\p{\dfrac{1}{6}}^n
+\end{align*}
+他の場合も同様なので,求める確率は,$\ans{5\B{\p{\dfrac{1}{3}}^n-2\p{\dfrac{1}{6}}^n}}$\\
+\kakkonib 1が一度も出ないという事象を$A$,6が一度もでないという事象を$B$とすると,
+\begin{align*}
+  X=5\doti (L,M)=(1,6)
+\end{align*}
+より求める確率は,
+\begin{align*}
+  P(\overline{A}\cap\overline{B})&=1-P(A\cup B)=1-\B{P(A)+P(B)-P(A\cap B)}\\
+  &=1-\B{\p{\dfrac{5}{6}}^n+\p{\dfrac{5}{6}}^n-\p{\dfrac{4}{6}}^n}\\
+  &=\ans{1-2\p{\dfrac{5}{6}}^n+\p{\dfrac{2}{3}}^n}
+\end{align*}
 \end{document}
