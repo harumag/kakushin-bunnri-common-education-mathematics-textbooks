@@ -1123,7 +1123,51 @@ $\Y P_{K\cap M}(L)=\dfrac{\frac{16}{120}}{\frac{19}{120}}=\ans{\dfrac{16}{19}}$
 枝の順列の総数は,$\dfrac{7!}{3!2!2!}$通りあるので,求める確率は,
 $\dfrac{7!}{3!2!2!}\times\p{\dfrac{1}{2}}^3\p{\dfrac{1}{6}}^2\p{\dfrac{1}{3}}^2=\ans{\dfrac{35}{432}}$
 \newpage
+\subsubsection{チュックテストの解答}
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        (1)&(2)&(3)&(4)&(5)&(6)&(7)&(8)&(9)&(10)&(11)&(12)\\
+        \hline
+        A&B&A&A& A&A &B &A &B  &A &A &A\\
+        \hline
+        \hline
+        (13)&(14)&(15)&(16)&(17)&(18)&(19)&(20)&(21)&(22)&(23)&(24)\\
+        \hline
+        A&A&B&B&B&B&B&B&B&B&A&B\\
+        \hline
+        \hline
+        (25)&(26)&(27)&(28)&(29)&(30)&(31)&(32)&(33)&(34)&(35)&(36)\\
+        \hline
+        A&B&A&B&B&A&B&B&B&B&B&B\\
+        \hline
+    \end{tabular}
+\end{center}
+\newpage
 \subsection{論理1(命題・条件・述語論理)}
+\noindent\ba{9$\bullet$1}
+略\\
+\ba{9$\bullet$2}\\
+\kakkoichi $\neg\p{\underbrace{1+1=3}_{偽}}　\Y 真の命題$\ans{A}\\\\
+\kakkoni $1+1=3（\times）\vee1+2=3（\bigcirc）　\Y 真の命題$\ans{A}\\\\
+\kakkosan $1+1=3（\times）\narabaa 1+2=3（\bigcirc）　\Y 真の命題$\ans{A}\\\\
+\kakkoshi $x^2+4x-1　　\Y いずれでもない$\ans{D}\\\\
+\kakkogo $x^2+4x-1=0　\Y xの条件$\ans{C}　ちなみに真理集合は,$\B{x\left|\right.x=-2\pm\sqrt{5}}$\\\\
+\kakkoroku $x^2+4x-1=0を満たすx\in\mathbb{R}は2つある.　\Y 真の命題$\ans{A}\\\\
+\kakkoshichi すべての$x\in\mathbb{R}に対して,x^2+4x+5>0である.$\\
+\kai グラフを描いて,（平方完成して）明らかに成立する.$\Y 真の命題$\ans{A}\\\\
+\kakkohachi ある実数$x$に対して,$x^2+4x+5<0$である.$\doti\exists x,x^2+4x+5<0　\Y 偽の命題$\ans{B}\\\\
+\kakkokyu $\forall x,x^2>-1　\Y 真の命題$\ans{A}\\\\
+\kakkojyu $\forall x,x^2>1　\Y 偽の命題$\ans{B}\\\\
+\kakkojyuichi $\exists x,x^2<-1　\Y 偽の命題$\ans{B}\\\\
+\kakkojyuni $\exists x,x^2<1　\Y 真の命題$\ans{A}\\\\
+\newpage
+\noindent\kakkojyusan $\forall x,x^2>k　\Y kの条件$\ans{C}\\
+\kai $\forall x,x^2>k\doti すべてのxに対して,y=x^2が直線y=kより上側である.\doti k<0$\\
+よって,真理集合は,$\B{k\left|\right.k<0}$\\
+\kakkojyushi $\exists x,x^2<k　\Y kの条件$\ans{C}\\\\
+\kai $\exists x,x^2<k\doti y=x^2が直線y=kよりも下側になるような実数xが少なくとも一つ存在する.\doti k>0$\\
+よって,真理集合は,$\B{k\left|\right.k>0}$
 \newpage
 \subsection{論理2(存在・全称)}
 \newpage
@@ -1616,4 +1660,60 @@ $\Y 求める確率は,\comb{6}{3}\p{\dfrac{1}{2}}^3\p{\dfrac{1}{2}}^2=\ans{\dfr
   &=1-\B{\p{\dfrac{5}{6}}^n+\p{\dfrac{5}{6}}^n-\p{\dfrac{4}{6}}^n}\\
   &=\ans{1-2\p{\dfrac{5}{6}}^n+\p{\dfrac{2}{3}}^n}
 \end{align*}
+\newpage
+\subsection{論理1(命題・条件・述語論理)}
+\noindent\reibanichi\\
+\hokukai \begin{align*}
+  \tokeiichi P\narabaa Q,\tokeini Q\narabaa P,\tokeisan \neg P\narabaa \neg Q
+\end{align*}
+定義より,これらの真理値表は次のようになる.（真の命題を$\bigcirc$,偽の命題を$\times$でかく）
+\begin{center}
+  \begin{tabular}{|c|c||c|c||c||c||c|}
+    \hline
+    $P$ & $Q$ & $\neg P$& $\neg Q$ & $\tokeiichi P\narabaa Q$& $\tokeini Q\narabaa P$&$\tokeisan \neg P\narabaa \neg Q$\\
+    \hline
+    $\bigcirc$& $\bigcirc$&$\times$& $\times$& $\bigcirc$& $\bigcirc$&$\bigcirc$\\
+    \hline
+    $\bigcirc$& $\times$& $\times$& $\bigcirc$& $\times$& $\bigcirc$& $\bigcirc$\\
+    \hline
+    $\times$&$\bigcirc$& $\bigcirc$& $\times$& $\bigcirc$&$\times$& $\times$\\
+    \hline
+    $\times$&$\times$&$\bigcirc$&$\bigcirc$&$\bigcirc$&$\bigcirc$&$\bigcirc$\\
+    \hline
+    
+  \end{tabular}
+\end{center}
+上表より,\tokeiichi と\tokeini,\tokeiichi と\tokeisan の真偽は必ずしも一致しない.\\
+また,\tokeini と\tokeisan の真偽は必ず一致する.\\
+\chud\theme{逆・裏・対偶について}\\
+$\bullet$\hspace{2mm}\tokeini と\tokeisan の関係は「対偶」の関係である.\\
+$\bullet$\hspace{2mm}\tokeiichi と\tokeini の関係は「逆」の関係である.\\
+$\bullet$\hspace{2mm}\tokeiichi と\tokeisan の関係は「裏」の関係である.
+\newpage
+\noindent\reibanni\\
+\hokukai
+\begin{center}
+  \begin{tabular}{|c|c|c||c|c||c|c||c|}
+    \hline
+    $P$& $Q$& $R$& $Q\vee R$& $P\wedge\p{Q\vee R}$&$P\wedge Q$&$P\wedge R$&$\p{P\wedge R}\vee\p{P\wedge R}$\\
+    \hline
+    $\bigcirc$&$\bigcirc$&$\bigcirc$&$\bigcirc$&$\bigcirc$&$\bigcirc$&$\bigcirc$&$\bigcirc$\\
+    \hline
+    $\bigcirc$&$\bigcirc$&$\times$&$\bigcirc$&$\bigcirc$&$\bigcirc$&$\times$&$\bigcirc$\\
+    \hline
+    $\bigcirc$&$\times$&$\bigcirc$&$\bigcirc$&$\bigcirc$&$\times$&$\bigcirc$&$\bigcirc$\\
+    \hline
+    $\times$&$\bigcirc$&$\bigcirc$&$\bigcirc$&$\times$&$\times$&$\times$&$\times$\\
+    \hline
+    $\bigcirc$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$\\
+    \hline
+    $\times$&$\bigcirc$&$\times$&$\bigcirc$&$\times$&$\times$&$\times$&$\times$\\
+    \hline
+    $\times$&$\times$&$\bigcirc$&$\bigcirc$&$\times$&$\times$&$\times$&$\times$\\
+    \hline
+    $\times$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$&$\times$\\
+    \hline
+  \end{tabular}
+\end{center}
+上表より,$P\wedge\p{Q\vee R}$と$\p{P\wedge Q}\vee \p{P\wedge R}$の真偽は常に一致している.\hspace{2mm}$\blacksquare$
 \end{document}
