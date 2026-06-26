@@ -1224,5 +1224,70 @@ $P,Q$を命題とするとき,その真偽に関わらず,命題の同値関係
 \begin{center}
     $P\wedge\p{Q\vee R}\doti\p{P\wedge Q}\vee \p{P\wedge R}$
 \end{center}
-
+\newpage
+\section{領域の図示}
+\begin{itembox}
+    [l]{\enpitu 4つの領域}
+    2変数関数$f(x,y)$を一つ与えたとき,$xy$平面は次の4つの領域に重複なく分割することができる.
+    \begin{align*}
+        &A=\B{(x,y)\left|\right.f(x,y)>0}（f(x,y)の正領域という）\\
+        &B=\B{(x,y)\left|\right.f(x,y)=0}（f(x,y)の零領域という）\\
+        &C=\B{(x,y)\left|\right.f(x,y)<0}（f(x,y)の負領域という）\\
+        &D=\B{(x,y)\left|\right.f(x,y)が定義できない}
+    \end{align*}
+\end{itembox}\\
+\begin{itembox}
+    [l]{\enpitu 種々の移動}
+    $x,y$の条件$F(x,y)$の真理集合を$P$としたとき,
+    \begin{align*}
+        &F(x-p,y-q)の真理集合は,Pを\tvec<0,1>[p,q] 平行移動した図形\\
+        &F(-x,y)の真理集合は,Pをy軸に関して鏡映移動した図形\\
+        &F(x,-y)の真理集合は,Pをx軸に関して鏡映移動した図形\\
+        &F(y,x)の真理集合は,Pをy=xに関して鏡映移動した図形i.e.逆関数\\
+        &F\p{\frac{x}{k},\frac{y}{k}}の真理集合は,Pを原点中心にk倍に相似拡大した図形\\
+        &F\p{\frac{x}{p},\frac{y}{q}}の真理集合は,Pをx方向にp倍,y方向にq倍に偏倍拡大した図形
+    \end{align*}
+\end{itembox}\\
+\begin{itembox}
+    [l]{\enpitu 対称性}
+    $x,yの条件F(x,y)$の真理集合$P$としたとき,
+    \begin{align*}
+        &「F(-x,y)\narabaa F(x,y)」\narabaa 「Pはy軸対称」\\
+        &「F(x,-y)\narabaa F(x,y)」\narabaa 「Pはx軸対称」\\
+        &「F(-x,-y)\narabaa F(x,y)」\narabaa 「Pは原点対称」\\
+        &「F(y,x)\narabaa F(x,y)」\narabaa 「Pは直線y=xについて対称」
+    \end{align*}
+\end{itembox}
+\newpage
+\noindent\ba{10$\bullet$1}\\
+$f(x,y)=\sqrt{x}-y$に対し,$xy$平面を次の4つの領域に塗り分けよ.
+\begin{align*}
+    &A=\B{(x,y)\left|\right.f(x,y)>0}\\
+        &B=\B{(x,y)\left|\right.f(x,y)=0}\\
+        &C=\B{(x,y)\left|\right.f(x,y)<0}\\
+        &D=\B{(x,y)\left|\right.f(x,y)が定義できない}
+\end{align*}
+\ba{10$\bullet$2}\\
+次の不等式の表す領域を図示せよ.\\
+\kakkoichi$xy\leq1$\\
+\kakkoni$y\leq\frac{1}{x}$\\
+\kakkosan$(x+y)(x-y-2)(x^2+y^2-1)\leq0$\\
+\kakkoshi$(y-\tan x)(x+y)(y-1)<0\wedge-\frac{\pi}{2}<x<\frac{\pi}{2}$\\
+\kakkogo$(\sin2y\geq\sin x)\wedge\p{0\leq x\leq2\pi}\wedge\p{0\leq y\leq2\pi}$\\\\
+\ba{10$\bullet$3}\\
+次の不等式の表す領域を図示せよ.\\
+\kakkoichi $y\leq x^2-2|x|-3$\\
+\kakkoni$|y|\leq\left|x^2-2x-3\right|$\\
+\kakkosan$1\leq\left|\left|x\right|-2\right|+\left|\left|y\right|-2\right|\leq3$
+\newpage
+\begin{center}
+    \ans{10章の問題演習}
+\end{center}
+\noindent\reibanichi 次の不等式の表す領域を図示せよ.\\
+\kakkoichi$xy\geq1$\\
+\kakkoni$(2-xy)(x^2+y^2-5)\leq0$\\
+\kakkosan$(x-1)(x+y)(x-y+2)<0$\\
+\kakkoshi$x(x^2+y-2)(x-y)^2\geq0$\\
+\kakkogo$(\cos2y<\cos x)\wedge\p{0<x<2\pi}\wedge\p{0<y<2\pi}$\\
+\kakkoroku$2\leq\left|\left|x\right|-2\right|+\left|\left|y\right|-1\right|\leq3$
 \end{document}
