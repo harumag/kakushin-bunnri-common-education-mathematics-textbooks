@@ -1290,4 +1290,51 @@ $f(x,y)=\sqrt{x}-y$に対し,$xy$平面を次の4つの領域に塗り分けよ.
 \kakkoshi$x(x^2+y-2)(x-y)^2\geq0$\\
 \kakkogo$(\cos2y<\cos x)\wedge\p{0<x<2\pi}\wedge\p{0<y<2\pi}$\\
 \kakkoroku$2\leq\left|\left|x\right|-2\right|+\left|\left|y\right|-1\right|\leq3$
+\newpage
+\noindent\chud 追加の解説があります.\\
+\begin{itembox}
+    [l]{\enpitu かわりばんこの法則}
+    一般に,二次元平面上では零領域を境に正領域と負領域が交互に現れる.
+\end{itembox}
+この法則の主張を具体的にしましょう.\\
+ex)$y\geq x^2$を図示せよ.\\
+\kai $f(x,y)=y-x^2$とおくと,図示するべき領域は,
+\begin{align*}
+    f(x,y)\geq0\cdots\cdots\maruichi\doti f(x,y)の正領域
+\end{align*}
+である.例えば,$\maruichi$を満たすような$(x,y)$として,$\ans{(x,y)=(0,2)}$がとれる.\\
+これをプロットすると,下図のようになる.
+\begin{center}
+    \begin{tikzpicture}[scale=0.8]
+        \draw[->,>=Latex](-4,0)--(4,0)node[right]{$x$};
+        \draw[->,>=Latex](0,-1)--(0,6)node[above]{$y$};
+        \filldraw[draw=black,fill=black](0,2)circle(2pt);
+        \node[below left]at(0,0){O};
+        \begin{clip}
+        (-4,-1)rectangle(4,6);
+        \draw[thin,smooth]plot(\x,{pow(\x,2)});
+        \node[above right]at(0,2){$\ans{(0,2)}$};
+        \end{clip}
+        \node[right]at(2.5,5){$y=x^2$};
+    \end{tikzpicture}
+\end{center}
+よって,求める領域は,$y=x^2$の内部（正領域）であり,下図の網目部で境界を含む.
+\begin{center}
+    \begin{tikzpicture}[scale=0.8]
+        \begin{clip}
+        (-4,-1)rectangle(4,6.5);
+        \fill[gray!20!white]plot[domain=-2.45:2.45](\x,{pow(\x,2)});
+        \end{clip}
+        \draw[->,>=Latex](-4,0)--(4,0)node[right]{$x$};
+        \draw[->,>=Latex](0,-1)--(0,6)node[above]{$y$};
+        \filldraw[draw=black,fill=black](0,2)circle(2pt);
+        \node[below left]at(0,0){O};
+        \begin{clip}
+        (-4,-1)rectangle(4,6);
+        \draw[thin,smooth]plot(\x,{pow(\x,2)});
+        \node[above right]at(0,2){$\ans{(0,2)}$};
+        \end{clip}
+        \node[right]at(2.5,5){$y=x^2$};
+    \end{tikzpicture}
+\end{center}
 \end{document}
