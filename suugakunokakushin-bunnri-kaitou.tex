@@ -1350,7 +1350,7 @@ $\maruichi$の左辺を$f(x,y)$とおくと,
     \draw[->,>=Latex](-2.5,0)--(2.5,0)node[right]{$x$};
     \draw[->,>=Latex](0,-3)--(0,3)node[above]{$y$};
     \node[right]at({pi/2},{-pi/2+0.02}){$\p{\pi/2,-\pi/2}$};
-    \filldraw({pi/2},{-pi/2})circle(2pt);
+    \filldraw({pi/2},{-pi/2})circle(1pt);
     \node[below right]at({pi/2},0){$\pi/2$};
     \node[below left]at({-pi/2},0){$-\pi/2$};
     \draw[dashed]({pi/4},1)--({pi/4},0)node[below]{$\pi/4$};
@@ -1363,7 +1363,47 @@ $\maruichi$の左辺を$f(x,y)$とおくと,
 \end{center}
 よって,求める領域は上図の網目部で,境界は全て除く.
  \newpage
- \noindent\kakkogob $\p{\sin2y\geq\sin x}\wedge0\leq x\leq2\pi\wedge0\leq y\leq2\pi$
+ \noindent\kakkogob $\p{\sin2y\geq\sin x}\wedge0\leq x\leq2\pi\wedge0\leq y\leq2\pi$\\
+ $f(x,y)=\sin2y-\sin x$とおくと,
+ \begin{align*}
+  f(x,y)=0&\doti \sin2y=\sin x\doti \cos\p{2y-\dfrac{\pi}{2}}=\cos\p{x-\dfrac{\pi}{2}}\\
+  &\doti 2y-\dfrac{\pi}{2}=\pm\p{x-\dfrac{\pi}{2}}+2n\pi（n\in\mathbb{Z}）\\
+  &\doti y=\dfrac{1}{2}x+n\pi\vee y=-\dfrac{1}{2}x+\dfrac{2n+1}{2}\pi（n\in\mathbb{Z}）
+ \end{align*}
+ ここで,
+ \begin{align*}
+  f\p{\dfrac{\pi}{2},0}=-1<0
+ \end{align*}
+ である.よって,下図を得る.
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->,>=Latex](-1,0)--(8,0)node[right]{$x$};
+    \draw[->,>=Latex](0,-4)--(0,8)node[above]{$y$};
+    \begin{scope}
+      \clip(-2,-3.15)rectangle(10,8);
+      \draw[very thick,domain=-2:9]plot(\x,{0.5*\x-pi});
+      \draw[very thick,domain=-1:9]plot(\x,{0.5*\x});
+      \draw[very thick,domain=-1:9]plot(\x,{0.5*\x+pi});
+      \draw[very thick,domain=-1:9]plot(\x,{0.5*\x+2*pi});
+      \draw[very thick,domain=-1:9]plot(\x,{-0.5*\x+pi/2});
+      \draw[very thick,domain=-1:9]plot(\x,{-0.5*\x+pi*1.5});
+      \draw[very thick,domain=-1:9]plot(\x,{-0.5*\x+pi*2.5});
+    \end{scope}
+    \node[above left]at(0,{2*pi}){$2\pi$};
+    \filldraw(0,{2*pi})circle(2pt);
+    \node[above left]at(0,pi){$\pi$};
+    \filldraw(0,pi)circle(2pt);
+    \node[below]at({pi/2},0){$\pi/2$};
+    \filldraw({pi/2},0)circle(2pt);
+    \node[below]at(pi,0){$\pi$};
+    \filldraw(pi,0)circle(2pt);
+    \node[below right]at({2*pi},0){$2\pi$};
+    \filldraw({2*pi},0)circle(2pt);
+    \draw[dashed]({pi/2},{2.5*pi})--({pi/2},0);
+    \draw[dashed]({3*pi/2},{2.5*pi})--({3*pi/2},0)node[below]{$3\pi/2$};
+    \filldraw({3*pi/2},0)circle(2pt);
+  \end{tikzpicture}
+\end{center}
 \newpage
 \subsection{同値変形1(無理関数・分数関数)}
 \newpage
