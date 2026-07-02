@@ -1377,6 +1377,13 @@ $\maruichi$の左辺を$f(x,y)$とおくと,
  である.よって,下図を得る.
 \begin{center}
   \begin{tikzpicture}
+    \begin{scope}
+      \fill[gray!20](0,pi)--({pi/2},{5*pi/4})--(0,{3*pi/2})--cycle;
+      \fill[gray!20](0,0)--({pi/2},{pi/4})--(0,{pi/2})--cycle;
+      \fill[gray!20]({pi/2},{pi/4})--(pi,0)--({2*pi},0)--({5*pi/2},{pi/4})--({3*pi/2},{3*pi/4})--cycle;
+      \fill[gray!20]({pi/2},{5*pi/4})--({3*pi/2},{3*pi/4})--({5*pi/2},{5*pi/4})--({3*pi/2},{7*pi/4})--cycle;
+      \fill[gray!20](pi,{2*pi})--({3*pi/2},{7*pi/4})--({2*pi},{2*pi})--cycle;
+    \end{scope}
     \draw[->,>=Latex](-1,0)--(8,0)node[right]{$x$};
     \draw[->,>=Latex](0,-4)--(0,8)node[above]{$y$};
     \begin{scope}
@@ -1388,6 +1395,9 @@ $\maruichi$の左辺を$f(x,y)$とおくと,
       \draw[very thick,domain=-1:9]plot(\x,{-0.5*\x+pi/2});
       \draw[very thick,domain=-1:9]plot(\x,{-0.5*\x+pi*1.5});
       \draw[very thick,domain=-1:9]plot(\x,{-0.5*\x+pi*2.5});
+      \draw[dashed](0,{2*pi})--(10,{2*pi});
+      \draw[dashed](pi,0)--(pi,8);
+      \draw[dashed]({2*pi},0)--({2*pi},8);
     \end{scope}
     \node[above left]at(0,{2*pi}){$2\pi$};
     \filldraw(0,{2*pi})circle(2pt);
@@ -1402,8 +1412,87 @@ $\maruichi$の左辺を$f(x,y)$とおくと,
     \draw[dashed]({pi/2},{2.5*pi})--({pi/2},0);
     \draw[dashed]({3*pi/2},{2.5*pi})--({3*pi/2},0)node[below]{$3\pi/2$};
     \filldraw({3*pi/2},0)circle(2pt);
+    \node[left]at(0,-pi){$-\pi$};
+    \filldraw(0,-pi)circle(2pt);
+    \node[below left]at(0,{pi/2}){$\pi/2$};
+    \filldraw(0,{pi/2})circle(2pt);
+    \node[below left]at(0,{3*pi/2}){$3\pi/2$};
+    \filldraw(0,{3*pi/2})circle(2pt);
   \end{tikzpicture}
 \end{center}
+よって,求める領域は,上図の網目部で,境界すべて含む.\\\\
+\chu　 $\cos\alpha=\cos\beta\doti\alpha=\pm\beta+2n\pi（n\in\mathbb{Z}）$
+\newpage
+\noindent\ba{10$\bullet$3}\theme{絶対値付きの領域の図示}\\
+\kangaekata 絶対値がつくと対称性が良くなります.対称性を上手く使いながら解いて行きましょう.\\
+\hokukai\kakkoichib$y\leq x^2-2|x|-3\cdots\cdots\maruichi$\\
+$\maruichi$の真理集合を$P$とおくと,
+\begin{align*}
+  (x,y)\in P\narabaa(-x,y)\in P
+\end{align*}
+なので,$P$は$y$軸対称である.\\
+よって,求める領域は,$x\geq0$の部分のみまず描いて,$y$軸に関して折り返せば良い.\\
+$x\geq0$の部分は,$y\leq x^2-2x-3$である.
+\begin{center}
+  \begin{tikzpicture}[scale=0.6]
+  \node[below left]at(0,0){O};
+  \begin{scope}
+    \clip({-1/2},-5)rectangle(4,5);
+    \fill[gray!20](0,6)--(4,6)--(4,-5)--(0,-5)--cycle;
+    \fill[white](0,5)--plot[domain=0:4](\x,{\x*\x-2*\x-3});
+  \end{scope}
+
+  \begin{scope}
+    \draw[samples=500,domain=0:4]plot(\x,{\x*\x-2*\x-3});
+  \end{scope}
+  \node[above right]at(0,-3){$-3$};
+  \node[above left]at(3,0){3};
+  \draw[->,>=Latex]({-1/2},0)--(4.2,0)node[right]{$x$};
+  \draw[->,>=Latex](0,-5)--(0,5)node[above]{$y$};
+  \node[above right]at(4.3,5){$y=x^2-2x-3$};
+  \end{tikzpicture}
+\end{center}
+これを$y$軸に関して折り返すと次図を得る.
+\begin{center}
+\begin{tikzpicture}[scale=0.6]
+  \node[below left]at(0,0){O};
+  \begin{scope}
+    \clip(-4,-5)rectangle(4,5);
+    \fill[gray!20](-4,6)--(0,6)--(4,6)--(4,-5)--(0,-5)--(-4,-5)--cycle;
+    \fill[white](0,5)--plot[domain=-4:4](\x,{\x*\x-2*\x-3});
+    \fill[white](-4,5)--plot[domain=-4:2](\x,{\x*\x+2*\x-3});
+    \draw[dashed](-1,-4)--(0,-4)node[below left]{$-4$}--(1,-4);
+  \end{scope}
+
+  \begin{scope}
+        \clip(-4,-5)rectangle(4,5);
+    \draw[very thick,samples=500,domain=-2:4]plot(\x,{\x*\x-2*\x-3});
+    \draw[very thick,samples=500,domain=-4:2]plot(\x,{\x*\x+2*\x-3});
+  \end{scope}
+
+  \node[ right]at(0,-3){$-3$};
+  \node[above left]at(3,0){3};
+  \draw[->,>=Latex](-4.2,0)--(4.2,0)node[right]{$x$};
+  \draw[->,>=Latex](0,-5)--(0,5)node[above]{$y$};
+  \node[above right]at(4.3,5){$y=x^2-2x-3$};
+  \node[above left]at(-4.3,5){$y=x^2+2x-3$};
+  \node[below left]at(0,0){O};
+  \node[above right]at(-3,0){$-3$};
+  \node[above right]at(-1,0){$-1$};
+  \node[above left]at(1,0){1};  
+  \draw[dashed](-1,0)--(-1,-4);
+  \draw[dashed](1,0)--(1,-4);
+\end{tikzpicture}
+\end{center}
+よって,求める領域は,上図の網目部で境界すべて含む.
+\newpage
+\noindent\kakkonib$|y|\leq\left|x^2-2x-3\right|\cdots\cdots\maruichi$\\
+$\maruichi$の真理集合を$P$とすると
+\begin{align*}
+  (x,y)\in P\narabaa(x,-y)\in P
+\end{align*}
+なので,$Pはx軸に関して$対称である.\\
+よって,求める領域は,まず$y\geq0$の部分のみ描いて,$x軸に関して折り返せば良い.$
 \newpage
 \subsection{同値変形1(無理関数・分数関数)}
 \newpage
