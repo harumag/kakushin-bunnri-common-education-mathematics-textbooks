@@ -1337,4 +1337,55 @@ ex)$y\geq x^2$を図示せよ.\\
         \node[right]at(2.5,5){$y=x^2$};
     \end{tikzpicture}
 \end{center}
+\newpage
+\section{全称と存在}
+\begin{itembox}
+    [l]{\enpitu 束縛変数と従属変数}
+    $\bullet$他の文字に変えても主張の意味が変わらない文字のことを\ans{束縛変数}という.\\
+    $\bullet$そうでない文字のことを\ans{自由変数}という.\\
+\end{itembox}\\
+\begin{itembox}
+    [l]{\enpitu 群}
+    ある集合$G$に対して,次の性質を満たすとき,$\ans{Gは群である}という.$
+    \begin{align*}
+        &a,b,c\in Gに対して,二項演算*が定義されているとする.\\
+        &\kakkoichi a*(b*c)=(a*b)*c（結合法則が成立する）\\
+        &\kakkoni \exists e\in G　s.t　\forall a\in G,a*e=e*a=a（単位元の存在）\\
+        &\kakkosan \forall a\in G,\exists a^{-1},a*a^{-1}=a^{-1}*a=e（逆元の存在）
+    \end{align*}
+\end{itembox}\\
+\begin{itembox}
+    [l]{\enpitu アーベル群}
+    群の\kakkoichi$\sim$\kakkosan の性質に加えて次の性質が成り立つとき,\ans{$G$はアーベル群である}という.
+    \begin{align*}
+        a*b=b*a（交換法則が成立する.）
+    \end{align*}
+    つまり,$G$に可換性を付与したものである.
+\end{itembox}\\
+\begin{itembox}
+    [l]{\enpitu 環（ring）}
+    ある集合$R$に対して,群の性質に加えて,次の性質を満たすとき,$\ans{Rは環である}$という.
+    \begin{align*}
+        &a,b,c\in Rに対して,以下が成立する.\\
+        &・a(b+c)=ab+ac（左分配法則）\\
+        &・(a+b)c=ac+bc（右分配法則）
+    \end{align*}
+    さらに,可換性があるものを$\ans{Rは可換環である}という.$
+\end{itembox}\\
+\begin{itembox}
+    [l]{\enpitu 体}
+    ある集合$K$に対して,可換環であって,さらに割り算ができる集合$K$を$\ans{Kは体である}$という.
+\end{itembox}\\
+\begin{itembox}
+    [l]{\enpitu 数の集合の略記}
+    \begin{align*}
+        &\bullet 自然数全体の集合を\mathbb{N}で表す.\\
+        &\bullet 整数全体の集合を\mathbb{Z}で表す.\\
+        &\bullet 有理数全体の集合を\mathbb{Q}で表す.\\
+        &\bullet 実数全体の集合を\mathbb{R}で表す.\\
+        &\bullet 複素数全体の集合を\mathbb{C}で表す.\\
+        &\bullet 四元数全体の集合を\mathbb{H}で表す.\\
+        &\bullet 八元数全体の集合を\mathbb{O}で表す.
+    \end{align*}
+\end{itembox}
 \end{document}
