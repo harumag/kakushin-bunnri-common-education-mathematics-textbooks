@@ -1342,7 +1342,7 @@ ex)$y\geq x^2$を図示せよ.\\
 \begin{itembox}
     [l]{\enpitu 束縛変数と従属変数}
     $\bullet$他の文字に変えても主張の意味が変わらない文字のことを\ans{束縛変数}という.\\
-    $\bullet$そうでない文字のことを\ans{自由変数}という.\\
+    $\bullet$そうでない文字のことを\ans{自由変数}という.
 \end{itembox}\\
 \begin{itembox}
     [l]{\enpitu 群}
@@ -1387,5 +1387,69 @@ ex)$y\geq x^2$を図示せよ.\\
         &\bullet 四元数全体の集合を\mathbb{H}で表す.\\
         &\bullet 八元数全体の集合を\mathbb{O}で表す.
     \end{align*}
+\end{itembox}\\
+（演習）\\
+次の日本語の文を論理記号を用いて書き直せ.\\
+\kakkoichi $m$は0以上の整数である.\\
+\kakkoni $f(x)=0$を満たすような実数$x$が少なくとも一つ存在する.\\
+\kakkosan どんな実数$x$に対しても$x^2$は必ず0以上になる.\\
+\kakkoshi 自然数$n$に対し定義された数列$\B{a_n}$の各項は全て整数になる.\\\\
+\begin{itembox}
+    [l]{\enpitu $\forall$と$\exists$の混合文}
+    $\ans{\forall と\exists の順序が変わると,全く違う主張になることに注意せよ.}$
+    \begin{align*}
+        &ex)\\
+        &\bullet \forall x,\exists y,P(x,y)と\exists y,\forall x,P(x,y)では全く意味が異なる.\\
+        &\bullet \forall x,\forall y,P(x,y)と\forall y,\forall y,P(x,y)は同じ意味である.\\
+        &まとめて,\forall(x,y),P(x,y)と書いたり,
+        \forall\tvec<0,1>[x,y],P(x,y)と書くことが多い.\\
+        &\bullet\exists x,\exists y,P(x,y)と\exists y,\exists x,P(x,y)は同じ意味である.\\
+        &まとめて,\exists(x,y),P(x,y)と書いたり,
+        \exists\tvec<0,1>[x,y],P(x,y)と書くことが多い.
+    \end{align*}
+\end{itembox}\\
+\begin{itembox}
+    [l]{\enpitu 0文字の条件が命題}
+    次のような主張があったとする.
+    \begin{align*}
+        \underline{\exists a,\underline{\forall b,\underline{\exists c,(a,b,cの条件)}_{\marusan}}_{\maruni}}_{\maruichi}
+    \end{align*}
+    $\maruichi は,a,b,cに無関係な命題である.$\\
+    $\maruni は,b,cに無関係なaの条件である.$\\
+    $\marusan は,cとは無関係なa,bの条件である.$
 \end{itembox}
+\newpage
+\noindent\ba{11$\bullet$1}\\
+次の条件の真理集合を$ab$平面に図示せよ.\\
+\kakkoichi$\forall x,ax+b$\\
+\kakkoni$\exists x,ax+b$\\
+\kakkosan$\forall x,x^2-2ax+b\geq0$\\
+\kakkoshi$\exists x,ax^2-2bx-1\geq0$\\\\
+\ba{11$\bullet$2}\\
+次の命題の真偽を判定せよ.\\
+\kakkoichi$「\forall x,\exists y,x>y」$\\
+\kakkoni$「\exists y,\forall x,x>y」$\\\\
+\ba{11$\bullet$3}\\
+次の主張を日本語を一切使わずに数式及び数学でしようする記号のみで書き,命題の場合はその真偽を判定せよ.\\
+\kakkoichi$xの2次方程式x^2+2x-1=0は有理数解をもつ.$\\
+\kakkoni$\tan\theta=2を満たす鈍角\theta が存在する.$\\
+\kakkosan$1<x<2を満たすすべてのxに対して,x^2-3x<0$である.\\
+\kakkoshi$放物線y=x^2と直線y=x+1$は共有点を持つ.
+\newpage
+\begin{center}
+    \ans{11章の問題演習}
+\end{center}
+\reibanichi 次の主張を日本語を一切使わずに数式及び数学で使用する記号のみを用いて表せ.\\
+\kakkoichi $nは整数である.$\\
+\kakkoni$二つのxの二次方程式x^2-x=0,x^2-2x-3=0はともに実数解をもつ.$\\
+\kakkosan$二つのxの二次方程式x^2-x=0,x^2-2x-3=0は共通解をもつ.$\\
+\kakkoshi$どんな正の数aに対しても,xの方程式x^2=aは実数解を持つ.$\\
+\kakkogo$数列\B{a_n}は等差数列である.$\\
+\kakkoroku$有理数は必ず既約分数で表せる.$\\
+\kakkoshichi$xの方程式f(x)=0は少なくとも一つ実数解を持つ.$\\
+\kakkohachi$xの方程式f(x)=0は異なる二つの実数解をもつ.$\\
+\kakkokyu$どんな大きい数を見つけても,それより大きな数がある.$\\
+\kakkojyu$関数f(x)の最大値は4である.$\\
+\reibanni\\
+　チェックテストの(9)$\sim$(12)を確認せよ.
 \end{document}
