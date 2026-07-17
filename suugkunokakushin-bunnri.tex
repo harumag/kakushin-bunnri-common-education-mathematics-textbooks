@@ -1452,4 +1452,136 @@ ex)$y\geq x^2$を図示せよ.\\
 \kakkojyu$関数f(x)の最大値は4である.$\\
 \reibanni\\
 　チェックテストの(9)$\sim$(12)を確認せよ.
+\newpage
+\section{必要と十分,同値変形1}
+\begin{itembox}
+    [l]{\enpitu 条件と条件をつなぐとは}
+    $P(x),Q(x)$をそれぞれ$x$の条件とする.このとき,
+    \begin{align*}
+        P(x)\narabaa Q(x)　　\cdots\maruichi
+    \end{align*}
+    は$x$の条件であり,
+    \begin{align*}
+        \forall x,P(x)\narabaa Q(x)　　\cdots\maruni
+    \end{align*}
+    は命題である.この命題$\maruni$を先頭の$\forall x$を省略して,
+    \begin{align*}
+        P(x)\narabaa Q(x)　　\cdots\marusan
+    \end{align*}
+    と書くことが多い.ほとんどの場合,$\marusan$の意味で解釈する.\\
+    つまり,
+    \begin{center}
+        $\ans{条件と条件をつなぐ\narabaa は先頭に\forall が省略されていると考えよ.}$
+    \end{center}
+\end{itembox}\\
+\begin{itembox}
+    [l]{\enpitu 前提条件}
+    $p,q,r$を条件とする.
+    \begin{align*}
+        p\wedge q\narabaa p\wedge r
+    \end{align*}
+    という主張を,
+    \begin{align*}
+        pの下で,q\narabaa r
+    \end{align*}
+    や
+    \begin{align*}
+        pのとき,q\narabaa r
+    \end{align*}
+    などと言うことがある.この$p$を「前提条件」という.\\
+    \chu これは,$\ans{(pのときq)\narabaa r}$とは全く違う主張であることに注意せよ.
+\end{itembox}
+\newpage
+\begin{itembox}
+    [l]{\enpitu 必要条件と十分条件と部分集合}
+    二つの条件$p,q$の真理集合をそれぞれ,$P,Q$とする.このとき,
+    \begin{center}
+        $P\narabaa Q\doti P\subset Q$
+    \end{center}
+    である.\\
+    これは,「札幌と北海道」や「東京と東久留米」と解釈すれば当たり前である.
+\end{itembox}\\
+まずは,必要と十分の演習です.\\
+\ba{12$\bullet$1}\\
+文字は全て実数で考えるものとする.このとき,以下に質問に答えよ.また,$\doti$の質問において,正しくないならば$\marubatu,\batumaru,\batubatu $のいずれなのか答えよ.\\
+\kakkoichi 「$1+1=0\narabaa 1+1=1」$は正しいか.\\
+\kakkoni $「x>1\narabaa x^2>1」$は正しいか.\\
+\kakkosan $「x^2>1\narabaa x>1」$は正しいか.\\
+\kakkoshi $「y=\sqrt{x}\doti y^2=x」$は正しいか.\\
+\kakkogo $「y\geq\sqrt{x}\doti y^2\geq x」$は正しいか.\\
+\kakkoroku$「y\leq\sqrt{x}\doti y^2\leq x」$は正しいか.\\
+\chu \kakkoshi$\sim$\kakkoroku は次回の同値変形2で扱います.
+\newpage
+ここからは,「分数関数」「絶対値」の同値変形を扱います.すべての同値変形は考えれば当たり前です.自分で作れるようにしてください.\\
+\begin{itembox}
+    [l]{\enpitu 分数の処理}
+    文字はすべて実数とする.
+    \begin{align*}
+        &\kakkoichi \dfrac{A}{B}=0\doti \begin{cases}
+            A=0\\
+            B\neq0
+        \end{cases}\\\\
+        &\kakkoni \dfrac{A}{B}>0\doti AB>0\\
+        &\kakkosan \dfrac{A}{B}<0\doti AB<0\\
+        &\kakkoshi \dfrac{A}{B}\geq0\doti\begin{cases}
+            AB\geq0\\
+            B\neq0
+        \end{cases}\\\\
+        &\kakkogo\dfrac{A}{B}\leq0\doti\begin{cases}
+            AB\leq0\\
+            B\neq0
+        \end{cases}
+    \end{align*}
+\end{itembox}\\
+\begin{itembox}
+    [l]{\enpitu 絶対値の処理}
+    文字はすべて実数とする.
+    \begin{align*}
+        &\kakkoichi\sqrt{A^2}=\left|A\right|\\
+        &\kakkoni A\geq0のとき,\left|A\right|=A,　A\leq0のとき,\left|A\right|=-A\\\\
+        &\kakkosan \left|A\right|=k\doti\begin{cases}
+            k\geq0\\
+            A=\pm k
+        \end{cases}\\\\
+        &\kakkoshi\left|A\right|<k\doti-k<A<k\\
+        &\kakkogo\left|A\right|>k\doti (A>k)\vee (A<-k) 
+    \end{align*}
+\end{itembox}
+\newpage
+\noindent\ba{12$\bullet$2}\\
+次の不等式を解け.
+\begin{align*}
+    \dfrac{4(x-1)}{x}\leq4-x
+\end{align*}
+ \hspace{10cm}（大阪大）\\\\
+\ba{12$\bullet$3}\\
+次の方程式・不等式を解け.\\
+\kakkoichi $\left|x^2-2x-4\right|=x+1$\\
+\kakkoni $\left|2x-1\right|+\left|x+2\right|<4$\\\\
+\ba{12$\bullet$4}\\
+次の条件の真理集合を同値変形で変形したのちに図示せよ.\\
+\kakkoichi$x=\dfrac{2}{1+\p{\frac{y}{x}}^2}$\\
+\kakkoni$\dfrac{1}{x}-\dfrac{1}{y}\geq1$\\
+\kakkosan$\left|x+y\right|+\left|x-y\right|\leq1$
+\newpage
+\begin{center}
+    \ans{12章の問題演習}
+\end{center}
+\reibanichi 次の空欄に当てはまるものを,下の(a)$\sim$(d)から選べ.\\
+\kakkoichi 実数$x$について,$x=1$であることは,$x^2+3x-4=0$であるための\Bc{ア}.\\
+\kakkoni 実数$x,y$について,$\begin{cases}
+    x+y=1\\
+    y=0
+\end{cases}$であることは,$x=1$であるための\Bc{イ}.\\
+\kakkosan 実数$x,y$について,$x^2+y^2\leq1$であることは,$|x|+|y|\leq1$であるための\Bc{ウ}.\\\\
+(a)必要十分条件である\\
+(b)必要条件であるが,十分条件ではない\\
+(c)十分条件であるが,必要条件ではない\\
+(d)必要条件でも十分条件でもない\\\\
+\reibanni チェックテストの\kakkojyusan$\sim$(24) を確認せよ.\\\\
+\reibansan 次の方程式・不等式を同値変形により解け.\\
+\kakkoichi $\dfrac{1}{x-1}+\dfrac{2}{x-2}\leq1$\\
+\kakkoni$|x-5|-|2x+1|=1$\\
+\kakkosan$|2x-1|+|x-1|<3$\\\\
+\reibanshi チェックテストの(29)$\sim$(30)を確認せよ.
 \end{document}
