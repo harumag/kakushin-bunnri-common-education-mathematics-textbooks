@@ -1675,4 +1675,56 @@ ex)$y\geq x^2$を図示せよ.\\
     x-y>\sqrt{x^2+y^2-2}
 \end{align*}\\
 \reibansan チェックテストの(25)$\sim$(28)を確認せよ.
+\newpage
+\section{同値変形3（連立方程式）}
+\begin{itembox}
+    [l]{\enpitu 代入したら代入した方を残せ!}
+    連立方程式などの\ans{式を一本減らす操作}は,通常同値ではありません.次のようにすると同値変形になります.
+    \begin{align*}
+        &\kakkoichi\begin{cases}
+            y=f(x)\\
+            G(x,y)=0
+        \end{cases}\doti\begin{cases}
+            y=f(x)\\
+            G\p{x,f(x)}=0
+        \end{cases}\\\\
+        &\kakkoni\begin{cases}
+            y=f(x)\\
+            G(x,y)>0
+        \end{cases}\doti\begin{cases}
+            y=f(x)\\
+            G\p{x,f(x)}>0
+        \end{cases}
+    \end{align*}
+\end{itembox}
+\newpage
+\noindent\ba{14$\bullet$1}\\
+次の連立方程式を解け.\\
+\kakkoichi$\begin{cases}
+    y=x+1\\
+    x^2+y^2=1
+\end{cases}$\\\\
+\kakkoni$\begin{cases}
+    x^2+xy+y^2=4\\
+    x^2-xy+y^2=2
+\end{cases}$\\\\
+\ba{14$\bullet$2}\\
+次の変形は正しいかどうか答えよ.\\
+\kakkoichi$\begin{cases}
+    x=\cos\theta\\
+    y=\sin\theta
+\end{cases}\narabaa\begin{cases}
+    x^2+y^2=1
+\end{cases}$\\\\
+\kakkoni$x^2+y^2=1\narabaa\begin{cases}
+    x=\cos\theta\\
+    y=\sin\theta
+\end{cases}$\\\\
+\ba{14$\bullet$3}\\
+$m$が偶数であることが分かっている.次の記述のうち正しい記述をすべて選べ.\\
+$\kakkoichi mは偶数なので,m=2nである.\\
+\kakkoni mは偶数なので,m=2n（n\in\mathbb{Z}）である.\\
+\kakkosan mは偶数なので,m=2n（n\in\mathbb{Z}）と表せる.\\
+\kakkoshi mは偶数なので,m=2n（nは任意の整数）である.\\
+\kakkogo mは偶数なので,m=2n（nは任意の整数）と表せる.$
 \end{document}
