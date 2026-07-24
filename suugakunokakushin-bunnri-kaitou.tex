@@ -1846,6 +1846,118 @@ $\Y\ans{偽の命題}$\\\\
   \end{tikzpicture}
 \end{center}
 \newpage
+\subsection{同値変形2（無理関数・無理不等式）}
+\noindent\ba{13$\bullet$1}\theme{グラフが描けない無理不等式}\\
+\kangaekata 教科書で勉強する解き方は,グラフがすぐに描けるので,グラフを描いて解くことができていましたが,実際の入試問題では,描けないことの方が多いです.ですので,
+同値変形を用いましょう.\\
+\hokukai$2-x-x^2<\sqrt{2(x-1)(x^2-2)}\cdots\cdots\maruichi$\\
+一般に,\begin{align*}
+  Y<\sqrt{X}\doti\p{Y^2<X}\vee\begin{cases}
+    X\geq0\\
+    Y<0
+  \end{cases}
+\end{align*}
+が成立するので,
+\begin{align*}
+  \maruichi\doti(x+2)^2(x-1)^2<2(x-1)(x^2-2)\cdots\cdots\maruni\vee\begin{cases}
+    2(x-1)(x^2-2)\geq0\cdots\cdots\marusan\\
+    -(x+2)(x-1)<0\cdots\cdots\marushi
+  \end{cases}
+\end{align*}
+これより,
+\begin{align*}
+  \maruni&\doti(x-1)\B{(x+2)^2(x-1)-2(x^2-2)}<0\\
+  &\doti (x-1)x^2(x+1)<0（\temarkua 4次関数のグラフとして処理する）\\
+  &\doti -1<x<0\vee 0<x<1
+\end{align*}
+また,
+\begin{align*}
+  \begin{cases}
+    \marusan\\
+    \marushi
+  \end{cases}&\doti\begin{cases}
+    -\sqrt{2}\leq x\leq1\vee x\geq\sqrt{2}\\
+    x<-2\vee x>1
+  \end{cases}\\
+  &\doti x\geq\sqrt{2}
+\end{align*}
+$\Y 以上より,\maruichi\doti\ans{-1<x<0\vee 0<x<1\vee x\geq\sqrt{2}}$
+\newpage
+\noindent\ba{13$\bullet$2}\\
+\hokukai\kakkoichib$x-y=\sqrt{x^2+y^2-2}\cdots\cdots\maruichi$\\
+一般に,
+\begin{align*}
+  Y=\sqrt{X}\doti\begin{cases}
+    Y^2=X\\
+    Y\geq0
+  \end{cases}
+\end{align*}
+なので,
+\begin{align*}
+  \maruichi\doti\begin{cases}
+    (x-y)^2=x^2+y^2-2\\
+    x-y\geq0
+  \end{cases}\doti\begin{cases}
+    xy=1\\
+    y\leq x
+  \end{cases}
+\end{align*}
+これを,図示すると下図のようになる.
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->,>=Latex](-2,0)--(4,0)node[right]{$x$};
+    \draw[->,>=Latex](0,-4)--(0,4)node[above]{$y$};
+    \draw[dashed,domain=-2:3.5]plot(\x,\x)node[right]{$y=x$};
+    \draw[very thick,domain=1:4]plot(\x,{1/\x});
+    \draw[very thick,domain=-1:-0.25]plot(\x,{1/\x});
+    \filldraw[fill=black,draw=black](1,1)circle(2pt);
+    \filldraw[fill=black,draw=black](-1,-1)circle(2pt);
+    \node[above left]at(0,0){O};
+    \draw[dashed](0,1)node[left]{1}--(1,1)--(1,0)node[above]{1};
+    \draw[dashed](-1,0)node[above]{$-1$}--(-1,-1)--(0,-1)node[right]{$-1$};
+  \end{tikzpicture}
+\end{center}
+\newpage
+\noindent\kakkonib$x-y+\sqrt{4-2xy}\leq0\cdots\cdots\maruni$\\
+一般に,\begin{align*}
+  Y\geq\sqrt{X}\doti\begin{cases}
+    Y^2\geq X\\
+    X\geq0\\
+    Y\geq0
+  \end{cases}
+\end{align*}
+なので,
+\begin{align*}
+ \maruichi\doti \begin{cases}
+    (x-y)^2\geq4-2x\\
+    4-2xy\geq0\\
+    y\geq x
+  \end{cases}\doti\begin{cases}
+    x^2+y^2\geq4\\
+    xy\leq2\\
+    y\geq x
+  \end{cases}
+\end{align*}
+これを図示すると,下図の網目部のようになる.
+\begin{center}
+  \begin{tikzpicture}
+    %関数のscope
+    \begin{scope}
+      \clip(-3,-3)rectangle(3,3);
+      \draw(0,0)circle[radius=2];
+      \draw[dashed,domain=-3:2]plot(\x,\x)node[above ]{$y=x$};
+      \draw[very thick,domain=0.2:3]plot(\x,{2/\x});
+      \draw[very thick,domain=-3:-0.3]plot(\x,{2/\x});
+    \end{scope}
+    \draw[->,>=Latex](-3,0)--(3,0)node[right]{$x$};
+    \draw[->,>=Latex](0,-3)--(0,3)node[above]{$y$};
+    \node[above left]at(-2,0){$-2$};
+    \node[below right]at(0,-2){$-2$};
+    \draw[dashed](0,{sqrt(2)})node[left]{$\sqrt{2}$}--({sqrt(2)},{sqrt(2)})--({sqrt(2)},0)node[below]{$\sqrt{2}$};
+    \draw[dashed](0,-{sqrt(2)})node[right]{$-\sqrt{2}$}--(-{sqrt(2)},-{sqrt(2)})--(-{sqrt(2)},0)node[above]{$-\sqrt{2}$};
+  \end{tikzpicture}
+\end{center}
+\newpage
 
 \section{各章の問題演習-解答}
 \subsection{1章：差分の基礎}
