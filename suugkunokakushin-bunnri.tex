@@ -1727,4 +1727,86 @@ $\kakkoichi mは偶数なので,m=2nである.\\
 \kakkosan mは偶数なので,m=2n（n\in\mathbb{Z}）と表せる.\\
 \kakkoshi mは偶数なので,m=2n（nは任意の整数）である.\\
 \kakkogo mは偶数なので,m=2n（nは任意の整数）と表せる.$
+\newpage
+\begin{center}
+    \ans{14章の問題演習}
+\end{center}
+\reibanichi 次のような答案の意味不明な部分を指摘せよ.\\
+\kakkoichi 問題：3点A$\p{1,1}$,B$\p{3,2}$,C$\p{9,c}$が一直線上にあるとき,$c$を求めよ.\\
+\kai 3点A,B,Cは一直線上にあるので,$\Vec{AC}=k\Vec{AB}$である.これを成分表示すると,
+\begin{align*}
+    \tvec<0,1>[8,c-1]=k\tvec<0,1>[2,1]
+\end{align*}
+これを解くと,$k=4,c=5$より,答えは,$c=5$\\\\
+\kakkoni 問題：$\sqrt{2}$が無理数であることを示せ.\\
+\kai$\sqrt{2}$が有理数であると仮定すると,$\sqrt{2}=\dfrac{p}{q}（p,qは互いに素な整数）$\\
+よって,$p=\sqrt{2}q\doti p^2=2q^2\cdots\cdots\maruichi$\\
+$\maruichi の右辺=偶数より,\maruichi の左辺=偶数で,したがって,p=偶数$\\
+よって,$p=2m（mは整数）$で,
+\begin{align*}
+    \maruichi\doti\p{2m}^2=2q^2\doti2m^2=q^2\cdots\cdots\maruni
+\end{align*}
+$\maruni の左辺=偶数より,\maruni の右辺=偶数で,したがって,q=偶数$\\
+ところが,これでは,$pもqも$偶数になってしまい,$pとq$が互いに素であることに反する.\\
+よって,$\sqrt{2}$は無理数である.
+\newpage
+\section{同値変形4（存在条件の代入原理）}
+この章は,のちに扱う\ans{軌跡・領域・通過領域}で必須の事項になります.いつも以上に気合いをいれていきましょう.
+\begin{itembox}
+    [l]{\enpitu 存在条件の代入原理}
+    $Q(x)$を$x$の条件とする.このとき,
+    \begin{align*}
+        \exists x,\begin{cases}
+            x=\alpha\\
+            Q(x)
+        \end{cases}\doti Q(\alpha)
+    \end{align*}
+\end{itembox}\\
+ex)\\
+\kakkoichi$\exists x,\begin{cases}
+    x=3\\
+    xt+6=0
+\end{cases}\doti3t+6=0\doti t=-2$\\\\
+\kakkoni$\exists x,\begin{cases}
+    ax=2\\
+    3x=b
+\end{cases}\doti a\cdot\frac{b}{3}=2\doti ab=6$\\
+\begin{itembox}
+    [l]{\enpitu 量化記号と$\vee,\wedge$の関係性}
+    \kakkoichi$\exists x,\p{P(x)\wedge Q(x)}\marubatu \p{\exists x,P(x)}\wedge\p{\exists x,Q(x)}$\\\\
+    \kakkoni$\exists x,\p{P(x)\vee Q(x)}\marumaru\p{\exists x,P(x)}\vee\p{\exists x,Q(x)}$\\\\
+    \kakkosan$\forall x,\p{P(x)\wedge Q(x)}\marumaru\p{\forall x,P(x)}\wedge\p{\forall x,Q(x)}$\\\\
+    \kakkoshi$\forall x,\p{P(x)\vee Q(x)}\batumaru\p{\forall x,P(x)}\vee\p{\forall x,Q(x)}$
+\end{itembox}
+\newpage
+\noindent\ba{15$\bullet$1}\\
+次の各条件が成立するための必要十分条件をできるだけ簡単な形で求めよ.文字はすべて実数である.\\
+\kakkoichi $\exists x,\begin{cases}
+    |x|<a\\
+    x+b=2
+\end{cases}$\\
+\kakkoni$\exists x,\begin{cases}
+    ax=2\\
+    bx=c
+\end{cases}$\\
+\kakkosan$\exists x,\begin{cases}
+    ax=a^2\\
+    bx=a+1
+\end{cases}$\\
+\kakkoshi$\exists x,\begin{cases}
+    x^2-kx-1=0\\
+    x^3-k^2x=0
+\end{cases}$\\
+\kakkogo$\exists x,\begin{cases}
+    x^2+ax+b=0\\
+    x^2+bx+a=0
+\end{cases}$
+\newpage
+\begin{center}
+    \ans{15章の問題演習}
+\end{center}
+\reibanichi チェックテストの(31)$\sim$(36)を確認せよ.
+\newpage
+\section{同値変形5（複数文字の存在条件の代入原理）}
+
 \end{document}
