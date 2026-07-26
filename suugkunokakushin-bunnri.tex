@@ -1808,5 +1808,94 @@ ex)\\
 \reibanichi チェックテストの(31)$\sim$(36)を確認せよ.
 \newpage
 \section{同値変形5（複数文字の存在条件の代入原理）}
+同値変形4でやった1文字の存在条件の代入原理とさほど変わりませんが,必要十分になるための条件が増えることが多いです.
+\begin{itembox}
+    [l]{\enpitu ド・モルガンの法則}
+    大人向けのやつです.
+    \begin{align*}
+        &\kakkoichi\neg［\exists x,P(x)］\doti\forall x,\neg P(x)\\
+        &\kakkoni\neg［\forall x,P(x)］\doti\forall x,P(x)
+    \end{align*}
+\end{itembox}
+\newpage
+\noindent\ba{16$\bullet$2}\\
+次の各条件が成り立つための必要十分条件をできるだけ簡単な形で求めよ.\\
+\kakkoichi$\exists x,\begin{cases}
+    x^2-kx+1=0\\
+    x^3-(k+1)x^2-k+4=0
+\end{cases}$\\\\
+\kakkoni$\exists\tvec<0,1>[x,y],\begin{cases}
+    x^2+y^2=1\\
+    y=x+a
+\end{cases}$\\\\
+\kakkosan$\exists\tvec<0,1>[x,y],\begin{cases}
+    x+y=2t\\
+    xy=t+2
+\end{cases}$\\\\
+\kakkoshi$\exists(x,y),\begin{cases}
+    x^2-y^2=1\\
+    y=x^2+k
+\end{cases}$\\
+\kakkogo$\exists(x,y),\begin{cases}
+    x^2-3y^2+6x+9=0\\
+    x^2+y^2-2ax+a^2-1=0
+\end{cases}（東京大）$\\
+\ba{16$\bullet$2}\\
+実数$b$をどのように定めても,$-1\leq x\leq1$の範囲の適当な$x$をとることによって,$|ax+b|\geq1$が成立するための必要十分条件を求めよ.
+\newpage
+\section{写像1（写像とは）}
+まずは,ウォーミングアップから.\\
+\ba{17$\bullet$1}\\
+グラウンドに1000人の生徒がいます.この中から背が一番高い人を探したいです.どのようにして,探すか思いつく限りアイデアを出してください.
+\newpage
+\begin{itembox}
+    [l]{\enpitu 写像の定義$\maruichi$（ちょっと雑）}
+    $A,B$を空でない集合とし,$a\in A,b\in B$であるとする.\\
+    $Aの元aに対し,Bの元bが$唯一つ対応するようなルール$f$があるとき,この$f$を写像といい,
+    \begin{center}
+        $f：A\to B$や$A\xrightarrow{f}B$
+    \end{center}
+    と書く.
+\end{itembox}
+\theme{イメージ}
+\vspace{5cm}
+\begin{itembox}
+    [l]{\enpitu 写像の定義$\maruni$（きちんとした）}
+    空でない集合$A,B$に対し,それぞれの元を$a,b$とする.\\
+    このとき,写像$\Gamma$とは,
+    \begin{center}
+    $\begin{array}{rccc}
+    \Gamma\colon &A                     &\longrightarrow& B                     \\
+        & \rotatebox{90}{$\in$}&               & \rotatebox{90}{$\in$} \\
+        & a                    & \longmapsto   & b
+\end{array}$
+    \end{center}
+    を満たすような,三つ組$\p{\Gamma,A,B}$のことである.\\
+    この$A$のことを\ans{定義域}といい,$B$のことを\ans{終域,値域}などという.\\
+    このとき,$\Gamma$は単射であることに注意せよ.
+\end{itembox}
+\newpage
+\begin{itembox}
+    [l]{\enpitu 順像法と逆像法}
+    三つ組$\p{\Gamma,A,B}$に対して,$\Gamma$による$A$の像（値域）$W=\Gamma\p{A}$を求める方法として,次の2つがある.\\
+        $\bullet 順像法：Aの各元aの\Gamma による像\Gamma(a)を\ans{すべて集める}ことにより,Wを求めようとする考え方.\\
+        \bullet 逆像法：Bの各元bに対して,\ans{b\in Wを満たすb}\\すなわち,\ans{\Gamma(a)=bを満たすaがA内に存在するようなb}$を
+        \ans{すべて集める}ことによって$W$を求めようとする考え方.
+\end{itembox}\\
+\theme{イメージ}
+\newpage
+\noindent\ba{17$\bullet$2}\\
+次の各問に答えよ.\\
+\kakkoichi $x$が全実数を動くとき,2次関数$y=f(x)=x^2-4x+1$の値域を$W_1$とする.$W_1$を求めよ.\\
+\kakkoni $xがx\geq2$を動くとき,関数$f(x)=\frac{x}{x+1}$の値域を$W_2$とする.$W_2$を求めよ.\\\\
+\ba{17$\bullet$3}\\
+$x^2\leq y\leq x+2$のとき,$z=x-2y$の値域$W$を求めよ.
+\newpage
+\begin{center}
+    \ans{17章の問題演習}
+\end{center}
+\reibanichi$\theta$が全実数を動くとき,関数$f(\theta)=\cos\theta+\sin\theta$の値域$W$を求めよ.\\\\
+\reibanni$o\leq x\leq2$のとき,$y=\frac{x^2+3}{x+1}$の値域$W$を求めよ.\\\\
+\reibansan$0\leq x\leq y\leq3$で表される$xy$平面上の領域$D$を$(x,y)$が動くとき,\\2変数関数$z=f(x,y)=x^2-4x+y$の値域$W$を求めよ.
 
 \end{document}
