@@ -1958,6 +1958,228 @@ $\Y 以上より,\maruichi\doti\ans{-1<x<0\vee 0<x<1\vee x\geq\sqrt{2}}$
   \end{tikzpicture}
 \end{center}
 \newpage
+\noindent\ba{13$\bullet$2}\theme{京都大}\\
+\kangaekata 同値変形しましょう.\\
+\hokukai $1\leq\max\B{\underline{4x+4y-3}_{\maruichi},\underline{x^2+y^2}_{\maruni}}\leq5\cdots\cdots\asta$
+とする.
+\begin{align*}
+  \asta&\doti\begin{cases}
+    \max\B{\maruichi,\maruni}\geq1\\
+    \max\B{\maruichi,\maruni}\leq5
+  \end{cases}\doti\begin{cases}
+    \p{\maruichi\geq1}\vee\p{\maruni\geq1}\\
+    \p{\maruichi\leq5}\wedge\p{\maruni\leq5}
+  \end{cases}\\\\
+  &\doti\begin{cases}
+    \p{x+y-1\geq0}\vee\p{x^2+y^2\geq1}\\
+    x+y-2\leq0\\
+    x^2+y^2\leq5
+  \end{cases}
+\end{align*}
+これを図示すると,下図のようになる.
+\begin{center}
+  \begin{tikzpicture}
+    %領域
+    \begin{scope}
+      \clip(-4,-4)rectangle(4,4);
+      \fill[black!20](0,0)circle[radius={sqrt(5)}];
+      \fill[white](0,0)circle[radius=1];
+      \fill[white]({(2-sqrt(6))/2},{(2+sqrt(6))/2})--({(2+sqrt(6))/2},{(2-sqrt(6))/2})
+      --plot[domain={(2+sqrt(6))/2}:{(2-sqrt(6))/2},samples=500](\x,{sqrt(5-pow(\x,2))})--cycle;
+    \end{scope}
+
+    %関数
+    \begin{scope}
+    \clip(-4,-4)rectangle(4,4);
+    \draw[thick](0,0)circle[radius={sqrt(5)}];
+    \draw[thick](0,0)circle[radius=1];
+    \draw[thick]plot(\x,{-\x+2});
+    \draw[thick]plot(\x,{-\x+1});
+    \end{scope}
+
+    %node
+    \draw[->,>=Latex](-4,0)--(4,0)node[right]{$x$};
+    \draw[->,>=Latex](0,-4)--(0,4)node[above]{$y$};
+    \node[below left]at(0,0){O};
+    \node[below]at(0,-{sqrt(5)}){$-\sqrt{5}$};
+    \node[above left]at(-{sqrt(5)},0){$-\sqrt{5}$};
+    \draw({1-sqrt(6)/2},{1+sqrt(6)/2})to[out=60,in=230](3,5)node[right]{$\p{\frac{2-\sqrt{6}}{2},\frac{2+\sqrt{6}}{2}}$};
+    \draw({1+sqrt(6)/2},{1-sqrt(6)/2})to[out=45,in=190](5,2)node[right]{$\p{\frac{2+\sqrt{6}}{2},\frac{2-\sqrt{6}}{2}}$};
+  \end{tikzpicture}
+\end{center}
+上図の網目部が求める領域で,境界全て含む.
+\newpage
+\noindent\ba{13$\bullet$3}\theme{一橋大}\\
+\kangaekata 最後に,数式が一切でてこない形になりますが,そこから意味を考えて絵を書きましょう.\\
+\hokukai $\min\p{\mathrm{PA},\mathrm{PB}}\leq1\leq\min\p{\mathrm{PA},\mathrm{PB}}\doti\begin{cases}
+  \min\p{\mathrm{PA},\mathrm{PB}}\leq1\cdots\cdots\maruichi\\
+  \min\p{\mathrm{PA},\mathrm{PB}}\geq1\cdots\cdots\maruni
+\end{cases}\cdots\cdots\asta$
+\begin{align*}
+  \asta&\doti\begin{cases}
+    \mathrm{PA}\leq1\vee\mathrm{PB}\leq1\\
+    \mathrm{PA}\geq1\vee\mathrm{PB}\geq1
+  \end{cases}\\\\
+  &\doti\begin{cases}
+    \mathrm{PA}\leq1\\
+    \mathrm{PA}\geq1
+  \end{cases}\vee\begin{cases}
+    \mathrm{PA}\leq1\\
+    \mathrm{PB}\geq1
+  \end{cases}\vee\begin{cases}
+    \mathrm{PB}\leq1\\
+    \mathrm{PA}\geq1
+  \end{cases}
+  \vee\begin{cases}
+    \mathrm{PB}\leq1\\
+    \mathrm{PB}\geq1
+  \end{cases}\\\\
+  &\doti\mathrm{PA}=1\vee\mathrm{PB}=1\vee\begin{cases}
+     \mathrm{PA}\leq1\\
+    \mathrm{PB}\geq1
+  \end{cases}\vee
+  \begin{cases}
+    \mathrm{PB}\leq1\\
+    \mathrm{PA}\geq1
+  \end{cases}
+\end{align*}
+ これを図示すると,下図のようになる.
+ \begin{center}
+  \begin{tikzpicture}
+    %領域
+    \fill[black!20]({-1/2},0)circle[radius=1];
+    \fill[black!20]({1/2},0)circle[radius=1];
+    \fill[white](0,0)--({1/2},0)--plot[domain={1/2}:0](\x,{sqrt(3/4-\x-pow(\x,2))})--(0,0)--cycle;
+    \fill[white](0,0)--(0,{sqrt(3)/2})--plot[domain=0:{-1/2}](\x,{sqrt(3/4+\x-pow(\x,2))})--(0,0)--cycle;
+    \fill[white](0,0)--(0,-{sqrt(3)/2})--plot[domain=0:{1/2}](\x,{-sqrt(3/4-\x-pow(\x,2))})--(0,0)--cycle;
+    \fill[white](0,0)--(-{1/2},0)--plot[domain={-1/2}:0](\x,{-sqrt(3/4+\x-pow(\x,2))})--(0,0)--cycle;
+
+    %関数
+    \draw[thick]({-1/2},0)circle[radius=1];
+    \draw[thick]({1/2},0)circle[radius=1];
+
+    %node等
+    \draw[->,>=Latex](-2,0)--(2,0)node[right]{$x$};
+    \draw[->,>=Latex](0,-2)--(0,2)node[above]{$y$};
+    \node[below left] at(0,-1.2){$\frac{\sqrt{3}}{2}$};
+    \node[above left] at(0,1.2){$\frac{\sqrt{3}}{2}$};
+    \node[below left]at(0,0){O};
+
+  \end{tikzpicture}
+ \end{center}
+ \kakkonib 面積は,頑張って計算することにより,$\ans{\dfrac{2\pi}{3}+\sqrt{3}}$
+ 
+\newpage
+\subsection{同値変形3（連立方程式）}
+\noindent\ba{14$\bullet$1}\theme{計算以外の手も考えてみよう}\\
+\kangaekata この範囲は,無限に計算を頑張れば解くことができるものが多いですが,他の見方をするのも非常に大切です.したがって,この解答
+では,なるべく計算を用いないようにしたいと思います.\\
+\hokukai\kakkoichib$\begin{cases}
+  y=x+1\\
+  x^2+y^2=1
+\end{cases}\cdots\cdots\maruichi$\\
+これは,原点中心で半径1の円と直線$y=x+1$の共有点の座標である.これを図示すると,下図のようになる.
+\begin{center}
+  \begin{tikzpicture}[scale=1.5]
+    %関数
+    \draw[very thick](0,0)circle[radius=1];
+    \draw[very thick,domain=-1.5:1.5]plot(\x,{\x+1})node[right]{$y=x+1$};
+    %node
+    \draw[->,>=Latex](-2,0)--(2,0)node[right]{$x$};
+    \draw[->,>=Latex](0,-2)--(0,2)node[above]{$y$};
+    \node[below right]at(0,0){O};
+    \node[above left]at(-1,0){$-1$};
+    \node[above left]at(0,1){1};
+  \end{tikzpicture}
+\end{center}
+よって,求める解は,$\ans{(x,y)=(1,0),(0,1)}$\\\\
+\newpage
+\noindent\kakkonib\begin{align*}
+  &\begin{cases}
+  x^2+xy+y^2=4\cdots\cdots\maruichi\\
+  x^2-xy+y^2=2\cdots\cdots\maruni  
+  \end{cases}\doti\begin{cases}
+    \maruichi+\maruni :x^2+y^2=3\\
+    \maruichi-\maruni :xy=1
+  \end{cases}\\\\
+  &\doti\begin{cases}
+    \p{x+y}^2-2xy=3\\
+    xy=1
+  \end{cases}\\\\
+  &\doti\begin{cases}
+    \p{x+y}^2=5\\
+    xy=1
+  \end{cases}\\\\
+  &\doti\begin{cases}
+    x+y=\pm\sqrt{5}\\
+    xy=1
+  \end{cases}\\\\
+  &\doti\begin{cases}
+    x+y=\sqrt{5}\\
+    xy=1
+  \end{cases}\vee\begin{cases}
+    x+y=-\sqrt{5}\\
+    xy=1
+  \end{cases}\\
+  &\doti「x,yはtの二次方程式：t^2-\sqrt{5}t+1=0の異なる2実解」\\
+  &\vee「x,yはtの二次方程式：t^2+\sqrt{5}t+1=0の異なる2実解」\\
+  &\doti\ans{(x,y)=\p{\frac{\sqrt{5}\pm1}{2},\frac{\sqrt{5}\mp1}{2}},\p{-\frac{\sqrt{5}\mp1}{2},-\frac{\sqrt{5}\pm1}{2}}（複合同順）}
+\end{align*}
+\newpage
+\noindent\ba{14$\bullet$2}\theme{文字数の増減}\\
+\kangaekata 「変形」という作業において,\ans{変形の前後で文字が減ったり,増えたりする.}というのは数学の世界ではあり得ません.ですので,
+そのような時には,適切に解釈する必要があります.\\
+\hokukai\kakkoichib$\underbrace{\begin{cases}
+  x=\cos\theta\\
+  y=\sin\theta
+\end{cases}}_{三文字}\cdots\cdots\maruichi\narabaa \underbrace{x^2+y^2=1}_{二文字}\cdots\cdots\maruni$\\
+「三文字の条件」から,「二文字の条件」になっているので,$\maruni$は次のように解釈するのが正しい.
+\begin{center}
+  $\maruni：x^2+y^2=1+0\theta$
+\end{center}
+よってこの変形は,\ans{正しい.}\\
+\kakkonib$\underbrace{x^2+y^2=1}_{二文字}\cdots\cdots\marusan\narabaa\underbrace{\begin{cases}
+  x=\cos\theta\\
+  y=\sin\theta
+\end{cases}}_{三文字}\cdots\cdots\marushi$\\
+「二文字の条件」から「三文字の条件」になっているので,$\marushi$は次のように解釈するのが正しい.
+\begin{center}
+  $\forall\theta\in\mathbb{R},\begin{cases}
+    x=\cos\theta\\
+    y=\sin\theta
+  \end{cases}$
+\end{center}
+よって,これは明らかに,偽である.\\
+$\Y$\ans{正しくない.}\\\\
+\newpage
+\noindent\chud\theme{\ans{記述答案は語尾に常に注意せよ!}}\\
+上の\kakkonib の変形を正しい変形にするには,どのようにすれば良いでしょうか.\\
+$\theta$が$0\leq\theta\leq2n \pi（n\in\mathbb{Z}）$の範囲の\ans{いずれかの値}をとれば良いわけです.\\
+よって,$\exists$を$\theta$に付ければよいわけです.また,$\exists$は,「表せる・書ける」という日本語と同じ意味になります.
+したがって,次のように書けます.
+\begin{align*}
+  &\underbrace{\exists\theta,\begin{cases}
+    x=\cos\theta\\
+    y=\sin\theta
+  \end{cases}}_{二文字の条件}（\temarkua よって,\marusan と同値）\\
+  &\doti\begin{cases}
+    x=\cos\theta\\
+    y=\sin\theta
+  \end{cases}と表せる.\\
+  &\doti\begin{cases}
+    x=\cos\theta\\
+    y=\sin\theta
+  \end{cases}と書ける.
+\end{align*}\\
+\ba{14$\bullet$3}\theme{菅田将暉}\\
+上の\chud が理解できれば一瞬です.\\
+\ans{\kakkosan}
+\newpage
+\subsection{同値変形4（存在条件の代入原理）}
+
+
+
+\newpage
 
 \section{各章の問題演習-解答}
 \subsection{1章：差分の基礎}
@@ -2542,4 +2764,205 @@ $\bullet$\hspace{2mm}\tokeiichi と\tokeisan の関係は「裏」の関係で�
 \kakkojyub\begin{align*}
   「関数f(x)の最大値は4である.」\doti\ans{\forall x,f(x)<4}（\temarkua 最大値の定義）
 \end{align*}
+\newpage
+\subsection{12章：必要と十分,同値変形1}
+\noindent\reibanichi\\
+\hokukai\kakkoichib $x=1\cdots\maruichi\marubatu x^2+3x-4=0（\doti x=-4,1 ）\cdots\maruni$\\
+よって,$\maruichi\subset\maruni$なので,\ans{(c)十分条件であるが,必要条件でない.}\\\\
+\kakkonib$\begin{cases}
+  x+y=1\\
+  y=0
+\end{cases}\cdots\maruichi\marubatu x=1\cdots\maruni$\\
+ここで,二文字の条件が一文字に減っているので,$\maruni\doti\forall y\in\mathbb{R},x=1+0y\cdots\marusan$である.\\
+よって,$\maruichi\subset\marusan=\maruni$であるから,\ans{十分条件であるが,必要条件でない.}\\\\
+\kakkosanb$x^2+y^2\leq1\cdots\cdots\maruichi\batumaru|x|+|y|\leq1\cdots\cdots\maruni$\\
+$\maruichi$ と$\maruni$をそれぞれ図示してみる.
+\begin{center}
+  \begin{tikzpicture}[scale=2]%①
+    %領域
+    \fill[black!20](0,0)circle[radius=1];
+    %関数
+    \draw[very thick](0,0)circle[radius=1];
+
+    %node等
+    \draw[->,>=Latex](-1.5,0)--(1.5,0)node[right]{$x$};
+    \draw[->,>=Latex](0,-1.5)--(0,1.5)node[above]{$y$};
+    \node[above left]at(-1,0){$-1$};
+    \node[below left]at(0,-1){$-1$};
+    \draw({1/2},{0.7})to[out=45,in=150](1,1)node[right]{$\maruichi$};
+  \end{tikzpicture}
+  \hspace{10mm}
+  \begin{tikzpicture}[scale=2]%②
+    %領域
+    \fill[black!20](1,0)--(0,1)--(-1,0)--(0,-1)--cycle;
+    %関数
+    \draw[very thick](1,0)--(0,1)--(-1,0)node[above left]{$-1$}--(0,-1)node[below left]{$-1$}--cycle;
+    %node
+    \draw[->,>=Latex](-1.5,0)--(1.5,0)node[right]{$x$};
+    \draw[->,>=Latex](0,-1.5)--(0,1.5)node[above]{$y$};
+    \draw({1/2},{0.4})to[out=45,in=150](1,1)node[right]{$\maruni$};
+  \end{tikzpicture}
+\end{center}
+よって,$\maruichi\supset\maruni$なので,\ans{(b)必要条件であるが,十分条件でない.}
+\newpage
+\noindent\reibansan\\
+\kangaekata \kakkoichi 4次関数のグラフで処理しましょう.\kakkoni\kakkosan 落ち着いて計算.\\
+\hokukai\kakkoichib$\dfrac{1}{x-1}+\dfrac{2}{x-2}\leq1\cdots\cdots\maruichi$
+\begin{align*}
+  \maruichi&\doti \dfrac{3x-4-\p{x^2-3x+2}}{(x-1)(x-2)}\leq0\\
+  &\doti\dfrac{x^2-6x+6}{(x-1)(x-2)}\geq0\\
+  &\doti\begin{cases}
+    (x-1)(x-2)(x^2-6x+6)\geq0\\
+    x\neq1\wedge x\neq2
+  \end{cases}\\\\
+  &\doti\begin{cases}
+    (x-1)(x-2)\B{x-\p{3+\sqrt{3}}}\B{x-\p{3-\sqrt{3}}}\geq0\cdots\cdots\asta\\
+    x\neq1\wedge x\neq2
+  \end{cases}
+\end{align*}
+これを図示すると,下図のようになる.
+\begin{center}
+  \begin{tikzpicture}[x=2cm,y=1cm]
+    %関数
+   \draw
+(0.5,2.5)
+.. controls (0.8,1.5) and (0.95,0.3) ..
+(1,0)
+.. controls (1.05,-0.3) and (1.18,-0.3) ..
+(1.268,0)
+.. controls (1.45,1.2) and (1.8,1.2) ..
+(2,0)
+.. controls (2.6,-2.0) and (4.2,-2.0) ..
+(4.732,0)
+.. controls (4.9,0.6) and (5.2,2.0) ..
+(5.5,3);
+
+% >=0 の部分を太線
+\draw[line width=1.5pt]
+(0.5,2.5)
+.. controls (0.8,1.5) and (0.95,0.3) ..
+(1,0);
+
+\draw[line width=1.5pt]
+(1.268,0)
+.. controls (1.45,1.2) and (1.8,1.2) ..
+(2,0);
+
+\draw[line width=1.5pt]
+(4.732,0)
+.. controls (4.9,0.6) and (5.2,2.0) ..
+(5.5,3);
+
+% 軸
+\draw[->] (0,0)--(5.6,0) node[right]{$x$};
+\draw[->] (0,-2.5)--(0,3.5) node[above]{$y$};
+\fill (1,0) circle (1pt)
+      node[below left] {$1$};
+
+\fill ({3-sqrt(3)},0) circle (2pt)
+      node[below right] {$3-\sqrt3$};
+
+\fill (2,0) circle (2pt)
+      node[below] {$2$};
+
+\fill ({3+sqrt(3)},0) circle (2pt)
+      node[below right] {$3+\sqrt3$};
+  \end{tikzpicture}
+\end{center}
+$\Y$ 上図の太実線部が,$\asta$なので,求める範囲は,$\ans{x<1,3-\sqrt{3}\leq x<2,x\geq3+\sqrt{3}}$
+\newpage
+\noindent\kakkonib \begin{align*}
+  |x-5|-|2x+1|=1&\doti |x-5|=1+|2x+1|\\
+  &\doti x-5=\pm\p{1+|2x+1|}\\
+  &\doti  x-6=|2x-1|\vee x-4=-|2x+1|\\
+  &\doti\underbrace{\begin{cases}
+    2x+1=\pm(x-6)\\
+    x\geq6
+  \end{cases}}_{空集合}\vee\begin{cases}
+    \pm\p{4-x}=2x+1\\
+    4-x\geq0
+  \end{cases}\\
+  &\doti\ans{x=1\vee x=-5}
+\end{align*}
+\kakkosanb\begin{align*}
+  |2x-1|+|x-1|<3&\doti|2x-1|<3-|x-1|\\
+  &\doti |x-1|-3<2x-1<3-|x-1|\\
+  &\doti\begin{cases}
+    |x-1|<2x+2\\
+    |x-1|<4-2x
+  \end{cases} \\
+  &\doti\begin{cases}
+    -2x-2<x-1<x-1<2x+2\\
+    2x-4<x-1<4-2x
+  \end{cases}\\
+  &\doti\begin{cases}
+    x>-\frac{1}{3}\\
+    x<\frac{5}{3}
+  \end{cases}\\
+  &\doti\ans{-\frac{1}{3}<x<\frac{5}{3}}
+\end{align*}
+\newpage
+\subsection{13章：同値変形2（無理方程式,maxとmin）}
+\noindent\reibanichi\\
+\hokukai\kakkoichib 一般に,\begin{align*}
+  Y>\sqrt{X}\doti\begin{cases}
+    Y^2>X\\
+    X\geq0\\
+    Y<0
+  \end{cases}
+\end{align*}
+なので,
+\begin{align*}
+  \sqrt{2-x}<-x-4&\doti\begin{cases}
+    x^2+8x+16>2-x\\
+    2\geq x\\
+    x<4
+  \end{cases}\\
+  &\doti\begin{cases}
+    (x+2)(x+7)>0\\
+    x\leq2
+  \end{cases}\\
+  &\doti\ans{-2\leq x<2\vee x<-7}
+\end{align*}
+\kakkonib 一般に,\begin{align*}
+  Y\geq\sqrt{X}\doti\begin{cases}
+    Y^2\geq\sqrt{X}\\
+    Y\geq0\\
+    X\geq0
+  \end{cases}
+\end{align*}
+なので,
+\begin{align*}
+  2\sqrt{2x-1}\leq x+1&\doti\begin{cases}
+    x^2+2x+1\geq4(2x-1)\\
+    x\geq-1\\
+    x\geq\frac{1}{2}
+  \end{cases}\\
+  &\doti\begin{cases}
+    (x-1)(x-5)\leq0\\
+    x\geq\frac{1}{2}
+  \end{cases}\\
+  &\doti\begin{cases}
+    x\leq1\\
+    x\geq\frac{1}{2}
+  \end{cases}\vee\begin{cases}
+    x\geq5\\
+    x\geq\frac{1}{2}
+  \end{cases}\\
+  &\doti\ans{\frac{1}{2}\leq x\leq1\vee x\geq5}
+\end{align*}
+\newpage
+\noindent\reibanni\begin{align*}
+  x-y>\sqrt{x^2+y^2-2}&\doti\begin{cases}
+  (x-y)^2>x^2+y^2-2\\
+  x^2+y^2\geq2\\
+  y<x
+  \end{cases}\\
+  &\doti\begin{cases}
+    xy<1\\
+    x^2+y^2\geq2\\
+    y<x
+  \end{cases}
+\end{align*}
+これを図示すればよい.（時間なかったので,また今度やっておきます.すいません.）
 \end{document}
