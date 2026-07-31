@@ -2176,8 +2176,136 @@ $\theta$が$0\leq\theta\leq2n \pi（n\in\mathbb{Z}）$の範囲の\ans{いずれ
 \ans{\kakkosan}
 \newpage
 \subsection{同値変形4（存在条件の代入原理）}
-
-
+\noindent\ba{15$\bullet$1}\theme{計算練習}\\
+\kakkoichib\begin{align*}
+  \exists x,\begin{cases}
+    |x|<a\\
+    x+b=2
+  \end{cases}\doti\ans{|2-b|<a}
+\end{align*}
+\kakkonib\begin{align*}
+  \exists x,\begin{cases}
+    ax=2\\
+    bx=c
+  \end{cases}&\doti\begin{cases}
+    x=\frac{2}{a}\\
+    bx=c
+  \end{cases}\\
+  &\doti\ans{\frac{2b}{a}=c}
+\end{align*}
+\kakkosanb
+$\exists x,\begin{cases}
+    ax=a^2\cdots\cdots\maruichi\\
+    bx=a+1\cdots\cdots\maruni
+\end{cases}$
+ここで,\begin{align*}
+  \begin{cases}
+    \maruichi\\
+    \maruni
+  \end{cases}&\doti\begin{cases}
+    a(x-a)=0\\
+    bx=a+1
+  \end{cases}\\
+  &\doti\begin{cases}
+    a=0\vee x=a\\
+    \maruni
+  \end{cases}\\
+  &\doti\begin{cases}
+    a=0\\
+    \maruni
+  \end{cases}\vee\begin{cases}
+    x=a\\
+    \maruni
+  \end{cases}\\
+  &\doti\begin{cases}
+    a=0\\
+    bx=1
+  \end{cases}\vee\begin{cases}
+    x=a\\
+    bx=a+1
+  \end{cases}
+\end{align*}
+\begin{align*}
+\Y\exists x,\begin{cases}
+  \maruichi\\
+  \maruni
+\end{cases}&\doti\exists x,\begin{cases}
+  a=0+0x\\
+  bx=1
+\end{cases}\vee\exists x,\begin{cases}
+  x=a\\
+  bx=a+1
+\end{cases}\\
+&\doti\ans{\begin{cases}a=0\\
+  b\neq0
+\end{cases}\vee ab=a+1}
+\end{align*}
+\newpage
+\noindent\kakkoshib 今,$x^3-k^2x=0\doti x=0\vee x=\pm k$なので,
+\begin{align*}
+  \exists x,\begin{cases}
+    x^2-kx-1=0\cdots\cdots\maruichi\\
+    x=0\vee x=k\vee x=-k
+  \end{cases}&\doti
+    \exists x,\begin{cases}
+      \maruichi\\
+      x=0
+    \end{cases}\vee\exists x,\begin{cases}
+      \maruichi\\
+      x=k
+    \end{cases}\vee\exists x,\begin{cases}
+      \maruichi\\
+      x=-k
+    \end{cases}\\
+    &\doti-1=0\vee-1=0\vee2k^2-1=0\\
+    &\doti2k^2-1=0\\
+    &\doti\ans{k=\pm\frac{1}{\sqrt{2}}}
+\end{align*}
+\kakkogob$\exists x,\begin{cases}
+  x^2+ax+b=0\cdots\cdots\maruichi\\
+  x^2+bx+a=0\cdots\cdots\maruni
+\end{cases}$
+ここで,
+\begin{align*}
+  \begin{cases}
+    \maruichi\\
+    \maruni
+  \end{cases}&\doti\begin{cases}
+    \p{\maruichi-\maruni}：(a-b)x-(a-b)=0\\
+    \maruichi
+  \end{cases}\\
+  &\doti\begin{cases}
+    a=b\vee x=1\\
+    \maruichi
+  \end{cases}\\
+  &\doti\begin{cases}
+    a=b\\
+    \maruichi
+  \end{cases}\vee\begin{cases}
+    x=1\\
+    \maruichi
+  \end{cases}
+\end{align*}
+\begin{align*}
+  \Y\exists x,\begin{cases}
+    \maruichi\\
+    \maruni
+  \end{cases}&\doti\exists x,\begin{cases}
+    a=b+0x\\
+    x^2+ax+a=0
+  \end{cases}\vee\exists x,\begin{cases}
+    x=1\\
+    x^2+ax+b=0
+  \end{cases}\\
+  &\doti\begin{cases}
+    a=b\\
+    a^2-4a\geq0
+  \end{cases}\vee1+a+b=0\\
+  &\doti\ans{\begin{cases}
+    a=b\\
+    a\geq0\vee a\geq4
+  \end{cases}\vee a+b=-1}
+\end{align*}
 
 \newpage
 
@@ -2959,10 +3087,45 @@ $\Y$ 上図の太実線部が,$\asta$なので,求める範囲は,$\ans{x<1,3-\s
   y<x
   \end{cases}\\
   &\doti\begin{cases}
-    xy<1\\
-    x^2+y^2\geq2\\
+    xy<1\cdots\cdots\maruichi\\
+    x^2+y^2\geq2\cdots\cdots\maruni\\
     y<x
   \end{cases}
 \end{align*}
-これを図示すればよい.（時間なかったので,また今度やっておきます.すいません.）
+ここで,
+\begin{align*}
+  \maruichi\wedge\maruni\narabaa x^2+\frac{1}{x^2}=2\doti x^2+\frac{1}{x^2}\geq2\sqrt{x^2\cdot\frac{1}{x^2}}=2
+\end{align*}
+なので,$\maruichi と\maruni$は$x=1,-1$で共有点をもつ.
+これを図示すると,下図のようになる.
+\begin{center}
+  \begin{tikzpicture}[scale=1.5]
+    %領域
+    \fill[black!20](0,0)--(1,1)--(2,1)--(2,-2)--(-1,-2)--(-1,-1)--(0,0)--cycle;
+    \fill[white](0,0)--plot[domain=1:{sqrt(2)}](\x,{sqrt(2-pow(\x,2))})
+    --plot[domain={sqrt(2)}:-1](\x,{-sqrt(2-pow(\x,2))})--(0,0)--cycle;
+    \fill[white](-1,-1)--plot[domain=-2:-0.4](\x,{1/\x})--(-1,-2)--cycle;
+    \fill[white](1,1)--plot[domain=0.4:2](\x,{1/\x})--(2,1)--cycle;
+
+    %関数
+    \draw(0,0)circle[radius={sqrt(2)}];
+    \draw[samples=300,domain=2:0.4] plot(\x,{1/\x})node[above right]{$y=\frac{1}{x}$};
+    \draw[samples=300,domain=-0.4:-2]plot(\x,{1/\x});
+
+    %node
+    \draw[->,>=Latex](-2,0)--(2,0)node[right]{$x$};
+    \draw[->,>=Latex](0,-2)--(0,2)node[above]{$y$};
+    \node[below left]at(0,0){O};
+    \node[above left]at(0,{sqrt(2)}){$\sqrt{2}$};
+    \node[above left]at({-sqrt(2)},0){$-\sqrt{2}$};
+    \draw[dashed](0,1)node[left]{1}--(1,1)--(1,0)node[above left]{1};
+    \draw[dashed](0,-1)node[right]{$-1$}--(-1,-1)--(-1,0)node[above right]{$-1$};
+  \end{tikzpicture}
+\end{center}
+\newpage
+\subsection{14章：同値変形3（連立方程式）}
+紙で渡したので,省略します.
+\newpage
+\subsection{15章：同値変形4（存在条件の代入原理）}
+この章はなしです.
 \end{document}
