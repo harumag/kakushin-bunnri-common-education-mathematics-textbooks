@@ -2306,7 +2306,166 @@ $\exists x,\begin{cases}
     a\geq0\vee a\geq4
   \end{cases}\vee a+b=-1}
 \end{align*}
-
+\newpage
+\subsection{同値変形5（複数文字の存在条件の代入原理）}
+\noindent\ba{16$\bullet$1}\theme{複数文字の存在条件の代入原理}\\
+\kakkoichib$\exists x,\begin{cases}
+  x^2-kx+1=0\cdots\cdots\maruichi\\
+  x^3-(k+1)x^2-k+4=0\cdots\maruni
+\end{cases}$
+\begin{align*}
+  \begin{cases}
+    \maruichi\\
+    \maruni
+  \end{cases}&\doti\begin{cases}
+    x^2=kx-1\cdots\cdots\maruichi^\prime\\
+    x(kx-1)-(k+1)(kx-1)-k+4=0
+  \end{cases}\\
+  &\doti\begin{cases}
+    \maruichi^\prime\\
+    kx^2-x-(k+1)(kx-1)-k+4=0
+  \end{cases}\\
+  &\doti\begin{cases}
+    \maruichi^\prime\\
+    x=\frac{5-k}{k+1}
+  \end{cases}
+\end{align*}
+よって,
+\begin{align*}
+  \exists x,\begin{cases}
+    \maruichi\\
+    \maruni
+  \end{cases}&\doti\p{\frac{5-k}{k+1}}^2-k\p{\frac{5-k}{k+1}}+1=0\\
+  &\doti\frac{(5-k)^2-k(5-k)(k+1)(k+1)^2}{(k+1)^2}=0\\
+  &\doti\begin{cases}
+    k^3-2k^2-13k+26=0\\
+    k\neq-1
+  \end{cases}\\
+  &\doti(k-2)\p{k^2-13}=0\\
+  &\doti\ans{k=2,\pm\sqrt{13}}
+\end{align*}
+\newpage
+\noindent\kakkonib$\exists(x,y),\begin{cases}
+  x^2+y^2=1\cdots\cdots\maruichi\\
+  y=x+a\cdots\cdots\maruni
+\end{cases}$
+ここで,\begin{align*}
+  \exists(x,y),\begin{cases}
+    \maruichi\\
+    \maruni
+  \end{cases}&\exists x,\exists y,\begin{cases}
+    x^2+y^2=1\\
+    y=x+a
+  \end{cases}\\
+  &\doti\exists x,x^2+(x+a)^2=1\\
+  &\doti\exists x,2x^2+2ax+a^2-1=0\\
+  &\doti\p{判別式：}a^2-2\p{a^2-1}\geq0\\
+  &\doti a^2\leq2\doti\ans{-\sqrt{2}\leq a\leq\sqrt{2}}
+\end{align*}
+\bekkai\theme{点と直線の距離}\\
+$円\maruichi$と$直線\maruni$が共有点をもつ$\doti\frac{|a|}{\sqrt{2}}\leq1\doti\ans{-\sqrt{2}\leq a\leq\sqrt{2}}$\\\\
+\kakkosanb$\exists (x,y),\begin{cases}
+  x+y=2t\cdots\cdots\maruichi\\
+  xy=t+2\cdots\cdots\maruni
+\end{cases}$\\
+$\maruichi,\maruni$を満たす$x,y$は,$X$の方程式
+\begin{center}
+  $X^2-2tX+t+2=0\cdots\cdots\marusan$
+\end{center}
+の異なる2解なので,
+\begin{align*}
+  \exists(x,y),\begin{cases}
+    \maruichi\\
+    \maruni
+  \end{cases}&\doti\exists X,\marusan\\
+  &\doti（判別式：）t^2-(t+2)\geq0\\
+  &\doti(t+1)(t-2)\geq0\\
+  &\doti\ans{t\leq-1\vee t\geq2}
+\end{align*}
+\newpage
+\noindent\kakkoshib$\exists(x,y),\begin{cases}
+  x^2-y^2=1\cdots\cdots\maruichi\\
+  y=x^2+k\cdots\cdots\maruni
+\end{cases}$\\
+\begin{align*}
+  \exists(x,y),\begin{cases}
+  \maruichi\\
+  \maruni
+  \end{cases}&\doti\exists x,\exists y,\begin{cases}
+    \maruichi\\
+    \maruni
+  \end{cases}\\
+  &\doti\exists x,\exists y,\begin{cases}
+    \maruichi\\
+    \maruni
+  \end{cases}\\
+  &\doti\exists x,x^2-(x^2+k)^2=1\\
+  &\doti\exists X,X-(X+k)^2=1（x^2=Xとおいた.）\\
+  &\doti Xの二次方程式X^2+(2k-1)X+k^2+1=0が0以上の実数解をもつ.
+\end{align*}
+$f(x)=X^2+(2k-1)X+k^2+1$のグラフを考えて,その条件は,
+\begin{align*}
+  \begin{cases}
+  （判別式：）(2k-1)^2-4(k^2+1)\geq0\\
+  -\frac{2k-1}{2}>0
+  \end{cases}&\doti\begin{cases}
+    k\leq-\frac{3}{4}\\
+    k<\frac{1}{2}
+  \end{cases}\\
+  &\doti\ans{k\leq-\frac{3}{4}}
+\end{align*}
+\bekkai\begin{align*}
+  \exists(x,y),\begin{cases}
+    x^2-y^2\cdots\cdots\maruichi\\
+    y=x^2+k\cdots\cdots\maruni
+  \end{cases}&\doti\exists y,\exists x,\begin{cases}
+    x^2=y^2+1\\
+    x=y-k
+  \end{cases}\\
+  &\doti\exists y,y^2+1=y-k\\
+  &\doti\exists y,y^2-y+k+1=0\\
+  &\doti（判別式：）1-4(k+1)\geq0\\
+  &\doti\ans{k\leq-\frac{3}{4}}
+\end{align*}
+\newpage
+\noindent\kakkogob$\exists(x,y),\begin{cases}
+  x^3-3y^2+6x+9=0\cdots\cdots\maruichi\\
+  x^2+y^2-2ax+a^2-1=0\cdots\cdots\maruni
+\end{cases}$
+\begin{align*}
+  \begin{cases}
+    \maruichi\\
+    \maruni
+  \end{cases}&\doti\begin{cases}
+    x^2-3(-x^2+2ax-a^2+1)+6x+9=0+0y\cdots\marusan\\
+    \maruni:y^2=-x^2+2ax-a^2+1\cdots\cdots\maruni^\prime
+  \end{cases}
+\end{align*}
+よって,
+\begin{align*}
+  \exists(x,y),\begin{cases}
+    \maruichi\\
+    \maruni
+  \end{cases}&\doti\exists(x,y),\begin{cases}
+    \marusan\\
+    -x^2+2ax-a^2+1\geq0
+  \end{cases}\\
+  &\doti\exists(x,y),\begin{cases}
+    x^2-3(-x^2+2ax-a^2+1)+6x+9=0\\
+    \maruichi
+  \end{cases}\\
+  &\doti\exists(x,y),\begin{cases}
+    4x^2+6(1-a)x+3a^2+6=0\cdots\cdots\marushi\\
+    3y^2=x^2+6x+9=(x+3)^2\cdots\cdots\marugo
+  \end{cases}\\
+  &\doti\exists x,\marushi\\
+  &\doti（判別式：）9(1-a)^2-4(3a^2+6)\geq0\\
+  &（\because \marushi を満たすxがあれば,\marugo を満たすyは必ず存在する.）\\
+  &\doti(a+1)(a+5)\leq0\doti\ans{-5\leq a\leq-1}
+\end{align*}
+\newpage
+\noindent\ba{16$\bullet$2}\theme{$\forall と\exists $の混合文}\\
+\kangaekata
 \newpage
 
 \section{各章の問題演習-解答}
