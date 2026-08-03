@@ -2465,7 +2465,79 @@ $f(x)=X^2+(2k-1)X+k^2+1$のグラフを考えて,その条件は,
 \end{align*}
 \newpage
 \noindent\ba{16$\bullet$2}\theme{$\forall と\exists $の混合文}\\
-\kangaekata
+\kangaekata$\ans{\exists x,P(x)の形は扱いにくい}$という感覚を持ちましょう.そしたら,自然とドモルガンの法則を
+使いたくなるはずです.\\
+\hokukai
+\begin{center}
+  $「実数bをどのように定めても,-1\leq x\leq1の範囲の（中略）|ax+b|\geq1が成立する.」\cdots\cdots\asta$
+\end{center}
+\begin{align*}
+  \asta\doti\forall x,\underline{-1\leq x\leq1,|ax+b|\geq1}_{\maruichi}
+\end{align*}
+\begin{align*}
+  \neg\maruichi\doti-1\leq\exists x\leq1,|ax+b|<1
+\end{align*}
+ここで,
+\begin{center}
+  $|ax+b|<1\doti-1<ax+b<1\cdots\cdots\maruni$
+\end{center}
+$\maruni$の中辺について,次のように場合分けできる.\\
+\tokeiichi\underline{$-1\leq x<0$のとき,}\\
+　$\maruni\doti-1<-a+b<1$\\
+\tokeini\underline{$x=0$のとき,}\\
+　$\maruni\doti -1<b<1$\\
+\tokeisan\underline{$0<x\leq1$のとき,}\\
+　$\maruni\doti-1<a+b<1$\\
+また,$f(a,b)=|ax+b|-1$とおくと,$f(0,0)=-1<0$なので,これを否定したものが求める真理集合であるから,$f(a,b)\geq0$を図示する.
+\begin{center}
+  \begin{tikzpicture}[scale=0.8]
+    %領域
+    \fill[black!20](-3,-3)rectangle(3,3);
+    \fill[white](0,-1)--(-1,0)--(0,1)--(1,0)--cycle;
+
+    %関数
+    \begin{scope}
+      \clip(-3,-3)rectangle(3,3);
+      \draw[thick]plot(\x,{\x+1});
+      \draw[thick]plot(\x,{\x-1});
+      \draw[thick]plot(\x,{-\x+1});
+      \draw[thick]plot(\x,{-\x-1});
+    \end{scope}
+
+    %node
+    \draw[->,>=Latex](-3,0)--(3,0)node[right]{$x$};
+    \draw[->,>=Latex](0,-3)--(0,3)node[above]{$y$};
+    \fill(1,0)circle(2pt);
+    \fill(0,1)circle(2pt);
+    \fill(-1,0)circle(2pt);
+    \fill(0,-1)circle(2pt);
+    \node[above right]at(-1,0){$-1$};
+    \node[above ]at(0,-1){$-1$};
+    \node[above right]at(0,0){O};
+
+  \end{tikzpicture}
+\end{center}
+これより,$\asta$が成立するための必要十分条件は,
+\begin{center}
+  $\asta\doti\forall b,\maruichi\doti\ans{a\leq-1\vee a\geq1}$
+\end{center}
+\newpage
+\subsection{写像1}
+\noindent\theme{復習}\\
+写像$f：A\to B$の値域を$W$とする.\\
+$\bullet$順像法：$\ans{すべてのAの元aに対し,その像f(a)を調べる.}$\\
+$\bullet$逆像法：$\ans{すべてのBの元bに対し,f(a)=bを満たすaがAの中に存在するかどうか調べる.}$\\\\
+\ba{17$\bullet$1}\theme{カンタンな値域問題}\\
+\hokukai\\
+\kai\kuromaruichi \theme{順像法}\\
+グラフを描けば当然である.$\ans{y\geq-3}$\\
+\kai\kuromaruni\theme{逆像法}
+\begin{align*}
+  k\in W_1&\doti\exists x,f(x)=k\doti\exists x^2-4x+1-k=0\\
+  &\doti（判別式：）4+k-1\geq0\doti k\geq-3
+\end{align*}
+$\Y W_1は,\ans{k\geq-3}$
+
 \newpage
 
 \section{各章の問題演習-解答}
