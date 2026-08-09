@@ -3119,10 +3119,194 @@ $\ans{y=\dfrac{1}{2}x^2の-2\leq x\leq2の部分}$\\
   \draw[->,>=Latex](0,-1.5)--(0,1.5)node[above]{$Y$};
   \node[above right]at(0,0){O};
   \end{tikzpicture}
-  \kakkonib
+\end{center}
+\kakkonib P$(x,y)$が$\begin{cases}
+  0\leq x\leq1\cdots\cdots\maruichi\\
+  0\leq y\leq1\cdots\cdots\maruni
+\end{cases}$を満たして,動く.
+\begin{align*}
+  (X,Y)\in W&\doti\exists(x,y),\begin{cases}
+    x+y=X\\
+    xy=Y\\
+    0\leq x\leq1\\
+    0\leq y\leq1
+  \end{cases}\\
+  &\doti「tの二次方程式t^2-Xt+Y=0\cdots\cdots\marusan が0\leq t\leq1に少なくとも一つ実数解をもつ.」\cdots\cdots\asta
+\end{align*}
+$f(t)=t^2-Xt+Y$とおくと,$f(t)$のグラフは,$t=\dfrac{X}{2}$を軸とする下に凸の放物線なので,
+\begin{align*}
+  \asta&\doti\begin{cases}
+    f(0)\geq0\\
+    f(1)\geq0\\
+    0\leq\frac{X}{2}\leq1\\
+    （\marusan の判別式：）\geq0
+  \end{cases}\\
+  &\doti\begin{cases}
+    Y\geq0\\
+    Y-X\geq-1\\
+    0\leq X\leq2\\
+    Y\leq\frac{1}{2}X^2
+  \end{cases}\\
+  &\doti\begin{cases}
+    0\leq Y\leq\frac{1}{4}X^2\\
+    Y\geq X-1\\
+    0\leq X\leq2
+  \end{cases}
+\end{align*}
+となりこれを図示すると,下図のようになり,境界を含む.
+\begin{center}
+  \begin{tikzpicture}[scale=3]
+    %fill
+    \fill[black!20](0,0)rectangle(2,1);
+    \fill[white](1,0)--(2,0)--(2,1)--(1,0)--cycle;
+    \fill[white](0,0)--plot[domain=0:2,samples=300](\x,{0.25*pow(\x,2)})--(0,1)--(0,0)--cycle;
+    %fun
+    \begin{scope}
+      \clip(-0.5,-1.2)rectangle(2.5,1.5);
+      \draw[thick,samples=300]plot(\x,{0.25*pow(\x,2)});
+      \draw[thick]plot(\x,{\x-1});
+    \end{scope}
+    %node
+    \node[below left]at(0,0){O};
+    \draw[dashed](2,0)node[below]{2}--(2,1)--(0,1)node[left]{1};
+    \draw[->,>=Latex](-0.5,0)--(2.5,0)node[right]{$X$};
+    \draw[->,>=Latex](0,-1.2)--(0,1.5)node[above]{$Y$};
+    \node[below]at(1,0){1};
+    \filldraw(2,1)circle(0.5pt);
+  \end{tikzpicture}
 \end{center}
 \newpage
+\noindent\ba{21$\bullet$2}\theme{k.k.kの存在条件}\\
+\kangaekata 一般に,
+\begin{align*}
+  \exists(x,y),\begin{cases}
+    x+y=\alpha\\
+    xy=\beta\\
+    P(x+y,xy)
+  \end{cases}&\doti\begin{cases}
+    \exists t,t^2-\alpha t+\beta=0\\
+    P(\alpha,\beta)
+  \end{cases}
+\end{align*}
+です.注意しましょう.\\
+\hokukai\kakkoichib $u,v$の存在範囲を$W$とする.
+\begin{align*}
+  (u,v)\in W&\doti\exists(x,y),\begin{cases}
+    x+y=u\\
+    xy=v\\
+    x^2+xy+y^2=1
+  \end{cases}\\
+  &\doti\begin{cases}
+    \exists t,t^2-ut+v=0\\
+    u^2-v=1
+  \end{cases}\\
+  &\doti\begin{cases}
+    u^2-4v\geq0\\
+    v=u^2-1
+  \end{cases}\\
+  &\doti\begin{cases}
+    -3v\geq-1\\
+    v=u^2-1
+  \end{cases}\\
+  &\doti\begin{cases}
+    v\leq\frac{1}{3}\\
+    v=u^2-1
+  \end{cases}
+\end{align*}
+これより,$W$太実線部になる.ただし,両端も含む.
+\begin{center}
+  \begin{tikzpicture}[scale=3]
+    %fun
+    \begin{scope}
+      \clip(-1.2,-1.2)rectangle(1.5,1);
+      \draw[very thick,samples=300,domain={-2/sqrt(3)}:{2/sqrt(3)}]plot(\x,{pow(\x,2)-1});
+    \end{scope}
+    %Node
+    \draw[->,>=Latex](-1.5,0)--(1.5,0)node[right]{$u$};
+    \draw[->,>=Latex](0,-1.5)--(0,1)node[above]{$v$};
+    \node[below left]at(0,0){O};
+    \draw[dashed]({-2/sqrt(3)},0)node[below left]{$-\frac{2}{\sqrt{3}}$}--({-2/sqrt(3)},{1/3})
+    --(0,{1/3})node[above right]{$\frac{1}{3}$}--({2/sqrt(3)},{1/3})--({2/sqrt(3)},0)node[below right]{$\frac{2}{\sqrt{3}}$};
+  \end{tikzpicture}
+\end{center}
+\newpage
+\noindent\kakkonib$x^2+xy+y^2=1\cdots\cdots\maruichi$のとき,$x^2+y^2$の最大値・最小値を求める.\\
+$z=x^2+y^2$とおく.$zの値域W_2と$すると,
+\begin{align*}
+  k\in W_2&\doti\exists(x,y),\begin{cases}
+    x^2+y^2=k\\
+    \maruichi
+  \end{cases}\\
+  &\doti\exists(x,y)\begin{cases}
+    x^2+y^2=k\\
+    x^2+xy+y^2=1
+  \end{cases}\\
+  &\doti\exists(x,y),\begin{cases}
+    (x+y)^2=2-k\\
+    xy=1-k
+  \end{cases}\\
+  &\doti\exists(x,y),\begin{cases}
+    (x+y)=\pm\sqrt{2-k}\\
+    xy=1-k
+  \end{cases}\\
+  &\doti\exists t,t^2\pm\sqrt{2-k}t+1-k=0\\
+  &\doti\begin{cases}
+    2-k-4(1-k)\geq0\\
+    2-k\geq0
+  \end{cases}\\
+  &\doti\dfrac{2}{3}\leq k\leq2
+\end{align*}
+$\Y\ans{最大値は2,最小値は\dfrac{2}{3}}$\\
+\bekkai\theme{順像法}
+\begin{align*}
+  z&=x^2+y^2=(x+y)^2-2xy（x+y=u,xy=vを代入）\\
+  &=2-u^2
+\end{align*}
+今,$u$は,$-\dfrac{2}{\sqrt{3}}\leq u\leq\dfrac{2}{\sqrt{3}}$ を動くので,
+\begin{align*}
+\ans{ 
+\begin{cases}
+  \max{z}=2\\
+  \min{z}=\dfrac{2}{3}
+  \end{cases}}
+\end{align*}
+\newpage
 \subsection{写像6}
+\noindent\ba{22$\bullet$1}\theme{通過領域ことハジメ}\\
+\kangaekata 通過領域とは,へびが砂場を動いた後にできる足跡のことでした.したがって,逆像法で扱う際は,$\ans{(X,Y)を踏むようなパラメータが少なくとも一つ存在する.}$条件を考えることになります.\\
+\hokukai\kai\kuromaruichi\theme{カーテン閉め閉め作戦}\\
+直線$l_t:y=tx+t^2$の$x=K$の部分のみ見ると,点$\p{k,kt+t^2}$が上下に動く.\\
+この点の$y$座標は,
+\begin{align*}
+  y=t^2+kt=\p{t+\dfrac{1}{2}k}^2-\dfrac{1}{4}k^2
+\end{align*}
+より,$t$が実数全体を動いたとき,この$y$の値域は,$y\geq-\dfrac{1}{4}k^2$である.\\
+よって,$W$は下図の網目部で,境界を含む.
+\begin{center}
+  \begin{tikzpicture}
+    %fill
+    \fill[black!20](-3,{-9/4})rectangle(3,3);
+    \begin{scope}
+      \clip(-3,-3)rectangle(3,3);
+      \fill[white]plot[domain=-3:3](\x,{-0.25*pow(\x,2)});
+    \end{scope}
+    %fun
+    \begin{scope}
+      \clip(-3,-3)rectangle(3,3);
+      \draw[very thick]plot[domain=-3:3](\x,{-0.25*pow(\x,2)});
+
+    \end{scope}
+    %node
+    \draw[->,>=Latex](-3,0)--(3,0)node[right]{$x$};
+    \draw[->,>=Latex](0,-3)--(0,3)node[above]{$y$};
+    \node[above right]at(0,0){O};
+    \node[below right]at(3,-{9/4}){$y=-\frac{1}{4}x^2$};
+  \end{tikzpicture}
+\end{center}
+
+\ba{22$\bullet$2}\theme{北海道大}\\
+
+\ba{22$\bullet$3}\theme{東京大}\\
 
 \newpage
 
