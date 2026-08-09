@@ -3303,10 +3303,111 @@ $\Y\ans{最大値は2,最小値は\dfrac{2}{3}}$\\
     \node[below right]at(3,-{9/4}){$y=-\frac{1}{4}x^2$};
   \end{tikzpicture}
 \end{center}
+\kai\kuromaruni\theme{逆像法}
+\begin{align*}
+  (X,Y)\in W&\doti l_tが(X,Y)を通るようなtが存在する.\\
+  &\doti\exists t,Y=tX+t^2\\
+  &\doti\exists t,t^2+tx-Y=0\\
+  &\doti X^2+4Y\geq0\\
+  &\doti Y\geq-\dfrac{X^2}{4}
+\end{align*}
+これを満たす$(X,Y)$をすべて集めると,上図の網目部で,境界含む.
+\newpage
+\noindent\ba{22$\bullet$2}\theme{北海道大}\\
+\kangaekata 通過領域の問題は,実験することで,先に答えがわかります.なので,最初に面倒でも実験する癖をつけておきましょう.\\
+\fbox{実験}\\
+$a=0,1,2,3$とやると,中心が$y=x$上を移動していくなあ.下図みたいになるのかな〜.
+\begin{center}
+  \begin{tikzpicture}
+    \draw[domain=-1:3.5,dashed]plot(\x,{\x});
+    \draw(0,0)circle[radius=1];
+    \draw(1,1)circle[radius={sqrt(2)}];
+    \draw(2,2)circle[radius={sqrt(3)}];
+    \draw(3,3)circle[radius={sqrt(4)}];
+    \draw[->,>=Latex](-1,0)--(3.5,0)node[right]{$x$};
+    \draw[->,>=Latex](0,-1)--(0,3.5)node[above]{$y$};
+  \end{tikzpicture}
+\end{center}
+\hokukai\begin{align*}
+  (X,Y)\in W&\doti\exists a,\begin{cases}
+    C_aが(X,Y)を通る.\\
+    a\geq0
+  \end{cases}\\
+  &\doti\exists a,\begin{cases}
+    (X-a)^2+(Y-a)^2=a^2+1\\
+    a\geq0
+  \end{cases}\\
+  &\doti\exists a,\begin{cases}
+    a^2-2(X+Y)a+X^2+Y^2-1=0\cdots\cdots\maruichi\\
+    a\geq0
+  \end{cases}\cdots\cdots\asta
+\end{align*}
+ここで,$f(a)=\maruichi$とおくと,$f(a)$のグラフは,$a=X+Y$を対称軸とする下に凸の放物線.
+\begin{align*}
+  \asta&\doti\p{f(0)\leq0}\vee\begin{cases}
+    X+Y\geq0\\
+    （\maruichi の判別式：）\geq0
+  \end{cases}\\
+  &\doti（ X^2+Y^2-1\leq0）\vee\begin{cases}
+    X+Y\geq0\\
+    2XY+1\geq0
+  \end{cases}
+\end{align*}
+これを満たす$(X,Y)$をすべて集めると,$W$が得られる.\chu tikzで書くことができなかったので,手書きの回答を参照してください.
+\newpage
 
-\ba{22$\bullet$2}\theme{北海道大}\\
-
-\ba{22$\bullet$3}\theme{東京大}\\
+\noindent\ba{22$\bullet$3}\theme{東京大}\\
+\kangaekata まずは,手際よく直線の式を求めましょう.ここが全てです.\\
+\hokukai まず,$l_t$の$x=k$の部分だけみると,点$\p{k,3(k^2-1)x-2k^3}$が,上下に動く.\\
+今,この$y$座標は,
+\begin{align*}
+  y=-2t^3+3kt^2-3k\p{=f(t)とおく.}
+\end{align*}
+$t$が$0\leq t\leq1$のときの,$f(t)$の値域を求める.
+\begin{align*}
+  f^\prime(t)=-6t^2+6tk=-6t(t-k)
+\end{align*}
+よって,下の3つの増減表を得る.\\
+\tokeiichi\underline{$k\geq1$のとき,}\\\\
+\vspace{5mm}
+\begin{tabular}{|c||c|c|c|}
+  \hline
+  $t$&0&$\cdots$&1\\
+  \hline
+  $f^\prime(t)$&{}&$+$&{}\\
+  \hline
+  $f(t)$&$f(0)$&$\yaa$&$f(1)$\\
+  \hline
+\end{tabular}\\\\
+\tokeini\underline{$0<k<1$のとき,}\\\\
+\vspace{5mm}
+\begin{tabular}{|c||c|c|c|c|c|}
+  \hline
+  $t$&0&$\cdots$&$k$&$\cdots$&1\\
+  \hline
+  $f^\prime(t)$&{}&$+$&0&$-$&{}\\
+  \hline
+  $f(t)$&$f(0)$&$\yaa$&$f(k)$&$\yab$&$f(1)$\\
+  \hline
+\end{tabular}\\\\
+\tokeisan\underline{$k\leq0$のとき,}\\\\
+\begin{tabular}{|c||c|c|c|}
+  \hline
+  $t$&$0$&$\cdots$&1\\
+  \hline
+  $f^\prime(t)$&{}&$-$&{}\\
+  \hline
+  $f(t)$&{}&$\yab$&{}\\
+  \hline
+\end{tabular}
+表より,$y=f(t)$の値域は,
+\tokeiichi$k\geq1$のとき,\\
+　$f(0)\leq y\leq f(1)\doti-3k\leq y\leq-2$\\
+\tokeini$0<k<1$のとき,\\
+　$\min{f(0),f(1)}\leq y\leq f(k)\doti\min{-3k,-2}\leq y\leq k^2-3k$\\
+\tokeisan$k\leq0$のとき,\\
+　$f(1)\leq y\leq-3k$\\
+以上より,図示すればよい.\chu 手書きを参照してください.
 
 \newpage
 
