@@ -40,5 +40,171 @@ Vol.2も集中していきましょう.\\
 \ans{自分がどこまで考えたか？}は明確にしておいてください.とにかく,\ans{粘り強く考えること}が何より大切です.
 \newpage
 \section{ベクトルの移動・一次独立・斜交座標系}
-hoge
+\begin{itembox}
+[l]{\enpitu 単位ベクトル}
+・大きさが1のベクトルを単位ベクトルという.\\
+単位ベクトルには,様々な便利な性質がある.それを以下で確認する.
+\end{itembox}
+\fbox{性質}\\
+$\bullet$大きさ3のベクトルを$\dfrac{1}{3}$倍すると,大きさは1になる.\\
+$\bullet$大きさ$\dfrac{1}{10}$のベクトルを$10$倍すると,大きさは1になる.\\
+これらより,次のことがわかります.
+\begin{itembox}
+[l]{\enpitu 単位ベクトルの性質$\maruichi$}
+$\vec{0}$でないベクトル$\vec{a}$を$\dfrac{1}{\left|\vec{a}\right|}$倍すると大きさが1になる.
+\end{itembox}
+この事実を利用して,次のようなベクトルを考えることもできます.
+\begin{itembox}
+[l]{\enpitu 単位ベクトルの性質$\maruni$}
+\kakkoichi　 $\vec{0}$でないベクトル$\vec{a}$と同じ向きの単位ベクトルは,$\dfrac{1}{\left|\vec{a}\right|}\vec{a}$\\
+\kakkoni　 $\vec{0}$でないベクトル$\vec{a}$と同じ向きに$k$進むベクトルは,$\dfrac{k}{\left|\vec{a}\right|}\vec{a}$
+\end{itembox}
+この性質$\maruni$から,
+\begin{center}
+    \ans{向きと大きさが分かれば,どんなベクトルでも作ることができる}
+\end{center}
+ということがわかります.\\
+ex)\\
+\kakkoichi　$\vec{a}=\tvec<0,1>[3,1]$と逆向きの単位ベクトル$\vec{e}$を求めよ.\\
+\kakkoni　$\vec{b}=\Tvec<0,1>[1,2,-1]$と同じ向きに12進むベクトル$\vec{f}$を求めよ.
+\newpage
+\noindent\hokukai\kakkoichib$\vec{e}=-\dfrac{1}{\left|\vec{a}\right|}\vec{a}=\ans{-\dfrac{1}{\sqrt{10}}\tvec<0,1>[3,1]}$\\
+\kakkonib$\vec{f}=\dfrac{12}{\left|\vec{b}\right|}\vec{b}=\dfrac{12}{\sqrt{6}}\vec{b}=\ans{2\sqrt{6}\Tvec<0,1>[1,2,-1]}$\\\\
+\bigskip
+{\Large 位置ベクトルと座標}\\
+ベクトルとは,点の移動です.ベクトルをよく理解すると,点の移動は行ベクトル\B{$（a,b）$の形で書くこと.}でなく,ベクトルで計算することが
+当たり前になります.\\
+例えば,
+\begin{center}
+点$(3,1)$から$\tvec<0,1>[\sqrt{2},\sqrt{2}]$方向に3移動したい.
+\end{center}
+という移動は,
+\begin{align*}
+    (3,1)+\dfrac{3}{\left|\tvec<0,1>[\sqrt{2},\sqrt{2}]\right|}\tvec<0,1>[\sqrt{2},\sqrt{2}]=\tvec<0,1>[3+\frac{3\sqrt{2}}{2},1+\frac{3\sqrt{2}}{2}]=\ans{\tvec<0,1>[\frac{6+3\sqrt{2}}{2},\frac{2+3\sqrt{2}}{2}]}
+\end{align*}
+というようなカンタンな計算で表現することができます.\\
+この原点からどれだけ移動したかを表すベクトルを「位置ベクトル」ということがあります.\\ 
+これより,次の常識を獲得できます.
+\begin{center}
+    \ans{座標を求めたければ,原点からの位置ベクトルを計算すればよい}
+\end{center}
+これは,考えれば当たり前の常識です.\\
+それでは,問題演習です.
+\newpage
+\noindent\ba{1$\bullet$1}\theme{単位ベクトル}\\
+\kakkoichi 点A$(-1,1)$から$\vec{a}=\tvec<0,1>[2,1]$と同じ向きに10進むと,点Pに辿り着いた.Pの座標を求めよ.\\
+\kakkoni 点B$(1,0,-1)$から点B$(2,1,1)$に向かって18進むと点Pに辿り着いた.Pの座標を求めよ.\\\\\\
+\bigskip
+{\Large 二つのベクトルの一次独立と斜交座標}\\
+\begin{itembox}
+    [l]{\enpitu 一次独立・一次従属}
+    $\vec{0}$でないベクトル$\vec{v}_i（i=1,2,\cdots,n）$について,
+    \begin{center}
+        $c_1v_1+c_2v_2+\cdots+c_nv_n=0\narabaa c_1=c_2=\cdots=c_n=0$ 
+    \end{center}
+    のとき,$v_i$は一次独立という.（線形独立ともいう）\\
+    一次独立でないとき,一次従属という.（線形従属ともいう）
+\end{itembox}
+\chud\theme{一次独立・従属の幾何学的意味}
+\newpage
+\noindent{\Large 斜交座標系}\\
+三角形OABを考える.$\vec{a}=\Vec{OA},\vec{b}=\Vec{OB}$とする.このとき,$\vec{a},\vec{b}$は一次独立である.\\
+このとき,二つのベクトルの適当な実数倍で表される点Pは,
+\begin{center}
+    $\Vec{OP}=s\vec{a}+t\vec{b}$
+\end{center}
+と表せる.このとき下図のような,「斜めの座標」が出現することに気づくでしょう.
+\begin{center}
+    \begin{tikzpicture}
+        \begin{scope}
+            \clip(-1.5,-1.5)rectangle(3.5,3.5);
+            \draw[->,>=Latex](-1.5,0)--(2.8,0)node[right]{$s$};
+            \draw[->,>=Latex,very thick](0,0)--({sqrt(3)},0)node[below left]{$\vec{a}$};
+            \draw[->,>=Latex,very thick](0,0)--({1/sqrt(3)},1)node[above left]{$\vec{b}$};
+        \end{scope}
+        \draw[->,>=Latex,domain=-0.5:2] plot(\x,{sqrt(3)*\x})node[above]{$t$};
+        \node [below]at(0,0){O};
+    \end{tikzpicture}
+\end{center}
+上図から,\ans{適当に一次独立な基底をとってくれば,この座標系上の点は,ただ一通りで表せる.}ということがわかります.\\
+すなわち,次のような常識がゲットできます.
+\begin{itembox}
+    [l]{\enpitu 一次独立の性質}
+    $\vec{a},\vec{b}$を一次独立なベクトルとする.
+    \begin{align*}
+        &\vec{a}=\Vec{OA},\vec{b}=\Vec{OB}が一次独立\\
+        &\doti 3点\mathrm{O,A,B}が同一直線上にない.\\
+        &\doti \vec{a},\vec{b}を基底とする斜交座標系が張れる.\\
+        &\doti その斜交座標平面上の任意の点\mathrm{P}は,\Vec{OP}=s\vec{a}+t\vec{b}の形で一通りで表せる.\\
+        &\doti s\vec{a}+t\vec{b}=s^\prime\vec{a}+t^\prime\vec{b}\narabaa\begin{cases}
+            s=s^\prime\\
+            t=t^\prime
+        \end{cases}
+        という係数比較が許される.
+    \end{align*}
+\end{itembox}\\
+我々が普段使ってきた$xy$座標は$(1,0),(0,1)$を基底とする座標系です.\\
+\newpage
+次に,斜交座標系と直交座標系との間には,どのような関係があるか考えましょう.
+\begin{itembox}
+    [l]{\enpitu 斜交座標系と直交座標系}
+    $\bullet$計量は保存されない.\\
+    $\bullet$長さの比・は保存される.
+\end{itembox}
+\theme{イメージ}
+\vspace{12cm}\\
+\ba{1$\bullet$2}\theme{斜交座標を使う}\\
+平面上に$\sankaku{\mathrm{ABC}}$および点Pがあり,$2\Vec{AP}+4\Vec{BP}+3\Vec{CP}=\vec{0}\cdots\cdots\maruichi$が
+成立している.\\面積比$\sankaku{\mathrm{PBC}}:\sankaku{\mathrm{PCA}}:\sankaku{\mathrm{PAB}}$を求めよ.
+\newpage
+\noindent\hokukai まず,始点をAに揃えよう.
+\begin{align*}
+    \maruichi&\doti2\Vec{AP}+4\p{\Vec{AP}-\Vec{AB}}+3\p{\Vec{AP}-\Vec{AC}}=\vec{0}\\
+    &\doti9\Vec{AP}=4\Vec{AB}+3\Vec{AC}\\
+    &\doti\Vec{AP}=\dfrac{4}{9}\Vec{AB}+\dfrac{1}{3}\Vec{AC}\cdots\cdots\maruni
+\end{align*}
+\kai\kuromaruichi\theme{教科書方式}\\
+$\maruni$より,$\Vec{OP}=\dfrac{4\Vec{AB}+3\Vec{AC}}{9}=\dfrac{7}{9}\cdot\dfrac{4\Vec{AB}+3\Vec{AC}}{7}$\\
+よって,BCを3:4に内分する点をDとすると,$\Vec{AP}=\dfrac{7}{9}\Vec{AD}$である.\\
+よって,
+\begin{align*}
+    \begin{cases}
+        \sankaku{\mathrm{PBC}}=\dfrac{2}{9}\sankaku{\mathrm{ABC}}\\
+        \sankaku{\mathrm{PCA}}=\dfrac{7}{9}\sankaku{\mathrm{ACD}}=\dfrac{7}{9}\cdot\dfrac{4}{7}\sankaku{\mathrm{ABC}}\\
+        \sankaku{\mathrm{PAB}}=\dfrac{7}{9}\sankaku{\mathrm{ABD}}=\dfrac{7}{9}\cdot\dfrac{3}{7}\sankaku{\mathrm{ABC}}
+    \end{cases}
+\end{align*}
+$\Y \ans{\sankaku{\mathrm{PBC}}:\sankaku{\mathrm{PCA}}:\sankaku{\mathrm{PAB}}=2:4:3}$\\
+\kai\kuromaruni\theme{斜交座標}\\
+Aを原点とし,$\Vec{AB},\Vec{AC}$を基底とする$XY$座標系を考える.\\
+\vspace{3cm}\\
+これより,\kuromaruichi と同じ結果を得る.\\
+\kai\kuromarusan\theme{裏技}\\
+略
+\newpage
+\noindent\ba{1$\bullet$2}\\
+三角形ABCの辺AB上の点Mと辺AC上の点Nを結ぶ線分MN上に,三角形ABCの重心Gがある. MG:GN$=$3:2のとき,以下の問いに答えよ.\\
+\kakkoichi AM:MBとAN:NCを求めよ.\\
+\kakkoni Dを辺ABの中点とする.直線MDと直線ACの交点をEとするとき,AC:CEを求めよ.\\
+\kakkosan 三角形DGMの面積は,三角形ABCの面積の何倍か.\\
+\ba{1$\bullet$3}\\
+平面上に$\sankaku{\mathrm{OAB}}$があり,その面積を$S$とおく.$s,t$を実数とし,点Pを
+\begin{align*}
+    \Vec{OP}=s\Vec{OA}+t\Vec{OB}
+\end{align*}
+によって定める.$s,t$が
+\begin{align*}
+    s\geq0,1\leq s+2t\leq 2,3s+t\leq3
+\end{align*}
+を満たすとき,点Pが存在し得る範囲の面積$T$を$S$を用いて表せ.\\
+\ba{1$\bullet$4}\\
+$t$が実数全体を動くとき,
+\begin{align*}
+    \tvec<0,1>[x,y]=\tvec<0,1>[2t-t^2,t+2t^2]
+\end{align*}
+で定まる点$(x,y)$の軌跡を$C$ろする.また,$u$が実数全体を動くとき,
+\begin{align*}
+    \tvec<0,1>[x,y]=\tvec<0,1>[2u-1,u+2]
+\end{align*}
+で定まる点$(X,Y)$の軌跡$L$とする.$CとLで囲まれる部分の面積Sを求めよ.$
 \end{document}
