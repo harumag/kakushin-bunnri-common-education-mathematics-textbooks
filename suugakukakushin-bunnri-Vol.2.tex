@@ -207,4 +207,586 @@ $t$が実数全体を動くとき,
     \tvec<0,1>[x,y]=\tvec<0,1>[2u-1,u+2]
 \end{align*}
 で定まる点$(X,Y)$の軌跡$L$とする.$CとLで囲まれる部分の面積Sを求めよ.$
+\newpage
+\begin{center}
+    \ans{1章の問題演習}
+\end{center}
+\noindent\reibanichi 点A$(7,5)$から出発して,$\tvec<0,1>[-1,-1]$の向きに$4\sqrt{2}$進んだ点をBとし,さらにBから原点を背
+にして5進んだら,点Pに辿り着いた.Pの座標を求めよ.\\\\
+\reibanni 平面上に平行四辺形ABCDおよび点Pがあり,$\Vec{AP}+2\Vec{BP}+3\Vec{CP}+4\Vec{DP}=\vec{0}\cdots\cdots\maruichi$
+が成立している.面積の比$\sankaku{\mathrm{PAB}}:\sankaku{\mathrm{PCD}}:\sankaku{\mathrm{PDA}}$を求めよ.\\\\
+\reibansan 座標平面上にベクトル
+\begin{align*}
+    \vec{a}=(2,1),\vec{b}=(1,4),\vec{c}=(2,3)
+\end{align*}
+が与えられている.以下のそれぞれについて,点Pが動く領域を座標平面上に図示せよ.\\
+\kakkoichi 実数$r,s$が$\dfrac{1}{2}\leq r+s\leq1,r\geq0,s\geq0$を満たしながら動くとき,ベクトル\\
+$\vec{p}=r\vec{a}+s\vec{b}$を位置ベクトルとする点P.\\
+\kakkoni 実数$r,s,tがr+s=1+t,r\geq0,s\geq0,t\leq0$を満たしながら動くとき,ベクトル$\vec{p}=r\vec{a}+s\vec{b}+t\vec{c}$
+を位置ベクトルとする点P.\\
+\hspace{10cm}（東京医科歯科大）
+\newpage
+\section{空間の一次独立・符号付き長さ}
+\noindent 三次元空間内に三つのベクトル
+\begin{align*}
+    \Vec{OA}=\vec{a},\Vec{OB}=\vec{b},\Vec{OC}=\vec{c}
+\end{align*}
+があったとき,4点O,A,B,Cが同一平面上にない状態を
+\begin{align*}
+    \vec{a},\vec{b},\vec{c}は,一次独立である
+\end{align*}
+という.そうでない状態を「一次従属」という.\\
+三次元では,基底ベクトルが3つとることができるので,\ans{空間内に斜交座標系ができる}ことがすぐにわかるでしょう.\\
+まとめると次のようになります.
+\begin{itembox}
+    [l]{\enpitu 空間内の一次独立の性質}
+    $\vec{a},\vec{b},\vec{c}$を一次独立なベクトルとする.
+    \begin{align*}
+        &\vec{a}=\Vec{OA},\vec{b}=\Vec{OB},\vec{c}=\Vec{OC}が一次独立\\
+        &\doti 4点\mathrm{O,A,B,C}が同一直線上にない.\\
+        &\doti 空間内の任意の点\mathrm{P}は,\Vec{OP}=s\vec{a}+t\vec{b}+u\vec{c}の形で一通りに表せる.\\
+        &\doti s\vec{a}+t\vec{b}+u\vec{c}=s\prime\vec{a}+t^\prime\vec{b}+u^\prime\vec{c}\narabaa\begin{cases}
+            s=s^\prime\\
+            t=t^\prime\\
+            u=u^\prime
+        \end{cases}という係数比較が許される.
+    \end{align*}
+\end{itembox}
+\newpage
+\begin{center}
+\begin{tikzpicture}
+\node[above]at(3,3){P};
+\filldraw[black](3,3)circle(1.5pt);
+\filldraw[black](0,2)circle(1.5pt);
+\node[above]at(0,2){O};
+\draw[very thick][-](-1,-1)--(5,5);
+\node[left]at(0,0){A};
+\filldraw[black](0,0)circle(1pt);
+\draw[very thick][->,>=Latex](1,0)--(2,1)node[right]{$\vec{u}$};
+\draw[very thick][->,>=Latex](0,2)--(0,0);
+\node[above]at(4,4.2){$\ell\koyab$};
+\end{tikzpicture}
+  \end{center}
+  上の図で直線$\ell 上の$点Pにたどり着くにはどういう行き方をすれば良いでしょうか.考えてみてください。\\
+  $\vec{u}は直線\ell の方向ベクトル$\\\\\\\\
+  \kangaekata\\
+  電車を例に取りましょう.\\
+  まず家(O)から駅(A)に向かって,$電車(\vec{u})にt回乗れば,点Pにたどりつけますね!これを式で書くと下記のようになります.$\\
+  \begin{center}
+  $\Vec{OP}=\Vec{OA}+t\vec{u}\p{t\in\mathbb{R}}\cdots\maruichi$
+\end{center}
+という感じで表現できます.$tに色々な実数を代入すると点\ell 上の全ての点を表現することができますね!\\
+このとき,\maruichi を「直線\ell のパラメーター表示」と言ったりします.\\
+皆さん,一生懸命この式を暗記していますが,意味を考えれば\ans{あたりまえ}です.このパラメーターtを使った表現は常識にしておいてください.\\$
+\newpage
+\subsection{平面のパラメーター表示}
+\begin{center}
+  \begin{tikzpicture}
+\draw[dashed](-1,-1)--(5,5);
+\draw[dashed](-1,0)--(5,0);
+\draw[dashed](-1,-1)--(5,-1);
+\draw[dashed](-1,1)--(5,1);
+\draw[dashed](-1,2)--(5,2);
+\draw[dashed](-1,3)--(5,3);
+\draw[dashed](-1,4)--(5,4);
+\draw[dashed](-1,5)--(5,5);
+\draw[dashed](0,-1)--(5,4);
+\draw[dashed](1,-1)--(5,3);
+\draw[dashed](2,-1)--(5,2);
+\draw[dashed](3,-1)--(5,1);
+\draw[dashed](4,-1)--(5,0);
+\draw[dashed](5,-1)--(5,-1);
+
+\draw[dashed](-1,0)--(4,5);
+\draw[dashed](-1,1)--(3,5);
+\draw[dashed](-1,2)--(2,5);
+\draw[dashed](-1,3)--(1,5);
+\draw[dashed](-1,4)--(0,5);
+
+\node[below left]at(0,0){A};
+\filldraw[black](0,0)circle(1.5pt);
+\draw[very thick] [->,>=Latex](0,0)--(1,1)node[above]{$\vec{u}$};
+\draw[very thick][->,>=Latex](0,0)--(1,0)node[below]{$\vec{v}$};
+\node[above]at(5,3){P$(s,t)$};
+\filldraw[black](5,3)circle(1.5pt);
+  \end{tikzpicture}
+\end{center}
+$同じく,\Vec{OP}はどのように書けるか考えてみてください.$\\\\\\
+\kangaekata\\
+まず,家(O)から駅(A)に行ってから,$\vec{u}という電車にt回,\vec{v}というバスにs回乗れば良いですね,すなわち以下のように書けます$.\\
+\begin{center}
+  $\Vec{OP}=\Vec{OA}+s\vec{v}+t\vec{u}\p{s,t\in\mathbb{R}}\cdots\maruichi$
+\end{center}
+$\vec{u}と\vec{v}が一次独立のとき,点線のような斜交座標の平面が張れ,その平面上の点は\maruichi の唯一通りの形で表すことができます.このとき,\maruichi を「平面\alpha のパラメーター表示」と言います.$\\
+\begin{itembox}
+  [l]{\enpitu パラメーター表示のまとめ}
+  $\doichi 直線上の点は\ans{1つのパラメーター}で表せる.\\
+  \doni 平面上の点は\ans{2つのパラメーター}$で表せる.
+\end{itembox}\\
+ex)\\
+A$(1,1,1)$,B$(0,2,2)$,C$(3,2,0)$,L$(4,1,5)$,M$(5,0,7)$に対し,平面ABCと直線LMの交点Pを求めよ.
+\newpage
+\noindent\hokukai 点Pは平面ABC上にあるので,
+\begin{align*}
+    \Vec{OP}=\Vec{OA}+s\Vec{AB}+t\Vec{AC}\cdots\cdots\maruichi
+\end{align*}
+とパラメータ表示でき,また,点Pは直線LM上にあるので,
+\begin{align*}
+    \Vec{OP}=\Vec{OL}+u\Vec{LM}\cdots\cdots\maruni
+\end{align*}
+とパラメータ表示できる.従って,$\maruichi,\maruni$より,
+\begin{align*}
+    \Vec{OA}+s\Vec{AB}+t\Vec{AC}=\Vec{OL}+u\Vec{LM}&\doti\Tvec<0,1>[1,1,1]+s\Tvec<0,1>[-1,1,1]+t\Tvec<0,1>[-1,1,1]=\Tvec<0,1>[4,1,5]+u\Tvec<0,1>[1,-1,2]\\
+    &\doti \begin{cases}
+        -s+2t=3+u\\
+        s+t=-u\\
+        s-t=4+2u
+    \end{cases}\\
+    &\doti\begin{cases}
+        s=1\\
+        t=1\\
+        u=-2
+    \end{cases}
+\end{align*}
+$\Y \Vec{OP}=\Tvec<0,1>[4,1,5]-2\Tvec<0,1>[1,-1,2]=\Tvec<0,1>[2,3,1]　\ans{\mathrm{P}(2,3,1)}$\\\\
+ex)A$(-1,3,0)$,B$(1,1,4)$,C$(3,5,2)$,D$(1,7,8)$に対し,点Pは直線AB上を,点Qは直線CD上を自由に動く.このとき,PQの中点R
+が描く図形はどのようになるか.
+\newpage
+\noindent\hokukai 点Pは直線AB上を動くので,
+\begin{align*}
+    \Vec{OP}=\Vec{OA}+s\Vec{AB}
+\end{align*}
+とパラメータ表示でき,点Qは直線CD上を動くので,
+\begin{align*}
+    \Vec{OQ}=\Vec{OC}+t\Vec{CD}
+\end{align*}
+とパラメータ表示できる.この$s,t$を用いると,$\Vec{PQ}$の中点Rの位置ベクトルは,
+\begin{align*}
+    \Vec{OR}&=\dfrac{1}{2}\p{\Vec{OP}+\Vec{OQ}}=\dfrac{1}{2}\p{\Vec{OA}+s\Vec{AB}+\Vec{OC}+t\Vec{CD}}\\
+    &=\dfrac{1}{2}\B{\Tvec<0,1>[2,8,2]+s\Tvec<0,1>[2,-2,4]+t\Tvec<0,1>[-2,2,6]}\\
+    &=\Tvec<0,1>[1,4,1]+s\Tvec<0,1>[1,-1,2]+t\Tvec<0,1>[-1,2,3]
+\end{align*}
+今,$s,t$は任意の実数を動くので,Rが描く図形は,
+\begin{align*}
+    \ans{点(1,4,1)を通る,\Tvec<0,1>[1,-1,2],\Tvec<0,1>[-1,1,3]の張る平面}
+\end{align*}
+\newpage
+\noindent{\Large 符号付き長さと内積}\\
+\begin{itembox}
+    [l]{\enpitu 内積の定義（教科書）}
+    二つのベクトル$\vec{a}=\Vec{OA},\vec{b}=\Vec{OB}のなす角を\theta$とするとき,
+    \begin{center}
+        $\vec{a}\cdot\vec{b}=\left|\vec{a}\right|\left|\vec{b}\right|\cos\theta\cdots\cdots\spadesuit$
+    \end{center}
+\end{itembox}
+この定義は流石に常識ですね.ここで,内積の絵を描いてみましょう.\\
+\begin{tikzpicture}[scale=2]
+  \draw[->,>=Latex](-2,0)--(0.5,0)node[above]{$\vec{a}$};
+  \draw[->,>=Latex](-2,0)--(-0.3,1)node[above]{$\vec{b}$};
+  \draw[dashed](-0.3,1)--(-0.3,0)node[below]{H};
+  \node[right]at(0.5,0){A};
+  \node[right]at(-0.3,1){B};
+  \draw[->,>=stealth](-1.5,0)arc[start angle = 0, end angle = 30, radius = 0.5]node[pos=0.5, right] {$\theta$};
+\draw[-](-0.3,0.2)--(-0.45,0.2)--(-0.45,0);
+\node[left]at(-2,0){O};
+
+\coordinate[label=below:O](O)at(4,0);
+\draw[->,>=Latex](O)--(5.5,0)node[above]{$\vec{a}$};
+\draw[->,>=Latex](O)--(3,1)node[above]{$\vec{b}$};
+\draw[dashed](O)--(2.5,0);
+\draw[dashed](3,1)--(3,0)node[below]{H};
+\draw[->,>=stealth](4.2,0)arc[start angle=0,end angle=120,radius=0.3]node[pos=0.5,right]{$\theta$};
+\draw[-](3,0.2)--(3.2,0.2)--(3.2,0);
+\end{tikzpicture}
+上の図において,内積のさらなる解釈を与えてみましょう.\\
+$\F{\spadesuit \doti\vec{a}\cdot\vec{b}=|\vec{a}|\cdot|\Vec{OH}|\p{\because |\Vec{OH}|=|\vec{b}|\cdot\cos\theta}
+\doti|\Vec{OH}|=\dfrac{\vec{a}\cdot\vec{b}}{|\vec{a}|}}$\\
+この$\Vec{OH}$を\begin{center}
+  
+$\ans{\vec{b}の\vec{a}向き符号付き長さ}$
+\end{center}
+と言います.なぜ,符号付きなのかというと,上の2つの図を見れば明らかですね....\\
+よって内積の以下のような解釈を手に入れワケです.
+\begin{itembox}
+  [l]{\enpitu 内積の定義(符号付き長さを用いて)}
+  \begin{center}
+  $\ans{\vec{a}\cdot\vec{b}=\p{\vec{a}の大きさ}\times\p{\vec{b}の\vec{a}向き符号付き長さ}}$
+  \end{center}
+\end{itembox}
+これが内積の本質的な定義です.\\
+それでは,実際につかってみましょう.
+\newpage
+\ba{2$\bullet$1} 次の問いに答えよ。\\
+\kakkoichi $|\vec{a}|=4,|\vec{b}|=9であり、二つのベクトルの内積が12のとき、符号付き長さ|\Vec{OH}|を求めよ。\\
+\kakkoni 点A(1,1)と点B(2,2)を結ぶベクトルを\Vec{AB},点Aと点C(2,1)を結ぶベクトルを\Vec{AC}とするとき、\Vec{AB}と\Vec{AC}の内積を求め、符号付き長さ|\Vec{OH}|を求めよ。$\\\\
+\ba{2$\bullet$2} 次の図の$\vec{a}と\vec{b}$の内積を教科書の定義を使わずに答えよ。また、符号付き長さ$|\Vec{OH}|$を求めよ。\\
+\kakkoichi \\
+\begin{center}
+  \begin{tikzpicture}[scale=0.7]
+    \coordinate[label=left:A](A)at(0,0);
+    \coordinate[label=right:B](B)at(3,2);
+    \coordinate[label=left:O](O)at(0,-2);
+    \coordinate[label=right:C](C)at(4,-2);
+    \draw[->,>=Latex](A)--(B)node[above]{$\vec{a}$};
+    \draw[->,>=Latex](O)--(C)node[below]{$\vec{b}$};
+    \draw[dashed](A)--(O);
+    \draw[dashed](B)--(3,-2)node[below]{H};
+    \draw[very thick] [->,>=Latex](O)--(3,-2);
+    \draw (A) to [out=60,in=180,edge node={node [sloped,above] {4}}] (B);
+    \draw (O) to[bend left=20] node[pos=0.5, sloped, above=3pt] {7} (C);
+    \draw(O)to[bend right=20]node[pos=0.5,sloped,below=3pt]{3}(3,-2);
+    
+  \end{tikzpicture}
+\end{center}
+\kakkoni
+\begin{center}
+  \begin{tikzpicture}
+    \coordinate[label=right:A](A)at(0,2);
+    \coordinate[label=left:B](B)at(-2,3);
+    \coordinate[label=below:O](O)at(0,0);
+    \coordinate[label=right:C](C)at(2,0);
+    \draw[->,>=Latex](O)--(C)node[below]{$\vec{a}$};
+    \draw[->,>=Latex](A)--(B)node[above right]{$\vec{b}$};
+    \draw[dashed](A)--(O);
+    \draw[dashed](O)--(-3,0);
+    \draw[dashed](B)--(-2,0)node[below]{H};
+    \draw[very thick] [->,>=Latex](O)--(-2,0);
+    \draw(O)to[bend left=20]node[pos=0.5,sloped,below=3pt]{2}(-2,0);
+    \draw(A)to[bend right=20]node[pos=0.5,sloped,above=3pt]{4}(B);
+    \draw(O)to[bend left=20]node[pos=0.5,sloped,above=3pt]{3.5}(C);
+  \end{tikzpicture}
+\end{center}
+\ba{2$\bullet$3}\\
+四面体OABCにおいて,辺OAを1:2に内分する点をL,辺BLの中点をM,線分CMを3:1に内分する点をNとし,直線ONと平面ABCの交点をPとする.\\
+$\Vec{OA}=\vec{a},\Vec{OB}=\vec{b},\Vec{OC}=\vec{c}$とするとき,\\
+\kakkoichi $\Vec{OP}$を$\vec{a},\vec{b},\vec{c}$で表せ.\\
+\kakkoni 四面体OABPの体積は四面体OABCの体積の何倍か.\\
+\kakkosan 三角形ABP,BCP,CAPの面積の比を求めよ.
+\begin{center}
+    \ans{2章の問題演習}
+\end{center}
+\noindent\reibanichi 四角形ABCDを底面とする四角錐OABCDは,
+\begin{align*}
+    \Vec{OA}+\Vec{OC}=\Vec{OB}+\Vec{OD}
+\end{align*}
+を満たしており,0と異なる4つの実数$p,r,q,s$に対して4点P,Q,R,Sを
+\begin{align*}
+    \Vec{OP}=p\Vec{OA},\Vec{OQ}=q\Vec{OB},\Vec{OR}=r\Vec{OC},\Vec{OS}=s\Vec{OD}
+\end{align*}
+によって定める.このとき,P,Q,R,Sが同一平面上にあれば,
+\begin{align*}
+    \dfrac{1}{p}+\dfrac{1}{r}=\dfrac{1}{q}+\dfrac{1}{s}
+\end{align*}
+が成立することを示せ.\\
+\hspace{10cm}（京都大）
+\newpage\section{内積（正射影ベクトル）}
+有効線分(大きさと方向を持つ線分)に垂直に光を当てたときにできる影を「正射影」と言います。次の図を見ればすぐに分かると思います。
+\begin{center}
+  \begin{tikzpicture}[scale=1.5]
+    \coordinate[label=right:A](A)at(3,0);
+    \coordinate[label=left:O](O)at(0,0);
+    \coordinate[label=above:B](B)at(2,2);
+    \coordinate[label=above left:C](C)at(0.5,1);
+    \draw [->,>=Latex] (O)--(A);
+    \draw[->,>=Latex](B)--(C);
+    \draw[dashed](C)--(0.5,0)node[below]{P};
+    \draw[dashed](B)--(2,0)node[below]{Q};
+    \draw[very thick][->,>=Latex](2,-0.4)--(0.5,-0.4);
+
+  \end{tikzpicture}
+\end{center}
+上の図の$\Vec{QP}を\ans{「正射影ベクトル」}と言います。$では、この正射影ベクトルの式を作るにはそうすれば良いでしょうか。\\
+ベクトルとは、\ans{向きと大きさ}を持った矢印でした。これが発想のきっかけです。\\
+状況を簡単にするために、次の絵で導きたいと思います。\\
+\begin{center}
+  \begin{tikzpicture}[scale=1.5]
+  \coordinate[label=right:A](A)at(3,0);
+    \coordinate[label=left:O](O)at(0,0);
+    \coordinate[label=above:B](B)at(2,2);
+    \coordinate[label=above left:C](C)at(0.5,1);
+    \draw [->,>=Latex] (O)--(A)node[below]{$\vec{a}$};
+    \draw[->,>=Latex](B)--(C)node[below left]{$\vec{b}$};
+    \draw[dashed](C)--(0.5,0)node[below]{P};
+    \draw[dashed](B)--(2,0)node[below]{Q};
+    \draw[very thick][->,>=Latex](2,-0.4)--(0.5,-0.4)node[below]{$\vec{u}$};
+    
+  \end{tikzpicture}
+\end{center}
+\kai\\
+$\vec{u}の符号付き長さは、\vec{a}\cdot\vec{b}=|\vec{a}|\cdot{\vec{b}の\vec{a}向き符号付き長さ}から\\
+\F{{\vec{b}の\vec{a}向き符号付き長さ}=|\vec{u}|=\dfrac{\vec{a}\cdot\vec{b}}{|\vec{a}|}とすぐに分かる。}\\
+\F{また、\vec{u}の向きは、\vec{a}の反対方向なので-\dfrac{\vec{a}}{|\vec{a}|}と書ける。}$\\
+\begin{center}$\yueni \ans{\vec{u}=-\dfrac{\vec{a}\cdot\vec{b}}{|\vec{a}|}\vec{a}}$\end{center}
+$\vec{u}の向きが反対方向じゃなかったら、-の符号が取れるだけです。\\
+正射影ベクトルの式はこのように暗記せずとも瞬時に導けますね！$
+\begin{itembox}
+[l]{\enpitu 符号付き長さと正射影ベクトル}
+$\vec{a}\neq\vec{0}のとき、\\
+\F{\G{\vec{u}の\vec{a}向き符号付き長さ}=\dfrac{\vec{u}\cdot\vec{a}}{|\vec{a}|}}\\
+\F{\G{\vec{u}の\vec{a}への正射影ベクトル}=\dfrac{\vec{u}\cdot\vec{a}}{|\vec{a}|^2}\vec{a}}$
+\end{itembox}\\\\
+では、具体的にどのような場面で正射影ベクトルを考えるのかみていきます。\\
+\begin{itembox}
+  [l]{\reidaic }
+  次図において、OHの長さと点Hの座標を求めよ。\\
+  \begin{center}
+    \begin{tikzpicture}[scale=0.6]
+      \coordinate[label=above:A](A)at(2,5);
+      \coordinate[label=right:B](B)at(6,2);
+      \coordinate[label=below left:O](O)at(0,0);
+      \coordinate (H) at ($(O)!(A)!(B)$);
+      \draw[-](O)--(A)node[right]{$(2,5)$};
+      \draw[-](O)--(B)node[above right]{$(6,2)$};
+      \draw[-](A)--(B);
+      \filldraw[black](2,5)circle(2pt);
+      \filldraw[black](6,2)circle(2pt);
+      \draw[dashed] (A) -- ($(O)!(A)!(B)$)node[below]{H};% P から AB への垂線
+      \draw pic [draw] {right angle = A--H--B};% AOC 間の直角
+      \node[above left]at(0,0){$(0,0)$};
+      \filldraw[black](0,0)circle(2pt);
+    \end{tikzpicture}
+  \end{center}
+\end{itembox}
+\newpage\hokukai
+$|\Vec{OH}|は、\Vec{OA}の\Vec{OB}向き符号付き長さなので、\\
+\F{|\Vec{OH}|=\dfrac{\Vec{OA}\cdot\Vec{OB}}{|\Vec{OB}|}=\dfrac{\tvec<0,1>[2,5]\cdot\tvec<0,1>[6,2]}{\sqrt{36+4}}}\\
+\F{=\dfrac{12+10}{2\sqrt{10}}=\dfrac{11}{2\sqrt{10}}=\ans{\dfrac{11}{\sqrt{10}}}}\\
+ここで、\Vec{OB}の単位ベクトルに|\Vec{OH}|倍すれば、\Vec{OH}になるので、\\
+\F{\Vec{OH}=\dfrac{\Vec{OB}}{|\Vec{OB}|}\times\Vec{OH}=\dfrac{1}{2\sqrt{10}}\times\dfrac{11}{\sqrt{10}}\tvec<0,1>[6,2]=\dfrac{11}{10}\tvec<0,1>[3,1]}\\
+\F{\yueni Hの座標は\ans{\p{\dfrac{33}{10},\dfrac{11}{10}}}}$\\\\\\\\\\
+\newpage
+\noindent{\Large 内積と直線}\\
+以下,$\tvec<0,1>[a,b]\neq\tvec<0,1>[0,0]$とする.このとき,次の直線の方程式を考えます.
+\begin{align*}
+ax+by+c=0\cdots\maruichi    
+\end{align*}
+ここで,問題です.$\maruichi$ はどのような直線ですか?と質問されたときあなたはどのように答えますか.\\
+もし,
+\begin{align*}
+\maruichi\doti y=-\dfrac{a}{b}x-\dfrac{c}{b}     
+\end{align*}
+なので
+\begin{align*}
+傾き-\dfrac{b}{a},y切片-\dfrac{c}{a}の直線
+\end{align*}と答えたなら,あなたはまだ中学生です.\\
+$b=0$のとき同値でないからです！\\\\
+そこで,$\maruichi$ を内積を使って書き換えてみましょう.
+\begin{align*}
+\maruichi&\doti\tvec<0,1>[a,b]\cdot\tvec<0,1>[x,y]=-c\\
+&\doti \left|\tvec<0,1>[a,b]\right|\times\B{\tvec<0,1>[x,y]の\tvec<0,1>[a,b]向きの符号付き長さ} =-c\\
+&\doti \sqrt{a^2+b^2}\times\B{\tvec<0,1>[x,y]の\tvec<0,1>[a,b]向きの符号付き長さ}=-c\\
+&\doti\B{\tvec<0,1>[x,y]の\tvec<0,1>[a,b]向きの符号付き長さ}=-\dfrac{c}{\sqrt{a^2+b^2}}\cdots\cdots\maruni
+\end{align*}
+直線$\maruichi$は$\maruni$を満たす点$(x,y)$の集まりなので,下図のようになる.
+\begin{center}
+  \begin{tikzpicture}[scale=0.8]
+    \coordinate(Z)at(-2,6);
+    \coordinate(Y)at(2,0);
+    \coordinate[label=left:O](O)at(-1,0);
+    \coordinate(X)at(-1/5,33/10);
+    \draw[-](Z)--(Y)node[right]{$\maruichi$};
+    \filldraw[black](-1,0)circle(2pt);
+    \draw[very thick][->,>=Latex](O)--(X)node[ left]{$\tvec<0,1>[x,y]$};
+    \coordinate (H) at ($(Z)!(O)!(Y)$); % OからZYへの垂線の足
+  \draw[very thick][-] (O) -- (H)node[above]{H}; % 垂線
+  \filldraw[black] (H) circle (1pt); % 足の点を描画（任意）
+  \draw[very thick] [->,>=Latex](H)--(2.8,2.6)node[right]{$\tvec<0,1>[a,b]$};
+  \draw(O)to[bend right=30]node[pos=0.5,sloped,below=3pt]{$-\dfrac{c}{\sqrt{a^2+b^2}}$}(H);
+
+  \end{tikzpicture}
+\end{center}
+つまり,直線の方程式$\maruichi$ は次のように解釈することができます.\\
+\begin{itembox}
+  [l]{\enpitu 内積と直線の方程式}
+  直線$ax+by+c=0は,原点Oから\tvec<0,1>[a,b]向きに-\dfrac{c}{\sqrt{a^2+b^2}}進んだ点を\tvec<0,1>[a,b]に垂直に横切る直線.$
+\end{itembox}
+と解釈することができます.\\\\
+{\Large 平面の方程式}\\
+$xy$平面上で点A$(p,q)$を通り,$\vec{0}$でないベクトル$\vec{n}=\tvec<0,1>[a,b]$に垂直な直線を$\ell$ とする.すなわち以下のような状況である.\\
+\begin{center}
+  \begin{tikzpicture}
+    \coordinate(K)at(0,4);
+    \coordinate(L)at(4,0);
+    \node[below right]at(4,0){$\ell$};
+\draw[-][very thick](K)--(L);
+\filldraw[black](1,3)circle(2pt);
+\node[right]at(1,3){P($x,y$)};
+\coordinate(P)at(1,3);
+\coordinate(A)at(3,1);
+\node[left]at(3,1){$A(p,q)$};
+\filldraw[black](A)circle(2pt);
+\draw[very thick] [->,>=Latex](A)--(5,3)node[right]{$\vec{n}=\tvec<0,1>[a,b]$};
+\coordinate(M)at(5,3);
+\draw pic [draw] {right angle = P--A--M};% AOC 間の直角
+  \end{tikzpicture}
+\end{center}
+このとき,
+\begin{align*}
+    P(x,y)\in\ell&\doti\vec{n}\bot\Vec{AP}\\
+    &\doti\vec{n}\cdot\Vec{AP}=0\\
+    &\doti\tvec<0,1>[a,b]\cdot\tvec<0,1>[x-p,y-q]=0\\
+    &\doti\ans{ a\p{x-p}+b\p{y-q}=0}
+\end{align*}
+これが直線の方程式です.\\
+これと同じことを空間上でも考えてみましょう.\\
+\begin{center}
+  \begin{tikzpicture}[tdplot_main_coords]
+\draw[very thick] [->,>=Latex] (0,0,0) -- (0,  0, 2.5) node [ right] {$\vec{n}=\Tvec<0,1>[a,b,c]$};
+ \draw[very thin] (-2,-2,0) -- (-2,2,0) -- (2,2,0) -- (2,-2,0) -- cycle;
+ \coordinate(K)at(-2,-2,0);
+ \coordinate(L)at(-2,2,0);
+ \coordinate(M)at(2,2,0);
+ \coordinate(N)at(2,-2,0);
+ \coordinate[label=right:A] (A)at(0,0,0);
+ \filldraw[black](0,0,0)circle(2pt);
+ \coordinate(P)at(0,0,2.5);
+ \draw (0,0,0.4) -- ++(0.4,0,0) -- ++(0,0,-0.4);
+\draw[very thick ] [-](A)--(1,1.5,0)node[ left]{P};
+\filldraw[black](1,1.5,0)circle(2pt);
+
+  \end{tikzpicture}
+\end{center}
+ここで,$\vec{n}が直交している平面を\alpha とおき,A(s,t,u),P(x,y,z)とおくと,$
+\begin{align*}
+P(x,y)\in\alpha&\doti \vec{n}\bot\Vec{AP}\\
+&\doti\vec{n}\cdot\Vec{AP}=0\\
+&\doti \Tvec<0,1>[a,b,c]\cdot\Tvec<0,1>[x-s,y-t,z-u]=0\\
+&\doti\ans{a\p{x-s}+b\p{y-t}+c\p{z-u}=0}    
+\end{align*}
+
+
+これが平面$\alpha$ の方程式です.直線の方程式,平面の方程式のいずれも,垂直なベクトルが1つ取ることができればすぐに作れますね.つまり,次のようにまとめることができます.
+\begin{itembox}
+  [l]{\enpitu 直線、平面の方程式}
+\noindent $\doichi 点A(p,q)を通る\vec{n}=\tvec<0,1>[a,b]に垂直な直線の方程式は\\
+\F{\vec{n}\cdot\Vec{AP}=0\doti \tvec<0,1>[a,b]\cdot\B{\tvec<0,1>[x,y]-\tvec<0,1>[p,q]}=0  }$\\\\
+$\doni 点A(p,q,r)を通る\Tvec<0,1>[a,b,c]に垂直な平面の方程式は\\
+\F{\vec{n}\cdot\Vec{AP}=0\doti\Tvec<0,1>[a,b,c]\cdot\B{\Tvec<0,1>[x,y,z]-\Tvec<0,1>[p,q,r]}}=0$
+\end{itembox}
+これを復習も兼ねて実際に解いてみましょう.\\\\
+ex)\\
+\kakkoichi 点A$(1,2,3)を通る、\vec{n}=\Tvec<0,1>[4,5,6]に垂直な平面の方程式を求めよ。$\\
+\kakkoni 点$(-2,5)を通る、\vec{n}=\tvec<0,1>[-3,-1]に垂直な直線の方程式を求めよ。$\\\\
+今,もしかしたら疑問があるかもしれません.\ans{「垂直なベクトルってどうやって求めるの?」}という疑問です.\\
+少し,ネタバレすると垂直なベクトルの求め方は,「内積が0になるベクトルを探す」と「\ans{外積}を利用する」という2通りの求め方があります.
+この外積については,2つ先の章で詳しく扱うのでそのときにこの章に戻って来てくれればと思います.
+内積が0になる方法は今できると思うのでやってみてください.
+\newpage
+{\Large 円のベクトル方程式}\\
+\indent 円のベクトル方程式もみなさん覚えさせられますよね、、、、なので\ans{当たり前}にしていきます.早速,下図の円の方程式をみていきます.\\
+\begin{center}
+  \begin{tikzpicture}[scale=1.5]
+    \coordinate[label=left:O] (O)at(0,0);
+    \coordinate(C)at(3,3);
+    \node[above]at (3,3){C$(a,b)$};
+    \draw (3,3) circle [radius=1];
+    \coordinate(P)at(2,3);
+    \filldraw[black](0,0)circle(1.5pt);
+    \node[left]at(0,0){O};
+    \filldraw[black](3,3)circle(1.5pt);
+    \filldraw[black](2,3)circle(1.5pt);
+    \draw[very thick] [->,>=Latex](O)--(P)node[left]{P$\tvec<0,1>[x,y]$};
+    \coordinate(A)at(3,2);
+    \draw[dashed](C)--(A);
+    \draw(C)to[out=0,in=30,edge node={node[midway,fill=white]{$r$}}] (A);
+    \draw[very thick] [->,>=Latex](O)--(C);
+    \draw[very thick] [->,>=Latex](C)--(P);
+  \end{tikzpicture}
+\end{center}
+ここから,円のベクトル方程式を作りましょう.\\
+\indent まず,円の定義を復習しましょう.\\
+\ans{円}\cdots \ans{平面上で、ある一定の点（中心）からの距離がすべて等しい点の集まりでできる図形}\\
+これより,ベクトルで円を表したかったら「中心からの距離がすべて等しい」ということをベクトルで表現すれば良いだけです.
+\begin{align*}
+「中心から任意の点までの距離がrである」\doti |\Vec{CP}|=r\doti\left|\Vec{OP}-\Vec{OC}\right|=r\cdots\cdots\clubsuit   
+\end{align*}
+これが円のベクトル方程式です.これをさらに変形してみます.
+\begin{align*}
+\clubsuit&\doti \left|\Vec{OP}-\Vec{OC}\right|^2=r^2\\
+&\doti\p{\Vec{OP}-\Vec{OC}}\cdot\p{\Vec{OP}-\Vec{OC}}=r^2\p{\temarkua\hspace{2mm} |a|^2=\vec{a}\cdot\vec{a}}\\
+&\doti\B{\tvec<0,1>[x-a,y-b]}\cdot\B{\tvec<0,1>[x-a,y-b]}=r^2\\
+&\doti\p{x-a}^2+\p{y-b}^2=r^2    
+\end{align*}
+みなさんが知っている円の方程式も導くことができました。
+\newpage
+\indent まあ,みなさんが覚えさせられたあの「点と直線の距離公式」です.ベクトルを使うと覚えるまでもなく当たり前になります.\\
+\begin{itembox}
+  [l]{\enpitu 点と直線の距離公式}
+  $\doichi 直線\ell:ax+by+c=0と点P(x_1,y_1)との距離をdとすると,$\\
+  \begin{center}
+  $d=\dfrac{|ax_1+by_1+c|}{\sqrt{a^2+b^2}}$\end{center}
+  $\doni$ 平面$\alpha:ax+by+cz+d=0と点P(x_1,y_1,z_1)との距離をhとすると,$\\
+  \begin{center}
+$h=\dfrac{|ax_1+by_1+cz_1+d|}{\sqrt{a^2+b^2+c^2}}$
+\end{center}
+\end{itembox}
+\newpage
+今まで学んできたことをフルに使って点と直線の距離公式を今から当たり前にしていきます.\\
+復習すると,
+\begin{itembox}
+ [l]{\enpitu 内積と直線の方程式}
+  直線$ax+by+c=0は、原点Oから\tvec<0,1>[a,b]向きに-\dfrac{c}{\sqrt{a^2+b^2}}進んだ点を\tvec<0,1>[a,b]に垂直に横切る直線.$
+\end{itembox}
+でした.また、原点から点P$(x_1,y_1)への位置ベクトル\Vec{OP}=\tvec<0,1>[x_1,y_1]とすると,\Vec{OP}の\tvec<0,1>[a,b]向き符号付き長さは\alpha=\dfrac{\tvec<0,1>[a,b]\cdot\tvec<0,1>[x_1,y_1]}{\sqrt{a^2+b^2}}なので,これらを図にすると下図のようになります.
+また,\beta=\dfrac{c}{\sqrt{a^2+b^2}}と置きます.$\\
+\begin{center}
+  \begin{tikzpicture}
+   \coordinate[label=below left:O] (O)at(0,0);
+   \coordinate(K)at(5,5);
+   \coordinate(P)at(0,3);
+   \coordinate(M)at(2.5,5.5);
+   \draw[dashed](O)--(K);
+   \draw[dashed](P)--(M);
+   \draw[very thick] [->,>=Latex](O)--(P)node[left]{P$(x_1,y_1)$};
+   \draw[-](6,2)--(1,7)node[below left]{$\ell:ax+by+c=0$};
+   \draw[very thick] [->,>=Latex](O)--(K)node[right]{$\tvec<0,1>[a,b]$};
+   \coordinate[label=left:H] (H)at($(O)!(P)!(K)$);
+   \draw[dashed](P)--(H);
+   \draw pic [draw] {right angle =P--H--K};% PHK間の直角
+   \draw (O) to [out=-60, in=300, edge node={node [midway,fill=white]{$\alpha$}}] (H);
+   \draw(P)to[out=90,in=160,edge node={node[midway,fill=white]{$d$}}] (M);
+    \coordinate(L)at(4,4);
+   \draw(O)to[out=-60,in=300,edge node={node[midway,fill=white]{$\beta$}}](L);
+  \end{tikzpicture}
+\end{center}
+$\yueni 点Pから直線\ell までの距離dは、d=|\alpha-\beta|なので,$\\
+\begin{center}
+  $\ans{d}=\dfrac{ax_1+by_1}{\sqrt{a^2+b^2}}+\dfrac{c}{\sqrt{a^2+b^2}}=\ans{\dfrac{|ax_1+by_1+c|}{\sqrt{a^2+b^2}}}$
+\end{center}
+これで,点と直線の距離公式が導かれました.これで,覚えろと学校で言われたモヤモヤは解消できたと思います.三次元での点と平面の距離公式も同様にすれば導くことができます.
+\newpage
+\noindent\ba{3$\bullet$1}\\
+平面上の4点O,A,B,Cが
+\begin{align*}
+    \mathrm{OA}=4,\mathrm{OB}=3,\mathrm{OC}=2,\Vec{OB}\cdot\Vec{OC}=3
+\end{align*}
+を満たすとき,$\sankaku{\mathrm{ABC}}$の面積の最大値を求めよ.\\
+\hspace{10cm}（一橋大）\\
+\ba{3$\bullet$2}\\
+\kakkoichi 円$x^2+y^2-4x-2y=11$と直線$y=3x-1$の二つの交点をP,Qとする.P,Qの中点Mの座標を求めよ.\\
+\kakkoni $xyz$空間内で,2点A$(3,1,1)$,B$(-1,0,2)$を結ぶ直線$L$に点Q$(2,3,1)$から下ろした垂線の足をHとする.Hの座標を求めよ.\\
+\ba{3$\bullet$3}\\
+$xy$平面上の直線$ax+by+c=0$を$l$とする.ただし,$a,b$は$a^2+b^2\neq0$を満たす定数である.\\
+　$l$と点P$\p{x_1,y_1}$との距離を$d$とする.
+\begin{align*}
+    d=\dfrac{|ax_1+by_1+c|}{\sqrt{a^2+b^2}}
+\end{align*}
+であることを説明せよ.
+\newpage
+\begin{center}
+    \ans{3章の問題演習}
+\end{center}
+\noindent\reibanichi\\
+\kakkoichi$xy$平面上で,直線$l:2x+3y-1=0$に点P$(3,4)$から下ろした垂線の足をHとする.\\
+Hの座標を求めよ.\\
+\kakkoni$xyz$空間内で,2点A$(-1,0,1)$,B$(2,-1,0)$を結ぶ直線$L$に点Q$(1,2,1)$から下ろした垂線の足をIとする.Iの座標を求めよ.\\\\
+\reibanni A$(-3,1)$,P$(2-t,1+2t)$とする.$t$が実数全体を動くとき,$\left|\Vec{AP}\right|$の最小値$m$を求めよ.\\\\
+\reibansan 平面上のベクトル$\vec{a},\vec{b},\vec{x}$が
+\begin{align*}
+    &|\vec{a}|=|\vec{v}|=1,\vec{a}\cdot\vec{b}=\dfrac{1}{2}\\
+    &-1\leq\vec{a}\cdot\vec{x}\leq1,1\leq\vec{b}\cdot\vec{x}\leq\dfrac{1}{2}
+\end{align*}
+を満たすとき,$|\vec{x}|$のとり得る値の範囲を求めよ.\\
+\hspace{10cm}（東北大）
+
 \end{document}
