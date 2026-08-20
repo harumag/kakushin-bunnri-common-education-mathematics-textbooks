@@ -788,5 +788,65 @@ Hの座標を求めよ.\\
 \end{align*}
 を満たすとき,$|\vec{x}|$のとり得る値の範囲を求めよ.\\
 \hspace{10cm}（東北大）
-
+\newpage
+\section{行列式（determinat）と外積}
+\noindent{\Large determinant と外積}\\
+平面ベクトル$\tvec<0,1>[a,b]$を反時計回りに90$\ddo$回転すると,$\tvec<0,1>[-b,a]$になります.\\
+このことは,下の図より明らかでしょう.
+\begin{center}
+  \begin{tikzpicture}[scale=2]
+    \coordinate(K)at(0.866,1/2);
+    \coordinate(L)at(-1/2,0.866);
+    \coordinate(M)at(-0.866,-1/2);
+    \coordinate(N)at(1/2,-0.866);
+    \coordinate  
+    (O)at(0,0);
+    \draw[thick] (0,0) circle[radius=1];
+    \filldraw[black](0,0)circle(1pt);
+    \draw[->,>=stealth](-1.5,0)--(1.5,0)node[right]{$x$};
+    \draw[->,>=stealth](0,-1.5)--(0,1.5)node[above]{$y$};
+    
+    \draw[very thick] [->,>=Latex](O)--(K)node[right]{$(2,1)$};
+    \draw[very thick][->,>=Latex](O)--(L)node[above left]{$(-1,2)$};
+    \draw[very thick][->,>=Latex](O)--(M)node[left ]{$(-2,-1)$};
+    \draw[very thick] [->,>=Latex](O)--(N)node[right]{$(1,-2)$};
+    \draw pic [draw] {right angle =L--O--K};% PHK間の直角
+  \end{tikzpicture}
+\end{center}
+二つのベクトル$\vec{u}=\tvec<0,1>[a,b]$と$\vec{v}=\tvec<0,1>[c,d]$の張る平行四辺形の面積Sは
+,$\ans{S=\left|ad-bc\right|}$となることは教科書に載っていて有名です。教科書や参考書では,
+$\ans{S=\sqrt{\left|\vec{u}\right|^2\left|\vec{v}\right|^2-\p{\vec{u}\cdot\vec{v}}}}$
+の公式に成分をそれぞれ代入して求めていますが,それだとベクトルを勉強している意味がないです.
+散々言っていますが,意味を考えて数学を勉強しないと一生数学には強くなれないし,勉強している意味がありません.
+意味を解釈すると,次のように書けます.
+\begin{center}
+$ad-bc=\tvec<0,1>[-b,a]\cdot\tvec<0,1>[c,d]=\left|\vec{u'}\right|\cdot\left|\vec{v}の\vec{u'}向き符号付き長さ\right|\cdots\clubsuit$
+ \end{center}
+$\alpha=\B{\left|\vec{v}の\vec{u'}向き符号付き長さ\right|}とおいてこの状況を図示すると,次のようになります.$\\
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->,>=stealth,dashed](-2,0)--(6,0)node[right]{$x$};
+    \draw[->,>=stealth,dashed](0,-1)--(0,6)node[above]{$y$};
+    \coordinate[label=below left:O] (O)at(0,0);
+    \coordinate(K)at(3,1);
+    \coordinate(L)at(4,3);
+    \coordinate(M)at(1,2);
+    \draw[ thick] [-](M)--(L)--(K);
+    \coordinate(K')at(-1,3);
+    \draw[ thick][->,>=Latex](O)--(K')node[above left]{$\vec{u'}=\tvec<0,1>[-b,a]$};
+    \coordinate(H)at($(O)!(M)!(K')$);
+    \draw[dashed](M)--(H);
+     \draw pic [draw] {right angle =M--H--K'};% PHK間の直角
+     \draw(O)to[out=180,in=200,edge node={node[midway,fill=white]{$\alpha$}}](H);
+     \draw[ultra thick] [-](O)--(H);
+     \fill[fill=lightgray,draw=black](O)--(M)--(L)--(K)--cycle;
+     \draw[ thick] [->,>=Latex](O)--(K)node[below]{$\vec{u}=\tvec<0,1>[a,b]$};
+    \draw[ thick] [->,>=Latex](O)--(M)node[above]{$\vec{v}=\tvec<0,1>[c,d]$};
+    \node[fill=white, inner sep=2pt, rounded corners=2pt] at ($0.25*(O)+0.25*(M)+0.25*(L)+0.25*(K)$) {$S$};
+  \end{tikzpicture}
+\end{center}
+ この絵を見ながら$\clubsuit の式を再度考察すると,\ans{\left|底辺\right|\cdot\left|高さ\right|}に見えてくると思います!$なので,ベクトルの面積公式は当たり前ですね!\\
+ そして,この$ad-bcのことを行列式(deteminant)と言い,\det{\B{\vec{u},\vec{v}}}と書きます.具体的には,\\
+ \F{S=\left|\det{\B{\vec{u},\vec{v}}}\right|=\left|\det{\B{\tvec<0,1>[a,b],\tvec<0,1>[c,d]}}\right|=|ad-bc|}$\\
+ と言った具合です.
 \end{document}
