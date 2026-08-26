@@ -848,5 +848,31 @@ $\alpha=\B{\left|\vec{v}の\vec{u'}向き符号付き長さ\right|}とおいて�
  この絵を見ながら$\clubsuit の式を再度考察すると,\ans{\left|底辺\right|\cdot\left|高さ\right|}に見えてくると思います!$なので,ベクトルの面積公式は当たり前ですね!\\
  そして,この$ad-bcのことを行列式(deteminant)と言い,\det{\B{\vec{u},\vec{v}}}と書きます.具体的には,\\
  \F{S=\left|\det{\B{\vec{u},\vec{v}}}\right|=\left|\det{\B{\tvec<0,1>[a,b],\tvec<0,1>[c,d]}}\right|=|ad-bc|}$\\
- と言った具合です.
+ と言った具合です.\\
+ 行列式は高校では扱われませんが,強力な武器になります.なので,文系の人は使えるように,理系の人は完璧に理解し.常識になるまで勉強して下さい.
+ \newpage
+ \begin{itembox}
+  [l]{\enpitu 行列式(determinant)の定義}
+  $\F{2つの平面ベクトル\vec{u}=\tvec<0,1>[a,b],\vec{v}=\tvec<0,1>[c,d]に対して次の演算を考える.}$\\
+  \begin{center}
+  $ad-bc$
+  \end{center}この演算を行列式と言い,\\
+  \begin{center}
+  $\det{\B{\vec{u},\vec{v}}}=ad-bc$
+  \end{center}と書く.
+\end{itembox}\\
+ \begin{itembox}
+   [l]{\enpitu 行列式の性質}
+   $\F{\doichi 「\vec{u}に対し\vec{v}が常に左側を向いている」\doti \det{\B{\vec{u},\vec{v}}}>0}\\
+   \F{\doni 「\vec{u}に対し\vec{v}が常に右側を向いている 」\doti\det{\B{\vec{u},\vec{v}}}<0 }\\
+   \F{\dosan \left|\det{\B{\vec{u},\vec{v}}}\right|は\vec{u},\vec{v}が張る平行四辺形の面積に等しい.}\\
+   \F{\doshi \det{\B{\vec{u},\vec{v}}}\neq0\doti \vec{u},\vec{v}は一次独立}\\
+   \F{\dogo \det{\B{\vec{u},\vec{v}}}=0\doti \vec{u},\vec{v}は一次従属}\\$
+ \end{itembox}\\\\
+ ex)\\
+ \kakkoichi A$(2,5)$,B$(-1,7)$,C$(4,3)$に対して、$\Sankaku{ABC}$の面積を求めよ.\\
+ \kakkoni $\vec{a}=\tvec<0,1>[3,k-1],\vec{b}=\tvec<0,1>[3k-1,-2]$が一次独立になるようなkを求めよ.\\
+ \kakkosan 2点A$(3,1)$,B$(7,4)$を通る直線と点P$(4,5)$との距離$d$を求めよ.
+ \newpage
+ \noindent
 \end{document}
