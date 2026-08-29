@@ -213,5 +213,223 @@ $\displaystyle\dfrac{d}{dx}\{f(x)g(x)\}=f'(x)g(x)+f(x)g'(x)$
 その円の周長$2\pi r$になるのはなぜか.\
 \par\noindent\kakkoni 半径$r$の球の体積$\dfrac{4}{3}\pi r^3$を$r$で微分すると,
 その球の表面積$4\pi r^2$になるのはなぜか.\
+\newpage
+\section{力学系}
+
+\begin{itembox}
+[l]{\enpitu 力学系とその軌道}
+漸化式
+\begin{center}
+$x_{n+1}=f(x_n)$
+\end{center}
+によって定まる数列$\{x_n\}$を,ここでは\textgt{力学系}と呼ぶ.
+$x_{n+1}$は$x_n$だけから決まり,$n$が右辺のほかの位置に現れないことが特徴である.たとえば
+\begin{center}
+$x_{n+1}=\dfrac{1}{n}x_n(1-x_n)$
+\end{center}
+は,右辺に$n$が現れるので,この形の力学系ではない.
+
+曲線$y=f(x)$と直線$y=x$を同じ座標平面に描くと,数列の動きを視覚化できる.
+$x$軸上の$(x_1,0)$から曲線$y=f(x)$まで鉛直に進み,次に直線$y=x$まで水平に進む.
+これを繰り返してできる折れ線を\textgt{軌道}という.
+軌道を観察すると,数列の増減や,どの値へ収束するかを予想できる.
+
+ただし,図はあくまで予想のための道具である.答案では,不等式を用いて収束を示すことが重要である.
+\end{itembox}
+
+\begin{itembox}
+[l]{\enpitu 不動点と収束の基本形}
+$x_n$が$\alpha$に収束するならば,漸化式$x_{n+1}=f(x_n)$において
+\begin{center}
+$\alpha=f(\alpha)$
+\end{center}
+が成り立つと考えられる.このような$\alpha$を$f$の\textgt{不動点}という.
+
+不動点$\alpha$を見つけたら,
+\begin{align*}
+x_{n+1}-\alpha
+&=f(x_n)-f(\alpha)
+\end{align*}
+と変形する.ここから,ある定数$r$について
+\begin{center}
+$|x_{n+1}-\alpha|\leqq r|x_n-\alpha|\qquad(0<r<1)$
+\end{center}
+を示すことができれば,
+\begin{align*}
+0\leqq|x_n-\alpha|
+&\leqq r|x_{n-1}-\alpha|\\
+&\leqq r^2|x_{n-2}-\alpha|\\
+&\leqq\cdots\leqq r^{n-1}|x_1-\alpha|
+\end{align*}
+となる.$0<r<1$より$\displaystyle\lim_{n\to\infty}r^{n-1}=0$であるから,はさみうちの原理により
+\begin{center}
+$\displaystyle\lim_{n\to\infty}|x_n-\alpha|=0$
+\end{center}
+である.したがって,
+\begin{center}
+$\displaystyle\lim_{n\to\infty}x_n=\alpha$
+\end{center}
+が従う.
+\end{itembox}
+
+\begin{itembox}
+[l]{\enpitu 平均値の定理による評価}
+$f(x_n)-f(\alpha)$を直接変形しにくいときは,平均値の定理を用いる.
+$x_n$と$\alpha$の間にある数$\beta_n$が存在して,
+\begin{align*}
+f(x_n)-f(\alpha)&=f'(\beta_n)(x_n-\alpha)
+\end{align*}
+となる.よって,考えている範囲で$|f'(x)|\leqq r<1$が成り立てば,
+\begin{align*}
+|x_{n+1}-\alpha|
+&=|f'(\beta_n)|\,|x_n-\alpha|\\
+&\leqq r|x_n-\alpha|
+\end{align*}
+を得る.つまり,$|f'(x)|<1$は,不動点に近づくための目安になる.
+\end{itembox}
+
+\newpage
+
+\noindent\ba{4$\bullet$1}\
+数列$\{x_n\}$を
+\begin{center}
+$x_{n+1}=\sqrt{x_n+2}\qquad(n=1,2,3,\ldots)$
+\end{center}
+によって定める.$x_1$は$x_1>-2$を満たす定数とする.\
+\par\noindent\kakkoichi
+$\displaystyle |x_{n+1}-2|\leqq\dfrac{1}{2}|x_n-2|$が成り立つことを示せ.\
+\par\noindent\kakkoni
+$\displaystyle\lim_{n\to\infty}x_n$を求めよ.\\
+\newpage
+\noindent\hokukai\
+方程式$x=\sqrt{x+2}$を解くと$x=2$となるので,不動点として$\alpha=2$を考える.\
+\noindent\kakkoichib
+分子を有理化すると,
+\begin{align*}
+x_{n+1}-2
+&=\sqrt{x_n+2}-2\\
+&=\dfrac{x_n-2}{\sqrt{x_n+2}+2}
+\end{align*}
+である.$x_n+2\geqq0$より$\sqrt{x_n+2}+2\geqq2$であるから,
+\begin{align*}
+|x_{n+1}-2|
+&=\dfrac{|x_n-2|}{\sqrt{x_n+2}+2}\\
+&\leqq\dfrac{1}{2}|x_n-2|.
+\end{align*}
+\noindent\kakkonib
+上の不等式を繰り返し用いると,
+\begin{align*}
+0\leqq|x_n-2|
+&\leqq\dfrac{1}{2}|x_{n-1}-2|\\
+&\leqq\left(\dfrac{1}{2}\right)^2|x_{n-2}-2|\\
+&\leqq\cdots\leqq\left(\dfrac{1}{2}\right)^{n-1}|x_1-2|.
+\end{align*}
+$\displaystyle\lim_{n\to\infty}\left(\dfrac{1}{2}\right)^{n-1}|x_1-2|=0$であるから,はさみうちの原理より
+\begin{center}
+$\displaystyle\ans{\lim_{n\to\infty}x_n=2}$
+\end{center}
+である.
+
+\newpage
+
+\noindent\ba{4$\bullet$2}\
+$e$を自然対数の底とし,$c$を$0<c<1$を満たす定数とする.数列$\{x_n\}$を
+\begin{center}
+$x_1=0,\qquad x_{n+1}=ce^{-x_n}\qquad(n=1,2,3,\ldots)$
+\end{center}
+によって定める.\
+\par\noindent\kakkoichi
+方程式$x=ce^{-x}$は,$0<x<c$にただ1つの解をもつことを示せ.以下,この解を$\alpha$とする.\
+\par\noindent\kakkoni
+$|x_{n+1}-\alpha|\leqq c|x_n-\alpha|$が成り立つことを示し,$\displaystyle\lim_{n\to\infty}x_n$を求めよ.\\
+\newpage
+\noindent\hokukai\
+\noindent\kakkoichib
+$h(x)=x-ce^{-x}$とおくと,
+\begin{align*}
+h'(x)=1+ce^{-x}>0
+\end{align*}
+であるから,$h(x)$は単調に増加する.また,
+\begin{align*}
+h(0)&=-c<0,\\
+h(c)&=c-ce^{-c}=c(1-e^{-c})>0
+\end{align*}
+である.したがって,中間値の定理と単調性より,$h(x)=0$,すなわち$x=ce^{-x}$は$0<x<c$にただ1つの解$\alpha$をもつ.\
+\noindent\kakkonib
+$g(x)=ce^{-x}$とおくと,$x_{n+1}=g(x_n),\ \alpha=g(\alpha)$である.
+平均値の定理より,$x_n$と$\alpha$の間にある数$\beta_n$が存在して,
+\begin{align*}
+g(x_n)-g(\alpha)
+&=g'(\beta_n)(x_n-\alpha)\\
+&=-ce^{-\beta_n}(x_n-\alpha)
+\end{align*}
+となる.$x_n\geqq0,\ \alpha>0$より$\beta_n\geqq0$であるから,$e^{-\beta_n}\leqq1$である.よって,
+\begin{align*}
+|x_{n+1}-\alpha|
+&=ce^{-\beta_n}|x_n-\alpha|\\
+&\leqq c|x_n-\alpha|.
+\end{align*}
+この不等式を繰り返し用いると,
+\begin{align*}
+0\leqq|x_n-\alpha|
+&\leqq c^{n-1}|x_1-\alpha|.
+\end{align*}
+$0<c<1$より$\displaystyle\lim_{n\to\infty}c^{n-1}|x_1-\alpha|=0$であるから,
+\begin{center}
+$\displaystyle\ans{\lim_{n\to\infty}x_n=\alpha}$
+\end{center}
+である.
+
+\newpage
+
+\noindent\ba{4$\bullet$3}\
+$A$を正の定数とする.正の数列$\{x_n\}$を
+\begin{center}
+$x_1=A,\qquad x_{n+1}=\dfrac{1}{2}\left(x_n+\dfrac{A}{x_n}\right)\qquad(n=1,2,3,\ldots)$
+\end{center}
+によって定める.\
+\par\noindent\kakkoichi
+$n\geqq2$のとき,$x_n\geqq\sqrt{A}$が成り立つことを示せ.\
+\par\noindent\kakkoni
+$n\geqq2$のとき,$\displaystyle x_{n+1}-\sqrt{A}\leqq\dfrac{1}{2}(x_n-\sqrt{A})$が成り立つことを示し,$\displaystyle\lim_{n\to\infty}x_n$を求めよ.\\
+\newpage
+\noindent\hokukai\
+\noindent\kakkoichib
+漸化式の両辺から$\sqrt{A}$を引くと,
+\begin{align*}
+x_{n+1}-\sqrt{A}
+&=\dfrac{1}{2}\left(x_n+\dfrac{A}{x_n}\right)-\sqrt{A}\\
+&=\dfrac{x_n^2-2x_n\sqrt{A}+A}{2x_n}\\
+&=\dfrac{(x_n-\sqrt{A})^2}{2x_n}\geqq0.
+\end{align*}
+したがって,$x_{n+1}\geqq\sqrt{A}$であり,$n\geqq2$のとき$x_n\geqq\sqrt{A}$である.\
+\noindent\kakkonib
+$n\geqq2$のとき$x_n-\sqrt{A}\geqq0$である.また,
+\begin{align*}
+x_{n+1}-\sqrt{A}
+&=\dfrac{x_n-\sqrt{A}}{2x_n}(x_n-\sqrt{A})\\
+&\leqq\dfrac{1}{2}(x_n-\sqrt{A})
+\end{align*}
+である.これを繰り返すと,
+\begin{align*}
+0\leqq x_n-\sqrt{A}
+&\leqq\left(\dfrac{1}{2}\right)^{n-2}(x_2-\sqrt{A})
+\end{align*}
+となる.右辺は$0$に収束するから,はさみうちの原理より
+\begin{center}
+$\displaystyle\ans{\lim_{n\to\infty}x_n=\sqrt{A}}$
+\end{center}
+である.
+
+\begin{itembox}
+[l]{\enpitu この漸化式の意味}
+方程式$x^2-A=0$にニュートン法を適用すると,
+\begin{align*}
+x_{n+1}
+&=x_n-\dfrac{x_n^2-A}{2x_n}\\
+&=\dfrac{1}{2}\left(x_n+\dfrac{A}{x_n}\right)
+\end{align*}
+となる.つまり,この漸化式は$\sqrt{A}$の近似値を高速に求める計算法である.
+\end{itembox}
 
 \end{document}
