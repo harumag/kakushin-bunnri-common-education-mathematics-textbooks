@@ -724,4 +724,446 @@ Cを原点とし,$\Vec{CA},\Vec{CB}$を基底とする$XY$座標系で考える�
   &=\dfrac{1}{6}\colon\dfrac{1}{12}\colon\dfrac{1}{4}\\
   &=\ans{2\colon1\colon3}
 \end{align*}
+\newpage
+\subsection{内積（正射影ベクトル）}
+\noindent\ba{3$\bullet$1}\theme{一橋大-内積の本質的解釈}\\
+与えられた条件と$\begin{cases}
+  \Vec{OB}\cdot\Vec{OC}=3\\
+  |\Vec{OB}|=3
+\end{cases}$これより図示すると,下図を得る.
+\begin{center}
+  \begin{tikzpicture}[
+  scale=1,
+  line cap=round,
+  line join=round,
+  every node/.style={font=\large}
+]
+  % 基本となる点
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (1,0);
+  \coordinate (B) at (3,0);
+  \coordinate (C) at (1,{sqrt(3)});
+
+  % OからCBへ下ろした垂線の足
+  \coordinate (D) at
+    ({9/7},{6*sqrt(3)/7});
+
+  % Oを通りCBに垂直な直線と円との交点
+
+  \coordinate (Azero) at
+    ({-4*sqrt(3)/sqrt(7)},{-8/sqrt(7)});
+
+  % 半径4の円
+  \draw[very thick] (O) circle[radius=4];
+
+  % 補助線
+  \draw[thin,densely dashed] (-4,0)--(4,0);
+  \draw[thin,densely dashed]
+    (1,{-sqrt(15)})--(1,{sqrt(15)});
+
+  % 直線CBの延長
+  \draw[thin]
+    ($(C)!-0.55!(B)$)--($(C)!1.45!(B)$);
+
+  % A_0,O,Hを通り、CBに垂直な直線
+  \draw[thick]
+    (Azero)--node[midway,below right] {$4$}(O)--(D);
+
+  % もとの線分
+  \draw[thick]
+    (O)--node[midway,below] {$1$}(A)
+       --node[midway,below] {$2$}(B);
+
+  \draw[thick]
+    (O)--node[midway,above left] {$2$}(C);
+
+  \draw[thick]
+    (A)--node[midway,right] {$\sqrt3$}(C);
+
+  \draw[thick]
+    (C)--node[midway,above right] {$\sqrt7$}(B);
+
+  % 直角記号
+  \pic[
+    draw,
+    thick,
+    angle radius=7pt
+  ] {right angle=C--A--B};
+
+  \pic[
+    draw,
+    thick,
+    angle radius=7pt
+  ] {right angle=O--D--B};
+
+  % 点
+  \foreach \P in {O,B,C,D,Azero}
+    \fill (\P) circle[radius=1.7pt];
+
+  % 点名
+  \node[below left]  at (O) {O};
+  \node[below right] at (B) {B};
+  \node[above ]  at (C) {C};
+  \node[right=4pt]   at (D) {H};
+  \node[below left]  at (Azero) {$\mathrm{A}_0$};
+\end{tikzpicture}
+\end{center}
+OA$=$4より,Aは上図のような半径4の円周上を動くので,$\Sankaku{ABC}$の面積は,Aが上図の$\mathrm{A}_0$にあるときに最大になる.
+OからBCに下ろした垂線の足をHとすると,求める最大値は,
+\begin{align*}
+  \dfrac12\times\mathrm{BC}\times\mathrm{A}_0\mathrm{H}
+\end{align*}
+であり,BC$=\sqrt{7},\mathrm{A_0H}=\mathrm{OA_0}+\mathrm{OH}=4+\mathrm{OH}$なので,$\Sankaku{ABC}$の面積に注目して
+2通りの方法で面積を表すと,
+\begin{align*}
+  3\times\sqrt{3}\times\dfrac{1}{2}=\sqrt{7}\times\dfrac{1}{2}\times\mathrm{OH}\doti\mathrm{OH}=\dfrac{3\sqrt{3}}{\sqrt{7}}
+\end{align*}
+$\Y\mathrm{A_0H}=4+\dfrac{3\sqrt{3}}{\sqrt{7}}$\\
+よって,求める最大値は,
+\begin{align*}
+  \dfrac{1}{2}\times\sqrt{7}\times\mathrm{OH}=\ans{2\sqrt{7}+\dfrac{3\sqrt{3}}{2}}
+\end{align*}
+\newpage
+\noindent\ba{3$\bullet$2}\theme{あえて正射影ベクトルを使う}\\
+\kangaekata 普通に,直線と円の方程式を連立で解くことで,求めることができますが,正射影ベクトルを使う練習です.\\
+\hokukai\kakkoichib 
+$\begin{cases}
+  x^2+y^2-4x-2y=11\cdots\cdots\maruichi\\
+  y=3x-1\cdots\cdots\cdots\maruni
+\end{cases}$において,$\maruichi\doti\p{x-2}^2+\p{y-1}^2=16$より,A$\p{2,1}$とおくと,$\maruichi$はA中心の半径16の
+円である.ここで,下図のように$\maruni$上の点B$\p{0,-1}$をとる.
+\begin{center}
+\begin{tikzpicture}[
+  scale=0.85,
+  line cap=round,
+  line join=round,
+  every node/.style={font=\large}
+]
+  % 各点
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (2,1);
+  \coordinate (B) at (0,-1);
+
+  % 円と直線の交点
+  \coordinate (P) at (-2/5,-11/5);
+  \coordinate (Q) at (2,5);
+
+  % 弦PQの中点
+  \coordinate (M) at (4/5,7/5);
+
+  % 方向ベクトルu=(1,3)の終点
+  \coordinate (U) at (1,2);
+
+  % 中心A、半径4の円
+  \draw[very thick] (A) circle[radius=4];
+
+  % 直線 y=3x-1
+  \draw[thick]
+    ($(P)!-0.15!(Q)$)--($(P)!1.15!(Q)$);
+
+  % 半径
+  \draw[thick]
+    (A)--(P);
+
+  \draw[thick]
+    (A)--node[midway,right] {$4$}(Q);
+
+  % 中心から弦PQに下ろした垂線
+  \draw[thin,densely dashed]
+    (A)--(M);
+
+  % 直角記号
+  \pic[
+    draw,
+    thick,
+    angle radius=8pt
+  ] {right angle=A--M--Q};
+
+  % MがPQの中点であることを表す印
+  \path (P)--(M)
+    node[midway,sloped,font=\normalsize] {$|$};
+
+  \path (M)--(Q)
+    node[midway,sloped,font=\normalsize] {$|$};
+
+  % 方向ベクトル u=(1,3)
+  \draw[ultra thick,-{Latex}]
+    (B)--(U);
+
+
+% 方向ベクトル
+\draw[very thick,-]
+  (B)--(U);
+
+% 方向ベクトルの説明
+\node[left] (uLabel) at (-2.2,0.5)
+  {$\vec{u}=\tvec<0,1>[1,3]$};
+
+% 曲線で方向ベクトルとnodeを結ぶ
+\draw[thin,-]
+  (uLabel.east)
+  to[out=0,in=210]
+  ($(B)!0.45!(U)$);
+
+\draw[ultra thick,-{Latex}](B)--(A);
+  % 点
+  \foreach \X in {A,B,P,Q,M}
+    \fill (\X) circle[radius=1.7pt];
+
+  % 点名
+  \node[right=5pt]   at (A) {$A(2,1)$};
+  \node[above left] at (B) {$B(0,-1)$};
+  \node[below left]  at (P) {$P$};
+  \node[above left]  at (Q) {$Q$};
+  \node[above left]  at (M) {$M$};
+\end{tikzpicture}
+\end{center}
+このとき,$\Vec{OM}=\Vec{OB}+\Vec{BM}$であり,$\maruni$の方向ベクトルとして,$\vec{u}=\tvec<0,1>[1,3]$をとると,
+\begin{align*}
+  \Vec{BM}&=\G{\Vec{BA}の\vec{u}向き正射影ベクトル}\\
+  &=\dfrac{\vec{u}\cdot\Vec{BA}}{|\vec{u}|^2}\vec{u}\\
+  &=\dfrac{\tvec<0,1>[1,3]\cdot\tvec<0,1>[2,2]}{10}\tvec<0,1>[1,3]\\
+  &=\dfrac45\tvec<0,1>[1,3]
+\end{align*}
+$\Y\Vec{OM}=\tvec<0,1>[0,-1]+\dfrac45\tvec<0,1>[1,3]=\tvec<0,1>[\frac{4}{5},\frac{7}{5}]$\\
+$\Y\ans{\mathrm{M}\p{\dfrac{4}{5},\dfrac75}}$
+\newpage
+\noindent\kakkonib 与えられた条件を図示すると,下図のようになる.
+\begin{center}
+  \begin{tikzpicture}[
+  scale=0.7,
+  line cap=round,
+  line join=round,
+  every node/.style={font=\large}
+]
+  % 二次元上での配置
+  \coordinate (A) at (-3,1);
+  \coordinate (B) at (3,0);
+
+  % 三次元で計算すると AH:HB=4:9
+  \coordinate (H) at ($(A)!4/13!(B)$);
+
+  % CHが直線ABと垂直になるようにCを配置
+  \coordinate (C) at ($(H)+(-0.65,-3.9)$);
+
+  % 直線L
+  \draw[thin]
+    ($(A)!-0.15!(B)$)
+    --
+    ($(A)!1.22!(B)$)
+    node[right] {$L$};
+
+  % 垂線CH
+  \draw[thick] (C)--(H);
+
+  % ベクトルBC
+  \draw[very thick,-{Latex}]
+    (B)--(C);
+
+  % Hにおける直角記号
+  \pic[
+    draw,
+    thick,
+    angle radius=8pt
+  ] {right angle=C--H--B};
+
+  % 点
+  \foreach \P in {A,B,C,H}
+    \fill (\P) circle[radius=1.7pt];
+
+  % 点名と三次元座標
+  \node[above left] at (A)
+    {$A(3,1,1)$};
+
+  \node[above right] at (B)
+    {$B(-1,0,-2)$};
+
+  \node[below] at (C)
+    {$Q(2,-3,1)$};
+
+  \node[above=5pt] at (H)
+    {$H$};
+\end{tikzpicture}
+\end{center}
+上図より,
+\begin{align*}
+  \Vec{OH}&=\Vec{OB}+\Vec{BH}\\
+  &=\Vec{OB}+\G{\Vec{BQ}の\Vec{BA}への正射影ベクトル}\\
+  &=\Vec{OB}+\dfrac{\Vec{BA}\cdot\Vec{BQ}}{|\Vec{BA}|^2}\Vec{BA}\\
+  &=\Tvec<0,1>[-1,0,2]+\dfrac{16}{18}\Tvec<0,1>[4,1,-1]\\
+  &=\Tvec<0,1>[-1,0,2]+\dfrac{8}{9}\Tvec<0,1>[4,1,-1]\\
+  &=\Tvec<0,1>[\frac{23}{9},\frac{8}{9},\frac{10}{9}]
+\end{align*}
+$\Y\ans{\mathrm{H}\p{\dfrac{23}{9},\dfrac{8}{9},\dfrac{10}{9}}}$\\\\
+\ba{3$\bullet$3}\theme{ヘッセの公式}\\
+略
+\newpage
+\subsection{行列式と外積}
+\noindent\ba{4$\bullet$1}\theme{摂南大-平行六面体の体積を求める}\\
+\kangaekata \kakkoni 高さが欲しいです.法線ベクトルをうまく使うことができないか検討してみましょう.\\
+\hokukai まず,与えられた平行六面体は下図のようになる.
+\begin{center}
+  \begin{tikzpicture}[
+  scale=0.6,
+  line cap=round,
+  line join=round,
+  every node/.style={font=\large}
+]
+  % 平行投影した基本ベクトル
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (4.2,-0.5);
+  \coordinate (B) at (1.5,1.6);
+  \coordinate (C) at (0.9,4.0);
+
+  % D=A+B, E=A+C, G=B+C, F=A+B+C
+  \coordinate (D) at ($(A)+(B)$);
+  \coordinate (E) at ($(A)+(C)$);
+  \coordinate (G) at ($(B)+(C)$);
+  \coordinate (F) at ($(D)+(C)$);
+
+  % 底面 S=OADB
+  \fill[black!20] (O)--(A)--(D)--(B)--cycle;
+
+  % 隠れる辺
+  \draw[thick,dashed] (O)--(B)--(D);
+  \draw[thick,dashed] (B)--(G);
+
+  % 手前側および上面の辺
+  \draw[thick] (O)--(A)--(D);
+  \draw[thick] (O)--(C);
+  \draw[thick] (A)--(E);
+  \draw[thick] (D)--(F);
+  \draw[thick] (C)--(E)--(F)--(G)--cycle;
+
+  % 底面Sを示す曲線
+  \coordinate (Spoint) at ($(O)!0.5!(D)$);
+  \draw[thin]
+    (Spoint) to[out=-105,in=80]
+    (2.25,-1.45) node[below] {$S$};
+
+    \coordinate (Nvec) at (3.4,6.4);
+
+% Cから法線ベクトルへ下ろした垂線の足
+\coordinate (H) at ($(O)!0.546!(Nvec)$);
+
+\draw[very thick,-{Latex}]
+  (O)--(Nvec)
+  node[above right] {$\vec n=(-1,-1,2)$};
+
+% Cから法線ベクトルに下ろした垂線
+\draw[thick,dashed] (C)--(H);
+
+% 垂直記号
+\pic[
+  draw,
+  thick,
+  angle radius=7pt
+] {right angle=C--H--O};
+
+\fill (H) circle[radius=1.5pt];
+\node[below right] at (H) {$H$};
+
+  % 頂点
+  \foreach \P in {O,A,B,C,D,E,F,G}
+    \fill (\P) circle[radius=1.7pt];
+
+  % 各点のラベル
+  \node[below left]  at (O) {$O$};
+  \node[below right] at (A) {$A$};
+  \node[above right]  at (B) {$B$};
+  \node[above left]  at (C) {$C$};
+  \node[below right] at (D) {$D$};
+  \node[below right] at (E) {$E$};
+  \node[above right] at (F) {$F$};
+  \node[above left]  at (G) {$G$};
+\end{tikzpicture}
+\end{center}
+\kakkoichib これより,
+\begin{align*}
+  S&=\left|\Vec{OA}\times\Vec{OB}\right|=\left|\Tvec<0,1>[1,3,2]\times\Tvec<0,1>[4,-2,1]\right|\\
+  &=\left|\Tvec<0,1>[7,7,-14]\right|=\left|7\underbrace{\Tvec<0,1>[1,1,-2]}_{法線ベクトル}\right|\\
+  &=\ans{7\sqrt{6}}
+\end{align*}
+\kakkonib ここで,法線ベクトルを$\vec{n}=\Tvec<0,1>[1,1,-2]$とおき,この平行六面体の高さを$h$とする.\\
+今,$\vec{n}$は$\Vec{OA},\Vec{OB}$の両方に垂直なので,
+\begin{align*}
+  h&=\left|\G{\Vec{OC}の\vec{n}向き符号付き長さ}\right|\\
+  &=\left|\dfrac{\vec{n}\cdot\Vec{OC}}{|\vec{n}|}\right|\\
+  &=\dfrac{\left|\Tvec<0,1>[1,1,-2]\cdot\Tvec<0,1>[-1,-3,5]\right|}{\sqrt{6}}\\
+  &=\dfrac{14}{\sqrt{6}}
+\end{align*}
+$\Y V=7\sqrt{6}\times\dfrac{14}{\sqrt{6}}=\ans{98}$
+\newpage\noindent\ba{4$\bullet$2}\theme{面積相等は常套手段}\\
+\kangaekata 距離を直接求めようとしても不可能です.ですが面積なら外積で出すことができます.そして,距離が高さに相等することを
+用いましょう.\\
+\hokukai 今,$\vec{u}=\Tvec<0,1>[1,4,-4]$とおく.
+\begin{center}
+  \begin{tikzpicture}[
+  scale=1,
+  line cap=round,
+  line join=round,
+  every node/.style={font=\large}
+]
+  % 二次元上での模式的な配置
+  \coordinate (A) at (-3,1.8);
+  \coordinate (H) at (0.2,-0.6);
+  \coordinate (P) at (1.4,1.0);
+
+  % 平面を表す平行四辺形の残りの頂点
+  \coordinate (R) at (0.6,-0.9);
+  \coordinate (Q) at (5.0,-1.7);
+
+  % 直線l上の延長点
+  \coordinate (Lleft)  at (-4.4,2.85);
+  \coordinate (Lright) at (2.8,-2.55);
+
+  % ベクトルuとAPが張る平面
+  \fill[black!20] (A)--(P)--(Q)--(R)--cycle;
+  \draw[thin] (A)--(P)--(Q)--(R)--cycle;
+
+  % 直線l
+  \draw[thick]
+    (Lleft)--(Lright)
+    node[below right] {$\ell$};
+
+  % u=(2,-3,-1) の向きを表す平行な矢印
+  \draw[very thick,-{Latex}]
+    (R)--(A)
+    node[pos=0.48,below left=6pt]
+      {$\vec{u}=
+        \begin{pmatrix}
+          2\\[-2pt]
+          -3\\[-2pt]
+          -1
+        \end{pmatrix}$};
+
+  \draw[very thick,-{Latex}] (Q)--(P);
+
+  % Pから直線lへ下ろした垂線
+  \draw[thick,-{Latex}]
+    (P)--(H)
+    node[pos=0.55,right=5pt] {$d$};
+
+  % 垂直記号
+  \pic[
+    draw,
+    thick,
+    angle radius=8pt
+  ] {right angle=P--H--A};
+
+  % 点とラベル
+  \fill (A) circle[radius=1.8pt];
+  \fill (P) circle[radius=1.8pt];
+  \fill (H) circle[radius=1.5pt];
+
+  \node[ left=3pt] at (A) {$A(1,2,-5)$};
+  \node[above right=3pt] at (P) {$P(1,4,-4)$};
+  \node[below left] at (H) {$H$};
+\end{tikzpicture}
+\end{center}
+上図より,$\vec{u}と\Vec{AP}$の張る平行四辺形の面積を2通りで求めて,
+\begin{align*}
+  &|\vec{u}|\cdot d=\left|\vec{u}\times\Vec{AP}\right|\\
+  &\doti d=\dfrac{\left|\Tvec<0,1>[2,-3,-1]\times\Tvec<0,1>[0,2,1]\right|}{|\vec{u}|}=\dfrac{\sqrt{21}}{\sqrt{14}}=\ans{\dfrac{\sqrt{6}}{2}}
+\end{align*}
 \end{document}
