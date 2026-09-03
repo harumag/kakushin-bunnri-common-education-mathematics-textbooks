@@ -1166,4 +1166,230 @@ $\Y V=7\sqrt{6}\times\dfrac{14}{\sqrt{6}}=\ans{98}$
   &|\vec{u}|\cdot d=\left|\vec{u}\times\Vec{AP}\right|\\
   &\doti d=\dfrac{\left|\Tvec<0,1>[2,-3,-1]\times\Tvec<0,1>[0,2,1]\right|}{|\vec{u}|}=\dfrac{\sqrt{21}}{\sqrt{14}}=\ans{\dfrac{\sqrt{6}}{2}}
 \end{align*}
+\newpage\subsection{三角関数とベクトル}
+\noindent\ba{5$\bullet$1}\theme{変数を減らして意味を読み取る}\\
+\kangaekata ベクトルの$x$成分,$y$成分共に複雑な形をしています.なんとか簡単にできないか考えましょう.\\
+\hokukai\kakkoichib
+\begin{align*}
+  \Vec{OR}&=\dfrac12\p{\Vec{OP}+\Vec{OQ}}\\
+  &=\dfrac12\tvec<0,1>[\cos t+\sin t+2\sqrt{3},-\cos t+\sin t+2]\\
+  &=\cos t\tvec<0,1>[\frac{1}{2},-\frac{1}{2}]+\sin\tvec<0,1>[\frac{1}{2},\frac{1}{2}]+\tvec<0,1>[\sqrt{3},1]\\
+  &=\tvec<0,1>[\sqrt{3},1]+\G{\tvec<0,1>[\frac{1}{2},-\frac{1}{2}]をt回転したベクトル}
+\end{align*}
+これより,下図を得る.
+\begin{center}
+  \begin{tikzpicture}[
+  x=2cm,
+  y=2cm,
+  line cap=round,
+  line join=round,
+  every node/.style={font=\large}
+]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at ({sqrt(3)},1);
+
+  % 2本の半径ベクトルの終点
+  \coordinate (U) at ($(A)+(0.5,-0.5)$);
+  \coordinate (V) at ($(A)+(0.5,0.5)$);
+
+  % 角度を描くための点
+  \coordinate (X) at (1,0);
+  \coordinate (Q) at
+  ({sqrt(3)-sqrt(6)/4},{1-sqrt(2)/4});
+
+  % 座標軸
+  \draw[thin,-{Latex}] (-0.25,0)--(2.75,0)
+    node[right] {$x$};
+  \draw[thin,-{Latex}] (0,-0.2)--(0,2.0)
+    node[above] {$y$};
+
+  % 補助線
+  \draw[thin,dashed] (0,1)--(A);
+  \draw[thin,dashed] ({sqrt(3)},0)--(A);
+
+  \draw (-0.04,1)--(0.04,1)
+    node[left=4pt] {$1$};
+  \draw ({sqrt(3)},-0.04)--({sqrt(3)},0.04)
+    node[below=4pt] {$\sqrt3$};
+
+  % 中心A、半径sqrt(2)/2の円
+  \draw[very thick]
+    (A) circle[radius={sqrt(2)/2}];
+
+  % 平行移動ベクトル OA=(sqrt(3),1)
+  \draw[very thick,-{Latex}]
+    (O)--(A)
+    node[pos=0.53,above left] {};
+
+  \pic[
+  draw,
+  thick,
+  angle radius=14pt
+] {angle=X--O--A};
+
+% 角度のラベル
+\node at ([shift={(15:0.45)}]O)
+  {$\dfrac{\pi}{6}$};
+  % 直交する2本の半径ベクトル
+  \draw[thick,-{Latex}] (A)--(U);
+  \draw[thick,-{Latex}] (A)--(V);
+
+  % 垂直記号
+  \pic[
+    draw,
+    thick,
+    angle radius=7pt
+  ] {right angle=U--A--V};
+  \begin{scope}
+    \clip({sqrt(3)},1)rectangle({sqrt(3)+2/3-0.05},{1+sqrt(2)/2});
+    \draw[very thick]plot(\x,{1/sqrt(3)*\x});
+  \end{scope}
+
+  
+
+  % ベクトルのラベル
+  \draw[thin]
+    (U) to[out=-45,in=150]
+    ++(0.88,-0.25)
+    node[right]
+    {$\begin{pmatrix}
+        \frac12\\[-2pt]
+        -\frac12
+      \end{pmatrix}$};
+
+  \draw[thin]
+    (V) to[out=40,in=190]
+    ++(0.38,0.25)
+    node[right]
+    {$\begin{pmatrix}
+        \frac12\\[-2pt]
+        \frac12
+      \end{pmatrix}$};
+
+  % 点とラベル
+  \fill (O) circle[radius=1.5pt];
+  \fill (A) circle[radius=1.7pt];
+  \fill (U) circle[radius=1.3pt];
+  \fill (V) circle[radius=1.3pt];
+
+  \node[below left] at (O) {$O$};
+  \node[above left] at (A) {A};
+  \node[right]at({sqrt(3)+sqrt(6)/4},{1+sqrt(2)/4}){Q};
+  \filldraw ({sqrt(3)+sqrt(6)/4},{1+sqrt(2)/4})circle(2pt);
+\end{tikzpicture}
+\end{center}
+これより,$t$が$0\leq t\leq2\pi$を動くと,$\ans{\mathrm{A}\p{\sqrt{3},1}を中心とする半径\dfrac{\sqrt{2}}{2}の円を一周する.}$\\
+\kakkonib 点RがOから最も遠くなるのは,Rが上図のQにあるときである.\\
+このとき,
+\begin{align*}
+  t=\dfrac{\pi}{4}+\dfrac{\pi}{6}=\ans{\dfrac{5}{12}\pi}
+\end{align*}
+\newpage
+\noindent\ba{5$\bullet$2}\theme{三次元でのベクトルの回転}\\
+\kangaekata 三次元でベクトルを回転させるには,まず\ans{回転する平面を張る}必要があります.その後,大きさ
+とが一致するベクトルを求め,回転させましょう.\\
+\hokukai 
+\begin{center}
+  \begin{tikzpicture}[
+  scale=1,
+  line cap=round,
+  line join=round,
+  every node/.style={font=\large}
+]
+  % 平面の四隅
+  \coordinate (P1) at (-4.0,-2.7);
+  \coordinate (P2) at ( 3.4,-2.7);
+  \coordinate (P3) at ( 5.3, 3.8);
+  \coordinate (P4) at (-2.1, 3.8);
+
+  % 点の配置
+  \coordinate (B) at (-0.5,-0.3);
+  \coordinate (A) at ( 1.9,-0.3);
+  \coordinate (C) at ( 2.8, 3.0);
+
+  % BAと同じ長さをもつ垂直方向のベクトルの終点
+  \coordinate (V) at (-0.5,1.7);
+
+  % 法線ベクトルの終点
+  \coordinate (N) at (-2.1,5.5);
+
+  % 平面
+  \draw[thin]
+    (P1)--(P2)--(P3)--(P4)--cycle;
+
+  % B中心、半径|BA|の円を平面上の楕円として表示
+  \draw[thick]
+    (B) ellipse[x radius=2.4cm,y radius=2.0cm];
+
+  % 平面の法線ベクトル
+  \draw[very thick,-{Latex}]
+    (P4)--(N)
+    node[above] {$\vec n=(3,-2,1)$};
+
+  % 法線と平面との垂直記号
+  \pic[
+    draw,
+    thick,
+    angle radius=8pt
+  ] {right angle=P3--P4--N};
+
+  % ベクトル BA
+  \draw[very thick,-{Latex}]
+    (B)--(A)
+    node[midway,below=9pt]
+      {$\vec u=\overrightarrow{BA}$};
+
+  % nとBAの両方に垂直なベクトル
+  \draw[very thick,-{Latex}]
+    (B)--(V);
+
+  % BからCへのベクトル
+  \draw[very thick,-{Latex}]
+    (B)--(C);
+
+  % Bにおける垂直記号
+  \pic[
+    draw,
+    thick,
+    angle radius=9pt
+  ] {right angle=A--B--V};
+
+  % BAとBVが同じ長さであることを表す印
+  \draw[thick] (0.66,-0.43)--(0.66,-0.17);
+  \draw[thick] (0.78,-0.43)--(0.78,-0.17);
+
+  \draw[thick] (-0.63,0.63)--(-0.37,0.63);
+  \draw[thick] (-0.63,0.75)--(-0.37,0.75);
+
+
+  % 点
+  \foreach \P in {A,B,C}
+    \fill (\P) circle[radius=1.7pt];
+
+  % 点のラベル
+  \node[right=4pt] at (A) {$A(1,0,1)$};
+  \node[below left=4pt] at (B) {$B(0,0,4)$};
+  \node[above right=4pt] at (C) {$C(0,1,6)$};
+\end{tikzpicture}
+\end{center}
+上図より,$\Vec{BA}=\vec{u}$とおくと,$\vec{u}=\Tvec<0,1>[1,0,-3]$であり,大きさは$|\vec{u}|=\sqrt{10}$である.\\
+$\Vec{BA}$と$\Vec{BC}$が作る平面に垂直な法線ベクトルを作ると,
+\begin{align*}
+  \Vec{BA}\times\Vec{BC}=\Tvec<0,1>[1,0,-3]\times\Tvec<0,1>[0,1,2]=\Tvec<0,1>[3,-2,1]
+\end{align*}
+となり,これを$\vec{n}$とおく.\\
+$\vec{n}と\vec{u}$に垂直で大きさが$\sqrt{10}$のベクトルとして,
+\begin{align*}
+  \vec{v}&=\vec{n}\times\vec{u}=\Tvec<0,1>[3,-2,1]\times\Tvec<0,1>[1,0,-3]\\
+  &=\Tvec<0,1>[6,10,2]=\Tvec<0,1>[3,5,1]=\dfrac{\sqrt{10}}{\sqrt{35}}\Tvec<0,1>[3,5,1]=\dfrac{\sqrt{2}}{\sqrt{7}}\Tvec<0,1>[3,5,1]
+\end{align*}
+がとれる.\\
+これより,求める2点をDとおくと,複合同順で
+\begin{align*}
+  \Vec{OD}&=\Vec{OB}+\cos\p{\pm120\ddo}\cdot\vec{u}+\sin\p{\pm120\ddo}\cdot\vec{v}\\
+  &=\Tvec<0,1>[0,0,4]+\p{\dfrac{1}{2}}\cdot\Tvec<0,1>[1,0,-3]\pm\dfrac{\sqrt{3}}{2}\cdot\dfrac{\sqrt{10}}{\sqrt{35}}\cdot\Tvec<0,1>[3,5,1]\\
+  &=（頑張って計算）\\
+  &=\Tvec<0,1>[-\frac{1}{2}\pm\frac{3\sqrt{42}}{14},\pm\frac{5\sqrt{42}}{14},\frac{11}{2}\pm\frac{\sqrt{42}}{14}]
+\end{align*}
+$\Y\ans{\mathrm{D}\p{-\frac{1}{2}\pm\frac{3\sqrt{42}}{14},\pm\frac{5\sqrt{42}}{14},\frac{11}{2}\pm\frac{\sqrt{42}}{14}}}$
 \end{document}
