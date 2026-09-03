@@ -431,5 +431,87 @@ x_{n+1}
 \end{align*}
 となる.つまり,この漸化式は$\sqrt{A}$の近似値を高速に求める計算法である.
 \end{itembox}
+\newpage
+\section{陰関数の微分}
 
+\begin{itembox}[l]{\enpitu 平面の交線}
+$xyz$空間内の原点を通る平面
+\begin{align*}
+\alpha:\ z=px+qy\cdots\cdots\cdots\maruichi
+\end{align*}
+について考える.\\
+$\alpha$と平面$y=0$（$zx$平面）との交わりは,
+\begin{align*}
+z=px\ \wedge\ y=0\cdots\cdots\cdots\maruni
+\end{align*}
+で表される直線である.\\
+また,$\alpha$と平面$x=0$（$yz$平面）との交わりは,
+\begin{align*}
+z=qy\ \wedge\ x=0\cdots\cdots\cdots\marusan
+\end{align*}
+で表される直線である.\\
+逆に,2直線$\maruni,\marusan$を含む平面$\alpha$の式は$\maruichi$で与えられる.
+\end{itembox}
+
+\begin{itembox}[l]{\enpitu 2変数関数の偏微分と全微分}
+2変数関数$z=f(x,y)$について,\\
+\noindent\kakkoichi
+$y$を定数と見て,$z$を$x$で微分したものを,$\dfrac{\partial z}{\partial x}$で表す.\\
+\noindent\kakkoni
+$x$を定数と見て,$z$を$y$で微分したものを,$\dfrac{\partial z}{\partial y}$で表す.\\
+\noindent\kakkosan
+\[
+dz=\dfrac{\partial z}{\partial x}\,dx
+  +\dfrac{\partial z}{\partial y}\,dy
+\]
+を,$z=f(x,y)$の\ans{微分}という.\\
+偏微分と区別するために,これを「$z=f(x,y)$の\ans{全微分}」ということがある.
+\end{itembox}
+
+\newpage
+
+\begin{itembox}[l]{\enpitu 関係式の微分}
+2変数$x$, $y$の間に
+\begin{align*}
+f(x,y)=0\cdots\cdots\cdots\maruichi
+\end{align*}
+という関係が成り立っているとき,
+\begin{align*}
+\dfrac{\partial f(x,y)}{\partial x}\,dx
++\dfrac{\partial f(x,y)}{\partial y}\,dy
+=0
+\end{align*}
+を,関係式$\maruichi$の微分という.
+\end{itembox}
+
+\newpage
+
+\noindent\ba{5$\bullet$1}\\
+2変数関数
+\[
+z=x^2y^3-3x^3y
+\]
+について,次の問いに答えよ.\\
+\noindent\kakkoichi $\dfrac{\partial z}{\partial x}$を求めよ.\\
+\noindent\kakkoni $\dfrac{\partial z}{\partial y}$を求めよ.\\
+\noindent\kakkosan $z$を微分せよ.\\
+\noindent\kakkoshi $z$の点$(1,2)$における微分を求めよ.\\[2em]
+
+\noindent\ba{5$\bullet$2}\\
+次の関係式の微分を求めよ.\\
+\noindent\kakkoichi $x^2-y^2=1$\\
+\noindent\kakkoni $xy=1$\\
+\noindent\kakkosan $e^{xy^2}-x^2y=0$\\
+
+\newpage
+
+\noindent\ba{5$\bullet$3}\\
+\noindent\kakkoichi
+放物線$y=x^2$の点$(2,4)$における接線の式を求めよ.\\[1em]
+\noindent\kakkoni
+楕円$\dfrac{x^2}{6}+\dfrac{y^2}{3}=1$の点$(2,1)$における接線の式を求めよ.\\[1em]
+\noindent\kakkosan
+曲線$3xy^2+x^2y=10$の点$(1,-2)$における接線の式を求めよ.\\[1em]
+\noindent\kakkoshi
+曲面$z=x^2+y^2$の点$(3,1,10)$における接平面の式を求めよ.\\
 \end{document}
