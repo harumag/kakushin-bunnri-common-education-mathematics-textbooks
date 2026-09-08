@@ -21,6 +21,105 @@
   \node at(0,0){\kurosankakub \ans{解答}\kurosankakua};
 \end{tikzpicture}
 } %全国大学入試問題の「解答」記号
+% 文字を微小に重ね、太いロゴ文字にする。
+\newcommand{\KTileGlyph}[2]{%
+  \foreach \dx/\dy in {
+    -.16/0,.16/0,0/-.16,0/.16,
+    -.11/-.11,-.11/.11,.11/-.11,.11/.11,0/0
+  }{%
+    \node[
+      inner sep=0pt,
+      text=#1,
+      font=\gtfamily
+            \fontseries{bx}
+            \fontsize{34}{34}\selectfont
+    ] at ({7+\dx},{6.65+\dy}) {#2};
+  }%
+}
+
+% 白地・黒文字のタイル
+\newcommand{\KTileWhite}[2]{%
+  \begin{scope}[shift={(#1,0)}]
+    \path[
+      fill=white,
+      draw=black,
+      line width=1.05mm,
+      rounded corners=1.35mm
+    ]
+      (1.25,-1.25) rectangle (15.25,12.75);
+
+    \draw[black,line width=1.05mm,line cap=round]
+      (14,14)--(15.25,12.75);
+    \draw[black,line width=1.05mm,line cap=round]
+      (0,0)--(1.25,-1.25);
+
+    \path[
+      fill=white,
+      draw=black,
+      line width=1.05mm,
+      rounded corners=1.35mm
+    ]
+      (0,0) rectangle (14,14);
+
+    \KTileGlyph{black}{#2}
+  \end{scope}%
+}
+
+% 黒地・白文字のタイル
+\newcommand{\KTileBlack}[2]{%
+  \begin{scope}[shift={(#1,0)}]
+    \path[
+      fill=white,
+      draw=black,
+      line width=1.05mm,
+      rounded corners=1.35mm
+    ]
+      (1.25,-1.25) rectangle (15.25,12.75);
+
+    \draw[black,line width=1.05mm,line cap=round]
+      (14,14)--(15.25,12.75);
+    \draw[black,line width=1.05mm,line cap=round]
+      (0,0)--(1.25,-1.25);
+
+    \path[
+      fill=black,
+      draw=black,
+      line width=1.05mm,
+      rounded corners=1.35mm
+    ]
+      (0,0) rectangle (14,14);
+
+    \draw[
+      white,
+      line width=.45mm,
+      rounded corners=.85mm
+    ]
+      (.85,.85) rectangle (13.15,13.15);
+
+    \KTileGlyph{white}{#2}
+  \end{scope}%
+}
+
+% 「考え方」ロゴも初回だけTikZで作り、以後は同じボックスを再利用する。
+\newsavebox{\hokukanbasebox}
+\newcommand{\hokukan}[1][14.6mm]{%
+  \ifvoid\hokukanbasebox
+    \global\setbox\hokukanbasebox=\hbox{%
+      \begin{tikzpicture}[x=1mm,y=1mm]
+        \KTileWhite{0}{考}
+        \KTileBlack{15.65}{え}
+        \KTileWhite{31.30}{方}
+      \end{tikzpicture}%
+    }%
+  \fi
+  \raisebox{-.4ex}{%
+    \resizebox{#1}{!}{\usebox{\hokukanbasebox}}%
+  }%
+}
+\newlength{\PatternTitleHeight}
+\setlength{\PatternTitleHeight}{28mm}
+
+\makeatletter
 \tdplotsetmaincoords{60}{110}%{xy平面からどれだけ上にいるか(90度から-90度)}{z軸中心にどれだけ左右に回転するか}
 \title{数学の核心-理系}
 \author{大島　遙斗}
@@ -514,4 +613,465 @@ z=x^2y^3-3x^3y
 曲線$3xy^2+x^2y=10$の点$(1,-2)$における接線の式を求めよ.\\[1em]
 \noindent\kakkoshi
 曲面$z=x^2+y^2$の点$(3,1,10)$における接平面の式を求めよ.\\
+\newpage
+\section{パラメータ曲線}
+\begin{itembox}[l]{\enpitu 速度ベクトルと加速度ベクトル}
+
+時刻$t$における点Pの位置が,
+\[
+ \mathrm{P}\p{x(t),y(t)}
+\]
+によって与えられているとする.
+
+このとき,点Pの位置ベクトルを,
+\[
+  \vec{r}(t)
+  =
+  \begin{pmatrix}
+    x(t)\\
+    y(t)
+  \end{pmatrix}
+\]
+と表す.
+
+位置ベクトル$\vec{r}(t)$を$t$で微分して得られるベクトル,
+
+\begin{center}
+  \ans{
+    \vec{v}(t)
+    =
+    \vec{r}\,'(t)
+    =
+    \begin{pmatrix}
+      x^\prime(t)\\
+      y\prime(t)
+    \end{pmatrix}
+  }
+\end{center}
+
+を,時刻$t$における点Pの\ans{\text{速度ベクトル}}という.
+
+また,速度ベクトル$\vec{v}(t)$をさらに$t$で微分して得られるベクトル,
+
+\begin{center}
+  \ans{
+    \vec{a}(t)
+    =
+    \vec{v}\,'(t)
+    =
+    \vec{r}\,''(t)
+    =
+    \begin{pmatrix}
+      x''(t)\\
+      y''(t)
+    \end{pmatrix}
+  }
+\end{center}
+
+を,時刻$t$における点$P$の\ans{\text{加速度ベクトル}}という.
+\end{itembox}
+
+\begin{itembox}[l]{\enpitu 速度ベクトルと加速度ベクトルの関係}
+
+速度ベクトル$\vec{v}(t)$は,
+その瞬間における点$P$の進む向きを表す.
+
+一方,加速度ベクトル$\vec{a}(t)$は,
+速度ベクトルの変化する向きを表す.
+
+したがって,加速度ベクトルが速度ベクトルに対して
+左側を向いているとき,点$P$の進行方向は左向きに変化する.
+
+同様に,加速度ベクトルが速度ベクトルに対して
+右側を向いているとき,点$P$の進行方向は右向きに変化する.
+
+\begin{center}
+\begin{tikzpicture}[
+  >=Latex,
+  every node/.style={font=\small}
+]
+
+% 左カーブ
+\begin{scope}[xshift=-3.2cm]
+  \coordinate (P) at (0,0);
+
+  \draw[thick]
+    (-1.5,-0.8)
+    .. controls (-0.5,-0.1) and (0.3,0.9) ..
+    (0.7,2.0);
+
+  \fill (P) circle (1.3pt);
+  \node[below left] at (P) {$P$};
+
+  \draw[-{Latex[length=2mm]},thick]
+    (P)--(1.6,0.8)
+    node[right] {$\vec{v}(t)$};
+
+  \draw[-{Latex[length=2mm]},thick]
+    (P)--(-0.3,1.5)
+    node[above] {$\vec{a}(t)$};
+
+  \node at (0,-1.25) {左カーブ};
+\end{scope}
+
+% 右カーブ
+\begin{scope}[xshift=3.2cm]
+  \coordinate (Q) at (0,0);
+
+  \draw[thick]
+    (-1.5,0.8)
+    .. controls (-0.5,0.1) and (0.3,-0.9) ..
+    (0.7,-2.0);
+
+  \fill (Q) circle (1.3pt);
+  \node[above left] at (Q) {$P$};
+
+  \draw[-{Latex[length=2mm]},thick]
+    (Q)--(1.6,-0.8)
+    node[right] {$\vec{v}(t)$};
+
+  \draw[-{Latex[length=2mm]},thick]
+    (Q)--(-0.3,-1.5)
+    node[below] {$\vec{a}(t)$};
+
+  \node at (0,-2.45) {右カーブ};
+\end{scope}
+
+\end{tikzpicture}
+\end{center}
+
+\end{itembox}
+
+\begin{itembox}[l]{\enpitu 速度ベクトルと加速度ベクトルの位置関係の判定}
+
+2つのベクトル
+\[
+  \vec{v}(t)
+  =
+  \begin{pmatrix}
+    x'(t)\\
+    y'(t)
+  \end{pmatrix},
+  \qquad
+  \vec{a}(t)
+  =
+  \begin{pmatrix}
+    x''(t)\\
+    y''(t)
+  \end{pmatrix}
+\]
+に対して,行列式を考える.\\
+すなわち,$\det\B{\vec{v}(t),\vec{a}(t)}$ということ.
+この行列式の符号を調べることで,
+速度ベクトルに対して加速度ベクトルが
+左右どちらを向いているかを判定できる.
+
+\[
+\begin{aligned}
+  \det\p{\vec{v}(t),\vec{a}(t)}>0
+  \quad
+  &\narabaa\quad
+  \vec{v}(t)\text{に対して}\vec{a}(t)\text{が左向き}
+  \\
+  &\narabaa\quad
+  \text{点}P\text{は進行方向に対して左カーブ},
+  \\[3mm]
+  \det\p{\vec{v}(t),\vec{a}(t)}<0
+  \quad
+  &\narabaa\quad
+  \vec{v}(t)\text{に対して}\vec{a}(t)\text{が右向き}
+  \\
+  &\narabaa\quad
+  \text{点}P\text{は進行方向に対して右カーブ}.
+\end{aligned}
+\]
+
+したがって,
+
+\begin{center}
+\renewcommand{\arraystretch}{1.7}
+\begin{tabular}{c|c|c}
+行列式の符号
+&
+加速度ベクトルの向き
+&
+曲線の曲がる向き
+\\ \hline
+$\det\p{\vec{v},\vec{a}}>0$
+&
+速度ベクトルの左側
+&
+左カーブ
+\\
+$\det\p{\vec{v},\vec{a}}<0$
+&
+速度ベクトルの右側
+&
+右カーブ
+\end{tabular}
+\end{center}
+とまとめることができる.
+\end{itembox}
+
+\newpage
+
+\noindent\ba{6$\bullet$1}\theme{パラメータ曲線の概形}
+\[
+  \begin{cases}
+    x=\cos t,\\
+    y=\sin 2t
+  \end{cases}
+\]
+で定まる点$P(x,y)$について,$t$が
+\[
+  0\leq t\leq2\pi
+\]
+を動くときの点$P$の描く曲線を$C$とする.
+
+$C$の概形を描け.
+
+\vspace{10mm}
+
+\noindent\ba{6$\bullet$2}\theme{パラメータ曲線の概形}
+\[
+  \begin{cases}
+    x=t^3-3t,\\
+    y=t^2-2t
+  \end{cases}
+\]
+で定まる点$P(x,y)$について,$t$が実数全体を動くときの
+点$P$の描く曲線を$C$とする.
+
+$C$の概形を描け.
+
+\newpage
+
+\begin{center}
+  \ans{6章の問題演習}
+\end{center}
+\noindent\reibanichi\\
+$-1\leq t\leq1$を満たす$t$に対して,
+\[
+  \begin{cases}
+    x=1-t^2,\\
+    y=t-t^3
+  \end{cases}
+\]
+で表される曲線を$C$とする.
+
+$C$の概形を描け.
+
+\vspace{10mm}
+
+\noindent\reibanni\\
+座標平面上を運動する点$P$の時刻$t$における座標$(x,y)$が,
+\[
+  x=\cos t+\frac{1}{3}\cos 3t,
+  \qquad
+  y=\sin t+\frac{1}{3}\sin 3t
+\]
+で表される.
+
+時刻$t$における点$P$の速度を$\vec{v}$とし,
+加速度を$\vec{a}$とする.\\
+\kakkoichi 点$P$の$y$座標のとり得る値の範囲を求めよ.\\
+\kakkoni $0<t<\dfrac{\pi}{2}$のとき,
+速度$\vec{v}$が直線$y=\sqrt{3}x$と平行である時刻$t$を求めよ.\\
+\kakkosan $0\leq t\leq2\pi$のとき,
+加速度の大きさ$\left|\vec{a}\right|$の最小値と,
+その値をとる時刻$t$を求めよ.
+
+\begin{flushright}
+（名古屋工業大・一部）
+\end{flushright}
+
+\vspace{8mm}
+
+\noindent\reibansan
+\[
+  \begin{cases}
+    x=(t+2)(t-1)^2,\\
+    y=(t-1)^3
+  \end{cases}
+\]
+で定まる点$P(x,y)$について,$t$が実数全体を動くときの
+点$P$の描く曲線を$C$とする.
+
+$C$の概形を描け.
+\newpage
+\section{面積を求める原理}
+\begin{itembox}[l]{\enpitu 求積の原理}
+
+時刻$t$とともに動く曲線を$l_t$とする.
+$t$が$a$から$b$まで動くときに,曲線$l_t$が通過してできる領域の面積を
+求めることを考える.
+
+時刻$a$から時刻$t$までに,曲線$l_t$が通過してできた領域の面積を
+$S(t)$とおく.
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+
+% 時刻 a から t までに通過した領域
+\fill[black!20]
+  (0.8,0.3)
+  .. controls (0.2,1.2) and (1.3,2.5) .. (0.7,3.4)
+  --
+  (4.0,3.4)
+  .. controls (4.5,2.5) and (3.5,1.2) .. (4.1,0.3)
+  -- cycle;
+
+% t から t+Δt までに新たに通過する部分
+\fill[black!20]
+  (4.1,0.3)
+  .. controls (3.5,1.2) and (4.5,2.5) .. (4.0,3.4)
+  --
+  (4.7,3.4)
+  .. controls (5.2,2.5) and (4.2,1.2) .. (4.8,0.3)
+  -- cycle;
+
+% 各時刻の曲線
+\draw[thick]
+  (0.8,0.3)
+  .. controls (0.2,1.2) and (1.3,2.5) .. (0.7,3.4)
+  node[above] {$l_a$};
+
+\draw[thick]
+  (4.1,0.3)
+  .. controls (3.5,1.2) and (4.5,2.5) .. (4.0,3.4)
+  node[above] {$l_t$};
+
+\draw[dashed,thick]
+  (4.8,0.3)
+  .. controls (4.2,1.2) and (5.2,2.5) .. (4.7,3.4)
+  node[above] {$l_{t+\Delta t}$};
+
+\node at (2.3,1.8) {$S(t)$};
+
+\node[align=center] (A) at (7.5,2.6)
+  {$S(t+\Delta t)-S(t)=\Delta S$\\
+   新たに通過した部分};
+
+\draw[-,thin]
+  (5.5,2.5) to[out=10,in=150] (4.5,2.1);
+
+\draw[-{Latex[length=2mm]}]
+  (5.2,0.8)--(6.4,0.8)
+  node[right] {$t$の増加方向};
+
+\end{tikzpicture}
+\end{center}
+このとき,直線$l_t$が$\Delta t$動いたときの,面積の微小変化$\Delta S$は,
+\begin{align*}
+  \Delta S\yaku（tの関数）\times\Delta t（\Delta t\to0）
+\end{align*}
+と一次近似できる.\\
+従って,これを$t=a$から$t=b$まで寄せ集めればよいので,求める面積$S$は,
+\begin{align*}
+  S&=\dint{t=a}{t=b}（tの関数）\times dt
+\end{align*}
+
+\end{itembox}
+
+\begin{itembox}[l]{\enpitu 面積の増加量の表し方}
+
+点$P(x,y)$が,
+\[
+  x=x(t),\qquad y=y(t)
+\]
+
+と表されているとする.
+
+曲線と$x$軸との間の面積を求める場合,
+微小な面積は縦の長さと横の変化量の積であるから,
+\[
+  dS=\left|y(t)x'(t)\right|\,dt
+\]
+
+と表すことができる.
+
+同様に,曲線と$y$軸との間の面積を求める場合は,
+\[
+  dS=\left|x(t)y'(t)\right|\,dt
+\]
+となる.
+
+また,極座標で,
+\[
+  r=r(t),\qquad \theta=\theta(t)
+\]
+
+と表されている場合は,微小な扇形の面積を考えることにより,
+\[
+  dS
+  =\frac{1}{2}r(t)^2
+   \left|\theta'(t)\right|\,dt
+\]
+
+となる.一応,「Gauss・Green の定理」という名前が付いています.
+
+したがって,それぞれ,
+\begin{align*}
+  S
+  &=
+  \int_a^b
+  \left|y(t)x'(t)\right|\,dt,
+  \\[2mm]
+  S
+  &=
+  \int_a^b
+  \left|x(t)y'(t)\right|\,dt,
+  \\[2mm]
+  S
+  &=
+  \frac{1}{2}
+  \int_a^b
+  r(t)^2\left|\theta'(t)\right|\,dt
+\end{align*}
+と表すことができる.
+
+\end{itembox}
+
+\newpage
+
+\noindent\ba{7$\bullet$1}\theme{関数のグラフと面積}\\
+曲線$y=x^2$と$x$軸および直線$x=1$とで囲まれた部分の
+面積を$S$とする.
+
+微分を用いて$S$を求めよ.
+
+\vspace{8mm}
+
+\noindent\ba{7$\bullet$2}\theme{媒介変数表示された曲線と面積}
+\[
+  \begin{cases}
+    x=t^2+2t-3,\\
+    y=t^2-2t+1
+  \end{cases}
+\]
+で定まる点$P(x,y)$について,$t$が実数全体を動くときの
+点$P$の描く曲線を$C$とする.
+
+$C$と$y$軸とで囲まれた部分の面積を$S$とする.
+$S$を求めよ.
+
+\vspace{8mm}
+
+\noindent\ba{7$\bullet$3}\theme{極座標と面積}\\
+\[
+  \begin{cases}
+    \displaystyle x=\frac{\cos t}{t+1},\\[3mm]
+    \displaystyle y=\frac{\sin t}{t+1}
+  \end{cases}
+\]
+で定まる点$P(x,y)$について,
+$t$が
+\[
+  0\leq t\leq\frac{\pi}{2}
+\]
+を動くときの点$P$の描く曲線を$C$とする.
+
+$C$と$x$軸,$y$軸とで囲まれた部分の面積を$S$とする.
+$S$を求めよ.
+
 \end{document}
