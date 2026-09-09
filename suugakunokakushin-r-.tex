@@ -1079,5 +1079,296 @@ $t$が
 
 $C$と$x$軸,$y$軸とで囲まれた部分の面積を$S$とする.
 $S$を求めよ.
+\newpage\section{体積・長さを求める原理}
+\begin{itembox}[l]{\enpitu 通過領域の体積}
 
+時刻$t$とともに動く図形を考える.
+時刻$a$から時刻$t$までに図形が通過してできた立体の体積を
+$V(t)$とする.
+
+\begin{center}
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  every node/.style={font=\small}
+]
+
+% 時刻aから時刻tまでに通過した部分
+\fill[black!20]
+  (-3.2,1.05)
+  .. controls (-2.0,1.25) and (-1.0,0.85) ..
+  (0,0.95)
+  --
+  (0,-0.95)
+  .. controls (-1.0,-0.85) and (-2.0,-1.25) ..
+  (-3.2,-1.05)
+  -- cycle;
+
+% 時刻tからt+Δtまでの薄い部分
+\fill[black!20]
+  (0,0.95)
+  .. controls (0.12,0.96) and (0.23,0.98) ..
+  (0.35,1.00)
+  --
+  (0.35,-1.00)
+  .. controls (0.23,-0.98) and (0.12,-0.96) ..
+  (0,-0.95)
+  -- cycle;
+
+% 立体の上下の輪郭
+\draw[thick]
+  (-3.2,1.05)
+  .. controls (-2.0,1.25) and (-1.0,0.85) ..
+  (0,0.95)
+  .. controls (1.2,1.05) and (2.2,1.35) ..
+  (3.4,1.05);
+
+\draw[thick]
+  (-3.2,-1.05)
+  .. controls (-2.0,-1.25) and (-1.0,-0.85) ..
+  (0,-0.95)
+  .. controls (1.2,-1.05) and (2.2,-1.35) ..
+  (3.4,-1.05);
+
+% 各時刻における図形
+\draw[thick] (-3.2,0) ellipse (0.32 and 1.05);
+\draw[thick] (0,0) ellipse (0.30 and 0.95);
+\draw[dashed] (0.35,0) ellipse (0.30 and 1.00);
+\draw[thick] (3.4,0) ellipse (0.32 and 1.05);
+
+% 中心線
+\draw[dashed] (-3.5,0)--(3.7,0);
+
+% 時刻の表示
+\node[below=12mm] at (-3.2,0) {$a$};
+\node[below=12mm] at (0,0) {$t$};
+\node[below=12mm] at (3.4,0) {$b$};
+
+\node at (-1.55,0) {$V(t)$};
+
+% 微小体積の説明
+\node[align=center] (dV) at (1.3,2.0)
+  {新たに増加した\\微小体積$dV$};
+
+\draw[-{Latex[length=2mm]},thin]
+  (dV.south) to[out=-110,in=60] (0.18,0.75);
+
+% 時間の進む向き
+\draw[-{Latex[length=2mm]}]
+  (-2.4,-1.65)--(2.6,-1.65)
+  node[right] {$t$の増加方向};
+
+\end{tikzpicture}
+\end{center}
+
+時刻$t$から$t+\Delta t$までに増加した体積は,
+
+\[
+  V(t+\Delta t)-V(t)
+\]
+
+である.$\Delta t$が十分に小さいとき,これを微小体積$dV$と考える.
+
+したがって,時刻$a$から時刻$b$までに増加した微小体積を
+すべて加えることで,立体全体の体積を求められる.
+
+\begin{center}
+  \ans{
+    V
+    =
+    \int_a^b dV
+  }
+\end{center}
+
+\hokukan　微小体積$dV$として数えるのは,
+時刻$t$から$t+\Delta t$までに\ans{\text{新たに通過した部分}}である.
+すでに通過した部分を再び通る場合は,
+同じ部分を二重に加えないように注意する.
+
+\end{itembox}
+
+\begin{itembox}[l]{\enpitu 切断面による体積の計算}
+
+立体を$x$軸に垂直な平面で切断し,
+座標$x$における切断面の面積を$S(x)$とする.
+
+\begin{center}
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  every node/.style={font=\small}
+]
+
+% x軸
+\draw[-{Latex[length=2mm]}]
+  (-0.7,0)--(7.2,0)
+  node[right] {$x$};
+
+% 立体の輪郭
+\draw[thick]
+  (0.2,1.05)
+  .. controls (1.2,1.55) and (2.1,1.25) ..
+  (3.0,0.95)
+  .. controls (4.0,0.65) and (5.0,0.75) ..
+  (6.2,1.35);
+
+\draw[thick]
+  (0.2,-1.05)
+  .. controls (1.2,-1.55) and (2.1,-1.25) ..
+  (3.0,-0.95)
+  .. controls (4.0,-0.65) and (5.0,-0.75) ..
+  (6.2,-1.35);
+
+% 左右の端面
+\draw[thick] (0.2,0) ellipse (0.25 and 1.05);
+\draw[thick] (6.2,0) ellipse (0.25 and 1.35);
+
+% 内部の切断面
+\draw[dashed] (1.7,0) ellipse (0.22 and 1.25);
+\draw[dashed] (3.0,0) ellipse (0.20 and 0.95);
+\draw[dashed] (4.1,0) ellipse (0.18 and 0.72);
+
+% x=tまでの領域
+\fill[black!20,opacity=0.7]
+  (0.2,1.05)
+  .. controls (1.2,1.55) and (2.1,1.25) ..
+  (3.7,0.76)
+  --
+  (3.7,-0.76)
+  .. controls (2.1,-1.25) and (1.2,-1.55) ..
+  (0.2,-1.05)
+  -- cycle;
+
+% 微小な切片
+\fill[black!20]
+  (3.7,0.76)
+  .. controls (3.82,0.74) and (3.92,0.73) ..
+  (4.02,0.72)
+  --
+  (4.02,-0.72)
+  .. controls (3.92,-0.73) and (3.82,-0.74) ..
+  (3.7,-0.76)
+  -- cycle;
+
+\draw[thick] (3.7,0) ellipse (0.18 and 0.76);
+\draw[dashed] (4.02,0) ellipse (0.18 and 0.72);
+
+% 座標
+\fill (0.2,0) circle (1.2pt);
+\fill (3.7,0) circle (1.2pt);
+\fill (6.2,0) circle (1.2pt);
+
+\node[below=2mm] at (0.2,0) {$a$};
+\node[below=2mm] at (3.7,0) {$x$};
+\node[below=2mm] at (6.2,0) {$b$};
+
+% 切断面積
+\node[align=center] (S) at (4.9,2.1)
+  {切断面積\\$S(x)$};
+
+\draw[-{Latex[length=2mm]},thin]
+  (S.south west) to[out=-130,in=40] (3.75,0.55);
+
+% 微小幅
+\draw[thin] (3.7,-1.15)--(3.7,-1.45);
+\draw[thin] (4.02,-1.15)--(4.02,-1.45);
+\draw[<->,>=Latex]
+  (3.7,-1.35)--(4.02,-1.35)
+  node[midway,below] {$dx$};
+
+% 微小体積
+\node[align=center] at (5.25,-2.0)
+  {$dV\simeq S(x)\,dx$};
+
+\draw[-{Latex[length=2mm]},thin]
+  (4.75,-1.8) to[out=150,in=-40] (3.88,-0.5);
+
+\end{tikzpicture}
+\end{center}
+
+$x$から$x+dx$までの部分は,幅が$dx$の非常に薄い立体である.
+この立体は,底面積が$S(x)$,高さが$dx$の柱体とみなせるから,
+
+\[
+  dV\simeq S(x)\,dx
+\]
+
+となる.
+
+したがって,$a\leq x\leq b$における立体全体の体積は,
+
+\begin{center}
+  \ans{
+    V
+    =
+    \int_a^b dV
+    =
+    \int_a^b S(x)\,dx
+  }
+\end{center}
+
+で求められる.
+
+\hokukan　体積を求めるときは,
+まず\ans{\text{どの向きに薄く切断するか}}を決める.
+次に,その向きに垂直な切断面の面積$S(x)$を求めればよい.
+
+\end{itembox}
+\newpage
+\begin{itembox}
+  [l]{\enpitu 弧長の長さを求める原理}
+  $t$を時刻と考えて,$t$での位置ベクトルを$\vec{r}(t)=\tvec<0,1>[x(t),y(t)]$とする.このとき,速度ベクトル$\vec{v}(t)$は,
+  \begin{align*}
+    \vec{v}(t)=\tvec<0,1>[\frac{d}{dt}x(t),\frac{d}{dt}y(t)]
+  \end{align*}
+  で表せる.ここで,微小時間$\Delta t$の間に進む距離$\Delta L(t)$は,
+  \begin{align*}
+    \ans{L(t)=\sqrt{\p{\frac{dx(t)}{dt}}^2+\p{\frac{dy(t)}{dt}}^2}\times\Delta t=|\vec{v}(t)|\times\Delta t}
+  \end{align*}
+  と表せる.これを,$t=aからt=b$まで積分すれば,弧長がでるので,全体の弧長$L(t)$は,
+  \begin{align*}
+    L(t)=\dint{a}{b}|\vec{v}(t)|\times dt
+  \end{align*}
+  となる.
+\end{itembox}
+\newpage
+\noindent\ba{8$\bullet$1}.\theme{回転体の体積}\\
+曲線
+\[
+  y=\sin x
+  \qquad
+  \p{0\leq x\leq\pi}
+\]
+と$x$軸とで囲まれた部分を$D$とする.\\
+\kakkoichi $D$を$x$軸の周りに1回転してできる立体の体積$V_x$を求めよ.\\
+\kakkoni $D$を$y$軸の周りに1回転してできる立体の体積$V_y$を求めよ.\\\\
+\noindent\ba{8$\bullet$2}.\theme{長方形の通過領域の体積}\\
+$xyz$空間内に2点
+\[
+  A\p{\cos t,\sin t,0},
+  \qquad
+  B\p{\cos t,\sin t,t}
+\]
+が与えられている.
+
+$t$が
+\[
+  0\leq t\leq\frac{\pi}{2}
+\]
+の範囲を動くとき,$OA,AB$を2辺とする長方形が
+通過する部分を$K$とする.
+
+$K$の体積$V$を求めよ.\\\\
+\noindent\ba{8$\bullet$3}.\theme{極方程式で表された曲線の長さ}\\
+極方程式で表された$xy$平面上の曲線
+\[
+  C\colon r=1+\cos\theta
+  \qquad
+  \p{0\leq\theta\leq2\pi}
+\]
+の長さ$L$を求めよ.
+
+\begin{flushright}
+  （神戸大・一部）
+\end{flushright}
 \end{document}
