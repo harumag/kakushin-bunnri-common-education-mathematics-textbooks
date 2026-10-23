@@ -12,51 +12,95 @@
 \renewcommand{\baselinestretch}{1.3}
 \newcommand{\midashikakko}[1]{《#1》}%ダブルのカギカッコ
 \newcommand{\ans}[1]{\mbox{\boldmath{$#1$}}}
-
+\newcommand{\miginote}[1]{%
+  \par\noindent\hfill（#1）\par
+}
 \newcommand{\dotshiki}[2]{%
-  \begin{equation*}
-    \hbox to \dimexpr\linewidth-\mathindent\relax{%
+  \par
+  \begingroup
+    \addvspace{\abovedisplayskip}%
+    \noindent
+    \hbox to \linewidth{%
       \mathsurround=0pt
+      % 数式の左側の字下げも本文幅に含める
+      \ifdefined\mathindent
+        \hskip\mathindent
+      \fi
       $\displaystyle #1$%
       \kern.5em
       \cleaders\hbox{$\mkern1mu\cdot\mkern1mu$}\hfill
       \kern.3em
       \ensuremath{#2}%
     }%
-  \end{equation*}%
+    \par
+    \addvspace{\belowdisplayskip}%
+  \endgroup
 }%cdots と式番号をページの端まで自動で引く
 \makeatletter
 \newcommand{\dotshikialign}[2]{%
   \notag
-  \ifmeasuring@
-    #1\quad\ensuremath{#2}%
-  \else
-    \hbox to \dimexpr
-      \displaywidth-\eqnshift@-\maxcol@width1\relax{%
-      \mathsurround=0pt
-      $\displaystyle{}#1$%
-      \kern.5em
-      \cleaders\hbox{$\mkern1mu\cdot\mkern1mu$}\hfill
-      \kern.3em
-      \ensuremath{#2}%
+  \begingroup
+    % alignの幅計算には、式と番号の自然な幅を使う
+    \setbox\z@=\hbox{%
+      \mathsurround=2pt
+      $\displaystyle{}#1\quad#2$%
     }%
-  \fi
+    \ifmeasuring@
+      \box\z@
+    \else
+      % &の位置から本文右端までの幅
+      \dimen@=\dimexpr
+        \displaywidth-\eqnshift@-\maxcol@width1\relax
+      % 列幅を保ったまま、点線を右端まで描く
+      \hbox to \wd\z@{%
+        \hbox to \dimen@{%
+          \mathsurround=0pt
+          $\displaystyle{}#1$%
+          \kern.5em
+          \cleaders\hbox{$\mkern1mu\cdot\mkern1mu$}\hfill
+          \kern.3em
+          \ensuremath{#2}%
+        }%
+        \hss
+      }%
+    \fi
+  \endgroup
 }
 \makeatother%align 環境内でのcdots と式番号をページの端まで自動で引く
 \newcommand{\dotshikicenter}[2]{%
   \par\begingroup
   \mathsurround=0pt
+  % 数式と番号の幅を測る
   \setbox0=\hbox{$\displaystyle #1$}%
+  \setbox2=\hbox{\ensuremath{#2}}%
+  % 数式を中央に置くための左余白
   \dimen0=\dimexpr(\linewidth-\wd0)/2\relax
-  \noindent\hbox to\linewidth{%
-    \kern\dimen0
-    \box0
-    \kern.5em
-    \cleaders\hbox{$\mkern1mu\cdot\mkern1mu$}\hfill
-    \kern.3em
-    \ensuremath{#2}%
-  }\par
-  \endgroup
+  % 番号・間隔・点線を確保した場合の左余白の上限
+  \dimen2=\dimexpr\linewidth-\wd0-\wd2-1.8em\relax
+  \ifdim\dimen2<0pt
+    % 一行に収まらない場合
+    \noindent\hbox to\linewidth{\hfil\box0\hfil}\par
+    \nobreak
+    \noindent\hbox to\linewidth{%
+      \cleaders\hbox{$\mkern1mu\cdot\mkern1mu$}\hfill
+      \kern.3em
+      \box2
+    }%
+  \else
+    % 必要な場合だけ数式を左へ寄せる
+    \ifdim\dimen0>\dimen2
+      \dimen0=\dimen2
+    \fi
+    \noindent\hbox to\linewidth{%
+      \kern\dimen0
+      \box0
+      \kern.5em
+      \cleaders\hbox{$\mkern1mu\cdot\mkern1mu$}\hfill
+      \kern.3em
+      \box2
+    }%
+  \fi
+  \par\endgroup
 }
 
 \newcommand{\hokuban}[1]{
@@ -528,7 +572,7 @@ $\yueni f(t)\geq f(1)=0$\\
   \end{cases}}$
 \end{center}
 \vspace{1cm}
-{\Large\ans{2章}\quad \ans{凸関数・多項式の関数}}\\
+{\Large\ans{2章}\quad \ans{凸関数・関数の増減}}\\
 ここでは,\doshi の「イェンセンの不等式」を少し扱いたいと思います.AM-GMの不等式の
 一般の形式の証明もこの不等式で与えることができます.
 \begin{itembox}
@@ -558,7 +602,7 @@ $0<a<b$として,$x=a,x=b,x=\dfrac{a+b}{2}$をプロットすると,下図のよ
     \fill(1.5,{2*ln(1.5)})circle(1.5pt);
     \draw[dashed](3.5,0)node[below]{$b$}--(3.5,{2*ln(3.5)})--(0,{2*ln(3.5)})node[left]{$\log b$};
     \fill(3.5,{2*ln(3.5)})circle(1.5pt);
-    \draw[dashed] (2.5,0)node[below]{$\frac{a+b}{2}$}--(2.5,{2*ln(2.5)})--(0,{2*ln(2.5)})node[left]{$f\p{\dfrac{a+b}{2}}=$};
+    \draw[dashed] (2.5,0)node[below]{$\frac{a+b}{2}$}--(2.5,{2*ln(2.5)})--(0,{2*ln(2.5)})node[left]{$f\p{\dfrac{a+b}{2}}$};
     \fill(2.5,{2*ln(2.5)})circle(1.5pt);
     \draw[thick](1.5,{2*ln(1.5)})--(3.5,{2*ln(3.5)});
     \fill(2.5,1.65)circle(1.5pt);
@@ -569,7 +613,7 @@ $0<a<b$として,$x=a,x=b,x=\dfrac{a+b}{2}$をプロットすると,下図のよ
 \begin{align*}
   \dfrac{\log a+\log b}{2}=\log\sqrt{ab}とf\p{\dfrac{a+b}{2}}=\log\p{\dfrac{a+b}{2}}
 \end{align*}
-を比較すると,明らかに
+の右辺をそれぞれ比較すると,明らかに
 \begin{align*}
   \log\p{\dfrac{a+b}{2}}\geq\log\sqrt{ab}\doti\ans{\dfrac{a+b}{2}\geq\sqrt{ab}}\quad\blacksquare
 \end{align*}
@@ -582,5 +626,9 @@ $0<a<b$として,$x=a,x=b,x=\dfrac{a+b}{2}$をプロットすると,下図のよ
 \ba{2$\bullet$2}\midashikakko{東工大}\\
 $0<x<y$のとき,$x^2e^{\frac{y}{x}},y^2e^{\frac{x}{y}}$の大小関係を調べよ.\\\\
 \ba{2$\bullet$3}\midashikakko{東工大}\\
-$k$を定数とするとき,方程式$e^x-x^e=k$の異なる正の解の個数を求めよ.
+$k$を定数とするとき,方程式$e^x-x^e=k$の異なる正の解の個数を求めよ.\\\\
+\ba{2$\bullet$4}\midashikakko{極値の差}\\
+関数$f(x)=x^3-kx^2-3kx+2$は極大値,極小値をとるものとする.極大値と極小値の差が
+$32$となるとき,$k$（$k$は正の実数）の値を求めよ.
+\miginote{2026 自治医大}
 \end{document}
