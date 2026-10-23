@@ -442,7 +442,7 @@ $y=f(t)とy=g(t)$を図示すると,下図のようになる.
     \draw (1.3,{1.88*1.3})to[bend left](1.8,2)node[right]{$y=g(t)$};
   \end{tikzpicture}
 \end{center}
-この図より,接点$t=s$で$y=f(t)$と$y=g(t)$が接するときが$\asta$の上限である.\\
+この図より,接点の$t$座標$t=s$で$y=f(t)$と$y=g(t)$が接するときが$\asta$の上限である.\\
 $y=f(t)とy=g(t)$が接するとき,$「f(t)とg(t)の傾きが等しい」$ので,接点を$\p{s,f\p{s}}$とおくと,
 \begin{align*}
   \begin{cases}
@@ -478,7 +478,7 @@ $\yueni$求める$a$の範囲は,
   {\ba{1$\bullet$3}\midashikakko{東工大}}
   $a,b$を正数とするとき,$\p{\dfrac{a^2+b^2}{2}}^{\frac12}と\p{\dfrac{a^3+b^3}{2}}^{\frac13}$の大小を比較せよ.
 \end{thickitembox}
-\hokukan\quad 大小の比較は次の3通りの考え方が鉄板です.覚えておくと良いでしょう.\\
+\hokukan\quad 大小の比較は次の4通りの考え方が鉄板です.覚えておくと良いでしょう.\dosan,\doshi は後ほど詳しく扱います.\\
 \doichi\ans{比をとる}\\
 \doni\ans{差を考える}\\
 \dosan\ans{関数の単調性を使う}\\
@@ -527,4 +527,60 @@ $\yueni f(t)\geq f(1)=0$\\
     a\neq bのとき,\p{\dfrac{a^2+b^2}{2}}^{\frac12}<\p{\dfrac{a^3+b^3}{2}}^{\frac13}
   \end{cases}}$
 \end{center}
+\vspace{1cm}
+{\Large\ans{2章}\quad \ans{凸関数・多項式の関数}}\\
+ここでは,\doshi の「イェンセンの不等式」を少し扱いたいと思います.AM-GMの不等式の
+一般の形式の証明もこの不等式で与えることができます.
+\begin{itembox}
+  [l]{\enpitu 定義（イェンセンの不等式）}
+  関数$y=f(x)$について,次の不等式が成立するとき,イェンセンの不等式（凸関数）という.
+  \begin{center}
+    $f\p{\dfrac{\wa{k=1}{n}x_k}{n}}\leq\wa{k=1}{n}f\p{x_k}$
+  \end{center}
+\end{itembox}
+\chu\quad この不等式は証明なしに用いてよい.\\\\
+この不等式を用いた有名な証明がAM-GMの不等式の証明です.\\
+\reidaic\quad AM-GMの不等式$\dfrac{a+b}{2}\geq\sqrt{ab}$を証明せよ.ただし,$a\geq0,b\geq0$とする.\\
+\hokukai\quad$y=\log x$を考えて,これを$y=f(x)$とおく.\\
+$0<a<b$として,$x=a,x=b,x=\dfrac{a+b}{2}$をプロットすると,下図のようになる.
+\begin{center}
+  \begin{tikzpicture}
+    %関数
+    \begin{scope}
+      \clip(-0.5,-0.5)rectangle(4,4);
+    \draw[samples=300,domain=0.02:4]plot(\x,{2*ln(\x)});
+    \end{scope}
+    %軸node
+    \draw[->,>=latex](-0.5,0)--(4.3,0)node[right]{$x$};
+    \draw[->,>=latex](0,-0.5)--(0,3.8)node[above]{$y$};
+    \node[below left]at(0,0){O};
+    \draw[dashed](1.5,0)node[below]{$a$}--(1.5,{2*ln(1.5)})--(0,{2*ln(1.5)})node[left]{$\log a$};
+    \fill(1.5,{2*ln(1.5)})circle(1.5pt);
+    \draw[dashed](3.5,0)node[below]{$b$}--(3.5,{2*ln(3.5)})--(0,{2*ln(3.5)})node[left]{$\log b$};
+    \fill(3.5,{2*ln(3.5)})circle(1.5pt);
+    \draw[dashed] (2.5,0)node[below]{$\frac{a+b}{2}$}--(2.5,{2*ln(2.5)})--(0,{2*ln(2.5)})node[left]{$f\p{\dfrac{a+b}{2}}=$};
+    \fill(2.5,{2*ln(2.5)})circle(1.5pt);
+    \draw[thick](1.5,{2*ln(1.5)})--(3.5,{2*ln(3.5)});
+    \fill(2.5,1.65)circle(1.5pt);
+    \draw (2.5,1.65)to[bend left](4,1.7)node[right]{$\dfrac{\log a+\log b}{2}$};
+    \end{tikzpicture}
+\end{center}
+この図より,$y$座標,
+\begin{align*}
+  \dfrac{\log a+\log b}{2}=\log\sqrt{ab}とf\p{\dfrac{a+b}{2}}=\log\p{\dfrac{a+b}{2}}
+\end{align*}
+を比較すると,明らかに
+\begin{align*}
+  \log\p{\dfrac{a+b}{2}}\geq\log\sqrt{ab}\doti\ans{\dfrac{a+b}{2}\geq\sqrt{ab}}\quad\blacksquare
+\end{align*}
+また等号成立は,$a=b$のときである.\\\\
+\ba{2$\bullet$1}\midashikakko{京都大}\\
+実数$a,b\hspace{1mm}\p{0\leq a<\dfrac{\pi}{4},0\leq b<\dfrac{\pi}{4}}$に対し,次の不等式が成立することを示せ.
+\begin{align*}
+  \sqrt{\tan a\tan b}\leq\tan\p{\dfrac{a+b}{2}}\leq\dfrac12\p{\tan a+\tan b}
+\end{align*}\\
+\ba{2$\bullet$2}\midashikakko{東工大}\\
+$0<x<y$のとき,$x^2e^{\frac{y}{x}},y^2e^{\frac{x}{y}}$の大小関係を調べよ.\\\\
+\ba{2$\bullet$3}\midashikakko{東工大}\\
+$k$を定数とするとき,方程式$e^x-x^e=k$の異なる正の解の個数を求めよ.
 \end{document}
