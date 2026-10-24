@@ -1,5 +1,6 @@
 \documentclass[dvipdfmx,10pt,fleqn,a4paper,twocolumn]{jsarticle}
-\usepackage{graphicx,color}
+\usepackage{graphicx,color,tcolorbox}
+\tcbuselibrary{skins,breakable}
 \usepackage[margin=15truemm]{geometry}
 \usepackage{ascmac,amsmath,amssymb,array}
 \usepackage{tikz}
@@ -37,6 +38,8 @@
   \endgroup
 }%cdots と式番号をページの端まで自動で引く
 \makeatletter
+% 各行の & は1つとし、このコマンドを & の直後に置く。
+% = や \doti なども第1引数に含める: &\dotshikialign{=式}{番号}
 \newcommand{\dotshikialign}[2]{%
   \notag
   \begingroup
@@ -128,7 +131,60 @@
 } %全国大学入試問題の「解答」記号
 
 \newcommand{\theme}[1]{【\text{#1}】}
+\tcbset{
+  enshu-pos/.is choice,
+  enshu-pos/l/.style={
+    attach boxed title to top left={
+      xshift=3mm,
+      yshift=-\tcboxedtitleheight/2
+    }
+  },
+  enshu-pos/c/.style={
+    attach boxed title to top center={
+      yshift=-\tcboxedtitleheight/2
+    }
+  },
+  enshu-pos/r/.style={
+    attach boxed title to top right={
+      xshift=-3mm,
+      yshift=-\tcboxedtitleheight/2
+    }
+  }
+}
 
+% 既存の enshumondai の定義と置き換える
+\newtcolorbox{enshumondai}[2][l]{%
+  enhanced,
+  breakable,
+  width=\linewidth,
+  sharp corners,
+  colback=white,
+  colframe=black,
+  colbacktitle=white,
+  coltitle=black,
+  title={\strut\ans{#2}},
+  boxrule=0.6pt,
+  boxsep=0pt,
+  left=2mm,
+  right=2mm,
+  top=3mm,
+  bottom=2mm,
+  before skip=1em,
+  after skip=1em,
+  boxed title style={
+    enhanced,
+    frame hidden,
+    colback=white,
+    sharp corners,
+    boxrule=0pt,
+    boxsep=0pt,
+    left=1mm,
+    right=1mm,
+    top=0.5mm,
+    bottom=0.5mm
+  },
+  enshu-pos=#1
+}
 \newcommand{\KTileGlyph}[2]{%
   \foreach \dx/\dy in {
     -.16/0,.16/0,0/-.16,0/.16,
@@ -260,7 +316,7 @@ $z$を同次式と言う.ここで,$\deg f(x)$は,$f(x)$の次数である.\\
   &=\dfrac{t^2+t+1}{1+t}\quad（\temarkua\quad t=\frac{y}{x} とおいた.）\\
   &=\dfrac{\p{t+1}^2-t}{t+1}\quad（\temarkua\quad 頭でっかちは次数下げ）\\
   &=t+1-\dfrac{t+1-1}{t+1}\\
-  &=\dotshikialign{t+\dfrac{1}{t+1}}{\maruichi}
+  &\dotshikialign{=t+\dfrac{1}{t+1}}{\maruichi}
 \end{align*}
 $\maruichi$から最小値を求める方法は様々です.\\
 \ans{1}.\ans{AM-GMを使う}
@@ -301,7 +357,7 @@ $\maruichi$において,$z$を$t$の関数とみて,微分すると,
 $z$の値域を$W$とおく.$z=\dfrac{t^2+t+1}{t+1}$において,$z=k$おくと,
 \begin{align*}
   k\in W&\doti\exists t, k=\dfrac{t^2+t+1}{t+1}\\
-  &\doti \exists t,t^2+(1-k)t+1-k=0\cdots\cdots\maruni\\
+  &\dotshikialign{\doti \exists t,t^2+(1-k)t+1-k=0}{\maruni}\\
   &\doti\maruni を満たす正の実数tが少なくとも一つ存在する.\\
   &\doti（\maruni の判別式：）\p{1-k}^2-4\p{1-k}\geq0\\
   &\doti\p{k+3}\p{k-1}\geq0\\
@@ -312,8 +368,9 @@ $z$の値域を$W$とおく.$z=\dfrac{t^2+t+1}{t+1}$において,$z=k$おくと,
 \begin{center}
   \ans{分母と分子を同じ次数で割ればよい!}
 \end{center}
-ということです.\\それでは,演習問題です.\\\\
-\ba{1$\bullet$1}次の問題を解け.\\
+ということです.
+\begin{enshumondai}[c]{演習問題}
+  \ba{1$\bullet$1}次の問題を解け.\\
 \kakkoichi$x,y$が正の実数を動くとき,$z=\dfrac{2x^2+3xy+4y^2}{x^2+y^2}$の最大値を求めよ.\\
 \kakkoni$0<x<y$のとき,$z=\dfrac{3x^2y-6xy^2+2y^3}{(x-y)^3}$のとり得る値の範囲を求めよ.\\\\
 \ba{1$\bullet$2}\midashikakko{京都大}\\
@@ -328,6 +385,8 @@ $z$の値域を$W$とおく.$z=\dfrac{t^2+t+1}{t+1}$において,$z=k$おくと,
   が成り立つような$a$の範囲を求めよ.\\\\
   \ba{1$\bullet$3}\midashikakko{東工大}\\
   $a,b$を正数とするとき,$\p{\dfrac{a^2+b^2}{2}}^{\frac12}と\p{\dfrac{a^3+b^3}{2}}^{\frac13}$の大小を比較せよ.
+  \end{enshumondai}
+
 \newpage
 \fbox{\hspace{3.3cm}{\Large\ans{1章の解説}}\hspace{3.3cm}}
 \begin{thickitembox}
@@ -340,7 +399,7 @@ $z$の値域を$W$とおく.$z=\dfrac{t^2+t+1}{t+1}$において,$z=k$おくと,
 \hokukai\kakkoichib \begin{align*}
   z&=\dfrac{2x^2+3xy+4y^2}{x^2+y^2}=\dfrac{2\p{\frac{x}{y}}^2+3\p{\frac{x}{y}}+4}{\p{\frac{x}{y}}^2+1}\\
   &=\dfrac{2t^2+3t+4}{t^2+1}\quad\p{t=\dfrac{x}{y}とおいた.}\\
-  &=\dotshikialign{2+\dfrac{3t+2}{t^2+1}}{\maruichi}
+  &\dotshikialign{=2+\dfrac{3t+2}{t^2+1}}{\maruichi}
 \end{align*}
 $\maruichi$で,$t$は全ての正の実数を動く.ここでさらに,$\maruichi$において,\\$u=3t+2$とおくと,$u$は$u>2$の範囲を動き,
 \begin{align*}
@@ -452,12 +511,12 @@ $\tvec<0,1>[x,y]=r\tvec<0,1>[\cos\theta,\sin\theta]\quad\p{r>0,0<\theta<\dfrac{\
 \begin{align*}
   \maruichi&\doti-\dfrac12\leq\dfrac{\frac{x}{y}-1}{\frac{x}{y}+1}\leq\dfrac12\\
   &\doti-\dfrac12\p{t+1}\leq t-1\leq\dfrac12\p{t+1}\quad\p{t=\frac{x}{y}}\\
-  &\doti\dotshikialign{\dfrac13\leq t\leq3}{\maruichi^\prime}
+  &\dotshikialign{\doti\dfrac13\leq t\leq3}{\maruichi^\prime}
 \end{align*}
 ここで,
 \begin{align*}
   \maruni&\doti\p{\dfrac{x}{y}}^3-3a^2\dfrac{x}{y}+2\geq0\\
-  &\doti\dotshikialign{t^3-3a^2t+2\geq0}{\maruni^\prime}
+  &\dotshikialign{\doti t^3-3a^2t+2\geq0}{\maruni^\prime}
 \end{align*}
 また,
 \begin{align*}
@@ -606,7 +665,7 @@ $0<a<b$として,$x=a,x=b,x=\dfrac{a+b}{2}$をプロットすると,下図のよ
     \fill(2.5,{2*ln(2.5)})circle(1.5pt);
     \draw[thick](1.5,{2*ln(1.5)})--(3.5,{2*ln(3.5)});
     \fill(2.5,1.65)circle(1.5pt);
-    \draw (2.5,1.65)to[bend left](4,1.7)node[right]{$\dfrac{\log a+\log b}{2}$};
+    \draw (2.5,1.65)to[bend right](4.5,3.7)node[above]{$\p{\dfrac{a+b}{2},\dfrac{\log a+\log b}{2}}$};
     \end{tikzpicture}
 \end{center}
 この図より,$y$座標,
@@ -617,7 +676,10 @@ $0<a<b$として,$x=a,x=b,x=\dfrac{a+b}{2}$をプロットすると,下図のよ
 \begin{align*}
   \log\p{\dfrac{a+b}{2}}\geq\log\sqrt{ab}\doti\ans{\dfrac{a+b}{2}\geq\sqrt{ab}}\quad\blacksquare
 \end{align*}
-また等号成立は,$a=b$のときである.\\\\
+また等号成立は,$a=b$のときである.\\
+これを,用いれば,一般のAM-GMの関係も証明することができます.\\
+平均の証明関連では,これを頭においておくと良いでしょう.
+\begin{enshumondai}[c]{演習問題}
 \ba{2$\bullet$1}\midashikakko{京都大}\\
 実数$a,b\hspace{1mm}\p{0\leq a<\dfrac{\pi}{4},0\leq b<\dfrac{\pi}{4}}$に対し,次の不等式が成立することを示せ.
 \begin{align*}
@@ -630,5 +692,195 @@ $k$を定数とするとき,方程式$e^x-x^e=k$の異なる正の解の個数�
 \ba{2$\bullet$4}\midashikakko{極値の差}\\
 関数$f(x)=x^3-kx^2-3kx+2$は極大値,極小値をとるものとする.極大値と極小値の差が
 $32$となるとき,$k$（$k$は正の実数）の値を求めよ.
-\miginote{2026 自治医大}
+\miginote{26 自治医大}
+\end{enshumondai}
+\newpage
+\fbox{\hspace{3.3cm}{\Large\ans{2章の解説}}\hspace{3.3cm}}\\
+\begin{thickitembox}
+  {\ba{2$\bullet$1}\midashikakko{京都大}}
+  実数$a,b\hspace{1mm}\p{0\leq a<\dfrac{\pi}{4},0\leq b<\dfrac{\pi}{4}}$に対し,次の不等式が成立することを示せ.
+\begin{align*}
+  \sqrt{\tan a\tan b}\leq\tan\p{\dfrac{a+b}{2}}\leq\dfrac12\p{\tan a+\tan b}
+\end{align*}
+\end{thickitembox}
+\hokukan\quad 色々な平均値が混ざった不等式の証明なので,「イェンセンの不等式」が頭をよぎります.右端の不等式は$0\leq x\leq\dfrac{\pi}{4}$の
+範囲で$y=\tan x$のグラフを考えれば示そうです.左端の不等式は,$\log$をとれば,「イェンセンの不等式」で示せますね.\\
+\hokukai\quad 与えられた不等式において,
+\begin{align*}
+\begin{cases}
+\sqrt{\tan a\tan b}\leq\tan\p{\dfrac{a+b}{2}}\cdots\cdots\cdots\cdots\cdots\maruichi\\
+\dfrac12\p{\tan a+\tan b}\geq\tan\p{\dfrac{a+b}{2}}\cdots\cdots\maruni
+\end{cases}
+\end{align*}
+とすして,まず,$\maruni$を示す.\\
+$0\leq a\leq\dfrac{\pi}{4}$の範囲で,$y=\tan x$のグラフを考える.
+\begin{align*}
+  &y^\prime=\dfrac{1}{\cos^2x}>0\\
+  &y^{\prime\prime}=\dfrac{2\sin x}{\cos^2x}>0\quad\p{\because0\leq x\leq\dfrac{\pi}{4}}
+\end{align*}
+なので,$y=\tan x$のグラフは常に下に凸であり,そのグラフは下図のようになる.
+\begin{center}
+  \begin{tikzpicture}[scale=3]
+    %関数
+    \draw[domain=0:1.2]plot(\x,{tan(0.8*\x r)})node[right]{$y=\tan x$};
+    \draw[dashed](0.5,0)node[below]{$a$}--(0.5,{tan(0.8*0.5 r)})--(0,{tan(0.8*0.5 r)})node[left]{$\tan a$};
+    \fill (0.5,{tan(0.8*0.5 r)})circle(0.5pt);
+    \draw[dashed](1.1,0)node[below]{$b$}--(1.1,{tan(1.1*0.8 r)})--(0,{tan(1.1*0.8 r)})node[left]{$\tan b$};
+    \fill (1.1,{tan(1.1*0.8 r)})circle(0.5pt);
+    \draw (0.5,{tan(0.8*0.5 r)})--(1.1,{tan(1.1*0.8 r)});
+    \draw[dashed]({(0.5+1.1)/2},0)--({(0.5+1.1)/2},{(tan(0.8*0.5 r)+tan(1.1*0.8 r))/2});
+    \fill({(0.5+1.1)/2},{(tan(0.8*0.5 r)+tan(1.1*0.8 r))/2})circle(0.5pt);
+    \draw[dashed](0,{(tan(0.8*0.5 r)+tan(1.1*0.8 r))/2})node[left]{$\dfrac{\tan a+\tan b}{2}$}--({(0.63+1.1)/2},{(tan(0.8*0.5 r)+tan(1.1*0.8 r))/2});
+    \fill({(0.63+1.1)/2},{(tan(0.8*0.5 r)+tan(1.1*0.8 r))/2})circle(0.5pt);
+    \draw({(0.63+1.1)/2},{(tan(0.8*0.5 r)+tan(1.1*0.8 r))/2})to[bend left]({(1.4+1.1)/2},0.8)node[right]{$\tan\p{\dfrac{a+b}{2}}$};
+    \draw[->,>=latex](0,-0.5)--(0,1.5)node[above]{$y$};
+    \draw[->,>=latex](-0.5,0)--(1.5,0)node[right]{$x$};
+    \node[below left]at(0,0){O};
+  \end{tikzpicture}
+\end{center}
+よって,上図と凸性から,$\dfrac12\p{\tan a+\tan b}\geq\tan\p{\dfrac{a+b}{2}}$が示された.\\
+次に,$\maruichi$を示す.
+\begin{align*}
+  \maruichi&\doti\p{\tan a\cdot\tan b}^{\frac12}\leq\tan\p{\dfrac{a+b}{2}}\\
+  &\doti\dfrac{1}{2}\log\tan a\cdot\tan b\leq\log\tan\p{\dfrac{a+b}{2}}\\
+  &\doti\dfrac{\log\tan a+\log\tan b}{2}\leq\log\tan\p{\dfrac{a+b}{2}}
+\end{align*}
+ここで,$y=\log\tan x\quad\p{0\leq x<\dfrac{\pi}{4}}$を考えると,
+\begin{align*}
+  &y^\prime=\dfrac{1}{\sin x\cos x}>0\\
+  &y^{\prime\prime}=-2\p{\sin2x}^{-2}\times\cos2x\times2<0
+\end{align*}
+なので,$y=\log\tan x$は上に凸.グラフは次図のようになる.
+\begin{center}
+  \begin{tikzpicture}[scale=1]
+    %関数
+    \draw[samples=300,domain=0.2:4.5]plot(\x,{ln(2*\x)})node[right]{$y=\log\tan x$};
+    \draw[dashed](1,0)node[below]{$a$}--(1,{ln(2)})--(0,{ln(2)})node[left]{$\log\tan a$};
+    \draw[dashed](3.8,0)node[below]{$b$}--(3.8,{ln(2*3.8)})--(0,{ln(2*3.8)})node[left]{$\log\tan b$};
+    \fill(1,{ln(2)})circle(1.5pt);
+    \fill(3.8,{ln(2*3.8)})circle(1.5pt);
+    \draw(1,{ln(2)})--(3.8,{ln(2*3.8)});
+    \draw[dashed]({(1+3.8)/2},0)node[below]{$\dfrac{a+b}{2}$}--({(1+3.8)/2},{ln(2*((1+3.8)/2))});
+    \draw({(1+3.8)/2},{ln(2*((1+3.8)/2))})to[bend left]({(1.5+3.8)/2},3)node[above]{$\log\tan\p{\dfrac{a+b}{2}}$};
+    \fill({(1+3.8)/2},{ln(2*((1+3.8)/2))})circle(1.5pt);
+    \fill({(1+3.8)/2},{ln(2*((0.999+2.8)/2))})circle(1.5pt);
+    \draw({(1+3.8)/2},{ln(2*((0.999+2.8)/2))})to[bend right](4.5,1)node[right]{$\dfrac{\log\tan a+\log\tan b}{2}$};
+  \end{tikzpicture}
+\end{center}
+よって,上図と凸性から,
+\begin{align*}
+  \dfrac{\log\tan a+\log\tan b}{2}\leq\log\tan\p{\dfrac{a+b}{2}}\doti\maruichi
+\end{align*}
+が成立する.\\
+また,$a=0\vee b=0$のとき$\maruichi,\maruni$が成立するのは明らかなので,以上により示された\quad$\blacksquare$\\
+\begin{thickitembox}
+  {\ba{2$\bullet$2}\midashikakko{東工大}}
+  $0<x<y$のとき,$x^2e^{\frac{y}{x}},y^2e^{\frac{x}{y}}$の大小関係を調べよ.
+\end{thickitembox}
+\hokukan\quad 大小比較の定石は1章で扱いました.2変数関数なので,1変数関数に置き換えたいなあと問題を見て思うので,\ans{比を考える}のが良さそうです.\\
+\hokukai\quad$A=x^2e^{\frac{y}{x}},B=y^2e^{\frac{x}{y}}$とおき,$t=\dfrac{x}{y}$とすると,
+\begin{align*}
+  0<x<y&\doti0<\dfrac{x}{y}<1\\
+  &\doti0<t<1
+\end{align*}
+である.ここで$\dfrac{A}{B}$を考えると,
+\begin{align*}
+  \dfrac{A}{B}=\p{\dfrac{x}{y}}^2e^{\frac{y}{x}-\frac{x}{y}}=t^2e^{\frac{1}{t}-t}
+\end{align*}
+これを,$f(t)$とおく.
+\begin{align*}
+  f^\prime(t)&=2te^{\frac{1}{t}-t}+t^2e^{\frac{1}{t}-t}\cdot\p{-t^{-2}-1}\\
+  &=e^{\frac{1}{t}-t}\p{t^2\p{-t^{-2}-1}+2t}\\
+  &=-e^{\frac{1}{t}-t}\p{t-1}^2
+\end{align*}
+また,
+\begin{align*}
+  &\dotshikialign{\bullet\lim_{t\to0-1}f(t)=0}{\maruichi}\\
+  &\dotshikialign{\bullet\lim_{t\to0+1}f(t)=+\infty}{\maruni}\\
+  &\dotshikialign{\bullet\lim_{t\to\infty}f(t)=0}{\marusan}
+\end{align*}
+であり,$0<t<1$の範囲で,増減表は下表のようになる.
+\begin{center}
+  \begin{tabular}{|c||c|c|c|}
+    \hline
+    $t$&$0$&$\cdots$&1\\
+    \hline
+    $f^\prime(t)$&$\times$&$-$&$0$\\
+    \hline
+    $f(t)$&$\infty$&$\yab$&$1$\\
+    \hline
+  \end{tabular}
+\end{center}
+$\yueni0<t<1$の範囲で,
+\begin{align*}
+  f(t)>1\doti\dfrac{A}{B}>1\doti A>B
+\end{align*}
+$\yueni\ans{x^2e^{\frac{y}{x}}>y^2e^{\frac{x}{y}}}$
+\newpage
+\begin{thickitembox}
+  {\ba{2$\bullet$3}\midashikakko{東工大}}
+  $k$を定数とするとき,方程式$e^x-x^e=k$の異なる正の解の個数を求めよ.
+\end{thickitembox}
+\hokukan\quad グラフをどのように描くかです.普通に微分して描こうとしても無理です.ですので,微分した関数の増減を考えて元の関数の増減表を得ましょう.\\
+\hokukai\quad $f(x)=e^x-x^e$とおく.
+\begin{align*}
+  f^\prime(x)=e^x-ex^{e-1}=e\p{e^{x-1}-x^{e-1}}
+\end{align*}
+ここで,$e^{x-1}とx^{e-1}$に対数を取って,差をとったグラフを考える.これを$g(x)$とおく.
+\begin{align*}
+  g(x)&=\log e^{x-1}-\log x^{e-1}\\
+  &=x-1-(e-1)\log x
+\end{align*}
+これの微分は,
+\begin{align*}
+  g^\prime(x)=1-\dfrac{e-1}{x}=\dfrac{x-(e-1)}{x}
+\end{align*}
+より,$g(x)$の増減表は下表のようになる.
+\begin{center}
+  \begin{tabular}{|c||c|c|c|c|c|c|c|}
+    \hline
+    $x$ & $\cdots$ & $1$ & $\cdots$ & $e-1$ & $\cdots$ & $e$ & $\cdots$\\
+    \hline
+    $g^\prime(x)$ & $-$ & $-$ & $-$ & $0$ & $+$ & $+$ & $+$\\
+    \hline
+    $g(x)$ & $\yab$ & $0$ & $\yab$ &{} & $\yaa$ & $0$ & $\yaa$\\
+    \hline
+  \end{tabular}
+\end{center}
+これより,
+\begin{center}
+$\begin{cases}
+ \bullet0<x<1\vee x>eのとき,g(x)>0なので,f^\prime(x)>0\\
+ \bullet x=1\vee xx=eのとき,g(x)=0なので,f^\prime(x)=0\\
+ \bullet1<x<e のとき,g(x)<0なので,f^\prime(x)<0 
+\end{cases}$
+\end{center}
+とわかるので,$f(x)$の増減表は下図のようになる.
+\begin{center}
+  \begin{tabular}{|c||c|c|c|c|c|c|c|}
+    \hline
+    $x$ & $0$ &$\cdots$ & 1 & $\cdots$ & $e$ & $\cdots$ & $\infty$\\
+    \hline
+    $f^\prime(x)$ & $\times$ & $+$ & 0 & $-$ & 0 & $+$ &$\times$\\
+    \hline
+    $f(x)$ & 1 & $\yaa$ & $e-1$ &$\yab$ & 0 &$\yaa$ & $\infty$\\
+    \hline
+  \end{tabular}
+\end{center}
+よって,$y=f(x)$のグラフは下図のようになる.
+\begin{center}
+  \begin{tikzpicture}
+    %関数
+    \begin{scope}
+      \clip(-0.5,-0.5)rectangle(3.5,3);
+      \draw[samples=300,domain=0:4]plot(\x,{exp(\x)-pow(\x,2.7182818)});
+    \end{scope}
+    \draw[->,>=latex](-0.5,0)--(4.5,0)node[right]{$x$};
+    \draw[->,>=latex](0,-0.5)--(0,3)node[above]{$y$};
+    \node[below]at(2.71828,0){$e$};
+    \draw[dashed](1,0)node[below]{1}--(1,{2.71828-1})--(0,{2.71828-1})node[left]{$e-1$};
+    \fill(1,{2.71828-1})circle(1.5pt);
+    \node[below left]at(0,0){O};
+  \end{tikzpicture}
+\end{center}
 \end{document}
