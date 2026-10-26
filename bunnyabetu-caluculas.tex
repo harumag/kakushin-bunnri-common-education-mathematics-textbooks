@@ -821,7 +821,8 @@ $\yueni\ans{x^2e^{\frac{y}{x}}>y^2e^{\frac{x}{y}}}$
   {\ba{2$\bullet$3}\midashikakko{東工大}}
   $k$を定数とするとき,方程式$e^x-x^e=k$の異なる正の解の個数を求めよ.
 \end{thickitembox}
-\hokukan\quad グラフをどのように描くかです.普通に微分して描こうとしても無理です.ですので,微分した関数の増減を考えて元の関数の増減表を得ましょう.\\
+\hokukan\quad グラフをどのように描くかです.普通に微分して描こうとしても無理です.ですので,微分した関数の増減を考えて元の関数の増減表を得ましょう.
+また,$x^e$の定義域は$x>0$であることに気をつけましょう.\\
 \hokukai\quad $f(x)=e^x-x^e$とおく.
 \begin{align*}
   f^\prime(x)=e^x-ex^{e-1}=e\p{e^{x-1}-x^{e-1}}
@@ -850,12 +851,12 @@ $\yueni\ans{x^2e^{\frac{y}{x}}>y^2e^{\frac{x}{y}}}$
 これより,
 \begin{center}
 $\begin{cases}
- \bullet0<x<1\vee x>eのとき,g(x)>0なので,f^\prime(x)>0\\
- \bullet x=1\vee xx=eのとき,g(x)=0なので,f^\prime(x)=0\\
- \bullet1<x<e のとき,g(x)<0なので,f^\prime(x)<0 
+ \bullet\quad0<x<1\vee x>eのとき,g(x)>0なので,f^\prime(x)>0\\
+ \bullet\quad x=1\vee xx=eのとき,g(x)=0なので,f^\prime(x)=0\\
+ \bullet\quad1<x<e のとき,g(x)<0なので,f^\prime(x)<0 
 \end{cases}$
 \end{center}
-とわかるので,$f(x)$の増減表は下図のようになる.
+とわかるので,$f(x)$の増減表は下表のようになる.
 \begin{center}
   \begin{tabular}{|c||c|c|c|c|c|c|c|}
     \hline
@@ -867,7 +868,11 @@ $\begin{cases}
     \hline
   \end{tabular}
 \end{center}
-よって,$y=f(x)$のグラフは下図のようになる.
+また,
+\begin{align*}
+  \lim_{x\to+0}f(x)=1
+\end{align*}
+を合わせて,$y=f(x)$のグラフは下図のようになる.
 \begin{center}
   \begin{tikzpicture}
     %関数
@@ -881,6 +886,34 @@ $\begin{cases}
     \draw[dashed](1,0)node[below]{1}--(1,{2.71828-1})--(0,{2.71828-1})node[left]{$e-1$};
     \fill(1,{2.71828-1})circle(1.5pt);
     \node[below left]at(0,0){O};
+    \node at(4.4,2.5){$y=f(x)$};
+    \node[left]at(0,1){1};
+    \filldraw[fill=white](0,1)circle(1.5pt);
   \end{tikzpicture}
 \end{center}
+これより,$y=k$との共有点の個数を数えて,
+\begin{align*}
+  &\bullet\quad k>e-1のとき,1個\\
+  &\bullet\quad k=e-1のとき,2個\\
+  &\bullet\quad1<k<e-1のとき,3個\\
+  &\bullet\quad0<k\leq1のとき,2個\\
+  &\chu\quad x=0のとき定義できないためk=1のときも2個\\
+  &\bullet\quad k=0のとき,1個\\
+  &\bullet\quad k<0のとき,0個
+\end{align*}
+以上まとめて,
+\begin{align*}
+  \ans{\begin{cases}
+    \bullet\quad0個（k<0のとき）\\
+    \bullet\quad1個（k=0\vee k>e-1のとき）\\
+    \bullet\quad2個（k=e-1\vee 0<k\leq1のとき）\\
+    \bullet\quad3個（1<k<e-1のとき）
+  \end{cases}}
+\end{align*}\\
+\begin{thickitembox}
+  {\ba{2$\bullet$4}\midashikakko{極値の差}}
+  関数$f(x)=x^3-kx^2-3kx+2$は極大値,極小値をとるものとする.極大値と極小値の差が
+$32$となるとき,$k$（$k$は正の実数）の値を求めよ.
+\miginote{26 自治医大}
+\end{thickitembox}
 \end{document}
