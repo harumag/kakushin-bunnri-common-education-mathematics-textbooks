@@ -4,6 +4,7 @@
 \usepackage[margin=15truemm]{geometry}
 \usepackage{ascmac,amsmath,amssymb,array}
 \usepackage{tikz}
+\usetikzlibrary{patterns}
 \usetikzlibrary{calc,angles,quotes,intersections}
 \usepackage{surikumi-patterns-platex}
 \usepackage{zogeny,ceo,cuted}
@@ -916,4 +917,197 @@ $\begin{cases}
 $32$となるとき,$k$（$k$は正の実数）の値を求めよ.
 \miginote{26 自治医大}
 \end{thickitembox}
+\hokukan\quad 「極値をとる」$\doti「 f^\prime(x)=a(x-\alpha)(x-\beta)の形に書ける.」$です.そして,$f(\alpha)-f(\beta)$を積分の
+形で書くと...\\
+\hokukai\quad $f(x)=x^3-kx^2-3kx+2$より,
+\begin{align*}
+  f^\prime(x)=3x^2-2kx-3k
+\end{align*}
+$x=\alpha$のときに極大値,$x=\beta$のときに極小値をとるとすると,$f^\prime(x)=3(x-\alpha)(x-\beta)$の形で表せ,
+\begin{align*}
+  f(\alpha)-f(\beta)&=\dint{\alpha}{\beta}f^\prime(x)dx\\
+  &=\dint{\alpha}{\beta}3(x-\alpha)(x-\beta)dx=\dfrac{3}{3!}\p{\beta-\alpha}^3
+\end{align*}
+よって,$\dfrac12\p{\beta-\alpha}^3=32$であるから,$\beta-\alpha=4$となる.\\
+解と係数の関係より,$\alpha+\beta=\dfrac{2k}{3},\alpha\beta=-k$である.\\
+$\p{\beta-\alpha}^2=\p{\alpha+\beta}^2-4\alpha\beta$と表せるので,
+\begin{align*}
+  &4^2=\p{\dfrac{2k}{3}}^2-4\p{-k}\\
+  &k^2+9k-36=0\\
+  &(k-3)(k+12)=0
+\end{align*}
+$\yueni k>0より,\ans{k=3}$
+\newpage
+{\Large\ans{3章\quad 無限和}}\\
+無限級数（以下,無限和と言う）をやります.教科書・参考書の無限和は,ほとんど収束するか,「ハサミウチの原理」,「平均値の定理」
+などを用いれば収束する級数しか掲載されていません. ここでは,無限和の\ans{「面積評価」}を考える問題を主に扱います.\\
+\begin{itembox}
+  [l]{\enpitu 無限和の絶対原則}
+  数列$\B{a_n}$について,$\wa{n=1}{\infty}a_n$を求めるときは次の方法で求める以外の方法はない.
+  \begin{center}
+    $\wa{n=1}{\infty}a_n=\ans{\lim_{n\to\infty}\wa{k=1}{n}a_n}$
+  \end{center}
+  つまり,部分和を求めてその極限を取るしかないということ.
+\end{itembox}
+\chud\theme{部分和について}\\
+部分和は,自分の都合のいいように取ってよい.すなわち,$\wa{n=1}{\infty}a_n$を求めるときに,
+\begin{center}
+  $\ans{\wa{k=1}{n}a_nのnは,なんでもよい}$
+\end{center}
+$n-1でも,2nでも,n^2$でもなんでもよい.\\
+\begin{itembox}
+  [l]{\enpitu 有界}
+  ある数列$\B{a_n}$について,
+  \begin{align*}
+\ans{\exists s,\forall n\in\mathbf{N},a_n<s}
+  \end{align*}
+  のとき,数列\B{a_n}は
+  \begin{align*}
+    \ans{上に有界}
+  \end{align*}
+  という.
+\end{itembox}\\
+\begin{itembox}
+  [l]{\enpitu 数列の一般の収束定理}
+  \begin{center}
+  \ans{上に有界な数列は収束する.}
+  \end{center}
+\end{itembox}\\
+\begin{itembox}
+  [l]{\enpitu 追い出しの原理}
+  $\B{p_n}と\B{a_n}$を数列とする.このとき,\\
+  ある番号$N$より大きな$n$に対し,$p_n\leq a_n$が常に成り立ち,$\lim_{n\to\infty}p_n=\infty$のとき,$\lim_{n\to\infty}a_n=\infty$
+  である.
+\end{itembox}\\
+\begin{itembox}
+  [l]{\enpitu ハサミウチの原理}
+  $\B{p_n},\B{q_n},\B{a_n}$を数列とする.このとき,\\
+  ある番号$N$より大きな$n$に対し,$p_n\leq a_n\leq q_n$が常に成り立ち,$\lim_{n\to\infty}p_n=\lim_{n\to\infty}q_n=\alpha$のとき,
+  $\lim_{n\to\infty}a_n=\alpha$である.
+\end{itembox}
+\vspace{5mm}
+\reidaic\quad $S=\wa{k=1}{\infty}\dfrac{1}{\sqrt{k}}$を求めよ.\\
+\hokukan\quad $S=\lim_{n\to\infty}\wa{k=1}{n}\dfrac{1}{\sqrt{k}}$の$\wa{}{}$が計算不可能です.
+「良くわからない和は書き下す」の原則で,部分和を書き下すと,
+\begin{align*}
+  &\dfrac{1}{1}+\dfrac{1}{\sqrt{2}}+\dfrac{1}{\sqrt{3}}+\cdots+\dfrac{1}{\sqrt{n}}\\
+  &=1\times\dfrac{1}{1}+1\times\dfrac{1}{\sqrt{2}}+1\times\dfrac{1}{\sqrt{3}}+\cdots+1\times\dfrac{1}{\sqrt{n}}
+\end{align*}
+と見ることができます.そうすると,$y=\dfrac{1}{\sqrt{x}}$の長方形の面積に見えてくるはずです.\\
+\hokukai\quad 部分和を$T_n=\wa{k=1}{n}\dfrac{1}{\sqrt{x}}$とおくと,
+\begin{align*}
+  T_n=\dfrac{1}{1}+\dfrac{1}{\sqrt{2}}+\dfrac{1}{\sqrt{3}}+\cdots+\dfrac{1}{\sqrt{n}}
+\end{align*}
+と書ける.これは次図の網目部の網目部の面積に対応する.
+\begin{tikzpicture}[
+  x=0.85cm,
+  y=2cm,
+  >=latex,
+  line cap=round,
+  line join=round
+]
+  % 図示する長方形の個数
+  \def\N{6}
+  \pgfmathsetmacro{\xmax}{\N+1.8}
+  \pgfmathsetmacro{\curveend}{\N+1.4}
+
+  % 長方形：底辺 [k,k+1]、高さ 1/k
+  \foreach \k in {1,...,\N}{
+    \draw[thin,fill=black!20]
+      (\k,0) rectangle ({\k+1},{1/\k});
+  }
+  % \int_1^{n+1} \frac{1}{x}\,dx が表す部分を斜線で示す
+\pgfmathsetmacro{\shadeend}{\N+1}
+
+\path[
+  pattern=north east lines,
+  pattern color=black
+]
+  (1,0)
+  -- plot[domain=1:\shadeend,samples=160,smooth]
+     (\x,{1/\x})
+  -- (\shadeend,0)
+  -- cycle;
+  % y=1 の補助線
+  \draw[densely dashed,thin] (0,1)--(1,1);
+  \draw (-0.07,1)--(0.07,1);
+  \node[left] at (0,1) {$1$};
+
+  % 座標軸
+  \draw[->] (-0.35,0)--(\xmax,0)
+    node[right] {$x$};
+  \draw[->] (0,-0.15)--(0,2.4)
+    node[above] {$y$};
+  \node[below left] at (0,0) {$O$};
+
+  % 曲線 y=1/x
+  \draw[thick,domain=0.44:\curveend,samples=160,smooth]
+    plot (\x,{1/\x});
+
+  \node[right] at (0.65,1.85)
+    {$y=\dfrac{1}{\sqrt{x}}$};
+
+  % 横軸の目盛り
+  \foreach \k in {1,2,3}{
+    \draw (\k,0)--(\k,-0.035);
+    \node[below=3pt] at (\k,0) {$\k$};
+  }
+
+  \node[below=3pt] at (4.5,0) {$\cdots$};
+
+  \draw (\N,0)--(\N,-0.035);
+  \node[below=3pt] at (\N,0) {$n$};
+
+  \draw ({\N+1},0)--({\N+1},-0.035);
+  \node[below=3pt] at ({\N+1},0) {$n+1$};
+
+\end{tikzpicture}
+これより部分和$T_n$は,上図の網目部の面積に対応し,これは上図の斜線部の面積よりは大きい.\\
+よって,
+\begin{align*}
+  T_n>\dint{1}{n+1}\dfrac{1}{\sqrt{x}}dx=\tint{2\sqrt{x}}{1}{n+1}&=2\p{\sqrt{n+1}-1}\\&
+  \xrightarrow{n\to\infty}\infty
+\end{align*}
+\begin{align*}
+  \yueni\lim_{n\to\infty}T_n=\infty
+\end{align*}
+\begin{align*}
+\yueni \ans{S_3は\infty に発散する.}  
+\end{align*}
+\hokubekkai\theme{追い出しの原理}\\
+数列$\B{\dfrac{1}{\sqrt{k}}}$について,
+\begin{align*}
+  \dfrac{1}{\sqrt{k+1}+\sqrt{k}}<\dfrac{1}{\sqrt{k}}\doti\sqrt{k+1}-\sqrt{k}<\dfrac{1}{\sqrt{k}}
+\end{align*}
+なので,
+\begin{align*}
+  \wa{k=1}{n}\dfrac{1}{\sqrt{k}}>\wa{k=1}{n}\p{\sqrt{k+1}-\sqrt{k}}&=\sqrt{n+1}-1\\
+  &\xrightarrow{n\to\infty}\infty
+\end{align*}
+よって,$\wa{n=1}{\infty}\dfrac{1}{\sqrt{k}}=\infty$を得る.
+\begin{enshumondai}
+  [c]{演習問題}
+  \ba{3$\bullet$1}\\
+  次の無限和を考察せよ.\\
+  \kakkoichi$S_1=\wa{n=1}{\infty}\p{-1}^{k-1}$\\
+  \kakkoni$S_2=\wa{n=1}{\infty}\dfrac{k}{2^{k-1}}$\\
+  \kakkosan$S_3=\wa{n=1}{n}\dfrac{1}{k}$\\
+  \kakkoshi$S_4=\wa{n=1}{\infty}\dfrac{1}{k^2}$\\
+  \kakkogo$S_5=\wa{n=1}{\infty}\dfrac{1}{k(k+1)}$\\
+  \kakkoroku$S_6=\wa{n=2}{\infty}\dfrac{1}{k\log k}$
+\end{enshumondai}
+\newpage
+\fbox{\hspace{3.3cm}{\Large\ans{3章の解説}}\hspace{3.3cm}}\\
+\begin{thickitembox}
+  {\ba{3$\bullet$3}\midashikakko{無限和}}
+  次の無限和を考察せよ.\\
+  \kakkoichi$S_1=\wa{n=1}{\infty}\p{-1}^{k-1}$\\
+  \kakkoni$S_2=\wa{n=1}{\infty}\dfrac{k}{2^{k-1}}$\\
+  \kakkosan$S_3=\wa{n=1}{n}\dfrac{1}{k}$\\
+  \kakkoshi$S_4=\wa{n=1}{\infty}\dfrac{1}{k^2}$\\
+  \kakkogo$S_5=\wa{n=1}{\infty}\dfrac{1}{k(k+1)}$\\
+  \kakkoroku$S_6=\wa{n=2}{\infty}\dfrac{1}{k\log k}$
+\end{thickitembox}
+\hokukan\quad\kakkoichi ほげ\kakkoni ほげ\kakkosan ほげ\kakkoshi ほげ\\
+\hokukai\quad\kakkoichib
 \end{document}
