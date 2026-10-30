@@ -1061,7 +1061,7 @@ $n-1でも,2nでも,n^2$でもなんでもよい.\\
   \draw ({\N+1},0)--({\N+1},-0.035);
   \node[below=3pt] at ({\N+1},0) {$n+1$};
 
-\end{tikzpicture}
+\end{tikzpicture}\\
 これより部分和$T_n$は,上図の網目部の面積に対応し,これは上図の斜線部の面積よりは大きい.\\
 よって,
 \begin{align*}
@@ -1089,25 +1089,309 @@ $n-1でも,2nでも,n^2$でもなんでもよい.\\
   [c]{演習問題}
   \ba{3$\bullet$1}\\
   次の無限和を考察せよ.\\
-  \kakkoichi$S_1=\wa{n=1}{\infty}\p{-1}^{k-1}$\\
-  \kakkoni$S_2=\wa{n=1}{\infty}\dfrac{k}{2^{k-1}}$\\
-  \kakkosan$S_3=\wa{n=1}{n}\dfrac{1}{k}$\\
-  \kakkoshi$S_4=\wa{n=1}{\infty}\dfrac{1}{k^2}$\\
-  \kakkogo$S_5=\wa{n=1}{\infty}\dfrac{1}{k(k+1)}$\\
-  \kakkoroku$S_6=\wa{n=2}{\infty}\dfrac{1}{k\log k}$
+  \kakkoichi$S_1=\wa{n=1}{\infty}\p{-1}^{n-1}$\\
+  \kakkoni$S_2=\wa{n=1}{\infty}\dfrac{n}{2^{n-1}}$\\
+  \kakkosan$S_3=\wa{n=1}{\infty}\dfrac{1}{n}$\\
+  \kakkoshi$S_4=\wa{n=1}{\infty}\dfrac{1}{n^2}$\\
+  \kakkogo$S_5=\wa{n=1}{\infty}\dfrac{1}{n(n+1)}$
 \end{enshumondai}
 \newpage
 \fbox{\hspace{3.3cm}{\Large\ans{3章の解説}}\hspace{3.3cm}}\\
 \begin{thickitembox}
   {\ba{3$\bullet$3}\midashikakko{無限和}}
   次の無限和を考察せよ.\\
-  \kakkoichi$S_1=\wa{n=1}{\infty}\p{-1}^{k-1}$\\
-  \kakkoni$S_2=\wa{n=1}{\infty}\dfrac{k}{2^{k-1}}$\\
-  \kakkosan$S_3=\wa{n=1}{n}\dfrac{1}{k}$\\
-  \kakkoshi$S_4=\wa{n=1}{\infty}\dfrac{1}{k^2}$\\
-  \kakkogo$S_5=\wa{n=1}{\infty}\dfrac{1}{k(k+1)}$\\
-  \kakkoroku$S_6=\wa{n=2}{\infty}\dfrac{1}{k\log k}$
+  \kakkoichi$S_1=\wa{n=1}{\infty}\p{-1}^{n-1}$\\
+  \kakkoni$S_2=\wa{n=1}{\infty}\dfrac{n}{2^{n-1}}$\\
+  \kakkosan$S_3=\wa{n=1}{\infty}\dfrac{1}{n}$\\
+  \kakkoshi$S_4=\wa{n=1}{\infty}\dfrac{1}{n^2}$\\
+  \kakkogo$S_5=\wa{n=1}{\infty}\dfrac{1}{n(n+1)}$
 \end{thickitembox}
-\hokukan\quad\kakkoichi ほげ\kakkoni ほげ\kakkosan ほげ\kakkoshi ほげ\\
-\hokukai\quad\kakkoichib
+\hokukan\quad\kakkoichi 振動しそうですね.原理に従いましょう.\kakkoni$\ans{S-rS}$法を使いましょう.\kakkosan 部分和が求められないので,定理を使うか,面積で近似しましょう. \kakkoshi 面積でハサミましょう.\\
+\hokukai\quad\kakkoichib \begin{align*}
+  S_1&=\wa{n=1}{\infty}(-1)^{n-1}=\lim_{n\to\infty}\wa{k=1}{n}(-1)^{k-1}\\
+  &=\lim_{n\to\infty}\dfrac{(-1)^n-1}{-1-1}
+\end{align*}
+$\yueni$これは,\ans{存在しない}\\
+\kakkonib\begin{align*}
+  S_2=\wa{n=1}{\infty}\dfrac{n}{2^{n-1}}=\lim_{n\to\infty}\wa{k=1}{n}\dfrac{k}{2^{k-1}}
+\end{align*}
+ここで,$T_n=\wa{k=1}{n}\dfrac{k}{2^{k-1}}$とおくと,
+\begin{align*}
+  &\dotshikialign{T_n=1+\dfrac{2}{2}+\dfrac{3}{2^2}+\cdots+\dfrac{n-1}{2^{n-2}}+\dfrac{n}{2^{n-1}}}{\maruichi}
+\end{align*}
+ここで,$\maruichi$の両辺を$\dfrac12$倍したものを考えて,
+\begin{align*}
+  &\dotshikialign{\dfrac12T_n=1+\dfrac12+\dfrac{2}{2^2}+\cdots+\dfrac{n-1}{2^{n-1}}+\dfrac{n}{2^n}}{\maruni}
+\end{align*}
+$\maruichi-\maruni$より,
+\begin{align*}
+  \dfrac12T_n=1+\dfrac12+\dfrac{1}{2^2}+\cdots+\dfrac{1}{2^{n-1}}-\dfrac{n}{2^n}
+\end{align*}
+これより,
+\begin{align*}
+  &\dfrac12T_n=\dfrac{\frac{1}{2^n}-1}{\frac12-1}-\dfrac{n}{2^n}\xrightarrow{n\to\infty}2\\
+  &\yueni T_n\longrightarrow4\\
+  &\yueni S_2=\ans{4}
+\end{align*}
+\hokubekkai\theme{微分して代入}\\
+一般に,$x\neq1$のとき,
+\begin{align*}
+  1+x+x^2+\cdots+x^n=\dfrac{x^{n+1}-1}{x-1}
+\end{align*}
+なので,これを$x$で両辺微分して,
+\begin{align*}
+  1+2x+3x^2+\cdots+nx^{n-1}&=\dfrac{(n+1)x^n(x-1)-\p{x^{n+1}-1}}{(x-1)^2}\\
+  &=\wa{k=1}{n}
+\end{align*}
+$x=\dfrac12$を上式に代入すると,
+\begin{align*}
+  T_n&=\dfrac{(n+1)\p{\dfrac{1}{2}}^n\p{-\dfrac12}-\p{\dfrac{1}{2}}^{n+1}+1}{\frac14}\xrightarrow{n\to\infty}4
+\end{align*}
+$\yueni\lim_{n\to\infty}T_n=4$\\
+$\yueni S_2=\ans{4}$
+\newpage
+\kakkosanb
+\begin{align*}
+  S_3=\wa{n=1}{\infty}\dfrac{1}{n}=\lim_{n\to\infty}\underbrace{\wa{k=1}{n}\dfrac{1}{k}}_{T_nとおく}
+\end{align*}
+$y=\dfrac{1}{x}$のグラフを考えると,$t_n$は下図の網目部に対応する.
+\begin{tikzpicture}[
+  x=0.85cm,
+  y=2cm,
+  >=latex,
+  line cap=round,
+  line join=round
+]
+  % 図示する長方形の個数
+  \def\N{6}
+  \pgfmathsetmacro{\xmax}{\N+1.8}
+  \pgfmathsetmacro{\curveend}{\N+1.4}
+
+  % 長方形：底辺 [k,k+1]、高さ 1/k
+  \foreach \k in {1,...,\N}{
+    \draw[thin,fill=black!20]
+      (\k,0) rectangle ({\k+1},{1/\k});
+  }
+  % \int_1^{n+1} \frac{1}{x}\,dx が表す部分を斜線で示す
+\pgfmathsetmacro{\shadeend}{\N+1}
+
+\path[
+  pattern=north east lines,
+  pattern color=black
+]
+  (1,0)
+  -- plot[domain=1:\shadeend,samples=160,smooth]
+     (\x,{1/\x})
+  -- (\shadeend,0)
+  -- cycle;
+  % y=1 の補助線
+  \draw[densely dashed,thin] (0,1)--(1,1);
+  \draw (-0.07,1)--(0.07,1);
+  \node[left] at (0,1) {$1$};
+
+  % 座標軸
+  \draw[->] (-0.35,0)--(\xmax,0)
+    node[right] {$x$};
+  \draw[->] (0,-0.15)--(0,2.4)
+    node[above] {$y$};
+  \node[below left] at (0,0) {$O$};
+
+  % 曲線 y=1/x
+  \draw[thick,domain=0.44:\curveend,samples=160,smooth]
+    plot (\x,{1/\x});
+
+  \node[right] at (0.65,1.85)
+    {$y=\dfrac{1}{x}$};
+
+  % 横軸の目盛り
+  \foreach \k in {1,2,3}{
+    \draw (\k,0)--(\k,-0.035);
+    \node[below=3pt] at (\k,0) {$\k$};
+  }
+
+  \node[below=3pt] at (4.5,0) {$\cdots$};
+
+  \draw (\N,0)--(\N,-0.035);
+  \node[below=3pt] at (\N,0) {$n$};
+
+  \draw ({\N+1},0)--({\N+1},-0.035);
+  \node[below=3pt] at ({\N+1},0) {$n+1$};
+
+\end{tikzpicture}\\
+これより,網目部の面積$T_n$は,上図の斜線部の面積より大きいので,
+\begin{align*}
+  T_n>\dint{1}{n+1}\dfrac{1}{x}dx&=\log(n+1)\\
+  &\xrightarrow{n\to\infty}\infty
+\end{align*}
+$\yueni\lim_{n\to\infty}T_n=\infty$\\
+$\yueni S_3$は$\ans{\infty に発散する.}$\\
+\kakkoshib
+\begin{align*}
+  S_4=\wa{n=1}{\infty}\dfrac{1}{n^2}=\lim_{n\to\infty}\underbrace{\wa{k=1}{n}\dfrac{1}{k^2}}_{T_nとおく}
+\end{align*}
+ここで,$y=\dfrac{1}{x^2}$のグラフを考えると,$T_n$の面積は,網目部の面積になり,下図の2パターンが考え得る.
+\begin{center}
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[
+  x=0.8cm,
+  y=2.5cm,
+  >=latex,
+  line cap=round,
+  line join=round,
+  % 長方形の斜線
+  recthatch/.style={
+  fill=black!20
+},
+  % 写真の青い部分
+  leftarea/.style={
+    pattern={Lines[
+      angle=-45,
+      distance=4pt,
+      line width=0.18pt
+    ]},
+    pattern color=black
+  },
+  % 写真の黄色い部分
+  rightarea/.style={
+    pattern={Lines[
+      angle=75,
+      distance=4pt,
+      line width=0.18pt
+    ]},
+    pattern color=black
+  }
+]
+  % 図示する長方形の個数
+  \def\N{6}
+
+  \pgfmathsetmacro{\leftend}{\N+1}
+  \pgfmathsetmacro{\leftcurve}{\N+1.45}
+  \pgfmathsetmacro{\leftaxis}{\N+1.8}
+  \pgfmathsetmacro{\rightcurve}{\N+0.65}
+  \pgfmathsetmacro{\rightaxis}{\N+1}
+
+  %================================
+  % 左図
+  %================================
+  \begin{scope}
+
+    % 底辺 [k,k+1]、高さ 1/k の長方形
+    \foreach \k in {1,...,\N}{
+      \path[recthatch]
+        (\k,0) rectangle ({\k+1},{1/\k});
+    }
+
+    % 青い部分：積分区間 [1,n+1]
+    \path[leftarea]
+      (1,0)
+      -- plot[domain=1:\leftend,samples=160]
+         (\x,{1/\x})
+      -- (\leftend,0)
+      -- cycle;
+
+    % 長方形の輪郭
+    \foreach \k in {1,...,\N}{
+      \draw[thin]
+        (\k,0) rectangle ({\k+1},{1/\k});
+    }
+
+    % 補助線
+    \draw[densely dashed,thin] (0,1)--(1,1);
+    \node[left] at (0,1) {$1$};
+
+    % 座標軸
+    \draw[->] (-0.35,0)--(\leftaxis,0)
+      node[right] {$x$};
+    \draw[->] (0,-0.12)--(0,2.2)
+      node[above] {$y$};
+    \node[below left] at (0,0) {$O$};
+
+    % 曲線
+    \draw[thick,domain=0.47:\leftcurve,samples=180]
+      plot (\x,{1/\x});
+    \node[right] at (0.7,1.85)
+      {$y=\frac{1}{x^2}$};
+
+    % 横軸のラベル
+    \foreach \k in {1,2,3}{
+      \node[below=3pt] at (\k,0) {$\k$};
+    }
+    \node[below=3pt] at (4.5,0) {$\cdots$};
+    \node[below=3pt] at (\N,0) {$n$};
+    \node[below=3pt] at (\leftend,0) {$n+1$};
+
+  \end{scope}
+
+  % 左右の区切り
+  \draw[densely dashed,thin]
+    (8.9,-0.25)--(8.9,2.15);
+
+  %================================
+  % 右図
+  %================================
+  \begin{scope}[shift={(10,0)}]
+
+    % 底辺 [k-1,k]、高さ 1/k の長方形
+    \foreach \k in {1,...,\N}{
+      \path[recthatch]
+        ({\k-1},0) rectangle (\k,{1/\k});
+    }
+
+    % 黄色い部分：
+    % [0,1] の単位正方形と、
+    % [1,n] における曲線の下側
+    \path[rightarea]
+      (0,0)--(0,1)
+      -- plot[domain=1:\N,samples=160]
+         (\x,{1/\x})
+      -- (\N,0)
+      -- cycle;
+
+    % 長方形の輪郭
+    \foreach \k in {1,...,\N}{
+      \draw[thin]
+        ({\k-1},0) rectangle (\k,{1/\k});
+    }
+
+    \node[left] at (0,1) {$1$};
+
+    % 座標軸
+    \draw[->] (-0.35,0)--(\rightaxis,0)
+      node[right] {$x$};
+    \draw[->] (0,-0.12)--(0,2.2)
+      node[above] {$y$};
+    \node[below left] at (0,0) {$O$};
+
+    % 曲線
+    \draw[thick,domain=0.47:\rightcurve,samples=180]
+      plot (\x,{1/\x});
+    \node[right] at (0.7,1.85)
+      {$y=\frac{1}{x^2}$};
+
+    % 横軸のラベル
+    \foreach \k in {1,2,3}{
+      \node[below=3pt] at (\k,0) {$\k$};
+    }
+    \node[below=3pt] at (4.5,0) {$\cdots$};
+    \node[below=3pt] at (\N,0) {$n$};
+
+  \end{scope}
+\end{tikzpicture}%
+}
+\end{center}
+\underline{左図のとき,}\\
+\quad （斜線部の面積）$<$（網目部の面積）すなわち,$\dint{1}{n+1}\dfrac{1}{x^2}<T_n$\\
+これより,
+\begin{align*}
+  T_n>\dint{1}{n+1}\dfrac{1}{x^2}&=\tint{-\dfrac1x}{1}{n+1}\\
+  &\dotshikialign{=1-\dfrac{1}{n+1}}{\maruichi}
+\end{align*}
+\underline{右図のとき,}\\
+\quad （網目部）$<$（斜線部）すなわち,\dotshiki{T_n<1+\dint{1}{n}\dfrac{1}{x^2}dx=2-\dfrac{1}{n}}{\maruni}
+$\yueni\maruichi,\maruni$より,
+\begin{align*}
+  &1-\dfrac{1}{n+1}<T_n<2-\dfrac1n\\
+  &1\xleftarrow{\infty\leftarrow n}1-\dfrac1n<\lim_{n\to\infty}T_n<2-\dfrac{1}{n}\xrightarrow{n\to\infty}2
+\end{align*}
+$\yueni\ans{\lim_{n\to\infty}T_nは不明}$
 \end{document}
