@@ -1398,5 +1398,50 @@ $\yueni\ans{\lim_{n\to\infty}T_nは不明}$
 \begin{align*}
   S_5&=\lim_{n\to\infty}\wa{k=1}{n}\dfrac{1}{k(k+1)}=\lim_{n\to\infty}\wa{k=1}{n}\p{\dfrac{1}{k}-\dfrac{1}{k+1}}\\
   &=\lim_{n\to\infty}\p{1-\dfrac{1}{n+1}}=\ans{1}
+\end{align*}\\\\
+{\Large\ans{発展的話題}\theme{力学系の有界による証明}}\\
+力学系とは,極限値が簡単に求められない漸化式のことを広く意味します.\\
+この間扱った力学系の解法は,「有界」を用いない解法です.有界の定義を理解して,力学系をもう一度大学数学の視点から眺めてみると,とてもスッキリ
+理解することができます.\\
+\reidaic\quad$a_1=1,a_{n+1}=\sqrt{a_n+1}$の$n\to\infty$の極限を求めよ.\\
+\hokukan\quad 数列の収束条件は,\begin{align*}
+&「数列\B{a_n}が収束する」\doti「\exists s>0,\forall n\in\mathbb{N},a_n<s」\\
+&\doti 「数列\B{a_n}が単調増加かつ上界が存在する」
 \end{align*}
+でした.適当に正数をとって,帰納法により,すべての$n$に対して,$a_n<s$を示し,等式の成立要件から,形式的に$a_{n+1}=a_n=\alpha$として,極限値を求めます.\\
+\hokukai\quad$a_1=1<2$なので,数学的帰納法により,$a_n<2\narabaa a_{n+1}=\sqrt{a_{n+1}+1}<2$を示す.\\
+$a_n<2$を仮定すると,$a_{n+1}=\sqrt{a_n+1}<\sqrt{3}<2$なので,帰納法によりすべての$n$に対して,$a_n<2$である.また,差分を考えると,$a_1=1<a_2=\sqrt{2}$であり,
+\begin{align*}
+  \Delta\p{a_{n-1}}=a_{n}-a_{n-1}>0
+\end{align*}
+なので,この数列は単調増加である.\\
+したがって,単調増加かつ上に有界なので,収束する.極限を$\alpha$とすると,$\p{\alpha\geq1}$
+\begin{align*}
+  \alpha=\sqrt{\alpha+1}&\doti\alpha^2-\alpha-1=0\\
+  &\doti\alpha=\dfrac{1+\sqrt{5}}{2}
+\end{align*}
+$\yueni\lim_{n\to\infty}a_n=\ans{\dfrac{1+\sqrt{5}}{2}}$\\
+それでは,この手の方法で演習してみましょう.\\
+\begin{enshumondai}
+  [c]{発展演習問題}
+  \ba{3$\bullet$1$\bullet$2}次の各問に答えよ.\\
+  \kakkoichi 実数列$\B{a_n}$を,$a_1=0,a_{n+1}=\sqrt{2a_n+3}$によって定める.$\B{a_n}$が単調増加し,上に有界であることを示し,
+  その極限値を求めよ.\\
+  \kakkoni 実数列$\B{b_n}$を,$b_1=3,a_{n+1}=\dfrac{2b_n+3}{b_n+2}$によって定める.$\B{b_n}$が単調増加し,上に有界であることを示し,
+  その極限値を求めよ.\\
+  \kakkosan 実数列$\B{c_n}$を,$c_1=3,c_{n+1}=\dfrac12\p{c_n+\dfrac{2}{c_n}}$によって定める.$\B{c_n}$が単調増加し,上に有界であることを示し,
+  その極限値を求めよ.
+\end{enshumondai}
+\newpage
+\fbox{\hspace{3cm}\Large{\ans{発展演習の解説}}\hspace{3cm}}
+\begin{thickitembox}
+  {\ba{3$\bullet$1$\bullet$2}\midashikakko{単調有界な数列の収束}}
+  次の各問に答えよ.\\
+  \kakkoichi 実数列$\B{a_n}$を,$a_1=0,a_{n+1}=\sqrt{2a_n+3}$によって定める.$\B{a_n}$が単調増加し,上に有界であることを示し,
+  その極限値を求めよ.\\
+  \kakkoni 実数列$\B{b_n}$を,$b_1=3,a_{n+1}=\dfrac{2b_n+3}{b_n+2}$によって定める.$\B{b_n}$が単調増加し,上に有界であることを示し,
+  その極限値を求めよ.\\
+  \kakkosan 実数列$\B{c_n}$を,$c_1=3,c_{n+1}=\dfrac12\p{c_n+\dfrac{2}{c_n}}$によって定める.$\B{c_n}$が単調増加し,上に有界であることを示し,
+  その極限値を求めよ.
+\end{thickitembox}
 \end{document}
