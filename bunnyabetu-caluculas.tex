@@ -1140,8 +1140,7 @@ $\maruichi-\maruni$より,
 \end{align*}
 なので,これを$x$で両辺微分して,
 \begin{align*}
-  1+2x+3x^2+\cdots+nx^{n-1}&=\dfrac{(n+1)x^n(x-1)-\p{x^{n+1}-1}}{(x-1)^2}\\
-  &=\wa{k=1}{n}
+  1+2x+3x^2+\cdots+nx^{n-1}&=\dfrac{(n+1)x^n(x-1)-\p{x^{n+1}-1}}{(x-1)^2}
 \end{align*}
 $x=\dfrac12$を上式に代入すると,
 \begin{align*}
@@ -1154,7 +1153,7 @@ $\yueni S_2=\ans{4}$
 \begin{align*}
   S_3=\wa{n=1}{\infty}\dfrac{1}{n}=\lim_{n\to\infty}\underbrace{\wa{k=1}{n}\dfrac{1}{k}}_{T_nとおく}
 \end{align*}
-$y=\dfrac{1}{x}$のグラフを考えると,$t_n$は下図の網目部に対応する.
+$y=\dfrac{1}{x}$のグラフを考えると,$T_n$は下図の網目部に対応する.
 \begin{tikzpicture}[
   x=0.85cm,
   y=2cm,
@@ -1394,4 +1393,10 @@ $\yueni\maruichi,\maruni$より,
   &1\xleftarrow{\infty\leftarrow n}1-\dfrac1n<\lim_{n\to\infty}T_n<2-\dfrac{1}{n}\xrightarrow{n\to\infty}2
 \end{align*}
 $\yueni\ans{\lim_{n\to\infty}T_nは不明}$
+\newpage
+\noindent\kakkogob
+\begin{align*}
+  S_5&=\lim_{n\to\infty}\wa{k=1}{n}\dfrac{1}{k(k+1)}=\lim_{n\to\infty}\wa{k=1}{n}\p{\dfrac{1}{k}-\dfrac{1}{k+1}}\\
+  &=\lim_{n\to\infty}\p{1-\dfrac{1}{n+1}}=\ans{1}
+\end{align*}
 \end{document}
