@@ -1444,4 +1444,24 @@ $\yueni\lim_{n\to\infty}a_n=\ans{\dfrac{1+\sqrt{5}}{2}}$\\
   \kakkosan 実数列$\B{c_n}$を,$c_1=3,c_{n+1}=\dfrac12\p{c_n+\dfrac{2}{c_n}}$によって定める.$\B{c_n}$が単調増加し,上に有界であることを示し,
   その極限値を求めよ.
 \end{thickitembox}
+\kangaekata\quad 例題の解答方法と変わりません.適当な正数を見つけ,上に有界であることを示し,単調増加であることを示し,収束することを言い,極限を求めましょう.\\
+\hokukai\kakkoichib まず与えられた数列が,上に有界であることを言う.\\
+初項について,$0\leq a_1=0\leq3$である.今,$0\leq a_n\leq3$であると仮定すると,
+\begin{align*}
+  0\leq a_{n+1}=\sqrt{2a_n+3}\leq\sqrt{9}=3
+\end{align*}
+よって,数学的帰納法により,すべての実数に対して,$0\leq a_n\leq3$が成立し,上に有界である.\\
+次に単調増加であることを言う.\\
+今,$a_1=0>0,a_2=\sqrt{3}$なので,与えられた数列を2乗した数列の差分を考えると,
+\begin{align*}
+  \Delta\p{a_{n+1}^2}&=\Delta\p{2a_n+3}\\
+&=2\p{a_{n+1}-a_n}>a_n-a_{n-1}>\cdots>a_2-a_1=\sqrt{3}
+\end{align*}
+よって,数列$\B{a_n}$は単調増加であり,上に有界である.したがって,極限が存在し,その極限を$L$とすると,
+\begin{align*}
+  L=\sqrt{2L+3}&\doti L^2-2L-3=0\\
+  &\doti \p{L-3}\p{L+1}=0\\
+  &\doti L=3\quad\p{\because L>0}
+\end{align*}
+よって,$\lim_{n\to\infty}a_n=\ans{3}$
 \end{document}
