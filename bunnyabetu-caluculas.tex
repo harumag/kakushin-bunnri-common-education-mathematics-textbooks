@@ -1444,7 +1444,7 @@ $\yueni\lim_{n\to\infty}a_n=\ans{\dfrac{1+\sqrt{5}}{2}}$\\
   \kakkosan 実数列$\B{c_n}$を,$c_1=3,c_{n+1}=\dfrac12\p{c_n+\dfrac{2}{c_n}}$によって定める.$\B{c_n}$が単調増加し,上に有界であることを示し,
   その極限値を求めよ.
 \end{thickitembox}
-\kangaekata\quad 例題の解答方法と変わりません.適当な正数を見つけ,上に有界であることを示し,単調増加であることを示し,収束することを言い,極限を求めましょう.\\
+\hokukan\quad 例題の解答方法と変わりません.適当な正数を見つけ,上に有界であることを示し,単調増加であることを示し,収束することを言い,極限を求めましょう.\\
 \hokukai\kakkoichib まず与えられた数列が,上に有界であることを言う.\\
 初項について,$0\leq a_1=0\leq3$である.今,$0\leq a_n\leq3$であると仮定すると,
 \begin{align*}
@@ -1463,5 +1463,69 @@ $\yueni\lim_{n\to\infty}a_n=\ans{\dfrac{1+\sqrt{5}}{2}}$\\
   &\doti \p{L-3}\p{L+1}=0\\
   &\doti L=3\quad\p{\because L>0}
 \end{align*}
-よって,$\lim_{n\to\infty}a_n=\ans{3}$
+よって,$\lim_{n\to\infty}a_n=\ans{3}$\\
+\kakkonib
+\begin{align*}
+  b_{n+1}=\dfrac{2b_n+3}{b_n+2}\doti b_{n+1}=2-\dfrac{1}{b_n+2}
+\end{align*}
+$b_1=3$なので,$1\leq b_1\leq b_3$である.ここで,$1\leq b_n\leq3$と仮定すると,
+\begin{align*}
+  1<2-\dfrac{1}{b_n+2}<2<3
+\end{align*}
+よって,数学的帰納法により,すべて$n$について,$1\leq b_n\leq3$が成立し,数列$\B{b_n}$は有界である.\\
+次に単調性を言う.$\B{b_n}$の差分を考えると,
+\begin{align*}
+  b_{n+1}-b_n&=\p{2-\dfrac{1}{b_n+2}}-\p{2-\dfrac{1}{b_{n-1}+2}}\\
+  &=\dfrac{b_n-b_{n-1}}{\p{b_n+2}\p{b_{n-1}+2}}
+\end{align*}
+分母が正なので,$b_n<b_{n-1}\narabaa b_{n+1}<b_n$.数学的帰納法により,数列$\B{b_n}$は単調減少する.\\
+以上より,単調減少かつ下に有界なので,$\B{b_n}$は収束し,その極限値を$L$とすると,$1\leq L\leq3$であり,
+\begin{align*}
+  L=\dfrac{2L+3}{L+2}\doti L^2=3\doti L=\sqrt{3}
+\end{align*}
+$\yueni\lim_{n\to\infty}b_n=\ans{\sqrt{3}}$
+\newpage
+\kakkosanb まず,有界であることを言う.AM-GMの関係より,
+\begin{align*}
+  c_{n+1}=\dfrac12\p{c_n+\dfrac{2}{c_n}}\geq\sqrt{2}
+\end{align*}
+等号成立は,$c_n=\sqrt{2}$のとき成立する.よって,数列$\B{c_n}$は下に有界である.\\
+次に単調性を言う.$n\geq2$の範囲で数列$\B{c_n}$の差分を考えると,
+\begin{align*}
+  c_{n+1}-c_n&=\dfrac12\p{\dfrac{2}{c_n}-c_n}\\
+  &=\dfrac{2-c_n^2}{2c_n}\leq0
+\end{align*}
+よって,$c_2$以降は単調減少する.\\
+以上より,$\B{c_n}$は下に有界な単調減少数列なので,収束する.その極限値を$L$とすると,
+\begin{align*}
+  L=\dfrac{1}{2}\p{L+\dfrac{2}{L}}\doti L^2=2\doti L=\sqrt{2}
+\end{align*}
+$\yueni\lim_{n\to\infty}c_n=\ans{\sqrt{2}}$
+\newpage
+{\Large\ans{4章\quad 求積I（数式を中心に）}}\\
+\begin{itembox}
+  [l]{\enpitu 関数の単調性}
+  $a<b$とする.二つの関数$f(x),g(x)$が区間$[a,b]$において常に
+  \begin{align*}
+    f(x)\leq g(x)
+  \end{align*}
+  を満たすとき,
+  \begin{align*}
+    \dint{a}{b}f(x)dx\leq\dint{a}{b}g(x)dx
+  \end{align*}
+  も成り立つ.\\
+  また,等号成立は,区間$[a,b]$において常に
+  \begin{align*}
+    f(x)=g(x)
+  \end{align*}
+  が成立するときである.
+\end{itembox}\\\\
+\reidaic\midashikakko{\ans{積分と極限とシグマ記号}}\\
+ 次の極限値を求めよ.
+\begin{align*}
+  \lim_{n\to\infty}\dint{0}{n\pi}e^{-x}\left|\sin x\right|dx
+\end{align*}
+\miginote{東工大}
+\hokukan\quad ほげ\\
+\hokukai\quad ほげ
 \end{document}
