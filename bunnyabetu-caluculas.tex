@@ -1500,8 +1500,7 @@ $\yueni\lim_{n\to\infty}b_n=\ans{\sqrt{3}}$
 \begin{align*}
   L=\dfrac{1}{2}\p{L+\dfrac{2}{L}}\doti L^2=2\doti L=\sqrt{2}
 \end{align*}
-$\yueni\lim_{n\to\infty}c_n=\ans{\sqrt{2}}$
-\newpage
+$\yueni\lim_{n\to\infty}c_n=\ans{\sqrt{2}}$\\\\
 {\Large\ans{4章\quad 求積I（数式を中心に）}}\\
 \begin{itembox}
   [l]{\enpitu 関数の単調性}
@@ -1526,6 +1525,281 @@ $\yueni\lim_{n\to\infty}c_n=\ans{\sqrt{2}}$
   \lim_{n\to\infty}\dint{0}{n\pi}e^{-x}\left|\sin x\right|dx
 \end{align*}
 \miginote{東工大}
+\hokukan\quad 絶対値がついているので,場合分けして積分しなければなりませんが,$e^{-x}\sin x$は,場合分けするのは大変です.
+そこで,$k$番目の山に注目して,その面積を$k$で表し,足し合わせましょう.\\
+\hokukai\quad$I_n=\dint{0}{n\pi}e^{-x}\left|\sin x\right|dx$とおく.\\
+$y=e^{-x}\left|\sin x\right|$のグラフは下図のようになる.
+\begin{center}
+\begin{tikzpicture}[
+  x=0.85cm,
+  y=3.5cm,
+  >=latex,
+  line cap=round,
+  line join=round
+]
+  % 模式図のための減衰調整
+  % 正確な e^{-x} の場合は 1
+  \def\decay{0.08}
+
+  % 描画用の値（表示するラベルは n,k）
+  \def\N{9}
+  \def\K{3}
+
+  %================================
+  % 左側：0 から 5π
+  %================================
+
+  % 曲線の下を斜線で塗る
+  \path[pattern=north east lines]
+    (0,0)
+    -- plot[domain=0:5,samples=301]
+       (\x,{exp(-\decay*pi*\x)*abs(sin(180*\x))})
+    -- (5,0)
+    -- cycle;
+
+  % 上側の曲線
+  \draw[semithick,domain=-0.25:5,samples=160]
+    plot (\x,{exp(-\decay*pi*\x)});
+
+  % 下側の曲線
+  \draw[thick,domain=0:5,samples=301]
+    plot (\x,{exp(-\decay*pi*\x)*abs(sin(180*\x))});
+
+  % 横軸と x=0 の縦線
+  \draw (-0.4,0)--(5.08,0);
+  \draw[thin] (0,0)--(0,1);
+  \draw[fill=white] (0,1) circle[radius=1.3pt];
+
+  % 目盛り
+  \foreach \j in {1,...,5}{
+    \draw[thin] (\j,0)--(\j,-0.018);
+  }
+
+  \node[below left] at (0,0) {$O$};
+  \node[below=4pt] at (1,0) {$\pi$};
+
+  % 長いラベルは引き出し線で配置
+  \draw[thin]
+    ({\K-1},0)--({\K-1.25},-0.16)
+    node[below] {$(k-1)\pi$};
+
+  \draw[thin]
+    (\K,0)--({\K+0.15},-0.16)
+    node[below] {$k\pi$};
+
+  % 第k区間の領域
+  \node[fill=white,inner sep=1pt]
+    at ({\K-0.5},0.18) {$R_k$};
+
+  %================================
+  % 曲線のラベル
+  %================================
+  \node[anchor=west] at (-0.3,1.19)
+    {$y=e^{-x}$};
+
+  \node[anchor=west] (waveLabel) at (2.1,0.94)
+    {$y=e^{-x}|\sin x|$};
+
+  \draw[thin]
+    (waveLabel.west)
+    to[out=200,in=70]
+    (1.5,{exp(-\decay*pi*1.5)});
+
+  %================================
+  % 途中の省略記号
+  %================================
+  \foreach \s in {5.3,5.55}{
+    \draw
+      (\s,-0.055)
+      .. controls ({\s-0.22},0.12)
+               and ({\s+0.22},0.40)
+      .. (\s,0.56);
+  }
+
+  %================================
+  % 右側：最後の2区間
+  %================================
+  \begin{scope}[shift={(5.95,0)}]
+
+    % 曲線の下を斜線で塗る
+    \path[pattern=north east lines]
+      (0,0)
+      -- plot[domain=0:2,samples=121]
+         (\x,{exp(-\decay*pi*(\N-2+\x))
+                    *abs(sin(180*\x))})
+      -- (2,0)
+      -- cycle;
+
+    % 上側の曲線
+    \draw[semithick,domain=0:2.2,samples=90]
+      plot (\x,{exp(-\decay*pi*(\N-2+\x))});
+
+    % 下側の曲線
+    \draw[thick,domain=0:2,samples=121]
+      plot (\x,{exp(-\decay*pi*(\N-2+\x))
+                 *abs(sin(180*\x))});
+
+    % 横軸
+    \draw[->] (0,0)--(2.5,0)
+      node[right] {$x$};
+
+    \foreach \j in {1,2}{
+      \draw[thin] (\j,0)--(\j,-0.018);
+    }
+
+    \node[below=4pt] at (2,0) {$n\pi$};
+
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+左下図のように,$x\colon\p{k-1}\pi\to k\pi$で囲まれた部分の面積を$R_k$とおくと,
+\begin{align*}
+  &\dotshikialign{R_k=\dint{(k-1)\pi}{k\pi}e^{-x}\left|\sin x\right|dx}{\maruichi}
+\end{align*}
+と表せ,$I_n$は,
+\begin{align*}
+  I_n&=\wa{k=1}{n}\dint{(k-1)\pi}{k\pi}e^{-x}\left|\sin x\right|dx\\
+  &\dotshikialign{=\wa{k=1}{n}R_k}{\maruni}
+\end{align*}
+と表せる.$\maruichi$において,$x-\p{k-1}\pi=t$と置換すると,\\\begin{tabular}{c|ccc}
+  $x$ & $\p{k-1}\pi$ & $\to$ &$k\pi$\\
+  \hline
+  $t$ & $0$ & $\to$ &$\pi$
+\end{tabular}\quad であり,
+\begin{align*}
+  R_k&=\dint{t=0}{t=\pi}e^{-t-(k-1)\pi}\left|\sin\p{\p{k-1}\pi+t}\right|dt\\
+  &=\dint{0}{\pi}\left|\sin t\right|dt\times e^{-(k-1)\pi}\\
+  &= e^{-(k-1)\pi}\dint{0}{\pi}e^{-t}\sin t dt\quad\p{\because 0\leq t\leq\pi で,\sin t\geq0}
+\end{align*}
+ここで,
+\begin{align*}
+  &\dotshikialign{\p{e^{-t}\sin t}^{\prime}=-e^{-t}\sin t+e^{-t}\cos t}{\marusan}\\
+  &\dotshikialign{\p{e^{-t}\cos t}^{\prime}=-e^{-t}\sin t-e^{-t}\cos t}{\marushi}
+\end{align*}
+$\marusan+\marushi$より,
+\begin{align*}
+  &-2e^{-t}\sin t=\B{e^{-t}\p{\sin t+\cos t}}^{\prime}\\
+  &\yueni e^{-t}\sin t=-\dfrac{1}{2}\B{e^{-t}\p{\sin t+\cos t}}^{\prime}
+\end{align*}
+これより,
+\begin{align*}
+  R_k=e^{-(k-1)\pi}\tint{-\dfrac12e^{-t}\p{\sin t+\cos t}}{0}{\pi}=\dfrac{1+e^{-\pi}}{2}\times e^{-(k-1)\pi}
+\end{align*}
+よって,$I_n$は,等比数列の和より,
+\begin{align*}
+  I_n&=\dfrac{1+e^{-\pi}}{2}\wa{k=1}{n}e^{-(k-1)\pi}=\dfrac{1+e^{-\pi}}{2}\wa{k=1}{n}\p{e^{-\pi}}^{k-1}\\ 
+  &=\dfrac{1+e^{-\pi}}{2}\times\dfrac{1}{1-e^{-\pi}}=\dfrac{1+e^{-\pi}}{2\p{1-e^{-\pi}}}
+\end{align*}
+$\yueni\lim_{n\to\infty}I_n=\ans{\dfrac{1+e^{-\pi}}{2\p{1-e^{-\pi}}}}$\\
+\begin{enshumondai}
+  [c]{演習問題}
+  \ba{4$\bullet$1}\midashikakko{京都大}\\
+  次の極限値を求めよ.
+  \begin{align*}
+    \lim_{n\to\infty}\dint{0}{n\pi}e^{-x}\left|\sin nx\right|dx
+  \end{align*}
+  \ba{4$\bullet$2}\midashikakko{$e$の展開}\\%26-良問-775-岩手県立大
+  0以上の整数$n$に対して,
+  \begin{align*}
+    a_n=\dint{0}{1}\dfrac{\p{1-x}^n}{n!}e^xdx
+  \end{align*}
+  とする.このとき,以下の問いに答えなさい.ただし,$e$は自然体数の底であり,$0!=1$とする.\\
+  \kakkoichi\quad $a_0$を求めなさい.\\
+  \kakkoni\quad 次の不等式が成り立つことを証明しなさい.
+  \begin{align*}
+    a_{n+1}=a_n-\dfrac{1}{\p{n+1}!}
+  \end{align*}
+  \kakkosan\quad 次の不等式は成り立つことを証明しなさい.
+  \begin{align*}
+    a_n=e-\wa{k=1}{n}\dfrac{1}{k!}
+  \end{align*}
+  \kakkoshi\quad $0\leq x\leq1$のとき,次の不等式が成り立つことを証明しなさい.
+  \begin{align*}
+    0\leq a_n\leq\dfrac{e}{\p{n+1}!}
+  \end{align*}
+  \kakkogo\quad 次の等式が成り立つことを証明しなさい.
+  \begin{align*}
+    e=\wa{k=1}{\infty}\dfrac{1}{k!}
+  \end{align*}
+  \miginote{岩手県立大・ソフトウェア-前期}
+  \ba{4$\bullet$3}\midashikakko{部分積分}\\%26-良問-773-弘前大-理工など
+  数列$\B{a_n}$を次のように定める.
+  \begin{align*}
+    a_n=\dfrac{1}{n!}\dint{0}{1}x^ne^{1-x}dx（n=1,2,3,\cdots）
+  \end{align*}
+  ただし,$e$は自然体数の底とする.次の問いに答えよ.\\
+  \kakkoichi\quad$a_1$を求めよ.\\
+  \kakkoni\quad$a_{n+1}をa_n$と$n$を用いて表せ.\\
+  \kakkosan\quad 正の整数$n$に対して,$0\leq x\leq1$のとき
+  \begin{align*}
+    0\leq x^ne^{1-x}\leq ex^n
+  \end{align*}
+  が成り立つことに注意して,極限$\lim_{n\to\infty}a_n$を求めよ.また,無限級数
+  \begin{align*}
+    1+\dfrac{1}{1!}+\dfrac{1}{2!}+\dfrac{1}{3!}+\cdots+\dfrac{1}{n!}+\cdots
+  \end{align*}
+  の和を求めよ.
+  \miginote{弘前大-理工}
+\end{enshumondai}
+\vspace{3mm}
+\fbox{\hspace{3.3cm}{\Large\ans{4章の解説}}\hspace{3.3cm}}\\
+\begin{thickitembox}
+  {\ba{4$\bullet$1}\midashikakko{京都大}}
+  次の極限値を求めよ.
+  \begin{align*}
+    \lim_{n\to\infty}\dint{0}{n\pi}e^{-x}\left|\sin nx\right|dx
+  \end{align*}
+\end{thickitembox}
+\hokukan\quad ほげ\\
+\hokukai\quad ほげ
+\begin{thickitembox}
+  {\ba{4$\bullet$2}\midashikakko{$e$の展開}}
+  以上の整数$n$に対して,
+  \begin{align*}
+    a_n=\dint{0}{1}\dfrac{\p{1-x}^n}{n!}e^xdx
+  \end{align*}
+  とする.このとき,以下の問いに答えなさい.ただし,$e$は自然体数の底であり,$0!=1$とする.\\
+  \kakkoichi\quad $a_0$を求めなさい.\\
+  \kakkoni\quad 次の不等式が成り立つことを証明しなさい.
+  \begin{align*}
+    a_{n+1}=a_n-\dfrac{1}{\p{n+1}!}
+  \end{align*}
+  \kakkosan\quad 次の不等式は成り立つことを証明しなさい.
+  \begin{align*}
+    a_n=e-\wa{k=1}{n}\dfrac{1}{k!}
+  \end{align*}
+  \kakkoshi\quad $0\leq x\leq1$のとき,次の不等式が成り立つことを証明しなさい.
+  \begin{align*}
+    0\leq a_n\leq\dfrac{e}{\p{n+1}!}
+  \end{align*}
+  \kakkogo\quad 次の等式が成り立つことを証明しなさい.
+  \begin{align*}
+    e=\wa{k=1}{\infty}\dfrac{1}{k!}
+  \end{align*}
+  \miginote{岩手県立大・ソフトウェア-前期}
+\end{thickitembox}
+\hokukan\quad ほげ\\
+\hokukai\quad ほげ
+\begin{thickitembox}
+  {\ba{4$\bullet$3}\midashikakko{部分積分}}
+  数列$\B{a_n}$を次のように定める.
+  \begin{align*}
+    a_n=\dfrac{1}{n!}\dint{0}{1}x^ne^{1-x}dx（n=1,2,3,\cdots）
+  \end{align*}
+  ただし,$e$は自然体数の底とする.次の問いに答えよ.\\
+  \kakkoichi\quad$a_1$を求めよ.\\
+  \kakkoni\quad$a_{n+1}をa_n$と$n$を用いて表せ.\\
+  \kakkosan\quad 正の整数$n$に対して,$0\leq x\leq1$のとき
+  \begin{align*}
+    0\leq x^ne^{1-x}\leq ex^n
+  \end{align*}
+  が成り立つことに注意して,極限$\lim_{n\to\infty}a_n$を求めよ.また,無限級数
+  \begin{align*}
+    1+\dfrac{1}{1!}+\dfrac{1}{2!}+\dfrac{1}{3!}+\cdots+\dfrac{1}{n!}+\cdots
+  \end{align*}
+  の和を求めよ.
+  \miginote{弘前大-理工}
+\end{thickitembox}
 \hokukan\quad ほげ\\
 \hokukai\quad ほげ
 \end{document}
